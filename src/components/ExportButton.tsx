@@ -5,53 +5,62 @@ import { PRODUCTS } from "@/data/products";
 import { calcProduct, formatBRL, getColorFromName, getInitials } from "@/lib/pricing";
 import { CATEGORY_LABELS, CATEGORY_ORDER } from "@/lib/types";
 
-function buildExportHTML(globalSettings: any, overrides: any): string {
-  const products = PRODUCTS.filter((p) => !p.soldOut);
+export function ExportButton() {
+  const { globalSettings, overrides } = useCatalog();
 
-  const groups: Record<string, typeof products> = {};
-  CATEGORY_ORDER.forEach((cat) => {
-    groups[cat] = products.filter((p) => p.category === cat);
-  });
+  const handleExport = () => {
+    const products = PRODUCTS.filter((p) => !p.soldOut);
 
-  let sections = "";
-  CATEGORY_ORDER.forEach((cat) => {
-    const items = groups[cat];
-    if (!items || items.length === 0) return;
+    const groups: Record<string, typeof products> = {};
+    CATEGORY_ORDER.forEach((cat) => {
+      groups[cat] = products.filter((p) => p.category === cat);
+    });
 
-    let cards = "";
-    items.forEach((p) => {
-      const calc = calcProduct(p, globalSettings, overrides[p.id]);
-      const color = getColorFromName(p.name);
-      const parcela = formatBRL(calc.sellPrice / 6);
-      cards += `
-        <div style="background:#fff;border-radius:14px;overflow:hidden;box-shadow:0 2px 15px rgba(0,0,0,0.07);transition:transform 0.2s;">
-          <div style="width:100%;aspect-ratio:3/4;background:linear-gradient(135deg,${color}15,${color}30);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;">
-            ${p.img ? `<img src="${p.img}" style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0;" alt="${p.name}" loading="lazy">` : `<span style="color:${color};opacity:0.2;font-size:2.5em;font-weight:900;">${getInitials(p.name)}</span>`}
-            ${p.tags.includes("novidade") ? '<span style="position:absolute;top:10px;right:10px;background:#16a34a;color:#fff;font-size:10px;font-weight:700;padding:3px 10px;border-radius:99px;letter-spacing:0.5px;">NOVO</span>' : ""}
-          </div>
-          <div style="padding:16px;">
-            <div style="font-size:10px;color:#b8860b;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:4px;">${CATEGORY_LABELS[p.category] || p.category}</div>
-            <div style="font-weight:600;margin-bottom:6px;font-size:14px;color:#1f2937;line-height:1.3;">${p.name}</div>
-            <div style="font-size:11px;color:#9ca3af;margin-bottom:10px;">Tam: ${p.sizes}</div>
-            <div style="font-size:22px;font-weight:800;color:#8b6914;">${formatBRL(calc.sellPrice)}</div>
-            <div style="font-size:11px;color:#6b7280;margin-top:2px;">ou 6x de ${parcela} sem juros</div>
+    let sections = "";
+    CATEGORY_ORDER.forEach((cat) => {
+      const items = groups[cat];
+      if (!items || items.length === 0) return;
+
+      let cards = "";
+      items.forEach((p) => {
+        const calc = calcProduct(p, globalSettings, overrides[p.id]);
+        const color = getColorFromName(p.name);
+        cards += `
+          <div style="background:#fff;border-radius:14px;overflow:hidden;box-shadow:0 2px 15px rgba(0,0,0,0.07);">
+            <div style="width:100%;aspect-ratio:3/4;background:linear-gradient(135deg,${color}15,${color}30);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;">
+              ${p.img ? `<img src="${p.img}" style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0;" alt="${p.name}" loading="lazy">` : `<span style="color:${color};opacity:0.2;font-size:2.5em;font-weight:900;">${getInitials(p.name)}</span>`}
+              ${p.tags.includes("novidade") ? '<span style="position:absolute;top:10px;right:10px;background:#16a34a;color:#fff;font-size:10px;font-weight:700;padding:3px 10px;border-radius:99px;">NOVO</span>' : ""}
+            </div>
+            <div style="padding:16px;">
+              <div style="font-size:10px;color:#b8860b;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:4px;">${CATEGORY_LABELS[p.category] || p.category}</div>
+              <div style="font-weight:600;margin-bottom:6px;font-size:14px;color:#1f2937;line-height:1.3;">${p.name}</div>
+              <div style="font-size:11px;color:#9ca3af;margin-bottom:10px;">Tam: ${p.sizes}</div>
+              <div style="background:#ecfdf5;border-radius:8px;padding:8px 10px;margin-bottom:8px;">
+                <div style="display:flex;align-items:center;gap:6px;">
+                  <span style="font-size:10px;font-weight:700;color:#047857;background:#a7f3d0;padding:2px 6px;border-radius:4px;">PIX</span>
+                  <span style="font-size:20px;font-weight:800;color:#047857;">${formatBRL(calc.pricePix)}</span>
+                </div>
+                <div style="font-size:10px;color:#059669;margin-top:2px;">${calc.pixDiscount}% de desconto</div>
+              </div>
+              <div style="font-size:12px;color:#4b5563;margin-bottom:2px;">Cartao: <strong>${formatBRL(calc.priceCard)}</strong></div>
+              <div style="font-size:12px;color:#92400e;">Parcelado: <strong>${calc.installments}x de ${formatBRL(calc.installmentMonthly)}</strong></div>
+            </div>
+          </div>`;
+      });
+
+      sections += `
+        <div style="margin-bottom:40px;">
+          <h2 style="font-size:1.3em;font-weight:700;color:#8b6914;margin:0 0 16px;padding-bottom:10px;border-bottom:3px solid #daa520;display:flex;align-items:center;gap:10px;">
+            ${CATEGORY_LABELS[cat] || cat}
+            <span style="background:#daa520;color:#fff;font-size:11px;padding:3px 12px;border-radius:99px;font-weight:700;">${items.length}</span>
+          </h2>
+          <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:16px;">
+            ${cards}
           </div>
         </div>`;
     });
 
-    sections += `
-      <div style="margin-bottom:40px;">
-        <h2 style="font-size:1.3em;font-weight:700;color:#8b6914;margin:0 0 16px;padding-bottom:10px;border-bottom:3px solid #daa520;display:flex;align-items:center;gap:10px;">
-          ${CATEGORY_LABELS[cat] || cat}
-          <span style="background:#daa520;color:#fff;font-size:11px;padding:3px 12px;border-radius:99px;font-weight:700;">${items.length}</span>
-        </h2>
-        <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:16px;">
-          ${cards}
-        </div>
-      </div>`;
-  });
-
-  return `<!DOCTYPE html>
+    const html = `<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
@@ -66,9 +75,11 @@ header p{color:rgba(255,255,255,0.5);margin-top:8px;font-size:0.9em;}
 .container{max-width:1400px;margin:0 auto;padding:30px 30px 60px;}
 .whatsapp-bar{background:#25d366;padding:14px 30px;text-align:center;}
 .whatsapp-bar a{color:#fff;text-decoration:none;font-weight:700;font-size:1em;display:inline-flex;align-items:center;gap:8px;}
+.payment-info{background:#fff;border:2px solid #e5e7eb;border-radius:12px;padding:20px;margin-bottom:30px;text-align:center;}
+.payment-info h3{color:#1f2937;font-size:1.1em;margin-bottom:10px;}
+.payment-info p{color:#6b7280;font-size:0.9em;line-height:1.6;}
 footer{background:#1a1a1a;color:rgba(255,255,255,0.4);text-align:center;padding:24px;font-size:0.85em;}
 @media(max-width:768px){.container{padding:15px;}}
-@media print{body{background:#fff;}header,.whatsapp-bar{print-color-adjust:exact;-webkit-print-color-adjust:exact;}}
 </style>
 </head>
 <body>
@@ -83,6 +94,10 @@ Fale comigo no WhatsApp
 </a>
 </div>
 <div class="container">
+<div class="payment-info">
+<h3>Formas de Pagamento</h3>
+<p><strong style="color:#047857;">PIX:</strong> ${globalSettings.pixDiscount}% de desconto | <strong>Cartao a vista</strong> | <strong style="color:#92400e;">Parcelado em ate ${globalSettings.installments}x</strong> no cartao de credito</p>
+</div>
 ${sections}
 </div>
 <footer>
@@ -91,13 +106,7 @@ ${sections}
 </footer>
 </body>
 </html>`;
-}
 
-export function ExportButton() {
-  const { globalSettings, overrides } = useCatalog();
-
-  const handleExport = () => {
-    const html = buildExportHTML(globalSettings, overrides);
     const blob = new Blob([html], { type: "text/html" });
     const url = URL.createObjectURL(blob);
     const a = document.createElement("a");

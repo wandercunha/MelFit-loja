@@ -48,7 +48,9 @@ export function CatalogProvider({ children }: { children: React.ReactNode }) {
   const [globalSettings, setGlobalSettingsState] = useState<GlobalSettings>({
     margin: 50,
     shipping: 0,
-    installment: 0,
+    cardRate: 13.99,
+    pixDiscount: 4,
+    installments: 6,
   });
   const [overrides, setOverrides] = useState<Record<number, ProductOverride>>({});
   const [searchQuery, setSearchQuery] = useState("");

@@ -16,23 +16,26 @@ export function MarginEditor({ product, onClose }: Props) {
 
   const [margin, setMargin] = useState(existing?.margin ?? globalSettings.margin);
   const [shipping, setShipping] = useState(existing?.shipping ?? globalSettings.shipping);
-  const [installment, setInstallment] = useState(existing?.installment ?? globalSettings.installment);
 
   useEffect(() => {
     setMargin(existing?.margin ?? globalSettings.margin);
     setShipping(existing?.shipping ?? globalSettings.shipping);
-    setInstallment(existing?.installment ?? globalSettings.installment);
   }, [product.id, existing, globalSettings]);
+
+  // Usar taxa/desconto globais
+  const { cardRate, pixDiscount, installments } = globalSettings;
 
   const cost = product.cost;
   const totalCost = cost + shipping;
-  const sellPrice = cost * (1 + margin / 100);
-  const installmentFee = sellPrice * (installment / 100);
-  const netProfit = sellPrice - totalCost - installmentFee;
-  const netMargin = sellPrice > 0 ? (netProfit / sellPrice) * 100 : 0;
+  const priceCard = cost * (1 + margin / 100);
+  const pricePix = priceCard * (1 - pixDiscount / 100);
+  const priceInstallment = priceCard * (1 + cardRate / 100);
+  const installmentMonthly = installments > 0 ? priceInstallment / installments : 0;
+  const netProfit = priceCard - totalCost;
+  const netMargin = priceCard > 0 ? (netProfit / priceCard) * 100 : 0;
 
   const handleSave = () => {
-    setOverride(product.id, { margin, shipping, installment });
+    setOverride(product.id, { margin, shipping });
     onClose();
   };
 
@@ -48,7 +51,7 @@ export function MarginEditor({ product, onClose }: Props) {
     >
       <div
         onClick={(e) => e.stopPropagation()}
-        className="bg-white rounded-2xl p-6 w-full max-w-lg shadow-2xl"
+        className="bg-white rounded-2xl p-6 w-full max-w-lg shadow-2xl max-h-[90vh] overflow-y-auto"
       >
         <h3 className="text-lg font-bold text-brand-500 mb-1">{product.name}</h3>
         <p className="text-sm text-gray-400 mb-5">Editar margem individual</p>
@@ -93,21 +96,20 @@ export function MarginEditor({ product, onClose }: Props) {
           </div>
           <div>
             <label className="block text-xs font-semibold text-gray-500 mb-1">
-              Taxa Parcelamento (%)
+              Taxa Cartao ({installments}x)
             </label>
             <input
-              type="number"
-              value={installment}
-              onChange={(e) => setInstallment(Number(e.target.value))}
-              min={0}
-              step={0.1}
-              className="input-field"
+              type="text"
+              value={`${cardRate}%`}
+              readOnly
+              className="input-field bg-gray-50 text-gray-400"
             />
+            <p className="text-[10px] text-gray-400 mt-1">Config. global</p>
           </div>
         </div>
 
         {/* Result Preview */}
-        <div className="bg-emerald-50 border-2 border-emerald-200 rounded-xl p-4 mb-5 space-y-1.5">
+        <div className="bg-gray-50 border-2 border-gray-200 rounded-xl p-4 mb-4 space-y-1.5">
           <div className="flex justify-between text-sm">
             <span className="text-gray-600">Custo do produto:</span>
             <span>{formatBRL(cost)}</span>
@@ -116,27 +118,42 @@ export function MarginEditor({ product, onClose }: Props) {
             <span className="text-gray-600">+ Frete:</span>
             <span>{formatBRL(shipping)}</span>
           </div>
-          <div className="flex justify-between text-sm">
+          <div className="flex justify-between text-sm font-semibold border-t border-gray-200 pt-1.5">
             <span className="text-gray-600">= Custo total:</span>
-            <span className="font-semibold">{formatBRL(totalCost)}</span>
+            <span>{formatBRL(totalCost)}</span>
+          </div>
+        </div>
+
+        {/* Prices Preview */}
+        <div className="bg-emerald-50 border-2 border-emerald-200 rounded-xl p-4 mb-5 space-y-2">
+          <h4 className="text-xs font-bold text-emerald-700 uppercase tracking-wider">Precos de Venda</h4>
+
+          <div className="flex justify-between text-sm">
+            <span className="text-gray-600">Cartao a vista:</span>
+            <span className="font-bold">{formatBRL(priceCard)}</span>
           </div>
           <div className="flex justify-between text-sm">
-            <span className="text-gray-600">Preço de venda:</span>
-            <span className="font-semibold">{formatBRL(sellPrice)}</span>
+            <span className="text-gray-600">PIX (-{pixDiscount}%):</span>
+            <span className="font-bold text-emerald-600">{formatBRL(pricePix)}</span>
           </div>
           <div className="flex justify-between text-sm">
-            <span className="text-gray-600">- Taxa parcelamento:</span>
-            <span className="text-red-500">- {formatBRL(installmentFee)}</span>
+            <span className="text-gray-600">Parcelado {installments}x (+{cardRate}%):</span>
+            <span className="font-bold text-brand-500">{formatBRL(priceInstallment)}</span>
           </div>
+          <div className="flex justify-between text-sm">
+            <span className="text-gray-600">Parcela mensal:</span>
+            <span className="font-semibold">{formatBRL(installmentMonthly)}/mes</span>
+          </div>
+
           <div className="border-t-2 border-emerald-300 pt-2 mt-2">
             <div className="flex justify-between text-base font-bold">
-              <span>Lucro líquido:</span>
+              <span>Lucro liquido (cartao):</span>
               <span className={netProfit >= 0 ? "text-emerald-600" : "text-red-600"}>
                 {formatBRL(netProfit)}
               </span>
             </div>
             <div className="flex justify-between text-sm font-semibold text-emerald-600">
-              <span>Margem líquida:</span>
+              <span>Margem liquida:</span>
               <span>{netMargin.toFixed(1)}%</span>
             </div>
           </div>

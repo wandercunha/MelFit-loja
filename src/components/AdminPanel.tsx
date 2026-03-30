@@ -20,7 +20,7 @@ export function AdminPanel({ open, onClose }: Props) {
   available.forEach((p) => {
     const c = calcProduct(p, globalSettings, overrides[p.id]);
     totalCost += c.totalCost;
-    totalSell += c.sellPrice;
+    totalSell += c.priceCard;
     totalProfit += c.netProfit;
   });
 
@@ -30,17 +30,12 @@ export function AdminPanel({ open, onClose }: Props) {
 
   return (
     <>
-      {/* Backdrop */}
-      <div
-        className="fixed inset-0 bg-black/40 z-[60]"
-        onClick={onClose}
-      />
+      <div className="fixed inset-0 bg-black/40 z-[60]" onClick={onClose} />
 
-      {/* Panel */}
       <aside className="fixed top-0 right-0 w-full max-w-md h-full bg-white z-[70] shadow-2xl overflow-y-auto">
         <div className="p-6">
           <div className="flex items-center justify-between mb-6">
-            <h2 className="text-xl font-bold text-brand-500">Configurações</h2>
+            <h2 className="text-xl font-bold text-brand-500">Configuracoes</h2>
             <button
               onClick={onClose}
               className="w-9 h-9 flex items-center justify-center rounded-full hover:bg-gray-100 text-gray-400 text-xl"
@@ -56,7 +51,7 @@ export function AdminPanel({ open, onClose }: Props) {
             </h3>
             <div className="space-y-2 text-sm">
               <div className="flex justify-between">
-                <span className="opacity-80">Produtos disponíveis:</span>
+                <span className="opacity-80">Produtos disponiveis:</span>
                 <span className="font-bold">{available.length}</span>
               </div>
               <div className="flex justify-between">
@@ -64,24 +59,24 @@ export function AdminPanel({ open, onClose }: Props) {
                 <span className="font-bold">{customCount}</span>
               </div>
               <div className="flex justify-between">
-                <span className="opacity-80">Custo total estimado:</span>
+                <span className="opacity-80">Custo total (c/ frete):</span>
                 <span className="font-bold">{formatBRL(totalCost)}</span>
               </div>
               <div className="flex justify-between">
-                <span className="opacity-80">Venda total estimada:</span>
+                <span className="opacity-80">Venda total (cartao):</span>
                 <span className="font-bold">{formatBRL(totalSell)}</span>
               </div>
               <div className="flex justify-between border-t border-white/20 pt-2">
-                <span className="font-semibold">Lucro líquido total:</span>
+                <span className="font-semibold">Lucro liquido total:</span>
                 <span className="font-black text-lg">{formatBRL(totalProfit)}</span>
               </div>
             </div>
           </div>
 
-          {/* Global Margin */}
+          {/* Margem Global */}
           <section className="bg-gray-50 rounded-xl p-5 mb-4">
             <h3 className="text-xs font-bold text-brand-500 uppercase tracking-widest mb-4">
-              Margem Global
+              Margem de Lucro
             </h3>
             <div className="space-y-4">
               <div>
@@ -102,18 +97,9 @@ export function AdminPanel({ open, onClose }: Props) {
                   Aplicado a todos os produtos sem margem individual
                 </p>
               </div>
-            </div>
-          </section>
-
-          {/* Additional Costs */}
-          <section className="bg-gray-50 rounded-xl p-5 mb-4">
-            <h3 className="text-xs font-bold text-brand-500 uppercase tracking-widest mb-4">
-              Custos Adicionais (por peça)
-            </h3>
-            <div className="space-y-4">
               <div>
                 <label className="block text-xs font-semibold text-gray-500 mb-1">
-                  Frete por Peça (R$)
+                  Frete por Peca (R$)
                 </label>
                 <input
                   type="number"
@@ -126,29 +112,95 @@ export function AdminPanel({ open, onClose }: Props) {
                   className="input-field"
                 />
                 <p className="text-[11px] text-gray-400 mt-1">
-                  Valor de frete rateado por peça
+                  Valor de frete rateado por peca
+                </p>
+              </div>
+            </div>
+          </section>
+
+          {/* Taxas de Pagamento */}
+          <section className="bg-gray-50 rounded-xl p-5 mb-4">
+            <h3 className="text-xs font-bold text-brand-500 uppercase tracking-widest mb-4">
+              Taxas de Pagamento
+            </h3>
+            <div className="space-y-4">
+              <div>
+                <label className="block text-xs font-semibold text-gray-500 mb-1">
+                  Desconto PIX (%)
+                </label>
+                <input
+                  type="number"
+                  value={globalSettings.pixDiscount}
+                  onChange={(e) =>
+                    setGlobalSettings({ ...globalSettings, pixDiscount: Number(e.target.value) })
+                  }
+                  min={0}
+                  max={50}
+                  step={0.5}
+                  className="input-field"
+                />
+                <p className="text-[11px] text-gray-400 mt-1">
+                  Desconto sobre o preco cartao a vista (padrao: 4%)
                 </p>
               </div>
               <div>
                 <label className="block text-xs font-semibold text-gray-500 mb-1">
-                  Taxa de Parcelamento (%)
+                  Taxa Total Cartao Parcelado (%)
                 </label>
                 <input
                   type="number"
-                  value={globalSettings.installment}
+                  value={globalSettings.cardRate}
                   onChange={(e) =>
-                    setGlobalSettings({ ...globalSettings, installment: Number(e.target.value) })
+                    setGlobalSettings({ ...globalSettings, cardRate: Number(e.target.value) })
                   }
                   min={0}
                   max={100}
-                  step={0.1}
+                  step={0.01}
                   className="input-field"
                 />
                 <p className="text-[11px] text-gray-400 mt-1">
-                  Ex: 3.49% para 3x, 5.99% para 6x no cartão
+                  Taxa total do parcelamento (ex: 13.99% para 6x)
+                </p>
+              </div>
+              <div>
+                <label className="block text-xs font-semibold text-gray-500 mb-1">
+                  Numero de Parcelas
+                </label>
+                <input
+                  type="number"
+                  value={globalSettings.installments}
+                  onChange={(e) =>
+                    setGlobalSettings({ ...globalSettings, installments: Number(e.target.value) })
+                  }
+                  min={1}
+                  max={12}
+                  className="input-field"
+                />
+                <p className="text-[11px] text-gray-400 mt-1">
+                  Parcelas no cartao de credito (padrao: 6x)
                 </p>
               </div>
             </div>
+          </section>
+
+          {/* Exemplo rapido */}
+          <section className="bg-blue-50 border border-blue-200 rounded-xl p-4 mb-4">
+            <h3 className="text-xs font-bold text-blue-600 uppercase tracking-widest mb-2">
+              Exemplo Rapido (custo R$ 50)
+            </h3>
+            {(() => {
+              const ex = 50 * (1 + globalSettings.margin / 100);
+              const exPix = ex * (1 - globalSettings.pixDiscount / 100);
+              const exParc = ex * (1 + globalSettings.cardRate / 100);
+              const exMensal = globalSettings.installments > 0 ? exParc / globalSettings.installments : 0;
+              return (
+                <div className="text-sm space-y-1">
+                  <p>Cartao a vista: <strong>{formatBRL(ex)}</strong></p>
+                  <p>PIX (-{globalSettings.pixDiscount}%): <strong className="text-emerald-600">{formatBRL(exPix)}</strong></p>
+                  <p>Parcelado {globalSettings.installments}x: <strong className="text-brand-500">{formatBRL(exMensal)}/mes</strong> (total {formatBRL(exParc)})</p>
+                </div>
+              );
+            })()}
           </section>
 
           {/* Actions */}

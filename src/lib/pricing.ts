@@ -7,24 +7,43 @@ export function calcProduct(
 ): PriceCalc {
   const margin = override?.margin ?? global.margin;
   const shipping = override?.shipping ?? global.shipping;
-  const installment = override?.installment ?? global.installment;
+  const cardRate = global.cardRate;
+  const pixDiscount = global.pixDiscount;
+  const installments = global.installments;
 
   const cost = product.cost;
   const totalCost = cost + shipping;
-  const sellPrice = cost * (1 + margin / 100);
-  const installmentFee = sellPrice * (installment / 100);
-  const netProfit = sellPrice - totalCost - installmentFee;
-  const netMargin = sellPrice > 0 ? (netProfit / sellPrice) * 100 : 0;
+
+  // Preço cartão à vista = custo * (1 + margem%) → preço REAL
+  const priceCard = cost * (1 + margin / 100);
+
+  // PIX = preço cartão - desconto%
+  const pricePix = priceCard * (1 - pixDiscount / 100);
+
+  // Parcelado = preço cartão + taxa do cartão%
+  const priceInstallment = priceCard * (1 + cardRate / 100);
+
+  // Parcela mensal
+  const installmentMonthly = installments > 0 ? priceInstallment / installments : priceInstallment;
+
+  // Lucro líquido baseado no cartão à vista (cenário mais conservador, sem taxa)
+  const netProfit = priceCard - totalCost;
+  const netMargin = priceCard > 0 ? (netProfit / priceCard) * 100 : 0;
 
   return {
     cost,
-    totalCost,
-    sellPrice,
     shipping,
-    installmentFee,
+    totalCost,
+    priceCard,
+    pricePix,
+    priceInstallment,
+    installmentMonthly,
+    installments,
     netProfit,
     netMargin,
     appliedMargin: margin,
+    cardRate,
+    pixDiscount,
   };
 }
 
