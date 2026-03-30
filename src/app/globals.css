@@ -2,26 +2,39 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@layer base {
+  body {
+    @apply bg-surface text-gray-800 antialiased;
   }
 }
 
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+@layer components {
+  .btn-primary {
+    @apply bg-brand-400 hover:bg-brand-500 text-white font-semibold py-2.5 px-5 rounded-lg transition-all duration-200 active:scale-95;
+  }
+  .btn-outline {
+    @apply border-2 border-brand-300 text-brand-300 hover:bg-brand-300 hover:text-surface-dark font-semibold py-2 px-4 rounded-full transition-all duration-200 text-sm;
+  }
+  .btn-success {
+    @apply bg-emerald-600 hover:bg-emerald-700 text-white font-semibold py-2.5 px-5 rounded-lg transition-all duration-200;
+  }
+  .input-field {
+    @apply w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-brand-300 focus:outline-none transition-colors duration-200 bg-white;
+  }
+  .card {
+    @apply bg-surface-card rounded-xl shadow-md hover:shadow-xl transition-all duration-300;
+  }
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: #f1f1f1; }
+::-webkit-scrollbar-thumb { background: #d4a574; border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: #b8860b; }
+
+@media print {
+  .no-print { display: none !important; }
+  body { background: white; }
+  .card { box-shadow: none; border: 1px solid #ddd; break-inside: avoid; }
 }
