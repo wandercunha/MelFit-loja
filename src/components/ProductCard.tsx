@@ -49,7 +49,7 @@ export function ProductCard({ product, priceCalc, hasOverride, onEdit }: Props) 
           </span>
         )}
 
-        {product.tags.includes("novidade") && !product.soldOut && (
+        {product.tags.includes("novidade") && !product.soldOut && !isAdmin && (
           <span className="absolute top-3 right-3 bg-emerald-600 text-white text-[10px] font-bold px-2.5 py-1 rounded-full uppercase">
             Novo
           </span>
@@ -58,7 +58,7 @@ export function ProductCard({ product, priceCalc, hasOverride, onEdit }: Props) 
         {isAdmin && (
           <button
             onClick={onEdit}
-            className="absolute top-3 right-3 bg-brand-400 text-white w-9 h-9 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity shadow-lg hover:bg-brand-500 hover:scale-110"
+            className="absolute top-3 right-3 bg-brand-400 text-white w-9 h-9 rounded-full flex items-center justify-center sm:opacity-0 sm:group-hover:opacity-100 transition-opacity shadow-lg hover:bg-brand-500 hover:scale-110"
             title="Editar margem"
           >
             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -95,6 +95,11 @@ export function ProductCard({ product, priceCalc, hasOverride, onEdit }: Props) 
               </span>
             )}
           </div>
+          {!isAdmin && priceCalc.sellPrice >= 10 && (
+            <p className="text-[11px] text-gray-500">
+              ou 6x de {formatBRL(priceCalc.sellPrice / 6)} sem juros
+            </p>
+          )}
           {isAdmin && (
             <p className="text-[11px] text-gray-400">
               Lucro liq: {formatBRL(priceCalc.netProfit)} | Margem:{" "}

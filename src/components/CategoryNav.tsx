@@ -1,7 +1,7 @@
 "use client";
 
 import { useCatalog } from "@/context/CatalogContext";
-import { CATEGORY_LABELS } from "@/lib/types";
+import { PRODUCTS } from "@/data/products";
 
 const CATEGORIES = [
   { key: "todos", label: "Todos" },
@@ -15,27 +15,46 @@ const CATEGORIES = [
   { key: "macacoes", label: "Macacões" },
 ];
 
+function getCategoryCount(key: string): number {
+  if (key === "todos") return PRODUCTS.length;
+  if (key === "novidade") return PRODUCTS.filter((p) => p.tags.includes("novidade")).length;
+  if (key === "colecao-exclusiva") return PRODUCTS.filter((p) => p.tags.includes("colecao-exclusiva")).length;
+  return PRODUCTS.filter((p) => p.category === key).length;
+}
+
 export function CategoryNav() {
   const { activeCategory, setActiveCategory } = useCatalog();
 
   return (
-    <nav className="bg-white/50 backdrop-blur border-b border-gray-100 no-print sticky top-[68px] z-40">
+    <nav className="bg-white/80 backdrop-blur-md border-b border-gray-100 no-print sticky top-[64px] sm:top-[68px] z-40">
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
-        <ul className="flex gap-1 overflow-x-auto py-2 scrollbar-hide">
-          {CATEGORIES.map((cat) => (
-            <li key={cat.key} className="flex-shrink-0">
-              <button
-                onClick={() => setActiveCategory(cat.key)}
-                className={`px-4 py-2 rounded-full text-sm font-semibold transition-all duration-200 whitespace-nowrap ${
-                  activeCategory === cat.key
-                    ? "bg-brand-400 text-white shadow-md"
-                    : "text-gray-500 hover:text-brand-500 hover:bg-brand-50"
-                }`}
-              >
-                {cat.label}
-              </button>
-            </li>
-          ))}
+        <ul className="flex gap-1 overflow-x-auto py-2 scrollbar-hide -mx-4 px-4 sm:mx-0 sm:px-0">
+          {CATEGORIES.map((cat) => {
+            const count = getCategoryCount(cat.key);
+            return (
+              <li key={cat.key} className="flex-shrink-0">
+                <button
+                  onClick={() => setActiveCategory(cat.key)}
+                  className={`px-3 sm:px-4 py-2 rounded-full text-xs sm:text-sm font-semibold transition-all duration-200 whitespace-nowrap flex items-center gap-1.5 ${
+                    activeCategory === cat.key
+                      ? "bg-brand-400 text-white shadow-md"
+                      : "text-gray-500 hover:text-brand-500 hover:bg-brand-50"
+                  }`}
+                >
+                  {cat.label}
+                  <span
+                    className={`text-[10px] font-bold px-1.5 py-0.5 rounded-full ${
+                      activeCategory === cat.key
+                        ? "bg-white/20 text-white"
+                        : "bg-gray-100 text-gray-400"
+                    }`}
+                  >
+                    {count}
+                  </span>
+                </button>
+              </li>
+            );
+          })}
         </ul>
       </div>
     </nav>
