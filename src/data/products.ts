@@ -24,7 +24,7 @@ export const PRODUCTS: Product[] = [
   { id: 38, name: "Top Air Preto c/ Off", cost: 49, category: "tops", tags: [], sizes: "P, M, G", img: "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/68ac8058c509a/img_2618-68af025c243b5.jpg" },
   { id: 39, name: "Top One Amora", cost: 54, category: "tops", tags: [], sizes: "P, M, G", img: "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/688cdc45225b1/img_2252-688cea6b9d4cb_mini.jpg" },
   { id: 40, name: "Top One Azul Marinho", cost: 54, category: "tops", tags: [], sizes: "P, M, G", img: "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/688cdc40b871e/img_2381-688ce938a99fa_mini.jpg" },
-  { id: 41, name: "Cropped Manga Longa Off White", cost: 48, category: "tops", tags: [], sizes: "P, M, G", img: "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/69b4643c5e16a/20260312_79961-69b4af5b18370.jpg" },
+  { id: 41, name: "Cropped Manga Longa Off White", cost: 48, category: "tops", tags: [], sizes: "P, M, G", img: "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/69b4643a48bd5/20260312_79777-69b4acd84fac0.jpg" },
   { id: 42, name: "Cropped Manga Longa Cereja", cost: 48, category: "tops", tags: [], sizes: "P, M, G", img: "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/68713484689fa/img_2170-68716ea5e5d06_mini.jpg" },
 
   // === SHORTS ===
@@ -46,7 +46,7 @@ export const PRODUCTS: Product[] = [
   { id: 55, name: "Short Adapt Terracota", cost: 65, category: "shorts", tags: [], sizes: "P, M, G", img: "" },
   { id: 56, name: "Short Basic Lilas", cost: 59, category: "shorts", tags: [], sizes: "P, M, G", img: "" },
   { id: 57, name: "Short Speed c/ Bolso Lilas", cost: 59, category: "shorts", tags: [], sizes: "P, M, G", img: "" },
-  { id: 58, name: "Short Adapt Lilas", cost: 65, category: "shorts", tags: [], sizes: "P, M, G", img: "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/69b4643c5e16a/20260312_79961-69b4af5b18370.jpg" },
+  { id: 58, name: "Short Adapt Lilas", cost: 65, category: "shorts", tags: [], sizes: "P, M, G", img: "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/69b4643a48bd5/20260312_79777-69b4acd84fac0.jpg" },
   { id: 59, name: "Short Speed c/ Bolso Verde Herb", cost: 59, category: "shorts", tags: [], sizes: "P, M, G", img: "" },
   { id: 60, name: "Short Run Branco", cost: 69, category: "shorts", tags: [], sizes: "P, M, G", img: "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/680f8997b4803/shorts-run-branco-1-680f9c1107bd7_mini.jpg" },
   { id: 61, name: "Short Speed c/ Bolso Preto", cost: 59, category: "shorts", tags: [], sizes: "P, M, G", img: "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/680f85bed69a2/shorts-speed-preto-680fafbdd4296_mini.jpg" },

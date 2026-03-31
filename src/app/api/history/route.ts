@@ -1,6 +1,5 @@
 import { NextResponse } from "next/server";
-import * as fs from "fs";
-import * as path from "path";
+import { getPriceHistory, getPriceSnapshots } from "@/lib/db";
 
 export const dynamic = "force-dynamic";
 
@@ -12,47 +11,37 @@ export async function GET(request: Request) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
-  const historyPath = path.join(process.cwd(), "src", "data", "price-history.json");
-
-  if (!fs.existsSync(historyPath)) {
-    return NextResponse.json({
-      lastUpdate: null,
-      changes: [],
-      snapshots: [],
-    });
-  }
-
   try {
-    const data = JSON.parse(fs.readFileSync(historyPath, "utf-8"));
-
-    // Optional filters
-    const product = searchParams.get("product");
     const days = parseInt(searchParams.get("days") || "30");
-    const cutoff = new Date();
-    cutoff.setDate(cutoff.getDate() - days);
+    const product = searchParams.get("product") || undefined;
 
-    let changes = data.changes || [];
-    let snapshots = data.snapshots || [];
-
-    // Filter by date
-    changes = changes.filter((c: any) => new Date(c.date) >= cutoff);
-    snapshots = snapshots.filter((s: any) => new Date(s.date) >= cutoff);
-
-    // Filter by product name
-    if (product) {
-      changes = changes.filter((c: any) =>
-        c.product.toLowerCase().includes(product.toLowerCase())
-      );
-    }
+    const changes = getPriceHistory(days, product);
+    const snapshots = getPriceSnapshots(days);
 
     return NextResponse.json({
-      lastUpdate: data.lastUpdate,
-      totalChanges: (data.changes || []).length,
+      lastUpdate: changes.length > 0 ? (changes[0] as any).created_at : null,
+      totalChanges: changes.length,
       filteredChanges: changes.length,
-      changes,
-      snapshots,
+      changes: changes.map((c: any) => ({
+        date: c.created_at,
+        product: c.product_name,
+        slug: c.slug,
+        field: c.field,
+        oldValue: c.old_value,
+        newValue: c.new_value,
+      })),
+      snapshots: snapshots.map((s: any) => ({
+        date: s.created_at,
+        productCount: s.product_count,
+        avgPrice: s.avg_price,
+        minPrice: s.min_price,
+        maxPrice: s.max_price,
+      })),
     });
-  } catch {
-    return NextResponse.json({ error: "Failed to read history" }, { status: 500 });
+  } catch (error: any) {
+    return NextResponse.json(
+      { error: error.message || "Failed to read history" },
+      { status: 500 }
+    );
   }
 }

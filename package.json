@@ -7,15 +7,18 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "scrape": "tsx scripts/scrape-prices.ts"
+    "scrape": "tsx scripts/scrape-prices.ts",
+    "db:migrate": "tsx scripts/migrate-to-sqlite.ts"
   },
   "dependencies": {
+    "better-sqlite3": "^11.10.0",
     "cheerio": "^1.0.0",
     "next": "14.2.35",
     "react": "^18",
     "react-dom": "^18"
   },
   "devDependencies": {
+    "@types/better-sqlite3": "^7.6.13",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",

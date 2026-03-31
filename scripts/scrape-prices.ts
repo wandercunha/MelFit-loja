@@ -437,6 +437,130 @@ async function main() {
   fs.writeFileSync(productsFile, updatedContent);
   console.log(`  Updated ${updatedImages} images in products.ts`);
 
+  // === SYNC TO SQLITE ===
+  console.log(`\n  Syncing to SQLite...`);
+  try {
+    const Database = require("better-sqlite3");
+    const dbDir = path.join(__dirname, "..", "data");
+    if (!fs.existsSync(dbDir)) fs.mkdirSync(dbDir, { recursive: true });
+    const db = new Database(path.join(dbDir, "melfit.db"));
+    db.pragma("journal_mode = WAL");
+
+    // Ensure tables exist
+    db.exec(`
+      CREATE TABLE IF NOT EXISTS scraped_prices (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        product_name TEXT NOT NULL,
+        slug TEXT NOT NULL UNIQUE,
+        price REAL NOT NULL DEFAULT 0,
+        img TEXT NOT NULL DEFAULT '',
+        source TEXT NOT NULL DEFAULT 'floraamar.com.br',
+        updated_at TEXT NOT NULL DEFAULT (datetime('now'))
+      );
+      CREATE TABLE IF NOT EXISTS price_history (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        product_name TEXT NOT NULL,
+        slug TEXT,
+        field TEXT NOT NULL DEFAULT 'price',
+        old_value REAL,
+        new_value REAL,
+        created_at TEXT NOT NULL DEFAULT (datetime('now'))
+      );
+      CREATE TABLE IF NOT EXISTS price_snapshots (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        product_count INTEGER NOT NULL,
+        avg_price REAL NOT NULL,
+        min_price REAL NOT NULL,
+        max_price REAL NOT NULL,
+        created_at TEXT NOT NULL DEFAULT (datetime('now'))
+      );
+      CREATE TABLE IF NOT EXISTS products (
+        id INTEGER PRIMARY KEY,
+        name TEXT NOT NULL,
+        cost REAL NOT NULL,
+        category TEXT NOT NULL,
+        tags TEXT NOT NULL DEFAULT '[]',
+        sizes TEXT NOT NULL DEFAULT 'P, M, G',
+        img TEXT NOT NULL DEFAULT '',
+        slug TEXT,
+        sold_out INTEGER NOT NULL DEFAULT 0,
+        created_at TEXT NOT NULL DEFAULT (datetime('now')),
+        updated_at TEXT NOT NULL DEFAULT (datetime('now'))
+      );
+    `);
+
+    // Upsert scraped prices
+    const upsertScraped = db.prepare(`
+      INSERT INTO scraped_prices (product_name, slug, price, img, updated_at)
+      VALUES (?, ?, ?, ?, datetime('now'))
+      ON CONFLICT(slug) DO UPDATE SET
+        product_name = excluded.product_name,
+        price = excluded.price,
+        img = CASE WHEN excluded.img != '' THEN excluded.img ELSE scraped_prices.img END,
+        updated_at = datetime('now')
+    `);
+
+    const upsertMany = db.transaction((products: ScrapedProduct[]) => {
+      for (const p of products) {
+        upsertScraped.run(p.name, p.slug, p.price, p.img);
+      }
+    });
+    upsertMany(allScraped);
+
+    // Insert price changes
+    if (changesDetected > 0) {
+      const insertChange = db.prepare(`
+        INSERT INTO price_history (product_name, slug, field, old_value, new_value)
+        VALUES (?, ?, 'price', ?, ?)
+      `);
+      const recentChanges = history.changes.slice(-changesDetected);
+      for (const c of recentChanges) {
+        insertChange.run(c.product, c.slug, c.oldValue, c.newValue);
+      }
+    }
+
+    // Insert snapshot
+    const prices = allScraped.filter((p) => p.price > 0).map((p) => p.price);
+    if (prices.length > 0) {
+      db.prepare(`
+        INSERT INTO price_snapshots (product_count, avg_price, min_price, max_price)
+        VALUES (?, ?, ?, ?)
+      `).run(
+        prices.length,
+        Math.round((prices.reduce((a, b) => a + b, 0) / prices.length) * 100) / 100,
+        Math.min(...prices),
+        Math.max(...prices)
+      );
+    }
+
+    // Update product images in DB
+    const upsertProduct = db.prepare(`
+      INSERT INTO products (id, name, cost, category, tags, sizes, img, slug, sold_out, updated_at)
+      VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, datetime('now'))
+      ON CONFLICT(id) DO UPDATE SET
+        img = CASE WHEN excluded.img != '' THEN excluded.img ELSE products.img END,
+        updated_at = datetime('now')
+    `);
+    // Re-parse products.ts for DB sync
+    const prodRegex = /\{\s*id:\s*(\d+),\s*name:\s*"([^"]+)",\s*cost:\s*(\d+(?:\.\d+)?),\s*category:\s*"([^"]+)",\s*tags:\s*\[([^\]]*)\],\s*sizes:\s*"([^"]+)",\s*img:\s*"([^"]*)"(?:,\s*slug:\s*"([^"]*)")?(?:,\s*soldOut:\s*(true|false))?\s*\}/g;
+    const finalContent = fs.readFileSync(productsFile, "utf-8");
+    let pm;
+    while ((pm = prodRegex.exec(finalContent)) !== null) {
+      const [, id, name, cost, category, tagsStr, sizes, img, slug, soldOut] = pm;
+      const tags = tagsStr.split(",").map(t => t.trim().replace(/"/g, "")).filter(Boolean);
+      upsertProduct.run(
+        parseInt(id), name, parseFloat(cost), category,
+        JSON.stringify(tags), sizes, img, slug || null,
+        soldOut === "true" ? 1 : 0
+      );
+    }
+
+    db.close();
+    console.log(`    SQLite synced successfully`);
+  } catch (err) {
+    console.error(`    [WARN] SQLite sync failed: ${err}`);
+  }
+
   const withImages = allScraped.filter((p) => p.img).length;
   const withPrices = allScraped.filter((p) => p.price > 0).length;
   console.log(`\n  Summary:`);
