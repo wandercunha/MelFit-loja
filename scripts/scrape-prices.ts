@@ -270,6 +270,111 @@ async function main() {
   fs.writeFileSync(outputPath, JSON.stringify(output, null, 2));
   console.log(`\n  Saved ${allScraped.length} products to scraped-prices.json`);
 
+  // === PRICE HISTORY TRACKING ===
+  console.log(`\n  Tracking price history...`);
+  const historyPath = path.join(dataDir, "price-history.json");
+
+  interface PriceChange {
+    date: string;
+    product: string;
+    slug: string;
+    field: string;
+    oldValue: number | string;
+    newValue: number | string;
+  }
+
+  interface HistoryData {
+    lastUpdate: string;
+    changes: PriceChange[];
+    snapshots: Array<{
+      date: string;
+      productCount: number;
+      avgPrice: number;
+      minPrice: number;
+      maxPrice: number;
+    }>;
+  }
+
+  let history: HistoryData = { lastUpdate: "", changes: [], snapshots: [] };
+  if (fs.existsSync(historyPath)) {
+    try {
+      history = JSON.parse(fs.readFileSync(historyPath, "utf-8"));
+    } catch {}
+  }
+
+  // Load previous scrape to compare
+  const prevMapsPath = path.join(dataDir, "scrape-maps.json");
+  let prevPriceMap: Record<string, number> = {};
+  if (fs.existsSync(prevMapsPath)) {
+    try {
+      const prevMaps = JSON.parse(fs.readFileSync(prevMapsPath, "utf-8"));
+      prevPriceMap = prevMaps.priceMap || {};
+    } catch {}
+  }
+
+  const now = new Date().toISOString();
+  let changesDetected = 0;
+
+  for (const scraped of allScraped) {
+    if (scraped.price <= 0) continue;
+
+    const prevPrice = prevPriceMap[scraped.name];
+    if (prevPrice && prevPrice !== scraped.price) {
+      history.changes.push({
+        date: now,
+        product: scraped.name,
+        slug: scraped.slug,
+        field: "price",
+        oldValue: prevPrice,
+        newValue: scraped.price,
+      });
+      changesDetected++;
+      const pct = (((scraped.price - prevPrice) / prevPrice) * 100).toFixed(1);
+      const direction = scraped.price > prevPrice ? "↑" : "↓";
+      console.log(`    ${direction} ${scraped.name}: R$ ${prevPrice} → R$ ${scraped.price} (${pct}%)`);
+    }
+  }
+
+  // Also compare against catalog costs (atacado prices from products.ts)
+  const costRegex = /name:\s*"([^"]+)".*?cost:\s*(\d+(?:\.\d+)?)/g;
+  let costMatch;
+  const catalogCosts: Record<string, number> = {};
+  while ((costMatch = costRegex.exec(productsContent)) !== null) {
+    catalogCosts[costMatch[1]] = parseFloat(costMatch[2]);
+  }
+
+  // Add a daily snapshot
+  const prices = allScraped.filter((p) => p.price > 0).map((p) => p.price);
+  if (prices.length > 0) {
+    const snapshot = {
+      date: now,
+      productCount: prices.length,
+      avgPrice: Math.round((prices.reduce((a, b) => a + b, 0) / prices.length) * 100) / 100,
+      minPrice: Math.min(...prices),
+      maxPrice: Math.max(...prices),
+    };
+    history.snapshots.push(snapshot);
+
+    // Keep only last 365 days of snapshots
+    if (history.snapshots.length > 365) {
+      history.snapshots = history.snapshots.slice(-365);
+    }
+  }
+
+  // Keep only last 1000 change records
+  if (history.changes.length > 1000) {
+    history.changes = history.changes.slice(-1000);
+  }
+
+  history.lastUpdate = now;
+  fs.writeFileSync(historyPath, JSON.stringify(history, null, 2));
+
+  if (changesDetected > 0) {
+    console.log(`    ${changesDetected} price changes detected and logged`);
+  } else {
+    console.log(`    No price changes detected`);
+  }
+
   // Generate maps for quick lookup
   const imageMap: Record<string, string> = {};
   const priceMap: Record<string, number> = {};

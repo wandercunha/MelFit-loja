@@ -4,6 +4,7 @@ import { useCatalog } from "@/context/CatalogContext";
 import { PRODUCTS } from "@/data/products";
 import { calcProduct, formatBRL } from "@/lib/pricing";
 import { ExportButton } from "./ExportButton";
+import { PriceHistory } from "./PriceHistory";
 
 interface Props {
   open: boolean;
@@ -182,6 +183,9 @@ export function AdminPanel({ open, onClose }: Props) {
               </div>
             </div>
           </section>
+
+          {/* Historico de Precos */}
+          <PriceHistory />
 
           {/* Exemplo rapido */}
           <section className="bg-blue-50 border border-blue-200 rounded-xl p-4 mb-4">
