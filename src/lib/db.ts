@@ -1,27 +1,32 @@
-import Database from "better-sqlite3";
-import path from "path";
+import { createClient, type Client } from "@libsql/client";
 
-const DB_PATH = path.join(process.cwd(), "data", "melfit.db");
+let _client: Client | null = null;
 
-let _db: Database.Database | null = null;
+/**
+ * Retorna o client do banco.
+ * - Em produção (Vercel): conecta ao Turso via TURSO_DATABASE_URL + TURSO_AUTH_TOKEN
+ * - Local: usa arquivo SQLite em data/melfit.db
+ */
+export function getDb(): Client {
+  if (!_client) {
+    const url = process.env.TURSO_DATABASE_URL;
+    const authToken = process.env.TURSO_AUTH_TOKEN;
 
-export function getDb(): Database.Database {
-  if (!_db) {
-    const fs = require("fs");
-    const dir = path.dirname(DB_PATH);
-    if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
-
-    _db = new Database(DB_PATH);
-    _db.pragma("journal_mode = WAL");
-    _db.pragma("foreign_keys = ON");
-    initSchema(_db);
+    if (url && authToken) {
+      // Produção: Turso cloud
+      _client = createClient({ url, authToken });
+    } else {
+      // Local: arquivo SQLite
+      _client = createClient({ url: "file:data/melfit.db" });
+    }
   }
-  return _db;
+  return _client;
 }
 
-function initSchema(db: Database.Database) {
-  db.exec(`
-    -- Produtos do catálogo
+/** Roda o schema de criação (idempotente) */
+export async function initSchema() {
+  const db = getDb();
+  await db.executeMultiple(`
     CREATE TABLE IF NOT EXISTS products (
       id INTEGER PRIMARY KEY,
       name TEXT NOT NULL,
@@ -36,7 +41,6 @@ function initSchema(db: Database.Database) {
       updated_at TEXT NOT NULL DEFAULT (datetime('now'))
     );
 
-    -- Histórico de preços raspados (varejo)
     CREATE TABLE IF NOT EXISTS price_history (
       id INTEGER PRIMARY KEY AUTOINCREMENT,
       product_name TEXT NOT NULL,
@@ -47,7 +51,6 @@ function initSchema(db: Database.Database) {
       created_at TEXT NOT NULL DEFAULT (datetime('now'))
     );
 
-    -- Snapshots diários de preços
     CREATE TABLE IF NOT EXISTS price_snapshots (
       id INTEGER PRIMARY KEY AUTOINCREMENT,
       product_count INTEGER NOT NULL,
@@ -57,7 +60,6 @@ function initSchema(db: Database.Database) {
       created_at TEXT NOT NULL DEFAULT (datetime('now'))
     );
 
-    -- Preços raspados (último scrape por produto)
     CREATE TABLE IF NOT EXISTS scraped_prices (
       id INTEGER PRIMARY KEY AUTOINCREMENT,
       product_name TEXT NOT NULL,
@@ -68,7 +70,6 @@ function initSchema(db: Database.Database) {
       updated_at TEXT NOT NULL DEFAULT (datetime('now'))
     );
 
-    -- Vendas (preparado para uso futuro)
     CREATE TABLE IF NOT EXISTS sales (
       id INTEGER PRIMARY KEY AUTOINCREMENT,
       product_id INTEGER NOT NULL,
@@ -87,162 +88,99 @@ function initSchema(db: Database.Database) {
       FOREIGN KEY (product_id) REFERENCES products(id)
     );
 
-    -- Configurações do admin (margem, taxas etc)
     CREATE TABLE IF NOT EXISTS settings (
       key TEXT PRIMARY KEY,
       value TEXT NOT NULL,
       updated_at TEXT NOT NULL DEFAULT (datetime('now'))
     );
-
-    -- Índices
-    CREATE INDEX IF NOT EXISTS idx_price_history_product ON price_history(product_name);
-    CREATE INDEX IF NOT EXISTS idx_price_history_date ON price_history(created_at);
-    CREATE INDEX IF NOT EXISTS idx_price_snapshots_date ON price_snapshots(created_at);
-    CREATE INDEX IF NOT EXISTS idx_scraped_prices_slug ON scraped_prices(slug);
-    CREATE INDEX IF NOT EXISTS idx_sales_product ON sales(product_id);
-    CREATE INDEX IF NOT EXISTS idx_sales_date ON sales(sold_at);
-    CREATE INDEX IF NOT EXISTS idx_sales_status ON sales(status);
   `);
 }
 
-// ─── Product helpers ───
+// ─── Scraped prices ───
 
-export function upsertProduct(p: {
-  id: number;
-  name: string;
-  cost: number;
-  category: string;
-  tags: string[];
-  sizes: string;
-  img: string;
-  slug?: string;
-  soldOut?: boolean;
-}) {
-  const db = getDb();
-  db.prepare(`
-    INSERT INTO products (id, name, cost, category, tags, sizes, img, slug, sold_out, updated_at)
-    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, datetime('now'))
-    ON CONFLICT(id) DO UPDATE SET
-      name = excluded.name,
-      cost = excluded.cost,
-      category = excluded.category,
-      tags = excluded.tags,
-      sizes = excluded.sizes,
-      img = excluded.img,
-      slug = excluded.slug,
-      sold_out = excluded.sold_out,
-      updated_at = datetime('now')
-  `).run(
-    p.id, p.name, p.cost, p.category,
-    JSON.stringify(p.tags), p.sizes, p.img,
-    p.slug || null, p.soldOut ? 1 : 0
-  );
-}
-
-export function getAllProducts() {
-  const db = getDb();
-  const rows = db.prepare("SELECT * FROM products ORDER BY category, id").all() as any[];
-  return rows.map((r) => ({
-    id: r.id,
-    name: r.name,
-    cost: r.cost,
-    category: r.category,
-    tags: JSON.parse(r.tags || "[]"),
-    sizes: r.sizes,
-    img: r.img,
-    slug: r.slug,
-    soldOut: r.sold_out === 1,
-  }));
-}
-
-// ─── Scraped prices helpers ───
-
-export function upsertScrapedPrice(p: {
+export async function upsertScrapedPrice(p: {
   name: string;
   slug: string;
   price: number;
   img: string;
 }) {
   const db = getDb();
-  db.prepare(`
-    INSERT INTO scraped_prices (product_name, slug, price, img, updated_at)
-    VALUES (?, ?, ?, ?, datetime('now'))
-    ON CONFLICT(slug) DO UPDATE SET
-      product_name = excluded.product_name,
-      price = excluded.price,
-      img = CASE WHEN excluded.img != '' THEN excluded.img ELSE scraped_prices.img END,
-      updated_at = datetime('now')
-  `).run(p.name, p.slug, p.price, p.img);
+  await db.execute({
+    sql: `INSERT INTO scraped_prices (product_name, slug, price, img, updated_at)
+          VALUES (?, ?, ?, ?, datetime('now'))
+          ON CONFLICT(slug) DO UPDATE SET
+            product_name = excluded.product_name,
+            price = excluded.price,
+            img = CASE WHEN excluded.img != '' THEN excluded.img ELSE scraped_prices.img END,
+            updated_at = datetime('now')`,
+    args: [p.name, p.slug, p.price, p.img],
+  });
 }
 
-export function getScrapedPrice(slug: string) {
+export async function getScrapedPriceMap(): Promise<Record<string, number>> {
   const db = getDb();
-  return db.prepare("SELECT * FROM scraped_prices WHERE slug = ?").get(slug) as any;
+  const result = await db.execute("SELECT product_name, price FROM scraped_prices WHERE price > 0");
+  const map: Record<string, number> = {};
+  for (const row of result.rows) {
+    map[row.product_name as string] = row.price as number;
+  }
+  return map;
 }
 
-export function getAllScrapedPrices() {
-  const db = getDb();
-  return db.prepare("SELECT * FROM scraped_prices ORDER BY product_name").all();
-}
+// ─── Price history ───
 
-// ─── Price history helpers ───
-
-export function addPriceChange(change: {
+export async function addPriceChange(change: {
   productName: string;
   slug: string;
-  field: string;
   oldValue: number;
   newValue: number;
 }) {
   const db = getDb();
-  db.prepare(`
-    INSERT INTO price_history (product_name, slug, field, old_value, new_value)
-    VALUES (?, ?, ?, ?, ?)
-  `).run(change.productName, change.slug, change.field, change.oldValue, change.newValue);
+  await db.execute({
+    sql: "INSERT INTO price_history (product_name, slug, field, old_value, new_value) VALUES (?, ?, 'price', ?, ?)",
+    args: [change.productName, change.slug, change.oldValue, change.newValue],
+  });
 }
 
-export function addPriceSnapshot(snapshot: {
+export async function addPriceSnapshot(s: {
   productCount: number;
   avgPrice: number;
   minPrice: number;
   maxPrice: number;
 }) {
   const db = getDb();
-  db.prepare(`
-    INSERT INTO price_snapshots (product_count, avg_price, min_price, max_price)
-    VALUES (?, ?, ?, ?)
-  `).run(snapshot.productCount, snapshot.avgPrice, snapshot.minPrice, snapshot.maxPrice);
+  await db.execute({
+    sql: "INSERT INTO price_snapshots (product_count, avg_price, min_price, max_price) VALUES (?, ?, ?, ?)",
+    args: [s.productCount, s.avgPrice, s.minPrice, s.maxPrice],
+  });
 }
 
-export function getPriceHistory(days: number = 30, product?: string) {
+export async function getPriceHistory(days: number = 30, product?: string) {
   const db = getDb();
-  let query = `
-    SELECT * FROM price_history
-    WHERE created_at >= datetime('now', '-${days} days')
-  `;
-  const params: any[] = [];
+  let sql = `SELECT * FROM price_history WHERE created_at >= datetime('now', '-${days} days')`;
+  const args: any[] = [];
 
   if (product) {
-    query += " AND product_name LIKE ?";
-    params.push(`%${product}%`);
+    sql += " AND product_name LIKE ?";
+    args.push(`%${product}%`);
   }
-
-  query += " ORDER BY created_at DESC LIMIT 500";
-  return db.prepare(query).all(...params);
+  sql += " ORDER BY created_at DESC LIMIT 500";
+  const result = await db.execute({ sql, args });
+  return result.rows;
 }
 
-export function getPriceSnapshots(days: number = 30) {
+export async function getPriceSnapshots(days: number = 30) {
   const db = getDb();
-  return db.prepare(`
-    SELECT * FROM price_snapshots
-    WHERE created_at >= datetime('now', '-${days} days')
-    ORDER BY created_at ASC
-  `).all();
+  const result = await db.execute({
+    sql: `SELECT * FROM price_snapshots WHERE created_at >= datetime('now', '-${days} days') ORDER BY created_at ASC`,
+    args: [],
+  });
+  return result.rows;
 }
 
-// ─── Sales helpers ───
+// ─── Sales ───
 
-export function addSale(sale: {
+export async function addSale(sale: {
   productId: number;
   quantity: number;
   size?: string;
@@ -255,72 +193,56 @@ export function addSale(sale: {
   notes?: string;
 }) {
   const db = getDb();
-  const result = db.prepare(`
-    INSERT INTO sales (product_id, quantity, size, unit_cost, unit_price,
-      payment_method, installments, customer_name, customer_phone, notes)
-    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-  `).run(
-    sale.productId, sale.quantity, sale.size || null,
-    sale.unitCost, sale.unitPrice, sale.paymentMethod,
-    sale.installments || 1, sale.customerName || null,
-    sale.customerPhone || null, sale.notes || null
-  );
+  const result = await db.execute({
+    sql: `INSERT INTO sales (product_id, quantity, size, unit_cost, unit_price,
+            payment_method, installments, customer_name, customer_phone, notes)
+          VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+    args: [
+      sale.productId, sale.quantity, sale.size || null,
+      sale.unitCost, sale.unitPrice, sale.paymentMethod,
+      sale.installments || 1, sale.customerName || null,
+      sale.customerPhone || null, sale.notes || null,
+    ],
+  });
   return result.lastInsertRowid;
 }
 
-export function getSales(days: number = 30, status?: string) {
+export async function getSales(days: number = 30, status?: string) {
   const db = getDb();
-  let query = `
+  let sql = `
     SELECT s.*, p.name as product_name, p.category, p.img
     FROM sales s
     JOIN products p ON p.id = s.product_id
     WHERE s.sold_at >= datetime('now', '-${days} days')
   `;
-  const params: any[] = [];
-
+  const args: any[] = [];
   if (status) {
-    query += " AND s.status = ?";
-    params.push(status);
+    sql += " AND s.status = ?";
+    args.push(status);
   }
-
-  query += " ORDER BY s.sold_at DESC";
-  return db.prepare(query).all(...params);
+  sql += " ORDER BY s.sold_at DESC";
+  const result = await db.execute({ sql, args });
+  return result.rows;
 }
 
-export function updateSaleStatus(id: number, status: string) {
+export async function updateSaleStatus(id: number, status: string) {
   const db = getDb();
-  db.prepare("UPDATE sales SET status = ? WHERE id = ?").run(status, id);
+  await db.execute({ sql: "UPDATE sales SET status = ? WHERE id = ?", args: [status, id] });
 }
 
-export function getSalesSummary(days: number = 30) {
+export async function getSalesSummary(days: number = 30) {
   const db = getDb();
-  const row = db.prepare(`
-    SELECT
-      COUNT(*) as total_sales,
-      SUM(quantity) as total_items,
-      SUM(unit_price * quantity) as total_revenue,
-      SUM(unit_cost * quantity) as total_cost,
-      SUM((unit_price - unit_cost) * quantity) as total_profit
-    FROM sales
-    WHERE sold_at >= datetime('now', '-${days} days')
-      AND status != 'cancelled'
-  `).get() as any;
-  return row;
-}
-
-// ─── Settings helpers ───
-
-export function getSetting(key: string, defaultValue?: string): string | undefined {
-  const db = getDb();
-  const row = db.prepare("SELECT value FROM settings WHERE key = ?").get(key) as any;
-  return row?.value ?? defaultValue;
-}
-
-export function setSetting(key: string, value: string) {
-  const db = getDb();
-  db.prepare(`
-    INSERT INTO settings (key, value, updated_at)
-    VALUES (?, ?, datetime('now'))
-    ON CONFLICT(key) DO UPDATE SET value = excluded.value, updated_at = datetime('now')
-  `).run(key, value);
+  const result = await db.execute({
+    sql: `SELECT
+            COUNT(*) as total_sales,
+            COALESCE(SUM(quantity), 0) as total_items,
+            COALESCE(SUM(unit_price * quantity), 0) as total_revenue,
+            COALESCE(SUM(unit_cost * quantity), 0) as total_cost,
+            COALESCE(SUM((unit_price - unit_cost) * quantity), 0) as total_profit
+          FROM sales
+          WHERE sold_at >= datetime('now', '-${days} days')
+            AND status != 'cancelled'`,
+    args: [],
+  });
+  return result.rows[0];
 }

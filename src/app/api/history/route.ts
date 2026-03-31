@@ -1,22 +1,22 @@
 import { NextResponse } from "next/server";
-import { getPriceHistory, getPriceSnapshots } from "@/lib/db";
+import { initSchema, getPriceHistory, getPriceSnapshots } from "@/lib/db";
 
 export const dynamic = "force-dynamic";
 
 export async function GET(request: Request) {
   const { searchParams } = new URL(request.url);
-  const secret = searchParams.get("secret");
-
-  if (secret !== "melfit2024") {
+  if (searchParams.get("secret") !== "melfit2024") {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
   try {
+    await initSchema();
+
     const days = parseInt(searchParams.get("days") || "30");
     const product = searchParams.get("product") || undefined;
 
-    const changes = getPriceHistory(days, product);
-    const snapshots = getPriceSnapshots(days);
+    const changes = await getPriceHistory(days, product);
+    const snapshots = await getPriceSnapshots(days);
 
     return NextResponse.json({
       lastUpdate: changes.length > 0 ? (changes[0] as any).created_at : null,
