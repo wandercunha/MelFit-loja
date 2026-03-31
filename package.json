@@ -8,6 +8,7 @@
     "start": "next start",
     "lint": "next lint",
     "scrape": "tsx scripts/scrape-prices.ts",
+    "scrape:details": "tsx scripts/scrape-details.ts",
     "db:migrate": "tsx scripts/migrate-to-sqlite.ts"
   },
   "dependencies": {
