@@ -218,32 +218,29 @@ export function ProductCard({ product, priceCalc, hasOverride, onEdit }: Props) 
           {/* === CLIENT VIEW === */}
           {!isAdmin && (
             <div className="space-y-1.5">
-              <div className="bg-emerald-50 rounded-lg px-2.5 py-1.5">
-                <div className="flex items-center gap-1.5">
-                  <span className="text-[10px] font-bold text-emerald-700 bg-emerald-200 px-1.5 py-0.5 rounded">PIX</span>
-                  <span className="text-lg font-extrabold text-emerald-700">
+              <div className="bg-emerald-50 rounded-lg px-2 py-1.5">
+                <div className="flex items-center gap-1">
+                  <span className="text-[9px] sm:text-[10px] font-bold text-emerald-700 bg-emerald-200 px-1 sm:px-1.5 py-0.5 rounded">PIX</span>
+                  <span className="text-base sm:text-lg font-extrabold text-emerald-700">
                     {formatBRL(priceCalc.pricePix)}
                   </span>
                 </div>
-                <p className="text-[10px] text-emerald-600 mt-0.5">
+                <p className="text-[9px] sm:text-[10px] text-emerald-600 mt-0.5">
                   {priceCalc.pixDiscount}% de desconto
                 </p>
               </div>
-              <div className="flex items-center gap-1.5">
-                <span className="text-[10px] font-semibold text-gray-400">Cartao:</span>
-                <span className="text-sm font-bold text-gray-700">
+              <div className="flex items-center gap-1">
+                <span className="text-[9px] sm:text-[10px] font-semibold text-gray-400">Cartao:</span>
+                <span className="text-xs sm:text-sm font-bold text-gray-700">
                   {formatBRL(priceCalc.priceCard)}
                 </span>
               </div>
-              <div className="flex items-center gap-1.5">
-                <span className="text-[10px] font-semibold text-gray-400">Parcelado:</span>
-                <span className="text-sm font-bold text-brand-500">
-                  {priceCalc.installments}x de {formatBRL(priceCalc.installmentMonthly)}
+              <div className="flex items-center gap-1 flex-wrap">
+                <span className="text-[9px] sm:text-[10px] font-semibold text-gray-400">Parcelado:</span>
+                <span className="text-xs sm:text-sm font-bold text-brand-500">
+                  {priceCalc.installments}x {formatBRL(priceCalc.installmentMonthly)}
                 </span>
               </div>
-              <p className="text-[10px] text-gray-400">
-                Total: {formatBRL(priceCalc.priceInstallment)}
-              </p>
             </div>
           )}
 
@@ -280,35 +277,36 @@ export function ProductCard({ product, priceCalc, hasOverride, onEdit }: Props) 
       {/* Size Chart Modal */}
       {showSizeChart && detail?.sizeChart && (
         <div
-          className="fixed inset-0 bg-black/60 backdrop-blur-sm z-[100] flex items-center justify-center p-4"
+          className="fixed inset-0 bg-black/60 backdrop-blur-sm z-[100] flex items-end sm:items-center justify-center sm:p-4"
           onClick={() => setShowSizeChart(false)}
         >
           <div
-            className="bg-white rounded-2xl p-4 max-w-lg w-full shadow-2xl max-h-[90vh] overflow-auto"
+            className="bg-white rounded-t-2xl sm:rounded-2xl p-4 sm:p-5 w-full sm:max-w-lg shadow-2xl max-h-[85vh] overflow-auto"
             onClick={(e) => e.stopPropagation()}
           >
             <div className="flex items-center justify-between mb-3">
-              <h3 className="text-sm font-bold text-gray-800">
-                Tabela de Medidas - {product.name}
+              <h3 className="text-sm font-bold text-gray-800 pr-2 leading-tight">
+                Tabela de Medidas
               </h3>
               <button
                 onClick={() => setShowSizeChart(false)}
-                className="w-8 h-8 flex items-center justify-center rounded-full hover:bg-gray-100 text-gray-400 text-xl"
+                className="w-8 h-8 flex-shrink-0 flex items-center justify-center rounded-full hover:bg-gray-100 text-gray-400 text-xl"
               >
                 &times;
               </button>
             </div>
+            <p className="text-xs text-gray-500 mb-3">{product.name}</p>
             <img
               src={detail.sizeChart}
               alt="Tabela de medidas"
               className="w-full rounded-lg"
             />
             {Object.keys(stock).length > 0 && (
-              <div className="mt-3 flex gap-2 justify-center">
+              <div className="mt-3 flex gap-2 justify-center flex-wrap">
                 {Object.entries(stock).map(([size, qty]) => (
                   <div
                     key={size}
-                    className={`text-center px-3 py-1.5 rounded-lg ${
+                    className={`text-center px-3 py-1.5 rounded-lg min-w-[50px] ${
                       qty > 0 ? "bg-emerald-50 text-emerald-700" : "bg-red-50 text-red-400"
                     }`}
                   >

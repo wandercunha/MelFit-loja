@@ -33,7 +33,7 @@ export function AdminPanel({ open, onClose }: Props) {
     <>
       <div className="fixed inset-0 bg-black/40 z-[60]" onClick={onClose} />
 
-      <aside className="fixed top-0 right-0 w-full max-w-md h-full bg-white z-[70] shadow-2xl overflow-y-auto">
+      <aside className="fixed top-0 right-0 w-full sm:max-w-md h-full bg-white z-[70] shadow-2xl overflow-y-auto">
         <div className="p-6">
           <div className="flex items-center justify-between mb-6">
             <h2 className="text-xl font-bold text-brand-500">Configuracoes</h2>
