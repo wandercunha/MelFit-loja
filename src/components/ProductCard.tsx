@@ -6,6 +6,9 @@ import { useCatalog } from "@/context/CatalogContext";
 import { useState, useRef, useEffect } from "react";
 import productDetailsData from "@/data/product-details.json";
 
+const SIZE_CHART_URL =
+  "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/tabelas/template-duvidas-frequentes-3-697cfa2dd7aa71.png";
+
 const details = (productDetailsData as any).products as Record<
   string,
   {
@@ -64,14 +67,16 @@ export function ProductCard({ product, priceCalc, hasOverride, onEdit }: Props) 
   const stock = detail?.stock || {};
   const totalStock = detail?.totalStock ?? -1; // -1 = unknown
 
-  // Sync scroll position with currentImg
-  useEffect(() => {
-    if (scrollRef.current && hasMultiple) {
-      const container = scrollRef.current;
-      const width = container.offsetWidth;
-      container.scrollTo({ left: currentImg * width, behavior: "smooth" });
+  const goTo = (idx: number) => {
+    const clamped = Math.max(0, Math.min(idx, allImages.length - 1));
+    setCurrentImg(clamped);
+    if (scrollRef.current) {
+      scrollRef.current.scrollTo({
+        left: clamped * scrollRef.current.offsetWidth,
+        behavior: "smooth",
+      });
     }
-  }, [currentImg, hasMultiple]);
+  };
 
   const handleScroll = () => {
     if (!scrollRef.current) return;
@@ -110,10 +115,32 @@ export function ProductCard({ product, priceCalc, hasOverride, onEdit }: Props) 
                 ))}
               </div>
 
+              {/* Arrow buttons (visible on hover for PC) */}
+              {hasMultiple && currentImg > 0 && (
+                <button
+                  onClick={() => goTo(currentImg - 1)}
+                  className="absolute left-1 top-1/2 -translate-y-1/2 w-8 h-8 bg-white/80 hover:bg-white rounded-full flex items-center justify-center shadow-md opacity-0 group-hover:opacity-100 transition-opacity z-10"
+                >
+                  <svg className="w-4 h-4 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M15 19l-7-7 7-7" />
+                  </svg>
+                </button>
+              )}
+              {hasMultiple && currentImg < allImages.length - 1 && (
+                <button
+                  onClick={() => goTo(currentImg + 1)}
+                  className="absolute right-1 top-1/2 -translate-y-1/2 w-8 h-8 bg-white/80 hover:bg-white rounded-full flex items-center justify-center shadow-md opacity-0 group-hover:opacity-100 transition-opacity z-10"
+                >
+                  <svg className="w-4 h-4 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 5l7 7-7 7" />
+                  </svg>
+                </button>
+              )}
+
               {/* Dots indicator */}
               {hasMultiple && (
                 <div className="absolute bottom-2 left-0 right-0 flex justify-center gap-1 pointer-events-none">
-                  {allImages.map((_, i) => (
+                  {allImages.slice(0, 8).map((_, i) => (
                     <span
                       key={i}
                       className={`w-1.5 h-1.5 rounded-full transition-all ${
@@ -123,6 +150,9 @@ export function ProductCard({ product, priceCalc, hasOverride, onEdit }: Props) 
                       }`}
                     />
                   ))}
+                  {allImages.length > 8 && (
+                    <span className="text-white text-[8px] font-bold">+{allImages.length - 8}</span>
+                  )}
                 </div>
               )}
 
@@ -202,7 +232,7 @@ export function ProductCard({ product, priceCalc, hasOverride, onEdit }: Props) 
               : <p className="text-xs text-gray-400">Tam: {product.sizes}</p>
             }
             {/* Size chart button */}
-            {detail?.sizeChart && (
+            {(detail?.stock && Object.keys(detail.stock).length > 0) && (
               <button
                 onClick={() => setShowSizeChart(true)}
                 className="text-[10px] font-bold text-blue-500 hover:text-blue-700 ml-auto"
@@ -275,7 +305,7 @@ export function ProductCard({ product, priceCalc, hasOverride, onEdit }: Props) 
       </div>
 
       {/* Size Chart Modal */}
-      {showSizeChart && detail?.sizeChart && (
+      {showSizeChart && (
         <div
           className="fixed inset-0 bg-black/60 backdrop-blur-sm z-[100] flex items-end sm:items-center justify-center sm:p-4"
           onClick={() => setShowSizeChart(false)}
@@ -297,7 +327,7 @@ export function ProductCard({ product, priceCalc, hasOverride, onEdit }: Props) 
             </div>
             <p className="text-xs text-gray-500 mb-3">{product.name}</p>
             <img
-              src={detail.sizeChart}
+              src={SIZE_CHART_URL}
               alt="Tabela de medidas"
               className="w-full rounded-lg"
             />
