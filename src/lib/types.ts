@@ -70,6 +70,32 @@ export const CATEGORY_LABELS: Record<string, string> = {
   "colecao-exclusiva": "Coleção Exclusiva",
 };
 
+// ─── Carrinho ───
+
+export interface CartItem {
+  productId: number;
+  name: string;
+  size: string;
+  quantity: number;
+  img: string;
+  category: Category;
+}
+
+export interface CartCustomer {
+  name: string;
+  phone: string;
+  email: string;
+}
+
+export type PaymentMethod = "pix" | "credito_vista" | "credito_parcelado" | "debito";
+
+export const PAYMENT_LABELS: Record<PaymentMethod, string> = {
+  pix: "PIX",
+  credito_vista: "Cartao de Credito a Vista",
+  credito_parcelado: "Cartao de Credito Parcelado",
+  debito: "Cartao de Debito",
+};
+
 export const CATEGORY_ORDER: Category[] = [
   "conjuntos",
   "tops",

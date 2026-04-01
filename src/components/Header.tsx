@@ -1,13 +1,19 @@
 "use client";
 
 import { useCatalog } from "@/context/CatalogContext";
+import { useCart } from "@/context/CartContext";
 import { PRODUCTS } from "@/data/products";
 import { useState } from "react";
 import { LoginModal } from "./LoginModal";
+import { CartDrawer } from "./CartDrawer";
+import { AdminPanel } from "./AdminPanel";
 
 export function Header() {
   const { isAdmin, logout } = useCatalog();
+  const { totalItems } = useCart();
   const [showLogin, setShowLogin] = useState(false);
+  const [showCart, setShowCart] = useState(false);
+  const [showAdmin, setShowAdmin] = useState(false);
   const available = PRODUCTS.filter((p) => !p.soldOut).length;
 
   return (
@@ -26,11 +32,31 @@ export function Header() {
           </div>
 
           <div className="flex items-center gap-2 sm:gap-3">
+            {/* Cart button (client view) */}
+            {!isAdmin && (
+              <button
+                onClick={() => setShowCart(true)}
+                className="relative p-2 rounded-full hover:bg-white/10 transition-colors"
+              >
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 100 4 2 2 0 000-4z" />
+                </svg>
+                {totalItems > 0 && (
+                  <span className="absolute -top-0.5 -right-0.5 bg-brand-300 text-surface-dark text-[10px] font-black w-5 h-5 rounded-full flex items-center justify-center">
+                    {totalItems > 99 ? "99+" : totalItems}
+                  </span>
+                )}
+              </button>
+            )}
+
             {isAdmin ? (
               <>
-                <span className="hidden sm:block text-xs text-brand-300 font-semibold bg-brand-300/10 px-3 py-1 rounded-full">
-                  ADMIN
-                </span>
+                <button
+                  onClick={() => setShowAdmin(true)}
+                  className="hidden sm:block text-xs text-brand-300 font-semibold bg-brand-300/10 px-3 py-1 rounded-full hover:bg-brand-300/20 transition-colors cursor-pointer"
+                >
+                  CONFIGURACOES
+                </button>
                 <button onClick={logout} className="btn-outline text-xs">
                   Sair
                 </button>
@@ -48,6 +74,10 @@ export function Header() {
       </header>
 
       {showLogin && <LoginModal onClose={() => setShowLogin(false)} />}
+      {showCart && <CartDrawer open={showCart} onClose={() => setShowCart(false)} />}
+      {isAdmin && showAdmin && (
+        <AdminPanel open={showAdmin} onClose={() => setShowAdmin(false)} />
+      )}
     </>
   );
 }

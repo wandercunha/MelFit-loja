@@ -3,7 +3,8 @@
 import { Product, PriceCalc, CATEGORY_LABELS } from "@/lib/types";
 import { formatBRL, getColorFromName, getInitials } from "@/lib/pricing";
 import { useCatalog } from "@/context/CatalogContext";
-import { useState, useRef, useEffect } from "react";
+import { useCart } from "@/context/CartContext";
+import { useState, useRef } from "react";
 import productDetailsData from "@/data/product-details.json";
 
 const SIZE_CHART_URL =
@@ -50,10 +51,13 @@ interface Props {
 
 export function ProductCard({ product, priceCalc, hasOverride, onEdit }: Props) {
   const { isAdmin } = useCatalog();
+  const { addItem } = useCart();
   const color = getColorFromName(product.name);
   const [imgError, setImgError] = useState(false);
   const [currentImg, setCurrentImg] = useState(0);
   const [showSizeChart, setShowSizeChart] = useState(false);
+  const [selectedSize, setSelectedSize] = useState("");
+  const [addedFeedback, setAddedFeedback] = useState(false);
   const scrollRef = useRef<HTMLDivElement>(null);
 
   const detail = getDetail(product);
@@ -271,6 +275,63 @@ export function ProductCard({ product, priceCalc, hasOverride, onEdit }: Props) 
                   {priceCalc.installments}x {formatBRL(priceCalc.installmentMonthly)}
                 </span>
               </div>
+
+              {/* Add to cart */}
+              {!product.soldOut && totalStock !== 0 && (
+                <div className="pt-2 space-y-1.5">
+                  {/* Size selector */}
+                  <div className="flex gap-1">
+                    {(Object.keys(stock).length > 0
+                      ? Object.entries(stock)
+                      : product.sizes.split(",").map((s) => [s.trim(), 1] as [string, number])
+                    ).map(([size, qty]) => (
+                      <button
+                        key={size}
+                        disabled={qty === 0}
+                        onClick={() => setSelectedSize(size as string)}
+                        className={`flex-1 py-1 text-[10px] sm:text-xs font-bold rounded transition-colors ${
+                          qty === 0
+                            ? "bg-gray-100 text-gray-300 cursor-not-allowed line-through"
+                            : selectedSize === size
+                            ? "bg-brand-400 text-white"
+                            : "bg-gray-100 text-gray-600 hover:bg-gray-200"
+                        }`}
+                      >
+                        {size}
+                      </button>
+                    ))}
+                  </div>
+                  <button
+                    disabled={!selectedSize}
+                    onClick={() => {
+                      if (!selectedSize) return;
+                      addItem({
+                        productId: product.id,
+                        name: product.name,
+                        size: selectedSize,
+                        quantity: 1,
+                        img: allImages[0] || product.img,
+                        category: product.category,
+                      });
+                      setAddedFeedback(true);
+                      setTimeout(() => setAddedFeedback(false), 1500);
+                    }}
+                    className={`w-full py-2 text-xs font-bold rounded-lg transition-all ${
+                      addedFeedback
+                        ? "bg-emerald-500 text-white"
+                        : selectedSize
+                        ? "bg-brand-400 hover:bg-brand-500 text-white"
+                        : "bg-gray-200 text-gray-400 cursor-not-allowed"
+                    }`}
+                  >
+                    {addedFeedback
+                      ? "Adicionado!"
+                      : selectedSize
+                      ? `Adicionar ${selectedSize} ao Carrinho`
+                      : "Selecione o tamanho"}
+                  </button>
+                </div>
+              )}
             </div>
           )}
 
