@@ -1,307 +1,299 @@
 {
-  "timestamp": "2026-03-31T21:28:50.198Z",
+  "timestamp": "2026-04-01T02:12:27.676Z",
   "count": 108,
   "products": {
     "top-curve-cinza": {
       "slug": "top-curve-cinza",
       "name": "Short Adapt Preto",
       "images": [
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/69b464405cf36/20260312_80063-69b4ad8e46b3f.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/69b464405cf36/20260312_79511-69b4ada2b6527.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/69b464405cf36/20260312_79500-69b4ae8431671.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/69b464405cf36/20260312_80049-69b4adb5020ec.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/69b464405cf36/20260312_80069-69b4adf69c307.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/69b464405cf36/20260312_79519-69b4adc9c3ee0.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/69b464405cf36/20260312_79508-69b4ae6bb6d8f.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/69b464405cf36/20260312_79539-69b4ae139fb1c.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/69b464405cf36/20260312_79530-69b4aea419e0d.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/69b464405cf36/20260312_80066-69b4aeca32e17.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/69b464405cf36/20260312_80067-69b4aedf97c83.jpg"
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/69b4650495de8/a58934e4-781d-4e5f-a01c-9f91f49e04fb-69b4b96e8a904.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/69b4650495de8/20260312_80069-69b4b995dd82e.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/69b4650495de8/33ffb0ab-f91a-49aa-a571-c8934dd39fd0-69b4b96e7f86b.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/69b4650495de8/3b3bed4d-5a7a-4dbd-9a33-1ac6ea480b16-69b4b96e5eccd.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/69b4650495de8/20260312_80066-69b4b984d1789.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/69b4650495de8/a6058046-f645-4b62-8082-4a163e408a10-69b4b96e4a7ac.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/69b4650495de8/94659a6b-c87b-4f55-abc3-09ea87eb8a75-69b4b96e7cf25.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/69b4650495de8/d8b3cde7-13f0-4cd4-97fe-c6daf1de2040-69b4b96e6fff9.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/69b4650495de8/f69c443f-0f00-48d4-b77b-c0e83b79d96d-69b4b96e7247c.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/69b4650495de8/20260312_79511-69b4b9bec5d9b.jpg"
       ],
       "sizeChart": "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/69b464405cf36/template-duvidas-frequentes-6-69b84b7cac334.png",
       "description": "- Top modelo faixa com leve curva em U no colo que valoriza o busto na medida certa e garante excelente sustenta��o. Costas com decote mais acentuado para um visual moderno e atl�tico.Modelo veste: tamanho PMedidas da modelo: Cintura: 66cm l Quadril:...",
       "stock": {
-        "P": 39,
-        "M": 30,
-        "G": 14
+        "P": 36,
+        "M": 34,
+        "G": 20
       },
-      "totalStock": 83
+      "totalStock": 90
     },
     "short-fast-cinza-c-branco": {
       "slug": "short-fast-cinza-c-branco",
       "name": "Macaquinho com Manga Preto",
       "images": [
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/69b4643e5f709/20260312_79496-69b4b1280cb22.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/69b4643e5f709/20260312_79489-69b4b1123ebdd.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/69b4643e5f709/20260312_80069-69b4b13313d26.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/69b4643e5f709/20260312_80060-69b4b15d3ec0a.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/69b4643e5f709/20260312_79511-69b4b15235ffc.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/69b4643e5f709/20260312_80067-69b4b1831406f.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/69b4643e5f709/20260312_80015-69b4b1aea54ec.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/69b4643e5f709/20260312_79539-69b4b1e50b4e5.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/69b4643e5f709/20260312_79675-69b4b1c83f3d5.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/69b4643e5f709/20260312_79982-69b4b20cc9f71.jpg"
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/69b465027b3fc/ee339276-5f91-428b-8149-00b0406adf13-69b4bcae73533.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/69b465027b3fc/20260312_79997-69b4bbab5ffdf.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/69b465027b3fc/f69c443f-0f00-48d4-b77b-c0e83b79d96d-69b4bbdf8796b.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/69b465027b3fc/20260312_79669-69b4bbc62464a.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/69b465027b3fc/7fbb4da2-20b1-49bc-ac22-43cfc75384dc-69b4bb95f371f.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/69b465027b3fc/d85a908e-2e02-4779-9aa9-21390092474d-69b4bb9e7ac6c.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/69b465027b3fc/36b4974e-2ee7-47ef-a176-a65082d66509-69b4bc36d81a9.jpg"
       ],
       "sizeChart": "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/69b4643e5f709/template-duvidas-frequentes-6-69b84ba8c5bed.png",
       "description": "- O Short Fast possui short interno ajustado ao corpo e sobreposi��o soltinha em tecido leve e detalhe em vi�s branco, garantindo conforto e liberdade durante os movimentos. Foi desenvolvido para oferecer m�xima liberdade nos treinos, com comprimento...",
       "stock": {
-        "P": 42,
-        "M": 16,
-        "G": 8
+        "P": 33,
+        "M": 29,
+        "G": 20
       },
-      "totalStock": 66
+      "totalStock": 82
     },
     "short-fast-preto-c-branco": {
       "slug": "short-fast-preto-c-branco",
       "name": "Top Basic Duplo Azul Marinho",
       "images": [
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/69b4643c5e16a/20260312_79961-69b4af5b18370.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/69b4643c5e16a/20260312_79784-69b4b09f7e5f4.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/69b4643c5e16a/20260312_79692-69b4afc9bc905.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/69b4643c5e16a/20260312_79702-69b4afdd059fa.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/69b4643c5e16a/20260312_79710-69b4aff77f05e.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/69b4643c5e16a/20260312_79695-69b4b0480d9fd.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/69b4643c5e16a/20260312_79963-69b4b053c69ec.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/69b4643c5e16a/20260312_79922_1-69b4b07b99376.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/69b4643c5e16a/20260312_79969-69b4b0d2a2294.jpg"
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/69b465007aabd/4e2cd487-7f59-4f42-bd88-a6bd3efbe35f-69b4bebf432d0.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/69b465007aabd/20260312_79969-69b4bed5e71f3.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/69b465007aabd/239ae3d2-59e3-4c29-9402-4e7fa660683f-69b4beba90247.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/69b465007aabd/20260312_79710-69b4bee775ad0.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/69b465007aabd/5fa40013-ba4f-420e-9948-1c3783b699e8-69b4befc56391.jpg"
       ],
       "sizeChart": "",
       "description": "- O Short Fast possui short interno ajustado ao corpo e sobreposi��o soltinha em tecido leve com detalhe em vi�s branco, garantindo conforto e liberdade durante os movimentos. Foi desenvolvido para oferecer m�xima liberdade nos treinos, com comprimen...",
       "stock": {
-        "P": 9,
-        "M": 21,
-        "G": 28
+        "P": 33,
+        "M": 25,
+        "G": 14
       },
-      "totalStock": 58
+      "totalStock": 72
     },
     "top-curve-preto": {
       "slug": "top-curve-preto",
       "name": "Short Adapt Cinza",
       "images": [
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/69b4643a48bd5/20260312_79777-69b4acd84fac0.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/69b4643a48bd5/20260312_79784-69b4ac8596295.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/69b4643a48bd5/20260312_79776-69b4ac4c660e2.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/69b4643a48bd5/20260312_79802-69b4ac31a1416.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/69b4643a48bd5/20260312_79690-69b4abbc7cd65.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/69b4643a48bd5/20260312_79710-69b4abfc40e80.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/69b4643a48bd5/20260312_79708-69b4ac11a7d0b.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/69b4643a48bd5/20260312_79791-69b4ad1eaffd0.jpg"
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/69b464fd75a11/d12c13af-9443-4c9d-bbec-9b2a81004dba-69b4c3bc68510.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/69b464fd75a11/20260312_79783-69b4c3e017ed1.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/69b464fd75a11/5fa40013-ba4f-420e-9948-1c3783b699e8-69b4c3b16a24c.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/69b464fd75a11/90812804-714b-48b6-a065-a591faa2f255-69b4c495e2dae.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/69b464fd75a11/20260312_79710-69b4c3d74391d.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/69b464fd75a11/4d77e2d1-fc1c-4c11-a48d-96900d736421-69b4c4add264b.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/69b464fd75a11/ce38b4ba-fd8f-4244-a593-f68402c7a43c-69b4c49f621b8.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/69b464fd75a11/20260312_79783-69b4c4f99c9bb.jpg"
       ],
       "sizeChart": "",
       "description": "- Top modelo faixa com leve curva em U no colo que valoriza o busto na medida certa e garante excelente sustenta��o. Costas com decote mais acentuado para um visual moderno e atl�tico.Modelo veste: tamanho PMedidas da modelo: Cintura: 66cm l Quadril:...",
       "stock": {
-        "G": 7
+        "P": 28,
+        "M": 22,
+        "G": 8
       },
-      "totalStock": 7
+      "totalStock": 58
     },
     "top-curve-azul-elegance": {
       "slug": "top-curve-azul-elegance",
       "name": "Top Fine Bege",
       "images": [
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/69b464382ee4a/20260312_79432-69b4aa56106aa.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/69b464382ee4a/20260312_79412-69b4aa4a4158d.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/69b464382ee4a/20260312_79382-69b4aac3752f8.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/69b464382ee4a/20260312_79428-69b4aaec4b2c5.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/69b464382ee4a/20260312_79582-69b4aa684c381.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/69b464382ee4a/20260312_79589-69b4aa848344e.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/69b464382ee4a/20260312_79586-69b4aa84ab2a3.jpg"
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/69b464fa7abb3/ab96937c-8867-4e06-8588-775b1c55ccf6-69b4c2d23f3fa.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/69b464fa7abb3/20260312_79412-69b4c334b67c4.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/69b464fa7abb3/080bb274-5826-4f49-9931-868ca3734df5-69b4c2f46da78.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/69b464fa7abb3/20260312_79586-69b4c319c10f4.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/69b464fa7abb3/6399fdcd-dc51-46cf-ba38-3270cd5b6681-69b4c300ae460.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/69b464fa7abb3/20260312_79404-69b4c3349bf2f.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/69b464fa7abb3/ee34cfb4-7f43-484b-adb5-17e35690914d-69b4c34ebd823.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/69b464fa7abb3/c5ad8755-7e2e-40a1-8895-7bbaecd9f3ef-1-69b4c2ecbbee6.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/69b464fa7abb3/87dcdc90-5520-470d-ad68-a9e8bc26ad95-69b4c2f96a476.jpg"
       ],
       "sizeChart": "",
       "description": "- Top modelo faixa com leve curva em U no colo que valoriza o busto na medida certa e garante excelente sustenta��o. Costas com decote mais acentuado para um visual moderno e atl�tico.Modelo veste: tamanho PMedidas da modelo: Cintura: 66cm l Quadril:...",
       "stock": {
-        "P": 15,
-        "M": 4,
-        "G": 3
+        "P": 33,
+        "M": 34,
+        "G": 25
       },
-      "totalStock": 22
+      "totalStock": 92
     },
     "short-fast-azul-elegance-c-branco": {
       "slug": "short-fast-azul-elegance-c-branco",
       "name": "Top Speed Azul Petróleo",
       "images": [
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/69b464362810b/20260312_79396-69b4b2b696c3c.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/69b464362810b/20260312_79412-69b4b2c91038f.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/69b464362810b/20260312_79382-69b4b3351b14a.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/69b464362810b/20260312_80125-69b4b2d72f79a.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/69b464362810b/20260312_80106-69b4b2e51927d.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/69b464362810b/20260312_80099-69b4b31c053c7.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/69b464362810b/20260312_79461-69b4b355a7ac4.jpg"
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/69b464f88e8bd/451a90cb-07c8-497b-93bc-bfd117646115-69b4c14a2706a.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/69b464f88e8bd/20260312_79453-69b4c1bb74873.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/69b464f88e8bd/673c40fd-c898-4ece-996e-80381efa7241-69b4c15114d1a.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/69b464f88e8bd/6399fdcd-dc51-46cf-ba38-3270cd5b6681-69b4c137ac77d.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/69b464f88e8bd/20260312_79586-69b4c19e292e5.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/69b464f88e8bd/057571a4-2a52-44b8-8463-1a8b33842fdd-69b4c155e86b1.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/69b464f88e8bd/20260312_80102-69b4c182baac9.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/69b464f88e8bd/87dcdc90-5520-470d-ad68-a9e8bc26ad95-69b4c160ab32c.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/69b464f88e8bd/cc1251f9-1f62-4447-9db1-025fa3d12681-69b4c16bc47d7.jpg"
       ],
       "sizeChart": "",
       "description": "- O Short Fast possui short interno ajustado ao corpo e sobreposi��o soltinha em tecido leve e detalhe em vi�s branco, garantindo conforto e liberdade durante os movimentos. Foi desenvolvido para oferecer m�xima liberdade nos treinos, com comprimento...",
       "stock": {
-        "G": 28
+        "P": 32,
+        "M": 28,
+        "G": 22
       },
-      "totalStock": 28
+      "totalStock": 82
     },
     "regata-one-preto": {
       "slug": "regata-one-preto",
       "name": "Regata Run Azul Petróleo",
       "images": [
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/69b464340e7f6/20260312_79943-69b4b37bc0fe5.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/69b464340e7f6/20260312_79969-69b4b3909a0a8.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/69b464340e7f6/20260312_79953-69b4b398660aa.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/69b464340e7f6/20260312_79931-69b4b3ac5287e.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/69b464340e7f6/20260312_79965-69b4b3d510f94.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/69b464340e7f6/20260312_79873-69b4b3f9362fc.jpg"
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/69b464f68674b/f693ac12-b7f8-4a4a-81a5-685bd22046d9-69b4c55a69d1d.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/69b464f68674b/20260312_79969-69b4c581e6841.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/69b464f68674b/239ae3d2-59e3-4c29-9402-4e7fa660683f-69b4c56166a66.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/69b464f68674b/20260312_79968-69b4c58210319.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/69b464f68674b/20260312_79936-69b4c599ea1ab.jpg"
       ],
       "sizeChart": "",
       "description": "A Regata Fast One traz um design moderno de ombro s� com alcinha, que valoriza a silhueta e deixa o look fitness mais estiloso. Feminina, vers�til e confort�vel, � perfeita tanto para treinos quanto para compor produ��es athleisure no dia a dia.Uma p...",
       "stock": {
-        "P": 2
+        "P": 35,
+        "M": 28,
+        "G": 21
       },
-      "totalStock": 2
+      "totalStock": 84
     },
     "regata-one-cinza": {
       "slug": "regata-one-cinza",
       "name": "Top Dallas Pacifico",
       "images": [
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/69b464328a2b9/20260312_79651-69b4b428033ca.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/69b464328a2b9/20260312_79668-69b4b4438ba45.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/69b464328a2b9/20260312_79661-69b4b45beb1b8.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/69b464328a2b9/20260312_79990-69b4b484f2509.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/69b464328a2b9/20260312_79999-69b4b495bd017.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/69b464328a2b9/20260312_80010-69b4b47403963.jpg"
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/69b464f504b2a/de303df5-2bd0-463e-9114-92a82a7b7d77-69b4c8b9a9a2f.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/69b464f504b2a/20260312_79669-69b4c91616400.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/69b464f504b2a/d85a908e-2e02-4779-9aa9-21390092474d-69b4c8b9a16a2.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/69b464f504b2a/20260312_79999-69b4c9066273e.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/69b464f504b2a/c060c1d3-e0a6-47b3-88ea-688d0e841419-69b4c8d3755ee.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/69b464f504b2a/707c53ea-9d56-4ccf-acd8-ee9228005363-69b4c8c9591f3.jpg"
       ],
       "sizeChart": "",
       "description": "- A Regata Fast One traz um design moderno de ombro s� com al�a fina, que valoriza a silhueta e deixa o look fitness mais estiloso. Feminina, vers�til e confort�vel, � perfeita tanto para treinos quanto para compor produ��es athleisure no dia a dia.U...",
       "stock": {
-        "M": 5
+        "P": 43,
+        "M": 44,
+        "G": 28
       },
-      "totalStock": 5
+      "totalStock": 115
     },
     "regata-one-azul-elegance": {
       "slug": "regata-one-azul-elegance",
       "name": "Short Adapt Preto",
       "images": [
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/69b46430c7aa9/20260312_80107-69b4b57c8c01c.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/69b46430c7aa9/20260312_80106-69b4b58450d7f.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/69b46430c7aa9/20260312_80116-69b4b5f69f4a4.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/69b46430c7aa9/20260312_79441-69b4b5a5f171a.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/69b46430c7aa9/20260312_79438-69b4b5b364c4f.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/69b46430c7aa9/20260312_79453-69b4b5c1ecdd5.jpg"
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/69b464f258705/9752387b-31f7-40b0-933a-bc587e4a65e6-69b4c98d4481e.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/69b464f258705/20260312_80106-69b4c9b5c30dc.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/69b464f258705/20260312_79441-69b4ca0ee2a8a.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/69b464f258705/057571a4-2a52-44b8-8463-1a8b33842fdd-69b4c9948238c.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/69b464f258705/331cd002-9ba9-41e7-801f-ba67d92a1727-69b4ca6eaa951.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/69b464f258705/3b0f8eae-5f90-4ead-8d26-b9747381a903-69b4c9a2b3a46.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/69b464f258705/20260312_79457-69b4ca3e222dd.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/69b464f258705/20260312_79451-69b4ca0ed8ff2.jpg"
       ],
       "sizeChart": "",
       "description": "A Regata Fast One traz um design moderno de ombro s� com alcinha, que valoriza a silhueta e deixa o look fitness mais estiloso. Feminina, vers�til e confort�vel, � perfeita tanto para treinos quanto para compor produ��es athleisure no dia a dia.Uma p...",
       "stock": {
-        "P": 39,
-        "M": 30,
-        "G": 14
+        "P": 36,
+        "M": 39,
+        "G": 25
       },
-      "totalStock": 83
+      "totalStock": 100
     },
     "top-speed-azul-marinho": {
       "slug": "top-speed-azul-marinho",
       "name": "Top Basic Duplo Cereja",
       "images": [
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/699f37899d56c/img_8939-699f45264383c.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/699f37899d56c/img_8941-699f451e0cbb3.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/699f37899d56c/img_8940-699f452ebcb1d.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/699f37899d56c/img_8921-699f4515c59c5.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/699f37899d56c/img_8928-699f451d5e645.jpg"
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/699f44166c9e0/a1adad6f-cc37-4762-b6f6-0c9ee2c9e0ae-699f53669f674.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/699f44166c9e0/img_8941-699f536860221.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/699f44166c9e0/6d8363e3-57a9-4a75-b411-9369771cfee2-699f53d4dfef3.jpg"
       ],
       "sizeChart": "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/699f37899d56c/template-duvidas-frequentes-6-699f4540e7c30.png",
       "description": "- Com um design faixa discreto na frente e costas nuas, o Top Speed oferece liberdade de movimento e frescor durante os treinos. Seu estilo minimalista e confort�vel combina perfeitamente com a rotina ativa, proporcionando praticidade e um toque de o...",
       "stock": {
-        "P": 7,
-        "M": 4,
-        "G": 9
+        "P": 14,
+        "G": 20
       },
-      "totalStock": 20
+      "totalStock": 34
     },
     "top-speed-marrom": {
       "slug": "top-speed-marrom",
       "name": "Short Classic Rosa Pink",
       "images": [
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/699f3787deb42/img_8970-699f45b438e26.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/699f3787deb42/img_8964-699f45b45d3d4.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/699f3787deb42/img_8966-699f45b5cb363.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/699f3787deb42/img_8947-699f45c56dd50.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/699f3787deb42/img_8953-699f45cd4e4d3.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/699f3787deb42/img_8950-699f45c9acee4.jpg"
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/699f4414c5b99/d18d6ad1-e353-453e-88d2-933134b2a824-699f4e3812405.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/699f4414c5b99/img_8964-699f4e39b429f.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/699f4414c5b99/01a7b452-cc01-40f5-8324-9f26c196e2d7-699f4e3106ee4.jpg"
       ],
       "sizeChart": "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/699f3787deb42/template-duvidas-frequentes-6-699f45d86f6ff.png",
       "description": "- Com um design faixa discreto na frente e costas nuas, o Top Speed oferece liberdade de movimento e frescor durante os treinos. Seu estilo minimalista e confort�vel combina perfeitamente com a rotina ativa, proporcionando praticidade e um toque de o...",
       "stock": {
-        "P": 17,
-        "M": 4,
-        "G": 15
+        "G": 5
       },
-      "totalStock": 36
+      "totalStock": 5
     },
     "macacao-flare-coffe": {
       "slug": "macacao-flare-coffe",
       "name": "Legging Classic Preto",
       "images": [
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/699f37861bdcc/img_8971-699f49518ffc0.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/699f37861bdcc/img_8976-699f4952c7ec5.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/699f37861bdcc/img_8975-699f495171d09.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/699f37861bdcc/img_8979-699f49534e94b.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/699f37861bdcc/img_8984-699f495fb1a27.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/699f37861bdcc/img_8981-699f495212d03.jpg"
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/699f44131ef76/1698bf36-4542-4c4d-9176-34ca39c8b605-699f575ed191d.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/699f44131ef76/img_8984-699f575689689.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/699f44131ef76/96c01848-1b81-420a-8139-1a8e2260b2bd-699f575f0e448.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/699f44131ef76/a831192e-144b-4fe1-99d6-428e3203de12-699f5782a3ee9.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/699f44131ef76/img_8976-699f578b055d3.jpg"
       ],
       "sizeChart": "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/699f37861bdcc/template-duvidas-frequentes-6-699f496838c6e.png",
       "description": "- Macac�o com modelagem flare que valoriza a silhueta. Possui decote nas costas em X, sem costura frontal e tecido com alta elasticidade e compress�o na medida. Estilo, conforto e performance em uma �nica pe�a.Modelo veste: Tamanho PMedidas da modelo...",
       "stock": {
-        "P": 47,
-        "M": 26,
-        "G": 13
+        "P": 12,
+        "M": 4
       },
-      "totalStock": 86
+      "totalStock": 16
     },
     "macaquinho-move-azul-marinho": {
       "slug": "macaquinho-move-azul-marinho",
       "name": "Short Adapt Preto",
       "images": [
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/699f3782ca175/img_8903-699f4695c2191.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/699f3782ca175/img_8908-699f4695b96fc.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/699f3782ca175/img_8905-699f4694c85a6.jpg"
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/699f441273dc6/5bba569a-7a7a-418e-b064-0aa49ce0abb2-699f59e74d3d8.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/699f441273dc6/img_8908-699f59ee4a7d5.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/699f441273dc6/26683082-29b2-4d48-b8bc-b0bc06f3a2b9-699f59dc81a0a.jpg"
       ],
       "sizeChart": "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/699f3782ca175/template-duvidas-frequentes-6-699f469bac3c6.png",
       "description": "- Com modelagem acinturada que valoriza suas curvas, o Macaquinho Move foi pensado para garantir conforto e seguran�a durante o uso. A aus�ncia de costura central na parte frontal oferece zero marca��o na regi�o �ntima, enquanto a costura central na ...",
       "stock": {
-        "P": 39,
-        "M": 30,
-        "G": 14
+        "P": 51,
+        "M": 50,
+        "G": 24
       },
-      "totalStock": 83
+      "totalStock": 125
     },
     "macaquinho-move-verde-militar": {
       "slug": "macaquinho-move-verde-militar",
       "name": "Macaquinho Move Preto",
       "images": [
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/699f378094a4d/img_8911-699f477d917a6.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/699f378094a4d/img_8919-699f477ea0509.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/699f378094a4d/img_8915-699f477e801ff.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/699f378094a4d/img_4567-699f4b06e904a.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/699f378094a4d/img_4599-699f4bdb8d9a5.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/699f378094a4d/img_4589-699f4bdc0d05f.jpg"
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/699f440eb3ab7/980f93d9-9e23-41bf-a0f2-921ea2db4e50-699f5a7f40d89.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/699f440eb3ab7/img_8919-699f5abaa072b.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/699f440eb3ab7/a825b398-a014-404b-80be-1854318fa293-699f5ab2e56be.jpg"
       ],
       "sizeChart": "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/699f378094a4d/template-duvidas-frequentes-6-699f478a29121.png",
       "description": "- Com modelagem acinturada que valoriza suas curvas, o Macaquinho Move foi pensado para garantir conforto e seguran�a durante o uso. A aus�ncia de costura central na parte frontal oferece zero marca��o na regi�o �ntima, enquanto a costura central na ...",
       "stock": {
-        "P": 42,
-        "M": 37,
-        "G": 14
+        "P": 68,
+        "M": 66,
+        "G": 34
       },
-      "totalStock": 93
+      "totalStock": 168
     },
     "regata-basic-branca": {
       "slug": "regata-basic-branca",
       "name": "Macaquinho Move Frente Única Preto",
       "images": [
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/698a33e119625/design-sem-nome-1-698a485bb1322.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/698a33e119625/chatgpt-image-9-de-fev-de-2026-11_41_06-698a45dbf3396.png",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/698a33e119625/design-sem-nome-698a45bd3a146.jpg"
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/698a36867168f/chatgpt-image-9-de-fev-de-2026-17_45_59-698a49678968d.png",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/698a36867168f/chatgpt-image-9-de-fev-de-2026-11_41_06-698a496ea44d3.png",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/698a36867168f/chatgpt-image-9-de-fev-de-2026-11_34_56-698a49763057b.png"
       ],
       "sizeChart": "",
       "description": "- A Regata da Linha Basic foi desenvolvida em poliamida de alta qualidade, oferecendo toque macio, elasticidade e respirabilidade para m�xima liberdade nos movimentos. Ela possui tecido duplo na frente garantindo mais conforto e zero transpar�ncia, e...",
       "stock": {
-        "P": 55,
-        "M": 40,
-        "G": 32
+        "P": 1,
+        "M": 7,
+        "G": 4
       },
-      "totalStock": 127
+      "totalStock": 12
     },
     "conjunto-top-cortininha-e-calcinha-marquinha-vermelho-flame": {
       "slug": "conjunto-top-cortininha-e-calcinha-marquinha-vermelho-flame",
@@ -471,129 +463,119 @@
       "slug": "macaquinho-one-vermelho",
       "name": "Macaquinho com Manga Coffe",
       "images": [
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/691f72a47968a/img_8011-6920f474bcaa1.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/691f72a47968a/img_8020-6920f474587ab.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/691f72a47968a/img_8016-6920f4740bbbb.jpg"
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/69237e554ee42/wbuy-mobile-1763936671408-692389a0dc059.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/69237e554ee42/wbuy-mobile-1763936659711-6923899545aa9.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/69237e554ee42/wbuy-mobile-1763936647017-692389887dcfb.jpg"
       ],
       "sizeChart": "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/691f72a47968a/template-duvidas-frequentes-6-69a9c31f031eb.png",
       "description": "- Macaquinho One, possui modelagem moderna de um ombro s�. Acabamento sem costura frontal para evitar desconforto e marcar a regi�o �ntima durante o treino, possui costura apenas na parte de tr�s do bumbum para melhor ajuste ao corpo. Design moderno,...",
       "stock": {
-        "P": 17,
-        "M": 7,
-        "G": 16
+        "P": 7
       },
-      "totalStock": 40
+      "totalStock": 7
     },
     "short-run-amarelo-energy": {
       "slug": "short-run-amarelo-energy",
       "name": "Macaquinho Move Preto",
       "images": [
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/691f3a66b9e2b/img_8072-692067be2c128.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/691f3a66b9e2b/img_8076-692067bf034d0.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/691f3a66b9e2b/img_8073-692067c04a8f1.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/691f3a66b9e2b/img_8060-692067d40ce4a.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/691f3a66b9e2b/img_8066-692067dd73484.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/691f3a66b9e2b/img_8064-692067dd87486.jpg"
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/69237e68c5df0/wbuy-mobile-1763982325201-69243bf6d6cb7.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/69237e68c5df0/wbuy-mobile-1763982338742-69243c0446c63.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/69237e68c5df0/wbuy-mobile-1763982356393-69243c15e6606.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/69237e68c5df0/wbuy-mobile-1763982368755-69243c2276c4c.jpg"
       ],
       "sizeChart": "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/691f3a66b9e2b/template-duvidas-frequentes-6-69a9c335b3e28.png",
       "description": "- O Short Run, com um design sobreposto, ele combina o ajuste justo com um tecido mais solto na parte externa e short com bolso na parte interna , com c�s duplo entrega excelente ajuste e garante liberdade de movimento e ventila��o.Modelo veste: Tama...",
       "stock": {
-        "P": 42,
-        "M": 37,
-        "G": 14
+        "P": 49,
+        "M": 50,
+        "G": 24
       },
-      "totalStock": 93
+      "totalStock": 123
     },
     "short-run-azul-sky": {
       "slug": "short-run-azul-sky",
       "name": "Top Move 2.0 Preto",
       "images": [
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/691f3a619af06/img_8038-692064dcd36d6.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/691f3a619af06/img_8040-692064eaf33ae.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/691f3a619af06/img_8053-692064f2c4e00.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/691f3a619af06/img_8030-692064e48b629.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/691f3a619af06/img_8027-692065025e0bc.jpg"
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/69237e6459b85/wbuy-mobile-1763981488956-692438b28615b.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/69237e6459b85/wbuy-mobile-1763981529227-692438dacf253.jpg"
       ],
       "sizeChart": "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/691f3a619af06/template-duvidas-frequentes-6-69a9c38472fef.png",
       "description": "- O Short Run, com um design sobreposto, ele combina o ajuste justo com um tecido mais solto na parte externa e short com bolso na parte interna , com c�s duplo entrega excelente ajuste e garante liberdade de movimento e ventila��o.Modelo veste: Tama...",
       "stock": {
-        "P": 64,
-        "M": 84,
-        "G": 18
+        "P": 37,
+        "M": 38,
+        "G": 21
       },
-      "totalStock": 166
+      "totalStock": 96
     },
     "top-speed-azul-sky": {
       "slug": "top-speed-azul-sky",
       "name": "Top Run Branco",
       "images": [
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/691f3a5f24b7f/img_8049-692061142b222.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/691f3a5f24b7f/img_8051-6920611905698.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/691f3a5f24b7f/img_8050-6920611fc2251.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/691f3a5f24b7f/img_8025-6920614908ba0.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/691f3a5f24b7f/img_8029-69206153299cc.jpg"
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/69237e621e60c/wbuy-mobile-1763981625383-6924393b16084.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/69237e621e60c/wbuy-mobile-1763981694312-6924398001c51.jpg"
       ],
       "sizeChart": "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/691f3a5f24b7f/template-duvidas-frequentes-6-69a9c365e05ec.png",
       "description": "- Com um design faixa discreto na frente e costas nuas, o Top Speed oferece liberdade de movimento e frescor durante os treinos. Seu estilo minimalista e confort�vel combina perfeitamente com a rotina ativa, proporcionando praticidade e um toque de o...",
       "stock": {
-        "P": 23,
-        "M": 26,
-        "G": 12
+        "P": 9,
+        "G": 18
       },
-      "totalStock": 61
+      "totalStock": 27
     },
     "top-speed-amarelo-energy": {
       "slug": "top-speed-amarelo-energy",
       "name": "Short Classic Rosa Pink",
       "images": [
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/691f3a5c994a2/img_8079-69206cab4721b.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/691f3a5c994a2/img_8082-69206cab9a05f.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/691f3a5c994a2/img_8080-69206cac3a517.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/691f3a5c994a2/img_8060-69206cc9aca3e.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/691f3a5c994a2/img_8066-69206cbeea0a9.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/691f3a5c994a2/img_8064-69206cbed55ee.jpg"
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/69237e5fce132/6d72ed8b-bfc3-40a0-98c1-c220ce9c335d-6984b4bb4148e.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/69237e5fce132/img_8066-692067dd73484-6984b4c2ec482.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/69237e5fce132/cba6f4cb-43a4-4704-9211-79dcf82db507-6984b4b8b5788.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/69237e5fce132/wbuy-mobile-1763982412718-69243c4e5531f.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/69237e5fce132/wbuy-mobile-1763982356393-69243c15e6606-6984b5685efa0.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/69237e5fce132/wbuy-mobile-1763982399822-69243c41ae6fa.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/69237e5fce132/wbuy-mobile-1763982325201-69243bf6d6cb7-6984b5684a231.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/69237e5fce132/wbuy-mobile-1763982338742-69243c0446c63-6984b5688422b.jpg"
       ],
       "sizeChart": "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/691f3a5c994a2/template-duvidas-frequentes-6-69a9c3a21f65f.png",
       "description": "- Com um design faixa discreto na frente e costas nuas, o Top Speed oferece liberdade de movimento e frescor durante os treinos. Seu estilo minimalista e confort�vel combina perfeitamente com a rotina ativa, proporcionando praticidade e um toque de o...",
       "stock": {
-        "P": 17,
+        "P": 7,
         "M": 4,
-        "G": 15
+        "G": 10
       },
-      "totalStock": 36
+      "totalStock": 21
     },
     "top-speed-rosa-soft": {
       "slug": "top-speed-rosa-soft",
       "name": "Legging Classic Rosa Bebê",
       "images": [
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/691f3a5a3331c/img_8103-6920f76233939.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/691f3a5a3331c/img_8106-6920f76923732.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/691f3a5a3331c/img_8104-6920f76a3907a.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/691f3a5a3331c/img_8087-6920f76e7c578.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/691f3a5a3331c/img_8088-6920f7709819d.jpg"
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/69237e5d87360/wbuy-mobile-1763982444713-69243c6e8394f.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/69237e5d87360/wbuy-mobile-1763982457610-69243c7b5fe83.jpg"
       ],
       "sizeChart": "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/691f3a5a3331c/template-duvidas-frequentes-6-69a9c40f4ab8e.png",
       "description": "- Com um design faixa discreto na frente e costas nuas, o Top Speed oferece liberdade de movimento e frescor durante os treinos. Seu estilo minimalista e confort�vel combina perfeitamente com a rotina ativa, proporcionando praticidade e um toque de o...",
       "stock": {
-        "G": 6
+        "P": 9,
+        "M": 16,
+        "G": 15
       },
-      "totalStock": 6
+      "totalStock": 40
     },
     "top-bia-preto": {
       "slug": "top-bia-preto",
       "name": "Legging Classic Terracota",
       "images": [
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/691f3a5844d09/img_8114-692315cf0b7a2.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/691f3a5844d09/img_8120-692315d557539.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/691f3a5844d09/img_8117-692315cded74f.jpg"
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68430acaa19a6/legging-classic-terracota-684342f8c757e.jpeg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68430acaa19a6/img_6092-68434321b71f2.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68430acaa19a6/legging-classic-terracota2-68434302a1fb9.jpeg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68430acaa19a6/conjunto-legging-classic-terracota-6843430e30f6f.jpeg"
       ],
       "sizeChart": "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/691f3a5844d09/template-duvidas-frequentes-6-69a9c42085a9b.png",
       "description": "- Top Bia possui design com al�as largas que proporcionam suporte extra, aliado ao detalhe em vi�s que confere mais susten��o e acabamento impec�vel. Modelo sem entrada para bojo, pensado para quem busca conforto e firmeza durante a pr�tica.Modelo ve...",
       "stock": {
-        "P": 16,
-        "G": 9
+        "P": 9
       },
-      "totalStock": 25
+      "totalStock": 9
     },
     "top-bia-marrom-escuro": {
       "slug": "top-bia-marrom-escuro",
@@ -635,31 +617,33 @@
       "slug": "macaquinho-one-marrom",
       "name": "Top Frente única Terracota",
       "images": [
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/691f3a50bb644/img_7992-6920f7e985162.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/691f3a50bb644/img_8004-6920f7e7519e4.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/691f3a50bb644/img_7998-6923150160d90.jpg"
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/69237e5bb0d44/wbuy-mobile-1763939344379-69239411c4b7e.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/69237e5bb0d44/wbuy-mobile-1763939362233-69239423a3495.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/69237e5bb0d44/wbuy-mobile-1763939375632-692394312070f.jpg"
       ],
       "sizeChart": "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/691f3a50bb644/template-duvidas-frequentes-6-69a9c4702d8d7.png",
       "description": "- Macaquinho One, possui modelagem moderna de um ombro s�. Acabamento sem costura frontal para evitar desconforto e marcar a regi�o �ntima durante o treino, possui costura apenas na parte de tr�s do bumbum para melhor ajuste ao corpo. Design moderno,...",
       "stock": {
-        "G": 2
+        "P": 66,
+        "M": 36,
+        "G": 23
       },
-      "totalStock": 2
+      "totalStock": 125
     },
     "macaquinho-one-preto": {
       "slug": "macaquinho-one-preto",
       "name": "Short Basic Azul Marine",
       "images": [
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/691f3a4d51ab3/img_7971-6923218860050.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/691f3a4d51ab3/img_7981-692321882e2b9.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/691f3a4d51ab3/img_7986-692321881eddd.jpg"
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68430ade944e6/short-basic-azul-marine-frente-68431718115b9.jpeg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68430ade944e6/img_6385-6843173311eca.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68430ade944e6/short-basic-azul-marine-lateral-68431722a7a36.jpeg"
       ],
       "sizeChart": "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/691f3a4d51ab3/template-duvidas-frequentes-6-69a9c50a318ff.png",
       "description": "- Macaquinho One, possui modelagem moderna de um ombro s�. Acabamento sem costura frontal para evitar desconforto e marcar a regi�o �ntima durante o treino, possui costura apenas na parte de tr�s do bumbum para melhor ajuste ao corpo. Design moderno,...",
       "stock": {
-        "P": 16
+        "P": 12
       },
-      "totalStock": 16
+      "totalStock": 12
     },
     "garrafa-branca": {
       "slug": "garrafa-branca",
@@ -681,72 +665,50 @@
       "slug": "legging-flare-canelada-off-white",
       "name": "Short Classic Marrom escuro",
       "images": [
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/68d52cc89bdb2/img_8215-68e6896bd479e.png",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/68d52cc89bdb2/img_8216-68e6896bc52d8.png"
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68e68aaf00025/img_8215-68e68b95a4d6a.png",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68e68aaf00025/img_8216-68e68b9571ed3.png"
       ],
       "sizeChart": "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/68d52cc89bdb2/template-duvidas-frequentes-6-69a9c51e5a2a0.png",
       "description": "- A Flare Canelada � a combina��o perfeita entre conforto e estilo. A cintura alta e c�s transpassado modela a silhueta enquanto a barra flare proporciona fluidez e eleg�ncia, ideal para transitar entre o treino e o dia a dia com personalidade.Modelo...",
-      "stock": {
-        "P": 25,
-        "M": 24,
-        "G": 20
-      },
-      "totalStock": 69
+      "stock": {},
+      "totalStock": 0
     },
     "conjunto-top-air-e-short-edge-preto-c-off": {
       "slug": "conjunto-top-air-e-short-edge-preto-c-off",
       "name": "Top Basic Duplo Preto",
       "images": [
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/68af3e058d3ae/img_2618-68af3e7fd8d8c.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/68af3e058d3ae/img_2623-68af3e7992e26.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/68af3e058d3ae/img_2623-68af3e9a5d752.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/68af3e058d3ae/img_2634-68af3e8698b40.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/68af3e058d3ae/img_2638-68af3e8c9b591.jpg"
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/6973a4f41f24a/top-air-short-edge-preto-e-off-6973a5479d657.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/6973a4f41f24a/img_2623-68af3e7992e26-6973a5628bf8e.jpg"
       ],
       "sizeChart": "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/68af3e058d3ae/template-duvidas-frequentes-6-69a9c536ae687.png",
       "description": "- Combinando leveza, feminilidade e seguran�a, este conjunto foi pensado para unir conforto e estilo no treino. O Top Air possui decote que valoriza as costas e al�a no pesco�o, criando um visual delicado e elegante sem abrir m�o da liberdade de movi...",
-      "stock": {
-        "P": 60,
-        "M": 32,
-        "G": 27
-      },
-      "totalStock": 119
+      "stock": {},
+      "totalStock": 0
     },
     "conjunto-top-air-e-short-edge-cappuccino-c-off": {
       "slug": "conjunto-top-air-e-short-edge-cappuccino-c-off",
       "name": "Short Basic Cereja",
       "images": [
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/68af3c7604db2/img_2429-68af3d6b813e2.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/68af3c7604db2/img_2426-68af3d01a4568.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/68af3c7604db2/img_2434-68af3d79783cc.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/68af3c7604db2/img_2443-68af3d0fe4bdc.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/68af3c7604db2/img_2444-68af3decef886.jpg"
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/6973a59aad2b6/437f8b95-ba35-46cf-abe6-cacbbd0166dd-6973a656b4ee3.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/6973a59aad2b6/img_2426-6973a65c43457.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/6973a59aad2b6/img_2426-6973a664d3420.jpg"
       ],
       "sizeChart": "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/68af3c7604db2/template-duvidas-frequentes-6-69a9c54b8bc4d.png",
       "description": "- Combinando leveza, feminilidade e seguran�a, este conjunto foi pensado para unir conforto e estilo no treino. O Top Air possui decote que valoriza as costas e al�a no pesco�o, criando um visual delicado e elegante sem abrir m�o da liberdade de movi...",
-      "stock": {
-        "P": 1,
-        "G": 1
-      },
-      "totalStock": 2
+      "stock": {},
+      "totalStock": 0
     },
     "conjunto-top-air-e-short-edge-azul-marinho-c-azul": {
       "slug": "conjunto-top-air-e-short-edge-azul-marinho-c-azul",
       "name": "Top Frente única Marrom Escuro",
       "images": [
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/68af3aa5e3bfc/img_2335-68af3b5836367.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/68af3aa5e3bfc/img_2338-68af3b648df2d.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/68af3aa5e3bfc/img_2336-68af3b46ba8b9.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/68af3aa5e3bfc/img_2328-1-68af3b5e9cd83.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/68af3aa5e3bfc/img_2350-68af3be605bac.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/68af3aa5e3bfc/img_2345-68af3b8f2183d.jpg"
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/6973a695edf4b/6114f49d-c38f-48c3-9f9e-2017b2733313-6973a700a8b36.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/6973a695edf4b/img_2338-68af3b648df2d-6973a6ff52bc3.jpg"
       ],
       "sizeChart": "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/68af3aa5e3bfc/template-duvidas-frequentes-6-69a9c56035aa3.png",
       "description": "- Combinando leveza, feminilidade e seguran�a, este conjunto foi pensado para unir conforto e estilo no treino. O Top Air possui decote que valoriza as costas e al�a no pesco�o, criando um visual delicado e elegante sem abrir m�o da liberdade de movi...",
-      "stock": {
-        "G": 19
-      },
-      "totalStock": 19
+      "stock": {},
+      "totalStock": 0
     },
     "conjunto-top-e-short-preto-1645831": {
       "slug": "conjunto-top-e-short-preto-1645831",
@@ -772,47 +734,25 @@
       "slug": "conjunto-top-air-e-short-edge-verde-militar",
       "name": "Macaquinho Move Café",
       "images": [
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/68af386a72051/img_2543-68af3a0db2634.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/68af386a72051/img_2546-68af3a28c30e7.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/68af386a72051/img_2548-68af3a1c833d1.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/68af386a72051/img_2553-68af3a08c4eb8.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/68af386a72051/img_2556-68af3a150ddd3.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/68af386a72051/img_2558-68af3a226e92c.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/68af386a72051/img_2559-68af3a2f0d9a0.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/68af386a72051/img_2561-68af3a3517e70.jpg"
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/6973a768c2674/1ba067c6-231b-4d29-8fe4-25700a659a4f-6973a840cdea8.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/6973a768c2674/img_2548-68af3a1c833d1-6973a85a0ce17.jpg"
       ],
       "sizeChart": "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/68af386a72051/template-duvidas-frequentes-6-69a9c575692e4.png",
       "description": "- Combinando leveza, feminilidade e seguran�a, este conjunto foi pensado para unir conforto e estilo no treino. O Top Air possui decote que valoriza as costas e al�a no pesco�o, criando um visual delicado e elegante sem abrir m�o da liberdade de movi...",
-      "stock": {
-        "P": 37,
-        "M": 10,
-        "G": 24
-      },
-      "totalStock": 71
+      "stock": {},
+      "totalStock": 0
     },
     "conjunto-top-e-legging-cross-preto-c-off": {
       "slug": "conjunto-top-e-legging-cross-preto-c-off",
       "name": "Top Dallas Rosa Bebê",
       "images": [
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/68af3645a0c86/img_2668-68af3700c5735.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/68af3645a0c86/img_2670-68af36d1ee889.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/68af3645a0c86/img_2666-68af36e899dc9.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/68af3645a0c86/img_2679-68af3715491a0.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/68af3645a0c86/img_2681-68af370e0a6e8.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/68af3645a0c86/img_2677-68af36d7b5593.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/68af3645a0c86/img_2673-68af36f40d3f4.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/68af3645a0c86/img_2675-68af36de861dc.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/68af3645a0c86/dsc09711-68af36a705202.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/68af3645a0c86/dsc09857-68af369c0c536.jpg"
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/69739e5f207e2/1acf9262-925b-47b3-a6df-babc5e1dae00-69739ec3cd474.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/69739e5f207e2/img_2670-68af36d1ee889-69739ee1c72fc.jpg"
       ],
       "sizeChart": "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/68af3645a0c86/template-duvidas-frequentes-6-69a9c5bc90395.png",
       "description": "- Com visual marcante e acabamento impec�vel, o Conjunto Cross une estilo e performance em duas pe�as que se complementam. O Top Cross traz estrutura e cobertura em modelagem inspirada nas regatas cropped, oferecendo forro duplo na frente que garante...",
-      "stock": {
-        "P": 13,
-        "M": 10,
-        "G": 17
-      },
-      "totalStock": 40
+      "stock": {},
+      "totalStock": 0
     },
     "conjunto-top-e-legging-cross-azul-c-azul": {
       "slug": "conjunto-top-e-legging-cross-azul-c-azul",
@@ -838,26 +778,13 @@
       "slug": "conjunto-top-e-legging-cross-cappuccino-c-off",
       "name": "Top Basic Duplo Preto",
       "images": [
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/68af29da478f3/img_2478-68af2af98320d.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/68af29da478f3/img_2480-68af2ab63486d.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/68af29da478f3/img_2484-68af2abf6a94a.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/68af29da478f3/img_2498-68af2adfcf5b7.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/68af29da478f3/img_2500-68af2ace81ea5.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/68af29da478f3/img_2502-68af2ad3a378a.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/68af29da478f3/img_2521-68af2ac918433.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/68af29da478f3/img_2523-68af2ada34aab.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/68af29da478f3/img_5468-68af2b12e9fdb.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/68af29da478f3/img_5490-68af2b30016e9.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/68af29da478f3/img_5546-68af2b21cc233.jpg"
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/6973a1773fbe2/7ece20d7-2c3b-42e7-9469-1048c7f63492-6973a24165b33.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/6973a1773fbe2/img_2484-68af2abf6a94a-6973a24131d07.jpg"
       ],
       "sizeChart": "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/68af29da478f3/template-duvidas-frequentes-6-69a9c66a8547e.png",
       "description": "- Com visual marcante e acabamento impec�vel, o Conjunto Cross une estilo e performance em duas pe�as que se complementam. O Top Cross traz estrutura e cobertura em modelagem inspirada nas regatas cropped, oferecendo forro duplo na frente que garante...",
-      "stock": {
-        "P": 60,
-        "M": 32,
-        "G": 27
-      },
-      "totalStock": 119
+      "stock": {},
+      "totalStock": 0
     },
     "conjunto-top-cross-e-legging-cross-verde-militar": {
       "slug": "conjunto-top-cross-e-legging-cross-verde-militar",
@@ -886,382 +813,373 @@
       "slug": "top-cross-verde-c-off",
       "name": "ECOBAG PERSONALIZADA",
       "images": [
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/68ac80bd7bf9e/img_2613-68ac82ed24dac.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/68ac80bd7bf9e/img_2615-68ac82e70c509.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/68ac80bd7bf9e/img_2593-68ac830e44eb9.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/68ac80bd7bf9e/img_2589-68ac8314e25f1.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/68ac80bd7bf9e/img_2591-68ac831ae38dc.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/68ac80bd7bf9e/img_6249-68ae0515d085d.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/68ac80bd7bf9e/img_5876-68ae057727de6.jpg"
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68ac81d890d22/c81d3982-72c9-4ae9-b745-05dc48a5c99c-68b0445f19377.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68ac81d890d22/68046e72-4d58-4ed6-89bd-cab89c550472-68b0444363afc.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68ac81d890d22/img_2593-68aca83b57c96.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68ac81d890d22/21bd34d5-8f72-49a3-9e2b-e18526b7c815-68ae0a3f19187.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68ac81d890d22/9fd9d243-94f3-4763-9f96-885c19f73e83-68ae0a46d0b7a.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68ac81d890d22/img_5876-68ae0a50d355d.jpg"
       ],
       "sizeChart": "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/68ac80bd7bf9e/template-duvidas-frequentes-6-69a9c687d1ac3.png",
       "description": "- O Top Cross traz estrutura e cobertura em uma modelagem inspirada nas regatas cropped, com visual forte e seguro. Pensado para dar sustenta��o com conforto, ele acompanha os movimentos com estilo. Ideal para quem prefere um top com mais presen�a e ...",
       "stock": {
-        "U": 42
+        "P": 55,
+        "M": 52,
+        "G": 23
       },
-      "totalStock": 42
+      "totalStock": 130
     },
     "top-cross-capuccino-c-off": {
       "slug": "top-cross-capuccino-c-off",
       "name": "Short Basic Azul Marine",
       "images": [
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/68ac80b8c8d30/img_2523-68ac83b580724.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/68ac80b8c8d30/img_2521-68ac83af3ca41.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/68ac80b8c8d30/img_2484-68ac83bb39185.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/68ac80b8c8d30/img_2478-68ac83c8058b6.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/68ac80b8c8d30/img_2480-68ac83c1bf92b.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/68ac80b8c8d30/img_5542-68ae05b77c1b2.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/68ac80b8c8d30/img_5490-68ae05cc4406f.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/68ac80b8c8d30/img_5468-68ae05d4f28ee.jpg"
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68ac81d525e5c/38dea9c6-95ef-41f4-b500-6453f4a61a12-68b0436d62665.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68ac81d525e5c/2c153d7f-43a7-42cf-9d7b-3a1f466ab105-68b043a3e1fc5.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68ac81d525e5c/img_2484-68acad346efb3.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68ac81d525e5c/12c08f14-3b92-4b5b-a663-e4ff26bcea1c-68ae092c44d82.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68ac81d525e5c/ef9a9b64-1593-45a3-aac9-ecd392d85b57-68ae0937310a9.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68ac81d525e5c/img_5490-68ae093d4ea82.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68ac81d525e5c/126c1516-9c61-43e4-9932-cc4c71a16eaf-68ae0970c536c.jpg"
       ],
       "sizeChart": "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/68ac80b8c8d30/template-duvidas-frequentes-6-69a9c6a12dbc9.png",
       "description": "- O Top Cross traz estrutura e cobertura em uma modelagem inspirada nas regatas cropped, com visual forte e seguro. Pensado para dar sustenta��o com conforto, ele acompanha os movimentos com estilo. Ideal para quem prefere um top com mais presen�a e ...",
       "stock": {
-        "P": 16
+        "P": 54,
+        "M": 37,
+        "G": 19
       },
-      "totalStock": 16
+      "totalStock": 110
     },
     "top-air-verde-c-off": {
       "slug": "top-air-verde-c-off",
       "name": "Short Basic Preto",
       "images": [
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/68ac80b55fc86/img_2559-68af00e3cb029.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/68ac80b55fc86/img_2548-68af00d51fcbf.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/68ac80b55fc86/img_2561-68af00cce353c.jpg"
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68ac81d1dd227/76449ee8-584e-477a-a57a-f4d522904a9a-68af1db4b531b.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68ac81d1dd227/img_2548-68af1dbcf1704.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68ac81d1dd227/f703dda1-a72b-464c-bf87-a7c3f95006d8-68af1dcb5a40a.jpg"
       ],
       "sizeChart": "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/68ac80b55fc86/template-duvidas-frequentes-6-69a9c6b5ef1d6.png",
       "description": "- O Top Air traz leveza e feminilidade com seu decote que destaca as costas. A al�a no pesco�o cria um efeito delicado, ideal para quem quer um visual clean e elegante, sem renunciar � liberdade de movimentos na hora do treino.Modelo veste: Tamanho P...",
       "stock": {
-        "P": 60,
-        "M": 14,
-        "G": 10
+        "P": 43,
+        "M": 26,
+        "G": 20
       },
-      "totalStock": 84
+      "totalStock": 89
     },
     "top-cross-azul-marinho-c-azul": {
       "slug": "top-cross-azul-marinho-c-azul",
       "name": "Legging Básica Move Preto",
       "images": [
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/68ac80b1d0c91/img_2420-68ac8439c7627.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/68ac80b1d0c91/img_2414-68ac844011bf2.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/68ac80b1d0c91/img_2399-68ac8468d7448.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/68ac80b1d0c91/img_2393-68ac846270c24.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/68ac80b1d0c91/img_2395-68ac846eecbbf.jpg"
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68ac81ce761d2/4f63b4cc-556c-418f-9b88-c12fb8f821f2-68acbaf1e70b8.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68ac81ce761d2/b3ad7347-9dc0-4d75-b405-1b17cf0438b9-68acbad56bc0c.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68ac81ce761d2/img_2399-68acb2586ec06.jpg"
       ],
       "sizeChart": "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/68ac80b1d0c91/template-duvidas-frequentes-6-69a9c6d021ec5.png",
       "description": "- O Top Cross traz estrutura e cobertura em uma modelagem inspirada nas regatas cropped, com visual forte e seguro. Pensado para dar sustenta��o com conforto, ele acompanha os movimentos com estilo. Ideal para quem prefere um top com mais presen�a e ...",
       "stock": {
-        "P": 5,
-        "M": 35,
-        "G": 39
+        "P": 67,
+        "M": 65,
+        "G": 25
       },
-      "totalStock": 79
+      "totalStock": 157
     },
     "top-cross-preto-c-off": {
       "slug": "top-cross-preto-c-off",
       "name": "Short Classic Move Verde Militar",
       "images": [
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/68ac80af3b65e/img_2679-68ac84debb2d8.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/68ac80af3b65e/img_2681-68ac84d87fd74.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/68ac80af3b65e/img_2670-68ac84e55eafb.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/68ac80af3b65e/img_2668-68ac84f1ca80b.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/68ac80af3b65e/img_2666-68ac84eb87883.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/68ac80af3b65e/dsc09857-68adc4387c704.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/68ac80af3b65e/dsc09711-68adc46adef95.jpg"
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68ac81cbd1da3/262c042d-3038-4cff-9602-6315a7f94643-68acbb30eca5d.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68ac81cbd1da3/394732db-9e56-4ef2-bbca-b919d3183005-68acbb19860fd.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68ac81cbd1da3/img_2670-68acaa637d093.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68ac81cbd1da3/conjunto-preto-com-off-68acaa803729d.jpeg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68ac81cbd1da3/conjunto-preto-com-off2-68acaa405e552.jpeg"
       ],
       "sizeChart": "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/68ac80af3b65e/template-duvidas-frequentes-6-69a9c6e7c07ab.png",
       "description": "- O Top Cross traz estrutura e cobertura em uma modelagem inspirada nas regatas cropped, com visual forte e seguro. Pensado para dar sustenta��o com conforto, ele acompanha os movimentos com estilo. Ideal para quem prefere um top com mais presen�a e ...",
       "stock": {
-        "P": 4,
-        "G": 8
+        "P": 44,
+        "M": 9
       },
-      "totalStock": 12
+      "totalStock": 53
     },
     "top-air-azul-marinho-c-azul": {
       "slug": "top-air-azul-marinho-c-azul",
       "name": "Top Dallas Pacifico",
       "images": [
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/68ac80ac70cc0/img_2328-68af01439c3d1.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/68ac80ac70cc0/img_2338-68af0153d533a.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/68ac80ac70cc0/img_2336-68af014ccd248.jpg"
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68ac81c964935/3873f949-39b8-452d-817f-e9f7591bff44-68af1dfec2ac6.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68ac81c964935/img_2338-68af1e080ad53.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68ac81c964935/b45c8948-2580-4701-acc0-0b67752fdd46-68af1e0e25d37.jpg"
       ],
       "sizeChart": "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/68ac80ac70cc0/template-duvidas-frequentes-68af017033a42.png",
       "description": "- O Top Air traz leveza e feminilidade com seu decote que destaca as costas. A al�a no pesco�o cria um efeito delicado, ideal para quem quer um visual clean e elegante, sem renunciar � liberdade de movimentos na hora do treino.Modelo veste: Tamanho P...",
       "stock": {
-        "M": 5
+        "P": 80,
+        "M": 18,
+        "G": 42
       },
-      "totalStock": 5
+      "totalStock": 140
     },
     "macaquinho-ease-azul-marinho-c-azul": {
       "slug": "macaquinho-ease-azul-marinho-c-azul",
       "name": "Short Basic Azul Marinho",
       "images": [
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/68ac80a90f664/img_2293-68ac8a0deb5b7.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/68ac80a90f664/img_2300-68ac8a1419b8d.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/68ac80a90f664/img_2296-68ac8a1a85b78.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/68ac80a90f664/img_6384-68ae062fdf430.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/68ac80a90f664/img_6388-68ae0633a42f5.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/68ac80a90f664/img_6391-68ae06523a272.jpg"
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68ac81c614234/14d7b37b-4627-4d0d-8006-493bd7267ce6-68acbe13b6358.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68ac81c614234/img_2300-68acbe66c01bb.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68ac81c614234/2a89aef6-4397-41a3-9079-adee369c9f19-68acbe6cbf6bc.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68ac81c614234/3cbc201d-9f59-494c-ac5e-908950aead05-68ae0ae1c14c1.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68ac81c614234/img_6391-68ae0ae65aa21.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68ac81c614234/img_6384-68ae0aedc9798.jpg"
       ],
       "sizeChart": "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/68ac80a90f664/template-duvidas-frequentes-6-69a9c7073bce7.png",
       "description": "- O Macaquinho Ease � uma pe�a �nica com presen�a minimalista. A frente mais comportada com decote quadrado equilibra perfeitamente com as costas abertas, revelando o diferencial da modelagem. N�o possui costura frontal central, evitando qualquer des...",
       "stock": {
-        "P": 20
+        "P": 29,
+        "M": 8
       },
-      "totalStock": 20
+      "totalStock": 37
     },
     "macaquinho-ease-verde-militar-c-off": {
       "slug": "macaquinho-ease-verde-militar-c-off",
       "name": "Top Basic Duplo Preto",
       "images": [
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/68ac80a57d6bf/img_2541-68ac8b5b82a7e.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/68ac80a57d6bf/img_2539-68ac8b61b2e0d.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/68ac80a57d6bf/img_2542-68ac8b556be19.jpg"
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68ac81c29d81f/13c892fb-7638-4ee8-bd77-1a42fbad7114-68acbefd0f804.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68ac81c29d81f/img_2539-68acbf0815705.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68ac81c29d81f/2787eaa1-1d42-4a4b-a03e-47727de626a6-68acbef2e3c95.jpg"
       ],
       "sizeChart": "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/68ac80a57d6bf/template-duvidas-frequentes-6-69a9c7238867b.png",
       "description": "- O Macaquinho Ease � uma pe�a �nica com presen�a minimalista. A frente mais comportada com decote quadrado equilibra perfeitamente com as costas abertas, revelando o diferencial da modelagem. N�o possui costura frontal central, evitando qualquer des...",
       "stock": {
-        "P": 60,
-        "M": 32,
-        "G": 27
+        "P": 31
       },
-      "totalStock": 119
+      "totalStock": 31
     },
     "short-edge-azul-marinho-c-azul": {
       "slug": "short-edge-azul-marinho-c-azul",
       "name": "Macaquinho Move Café",
       "images": [
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/68ac80a223de3/img_2345-68af02f7978ae.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/68ac80a223de3/img_2350-68af02f082d5e.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/68ac80a223de3/img_2335-68af0320cdada.jpg"
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68ac816e6898a/7cbe6dfc-1a82-4abc-95fd-133cf442d129-68af1ea288765.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68ac816e6898a/img_2350-68af1ead68d6a.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68ac816e6898a/b45c8948-2580-4701-acc0-0b67752fdd46-68af1e475a9f0.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68ac816e6898a/6114f49d-c38f-48c3-9f9e-2017b2733313-68af1e9d19e83.jpg"
       ],
       "sizeChart": "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/68ac80a223de3/template-duvidas-frequentes-6-69a9c74255dda.png",
       "description": "- O short Edge possui c�s de altura m�dia que modela e oferece um ajuste perfeito ao corpo. Devido a aus�ncia de costura central na parte frontal, elimina qualquer desconforto na regi�o �ntima. Seu design foi pensado para garantir maior seguran�a e z...",
       "stock": {
-        "P": 37,
-        "M": 10,
-        "G": 24
+        "P": 39,
+        "M": 4
       },
-      "totalStock": 71
+      "totalStock": 43
     },
     "short-edge-cappuccino-c-off": {
       "slug": "short-edge-cappuccino-c-off",
       "name": "Legging Básica Movie Cereja",
       "images": [
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/68ac806e94e97/img_2434-68af037d82f7d.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/68ac806e94e97/img_2426-68af03bd4b63c.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/68ac806e94e97/img_2443-68af038a8bfb5.jpg"
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68ac816c0d39a/cf93314a-ec86-42a2-9d4d-70bc12496ead-68af1eeb0a196.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68ac816c0d39a/img_2426-68af1f1676f36.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68ac816c0d39a/0949311b-8b82-43f9-b21b-b6d9288dddb4-68af1f60c2871.jpg"
       ],
       "sizeChart": "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/68ac806e94e97/template-duvidas-frequentes-6-69a9c75c2a581.png",
       "description": "- O short Edge possui c�s de altura m�dia que modela e oferece um ajuste perfeito ao corpo. Devido a aus�ncia de costura central na parte frontal, elimina qualquer desconforto na regi�o �ntima. Seu design foi pensado para garantir maior seguran�a e z...",
       "stock": {
-        "P": 28
+        "P": 69,
+        "M": 39,
+        "G": 23
       },
-      "totalStock": 28
+      "totalStock": 131
     },
     "macaquinho-ease-cappuccino-c-off": {
       "slug": "macaquinho-ease-cappuccino-c-off",
       "name": "Short Basic Cereja",
       "images": [
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/68ac80689f22b/img_2469-68ac8dfd46375.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/68ac80689f22b/img_2475-68ac8e039c786.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/68ac80689f22b/img_2470-68ac8e0cb878c.jpg"
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68ac81660f846/77045b5e-6b64-402a-8144-0a9ccab638c6-68acc011af967.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68ac81660f846/img_2475-68acc03c6a966.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68ac81660f846/f90fe08c-eb81-4633-b523-2d4de18f4f38-68acc04c1642d.jpg"
       ],
       "sizeChart": "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/68ac80689f22b/template-duvidas-frequentes-6-69a9c770ba175.png",
       "description": "- O Macaquinho Ease � uma pe�a �nica com presen�a minimalista. A frente mais comportada com decote quadrado equilibra perfeitamente com as costas abertas, revelando o diferencial da modelagem. N�o possui costura frontal central, evitando qualquer des...",
       "stock": {
-        "P": 1,
-        "G": 1
+        "P": 53,
+        "M": 19,
+        "G": 21
       },
-      "totalStock": 2
+      "totalStock": 93
     },
     "top-air-cappuccino-c-off": {
       "slug": "top-air-cappuccino-c-off",
       "name": "Top Basic Duplo Preto",
       "images": [
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/68ac80651d960/img_2443-68af01a49bbec.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/68ac80651d960/img_2426-68af019949b56.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/68ac80651d960/img_2444-68af01918b636.jpg"
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68ac8162b295c/6368cd2b-dffc-4f09-9037-73965af892f0-68af21471abe8.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68ac8162b295c/img_2426-68af1fad7c88f.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68ac8162b295c/0949311b-8b82-43f9-b21b-b6d9288dddb4-68af1f9f914fb.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68ac8162b295c/img_2426-68af1fa6809ea.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68ac8162b295c/6a741851-ddb3-4e6a-88e0-8bf22e6a25e8-68af21411385b.jpg"
       ],
       "sizeChart": "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/68ac80651d960/template-duvidas-frequentes-6-69a9c7868c93b.png",
       "description": "- O Top Air traz leveza e feminilidade com seu decote que destaca as costas. A al�a no pesco�o cria um efeito delicado, ideal para quem quer um visual clean e elegante, sem renunciar � liberdade de movimentos na hora do treino.Modelo veste: Tamanho P...",
       "stock": {
-        "P": 60,
-        "M": 32,
-        "G": 27
+        "P": 50,
+        "M": 35,
+        "G": 16
       },
-      "totalStock": 119
+      "totalStock": 101
     },
     "legging-cross-preto-c-off": {
       "slug": "legging-cross-preto-c-off",
       "name": "Top Move Preto",
       "images": [
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/68ac806180359/img_2677-68ac8f7f96489.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/68ac806180359/img_2673-68ac8f98151dc.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/68ac806180359/img_2675-68ac8f8be2408.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/68ac806180359/img_2668-68ac8f9205a2a.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/68ac806180359/img_2670-68ac8f7919fa7.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/68ac806180359/img_2666-68ac8f85897bf.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/68ac806180359/dsc09711-68adc4a8d534b.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/68ac806180359/dsc09857-68adc4c539616.jpg"
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68ac815f46f90/c9d8bcf7-9052-498b-90d7-24afbf9cac26-68acc877d4df0.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68ac815f46f90/img_2673-68acc88f314ab.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68ac815f46f90/img_2675-68acc895dd630.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68ac815f46f90/659ec751-6d2f-4c65-ace1-73e6d300bf0b-68acc89f3e788.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68ac815f46f90/1bf1fb9d-d6a4-4bb2-8312-5ceca8da5238-68acc884b06e7.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68ac815f46f90/img_2670-68acc8a801032.jpg"
       ],
       "sizeChart": "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/68ac806180359/template-duvidas-frequentes-6-69a9c79a48a20.png",
       "description": "- Com design marcante e modelagem inteligente, a Cal�a Cross traz o diferencial do c�s transpassado com ajuste firme e confort�vel. A costura frontal valoriza o corpo. � a escolha ideal para treinar ou compor um look casual esportivo.Modelo veste: Ta...",
       "stock": {
-        "P": 24,
-        "M": 43,
-        "G": 82
+        "P": 15
       },
-      "totalStock": 149
+      "totalStock": 15
     },
     "legging-cross-verde-militar-c-off": {
       "slug": "legging-cross-verde-militar-c-off",
       "name": "Top Move 2.0 Café",
       "images": [
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/68ac805fc8842/img_2607-68ac908740873.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/68ac805fc8842/img_2603-68ac907824e50.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/68ac805fc8842/img_2601-68ac906bb0e52.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/68ac805fc8842/img_2589-68ac907e1d74c.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/68ac805fc8842/img_2593-68ac9071e1861.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/68ac805fc8842/img_2591-68ac908d94574.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/68ac805fc8842/img_6249-68ae070a844c1.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/68ac805fc8842/img_5874-68ae072749e24.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/68ac805fc8842/img_5876-68ae0714045c8.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/68ac805fc8842/img_5878-68ae07406ec02.jpg"
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68ac815de76cc/d22abe60-557d-4c98-a178-2621cabe66ae-68acc51dc4fac.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68ac815de76cc/img_2603-68acb5a07d7cd.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68ac815de76cc/img_2601-68acc5376042b.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68ac815de76cc/51feb087-0779-4b9c-a9a9-0d8ad334a5b2-68acc52e5dee4.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68ac815de76cc/img_2593-68acc549f118b.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68ac815de76cc/21bd34d5-8f72-49a3-9e2b-e18526b7c815-68ae09f52eed4.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68ac815de76cc/img_5876-68ae09fd51740.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68ac815de76cc/9fd9d243-94f3-4763-9f96-885c19f73e83-68ae0a0686d1c.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68ac815de76cc/img_5878-68ae0a0f8c316.jpg"
       ],
       "sizeChart": "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/68ac805fc8842/template-duvidas-frequentes-6-69a9c7b0e63a2.png",
       "description": "- Com design marcante e modelagem inteligente, a Cal�a Cross traz o diferencial do c�s transpassado com ajuste firme e confort�vel. A costura frontal valoriza o corpo. � a escolha ideal para treinar ou compor um look casual esportivo.Modelo veste: Ta...",
       "stock": {
-        "P": 12,
-        "M": 66
+        "P": 58,
+        "M": 42,
+        "G": 1
       },
-      "totalStock": 78
+      "totalStock": 101
     },
     "legging-cross-cappuccino-c-off": {
       "slug": "legging-cross-cappuccino-c-off",
       "name": "Short Basic Terracota",
       "images": [
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/68ac805e1a34a/img_2498-68ac935d0f4c1.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/68ac805e1a34a/img_2500-68ac935674184.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/68ac805e1a34a/img_2502-68ac9374d4238.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/68ac805e1a34a/img_2478-68ac93688afca.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/68ac805e1a34a/img_2484-68ac9362a793f.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/68ac805e1a34a/img_2480-68ac936ec7eac.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/68ac805e1a34a/img_5468-68ae0676cbdca.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/68ac805e1a34a/img_5546-68ae067ebfbb7.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/68ac805e1a34a/img_5491-68ae069062c14.jpg"
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68430ac5f1446/short-basic-terracota-lateral-68431cf101f21.jpeg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68430ac5f1446/img_6057-1-68431d0465eaf.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68430ac5f1446/short-basic-terracota-68431ce603895.jpeg"
       ],
       "sizeChart": "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/68ac805e1a34a/template-duvidas-frequentes-6-69a9c7cba7127.png",
       "description": "- Com design marcante e modelagem inteligente, a Cal�a Cross traz o diferencial do c�s transpassado com ajuste firme e confort�vel. A costura frontal valoriza o corpo. � a escolha ideal para treinar ou compor um look casual esportivo.Modelo veste: Ta...",
       "stock": {
-        "P": 6,
-        "G": 9
+        "P": 5,
+        "G": 8
       },
-      "totalStock": 15
+      "totalStock": 13
     },
     "legging-cross-azul-marinho-c-azul": {
       "slug": "legging-cross-azul-marinho-c-azul",
       "name": "Macaquinho Move Café",
       "images": [
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/68ac805cb8167/img_2402-68ac942f1ab38.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/68ac805cb8167/img_2409-68ac94284e438.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/68ac805cb8167/img_2407-68ac943507d9f.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/68ac805cb8167/img_2393-68ac944a90493.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/68ac805cb8167/img_2399-68ac943bdc2f8.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/68ac805cb8167/img_2395-68ac944479cea.jpg"
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68ac815b6ec79/f40c3dc0-213e-4f05-b8de-dd5bc2c8cb3f-1-68acc8fb5bdbc.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68ac815b6ec79/img_2409-68acc904cc235.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68ac815b6ec79/img_2407-68acc90b7fb44.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68ac815b6ec79/5269f9dc-c272-4fdc-8e16-8b31c464f177-1-68acc9a925a3f.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68ac815b6ec79/img_2399-68acc9a130fd6.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68ac815b6ec79/7f08805f-2017-4267-9ec9-5a36c7665a6e-68acc9e5ca9a8.jpg"
       ],
       "sizeChart": "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/68ac805cb8167/template-duvidas-frequentes-6-69a9c7f0ac7dc.png",
       "description": "- Com design marcante e modelagem inteligente, a Cal�a Cross traz o diferencial do c�s transpassado com ajuste firme e confort�vel. A costura frontal valoriza o corpo. � a escolha ideal para treinar ou compor um look casual esportivo.Modelo veste: Ta...",
       "stock": {
-        "P": 37,
-        "M": 10,
-        "G": 24
+        "P": 51
       },
-      "totalStock": 71
+      "totalStock": 51
     },
     "short-edge-preto-c-off": {
       "slug": "short-edge-preto-c-off",
       "name": "Top Basic Duplo Preto",
       "images": [
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/68ac805b622fd/img_2628-68ac97f970cc8.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/68ac805b622fd/img_2623-68ac97febdc21.jpg"
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68ac815a11083/03b78fc5-662f-4504-b2fc-9168eb45f65a-68acca8260272.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68ac815a11083/img_2630-68acc2ac95937.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68ac815a11083/2731cb0f-e73b-4505-bee3-98c55e9ea09c-68acc2c87617f.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68ac815a11083/img_2623-68acca91a91ca.jpg"
       ],
       "sizeChart": "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/68ac805b622fd/template-duvidas-frequentes-6-69a9c8182d64c.png",
       "description": "- O short Edge possui c�s de altura m�dia que modela e oferece um ajuste perfeito ao corpo. Devido a aus�ncia de costura central na parte frontal, elimina qualquer desconforto na regi�o �ntima. Seu design foi pensado para garantir maior seguran�a e z...",
       "stock": {
-        "P": 60,
-        "M": 32,
-        "G": 27
+        "P": 21,
+        "M": 20,
+        "G": 4
       },
-      "totalStock": 119
+      "totalStock": 45
     },
     "top-air-preto-c-off": {
       "slug": "top-air-preto-c-off",
       "name": "Short Basic Cereja",
       "images": [
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/68ac8058c509a/img_2618-68af025c243b5.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/68ac8058c509a/img_2623-68ac87681bb89.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/68ac8058c509a/img_2621-68ac85dcb5ef2.jpg"
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68ac8157890fd/455422f1-ec0c-471d-a22e-2f97b5b501c0-68acbd22e20fe.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68ac8157890fd/4c57f8dc-0e9a-40e0-83d1-d59632129af1-68acbd5405995.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68ac8157890fd/img_2623-68acbd67d83c9.jpg"
       ],
       "sizeChart": "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/68ac8058c509a/template-duvidas-frequentes-6-69a9c83119295.png",
       "description": "- O Top Air traz leveza e feminilidade com seu decote que destaca as costas. A al�a no pesco�o cria um efeito delicado, ideal para quem quer um visual clean e elegante, sem renunciar � liberdade de movimentos na hora do treino.Modelo veste: Tamanho P...",
       "stock": {
-        "P": 1,
-        "G": 1
+        "P": 14,
+        "G": 5
       },
-      "totalStock": 2
+      "totalStock": 19
     },
     "macaquinho-move-frente-unica-azul-marinho": {
       "slug": "macaquinho-move-frente-unica-azul-marinho",
       "name": "Short Basic Coffee",
       "images": [
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/67e428d0c33b8/dsc08205-67e4303eda30e.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/67e428d0c33b8/dsc08200-67e43043870ec.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/67e428d0c33b8/dsc08193-67e43047f29ac.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/67e428d0c33b8/dsc08208-67e4304bdc3bc.jpg"
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/67e43f4fd19f9/macaquinho-azul-marinho-sem-logo-67e4445e75a52.jpeg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/67e43f4fd19f9/dsc08193-67e444632e7eb.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/67e43f4fd19f9/macaquinho-azul-sem-logo3-67e4446736695.jpeg"
       ],
       "sizeChart": "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/67e428d0c33b8/template-duvidas-frequentes-6-69a9d6544223e.png",
       "description": "Macaquinho com modelagem acinturada, costas nuas e sem costura frontal. Zero marca��o �ntima, conforto e estilo para treinos e produ��es fitness.",
       "stock": {
-        "P": 64,
-        "M": 55,
-        "G": 31
+        "P": 25,
+        "M": 8
       },
-      "totalStock": 150
+      "totalStock": 33
     },
     "macaquinho-move-frente-unica-cafe": {
       "slug": "macaquinho-move-frente-unica-cafe",
       "name": "Top Basic Duplo Coffee",
       "images": [
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/67e428ce64c25/dsc08231-67e42f5da1fef.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/67e428ce64c25/dsc08215-1-67e42f61ea7b9.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/67e428ce64c25/dsc08221-67e42f659e77f.jpg"
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/67e43f4d8433f/macaquinho-cafa-sem-llogo-67e44395313de.jpeg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/67e43f4d8433f/dsc08215-67e44399aa04a.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/67e43f4d8433f/macaquinho-move-verde-militar-sem-logo-67e4439def6c8.jpeg"
       ],
       "sizeChart": "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/67e428ce64c25/template-duvidas-frequentes-6-69a9d66d43d8d.png",
       "description": "Macaquinho com modelagem acinturada, costas nuas e sem costura frontal. Zero marca��o �ntima, conforto e estilo para treinos e produ��es fitness.",
       "stock": {
-        "P": 130,
-        "M": 106,
-        "G": 78
+        "P": 37,
+        "M": 19
       },
-      "totalStock": 314
+      "totalStock": 56
     },
     "macaquinho-move-frente-unica-verde-militar": {
       "slug": "macaquinho-move-frente-unica-verde-militar",
       "name": "Top Basic Duplo Cereja",
       "images": [
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/67e428cbc45b1/dsc08186-67e42e698126e.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/67e428cbc45b1/dsc08172-67e42e722262a.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/67e428cbc45b1/dsc08178-67e42e7888f3c.jpg"
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/67e43f4ac06ab/dsc08186-macaquinho-verde-sem-logo-67e442f226f8d.jpeg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/67e43f4ac06ab/dsc08172-67e442f75b013.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/67e43f4ac06ab/macaquinho-verde-militar-sem-logo-67e442fc1f0c5.jpeg"
       ],
       "sizeChart": "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/67e428cbc45b1/template-duvidas-frequentes-6880f9e9b64a6.png",
       "description": "Macaquinho com modelagem acinturada, costas nuas e sem costura frontal. Zero marca��o �ntima, conforto e estilo para treinos e produ��es fitness.",
       "stock": {
-        "P": 7,
-        "M": 4,
-        "G": 9
+        "P": 46,
+        "M": 34,
+        "G": 19
       },
-      "totalStock": 20
+      "totalStock": 99
     },
     "top-move-2-0-preto": {
       "slug": "top-move-2-0-preto",
@@ -1374,182 +1292,171 @@
       "slug": "top-one-amora",
       "name": "Top Frente única Preto",
       "images": [
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/688cdc45225b1/img_2252-688cea6b9d4cb.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/688cdc45225b1/img_2259-688cea638075f.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/688cdc45225b1/img_2250-688cea592d9fd.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/688cdc45225b1/img_2236-688cea71e3cb9.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/688cdc45225b1/img_2240-688cea79aa34b.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/688cdc45225b1/img_2261-688cea836ce00.jpg"
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/688cde3211c97/top-one-amora-688d0650706f4.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/688cde3211c97/img_2250-688d065b9041a.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/688cde3211c97/img_2259-688d06649cefb.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/688cde3211c97/img_3639-6893ac9c52402.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/688cde3211c97/img_3641-6893aca3798f7.jpg"
       ],
       "sizeChart": "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/688cdc45225b1/template-duvidas-frequentes-6-69a9c9d1207dc.png",
       "description": "Top fitness assim�trico com al�as finas e regulagem nas costas. Design sofisticado e confort�vel, ideal para compor looks estilosos dentro e fora da academia.",
       "stock": {
-        "P": 28,
-        "M": 31,
-        "G": 17
+        "P": 22,
+        "M": 22,
+        "G": 35
       },
-      "totalStock": 76
+      "totalStock": 79
     },
     "top-one-azul-marinho": {
       "slug": "top-one-azul-marinho",
       "name": "Top Run Branco",
       "images": [
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/688cdc40b871e/img_2381-688ce938a99fa.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/688cdc40b871e/img_2382-688ce93fac7f4.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/688cdc40b871e/img_2386-688ce946d3880.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/688cdc40b871e/img_2357-688ce94d31b58.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/688cdc40b871e/img_2388-688ce954eef47.jpg"
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/688cde2ea509c/top-one-azul-688d05d54ae2d.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/688cde2ea509c/img_2386-688d05f093d53.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/688cde2ea509c/img_2382-688d05e976289.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/688cde2ea509c/img_2388-688d0d90d96a1.jpg"
       ],
       "sizeChart": "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/688cdc40b871e/template-duvidas-frequentes-6-69a9c9e3cefa3.png",
       "description": "Top fitness assim�trico com al�as finas e regulagem nas costas. Design sofisticado e confort�vel, ideal para compor looks estilosos dentro e fora da academia.",
       "stock": {
-        "P": 23,
-        "M": 26,
-        "G": 12
+        "G": 7
       },
-      "totalStock": 61
+      "totalStock": 7
     },
     "cropped-manga-longa-off-white": {
       "slug": "cropped-manga-longa-off-white",
       "name": "Short Fast Preto c/ Branco",
-      "images": [],
+      "images": [
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68752d5f25780/img_2017-687554a249faa.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68752d5f25780/img_2028-6875549a7575e.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68752d5f25780/img_2022-687554aae208f.jpg"
+      ],
       "sizeChart": "",
       "description": "Adentre ao nosso mundo de moda fitness e beachwear, onde cada pe�a � uma express�o de conforto e estilo feita especialmente para voc�. Somos apaixonados por criar pe�as que celebram a feminilidade e a modernidade, garantindo zero transpar�ncia em cada detalhe. Descubra agora como podemos elevar sua confian�a e beleza em cada movimento.",
       "stock": {
-        "P": 125,
-        "M": 103,
-        "G": 60
+        "G": 8
       },
-      "totalStock": 288
+      "totalStock": 8
     },
     "cropped-manga-longa-cereja": {
       "slug": "cropped-manga-longa-cereja",
       "name": "Regata Run Azul Petróleo",
       "images": [
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/68713484689fa/img_2170-68716ea5e5d06.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/68713484689fa/img_2175-1-68716eac2cc99.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/68713484689fa/img_2172-68716eb272f5e.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/68713484689fa/img_7936-687558c04ac4d.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/68713484689fa/img_7931-687558cba6c33.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/68713484689fa/img_7934-68755b3c0e314.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/68713484689fa/img_7868-68755a479014f.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/68713484689fa/img_7855-68755a60182ad.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/68713484689fa/img_8091-68755a818c49d.jpg"
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68752d5bd5a74/img_2170-6875540317a9f.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68752d5bd5a74/img_2175-68755409cfcb5.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68752d5bd5a74/img_2172-68755412990e0.jpg"
       ],
       "sizeChart": "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/68713484689fa/template-duvidas-frequentes-6-69a9cd34ef8ad.png",
       "description": "- Leve e moderno, com tecido duplo frontal para melhor ajuste ao corpo e zero transpar�ncia, o cropped Lume tem manga longa e decote em V na frente. oferecendo conforto e estilo minimalista para acompanhar seu treino ou rotina di�ria. Modelo veste: T...",
       "stock": {
-        "P": 2
+        "P": 18,
+        "M": 1,
+        "G": 2
       },
-      "totalStock": 2
+      "totalStock": 21
     },
     "short-run-cereja": {
       "slug": "short-run-cereja",
       "name": "Top One Canelado Coffee",
       "images": [
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/6871347a059b4/img_2093-687174d976472.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/6871347a059b4/img_2087-687174d16496b.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/6871347a059b4/img_2080-687174c8c29d9.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/6871347a059b4/img_2061-687174f2400a5.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/6871347a059b4/img_2069-687174e57bf97.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/6871347a059b4/img_8662-68755f53726c2.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/6871347a059b4/img_7941-68755f5d6577f.jpg"
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68752bb98a84d/img_2093-1-6875488acddbd.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68752bb98a84d/img_2087-1-687548904689b.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68752bb98a84d/img_2080-2-687548867221d.jpg"
       ],
       "sizeChart": "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/6871347a059b4/template-duvidas-frequentes-6-69a9cdbc3e4ec.png",
       "description": "Short sobreposto com c�s duplo, camada externa leve e bolso interno. Liberdade, ventila��o e ajuste seguro para correr ou treinar com conforto.",
       "stock": {
-        "P": 20,
-        "M": 42,
-        "G": 38
+        "P": 36,
+        "M": 32,
+        "G": 10
       },
-      "totalStock": 100
+      "totalStock": 78
     },
     "short-run-off-white": {
       "slug": "short-run-off-white",
       "name": "Short Basic Azul Marinho",
       "images": [
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/687524c917830/img_1960-68752fb433151.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/687524c917830/img_1958-68752fadcf1df.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/687524c917830/img_1951-68752fa680cbc.jpg"
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68752ba776320/img_1960-1-6877c9354d4e5.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68752ba776320/img_1958-1-6875478caff5f.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68752ba776320/img_1951-1-68754787595e5.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68752ba776320/img_1962-687547967db05.jpg"
       ],
       "sizeChart": "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/687524c917830/template-duvidas-frequentes-6-69a9ca4e4dc90.png",
       "description": "Short sobreposto com c�s duplo, camada externa leve e bolso interno. Liberdade, ventila��o e ajuste seguro para correr ou treinar com conforto.",
       "stock": {
-        "P": 20
+        "P": 28,
+        "M": 23,
+        "G": 28
       },
-      "totalStock": 20
+      "totalStock": 79
     },
     "short-adapt-canelado-preto": {
       "slug": "short-adapt-canelado-preto",
       "name": "Macaquinho Move Frente Única Verde Militar",
       "images": [
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/685c36bf34144/shorts-preto-2-685c595b27247.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/685c36bf34144/shorts-preto-1-685c59547aaee.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/685c36bf34144/shorts-preto-685c59612f67c.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/685c36bf34144/top-halo-preto-1-685c597d181aa.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/685c36bf34144/top-halo-preto-2-685c5973d8b9c.jpg"
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/685d868a6535e/shorts-preto-2-685da4ace4cfd.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/685d868a6535e/shorts-preto-1-685da4a6c483e.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/685d868a6535e/shorts-preto-685da4b6d9c24.jpg"
       ],
       "sizeChart": "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/685c36bf34144/template-duvidas-frequentes-6-69a9d1a287c59.png",
       "description": "Short em tecido canelado com c�s transpassado, sem costura frontal e tecnologia blackout. Conforto, estilo e firmeza com zero transpar�ncia para seus treinos.",
       "stock": {
-        "P": 91,
-        "M": 77,
-        "G": 64
+        "P": 27
       },
-      "totalStock": 232
+      "totalStock": 27
     },
     "short-basic-azul-marine": {
       "slug": "short-basic-azul-marine",
       "name": "Short Basic Preto",
       "images": [
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/6841cfa68d925/img_6379-6841f6ce00352.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/6841cfa68d925/img_6385-6841f6beebc37.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/6841cfa68d925/img_6381-6841f6d4a3d39.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/6841cfa68d925/img_6368-6841f717b005e.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/6841cfa68d925/img_6374-6841f6c56e8de.jpg"
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68430ade944e6/short-basic-azul-marine-frente-68431718115b9.jpeg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68430ade944e6/img_6385-6843173311eca.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68430ade944e6/short-basic-azul-marine-lateral-68431722a7a36.jpeg"
       ],
       "sizeChart": "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/6841cfa68d925/template-duvidas-frequentes-6-69a9d259258a8.png",
       "description": "Short com c�s m�dio e modelagem sem costura frontal ou no bumbum. Mais conforto, seguran�a e liberdade para treinar sem preocupa��o.",
       "stock": {
-        "P": 60,
-        "M": 14,
-        "G": 10
+        "P": 12
       },
-      "totalStock": 84
+      "totalStock": 12
     },
     "short-adapt-lilas": {
       "slug": "short-adapt-lilas",
       "name": "Short Fast Preto c/ Branco",
-      "images": [],
+      "images": [
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/69b465007aabd/4e2cd487-7f59-4f42-bd88-a6bd3efbe35f-69b4bebf432d0.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/69b465007aabd/20260312_79969-69b4bed5e71f3.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/69b465007aabd/239ae3d2-59e3-4c29-9402-4e7fa660683f-69b4beba90247.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/69b465007aabd/20260312_79710-69b4bee775ad0.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/69b465007aabd/5fa40013-ba4f-420e-9948-1c3783b699e8-69b4befc56391.jpg"
+      ],
       "sizeChart": "",
       "description": "Adentre ao nosso mundo de moda fitness e beachwear, onde cada pe�a � uma express�o de conforto e estilo feita especialmente para voc�. Somos apaixonados por criar pe�as que celebram a feminilidade e a modernidade, garantindo zero transpar�ncia em cada detalhe. Descubra agora como podemos elevar sua confian�a e beleza em cada movimento.",
       "stock": {
-        "P": 125,
-        "M": 103,
-        "G": 60
+        "P": 33,
+        "M": 25,
+        "G": 14
       },
-      "totalStock": 288
+      "totalStock": 72
     },
     "short-run-branco": {
       "slug": "short-run-branco",
       "name": "Top Basic Duplo Azul Marinho",
       "images": [
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/680f8997b4803/shorts-run-branco-1-680f9c1107bd7.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/680f8997b4803/shorts-run-branco-680f9c0cbfec9.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/680f8997b4803/shorts-run-branco-4-680f9c040f11e.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/680f8997b4803/shorts-run-branco-2-680f9c1830fbb.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/680f8997b4803/img_0602-6810b41abef52.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/680f8997b4803/img_0679-6810b41eaa873.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/680f8997b4803/img_0569-6810b4210bad3.jpg"
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68102cc837d7f/shorts-run-branco-1-sem-logoo-6810b2434a496.jpeg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68102cc837d7f/shorts-run-branco-6810b23f57f26.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68102cc837d7f/shorts-run-branco-4-sem-logo-6810b23c02edb.jpeg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68102cc837d7f/shorts-run-branco-3-sem-logo-6810b24704c1b.jpeg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68102cc837d7f/shorts-run-branco-2-sem-logo-6810b24a58e63.jpeg"
       ],
       "sizeChart": "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/680f8997b4803/template-duvidas-frequentes-6-69a9d55642dc5.png",
       "description": "Short sobreposto com c�s duplo, camada externa leve e bolso interno. Liberdade, ventila��o e ajuste seguro para correr ou treinar com conforto.",
       "stock": {
-        "P": 9,
-        "M": 21,
-        "G": 28
+        "P": 65,
+        "M": 39,
+        "G": 12
       },
-      "totalStock": 58
+      "totalStock": 116
     },
     "short-run-preto": {
       "slug": "short-run-preto",
@@ -1573,128 +1480,126 @@
       "slug": "short-run-rosa-soft",
       "name": "Legging Cross Preto c/ Off",
       "images": [
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/691f3a64270c6/img_8095-6920f6337f853.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/691f3a64270c6/img_8098-6920f6337cc4a.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/691f3a64270c6/img_8093-6920f636e1bf5.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/691f3a64270c6/img_8087-6920f660b854c.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/691f3a64270c6/img_8088-6920f6617dd41.jpg"
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68ac815f46f90/c9d8bcf7-9052-498b-90d7-24afbf9cac26-68acc877d4df0.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68ac815f46f90/img_2673-68acc88f314ab.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68ac815f46f90/img_2675-68acc895dd630.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68ac815f46f90/659ec751-6d2f-4c65-ace1-73e6d300bf0b-68acc89f3e788.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68ac815f46f90/1bf1fb9d-d6a4-4bb2-8312-5ceca8da5238-68acc884b06e7.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68ac815f46f90/img_2670-68acc8a801032.jpg"
       ],
       "sizeChart": "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/691f3a64270c6/template-duvidas-frequentes-6-69a9c349b115a.png",
       "description": "- O Short Run, com um design sobreposto, ele combina o ajuste justo com um tecido mais solto na parte externa e short com bolso na parte interna , com c�s duplo entrega excelente ajuste e garante liberdade de movimento e ventila��o.Modelo veste: Tama...",
       "stock": {
-        "P": 17,
-        "G": 5
+        "P": 15
       },
-      "totalStock": 22
+      "totalStock": 15
     },
     "legging-flare-amora": {
       "slug": "legging-flare-amora",
       "name": "Top Move Azul Marinho",
       "images": [
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/688cdc5346d5b/img_2241-688cfa470a938.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/688cdc5346d5b/img_2244-688cfa3abb2bc.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/688cdc5346d5b/img_2262-688cfa3f94318.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/688cdc5346d5b/img_2236-688cfa5a055ff.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/688cdc5346d5b/img_2240-688cfa4d1a821.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/688cdc5346d5b/img_2261-688cfa534aa34.jpg"
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/688cde3d8234c/flare-amora-688d0cccf06f1.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/688cde3d8234c/img_2262-688d0cde1e148.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/688cde3d8234c/flare-amora2-688d0cd12eba7.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/688cde3d8234c/legging-top-one-amora-688d0ce9776c5.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/688cde3d8234c/img_2261-1-688d0cf4e5aaf.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/688cde3d8234c/img_3641-6893abbb30ed0.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/688cde3d8234c/img_3639-6893abc240b66.jpg"
       ],
       "sizeChart": "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/688cdc5346d5b/template-duvidas-frequentes-6-69a9c984225d0.png",
       "description": "Cal�a flare fitness com cintura alta e c�s transpassado que valoriza a silhueta. Conforto, fluidez e eleg�ncia para treinos ou looks casuais com estilo.",
       "stock": {
-        "P": 31,
-        "M": 31,
-        "G": 8
+        "P": 25,
+        "M": 13,
+        "G": 11
       },
-      "totalStock": 70
+      "totalStock": 49
     },
     "legging-flare-preta": {
       "slug": "legging-flare-preta",
       "name": "Macaquinho Move Café",
       "images": [
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/688cdc50350f4/img_2696-688cf960b2f98.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/688cdc50350f4/img_2700-688cf978cad52.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/688cdc50350f4/img_2699-688cf95ac1600.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/688cdc50350f4/img_2687-688cf98138fb9.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/688cdc50350f4/img_2694-688cf966e7908.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/688cdc50350f4/img_2692-688cf96d31e78.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/688cdc50350f4/dsc09359-1-689e007c07e7f.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/688cdc50350f4/dsc09401-689e00915cb6b.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/688cdc50350f4/dsc09358-689e00a001c4b.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/688cdc50350f4/dsc09421-689e00ad56dfc.jpg"
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/688cde3adbd98/legging-flare-preta-688d096db043c.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/688cde3adbd98/img_2700-688d0a8be14cd.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/688cde3adbd98/img_2699-688d0a78ae223.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/688cde3adbd98/legging-flare-preta-2-688d0b2283b7e.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/688cde3adbd98/img_2694-688d0a7ea4a63.jpg"
       ],
       "sizeChart": "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/688cdc50350f4/template-duvidas-frequentes-6-69a9c996ef0bf.png",
       "description": "Cal�a flare fitness com cintura alta e c�s transpassado que valoriza a silhueta. Conforto, fluidez e eleg�ncia para treinos ou looks casuais com estilo.",
       "stock": {
-        "P": 37,
-        "M": 10,
-        "G": 24
+        "P": 19,
+        "M": 13,
+        "G": 2
       },
-      "totalStock": 71
+      "totalStock": 34
     },
     "legging-flare-azul-marinho": {
       "slug": "legging-flare-azul-marinho",
       "name": "Top Bia Rosa Bebê e Branco",
       "images": [
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/688cdc4d1d4f1/img_2370-688cf6e471e3b.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/688cdc4d1d4f1/img_2374-688cf70aba066.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/688cdc4d1d4f1/img_2389-688cf74502c90.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/688cdc4d1d4f1/img_2357-688cf7529abb9.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/688cdc4d1d4f1/img_2388-688cf76014429.jpg"
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/688cde37e5657/flare-azul-688d0803a7420.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/688cde37e5657/img_2389-688d081253f29.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/688cde37e5657/img_2374-1-688d080cbd224.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/688cde37e5657/flare-e-top-one-azul-688d081c0d9b4.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/688cde37e5657/img_2388-688d0829cbbc2.jpg"
       ],
       "sizeChart": "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/688cdc4d1d4f1/template-duvidas-frequentes-6-69a9c9ace9acb.png",
       "description": "Cal�a flare fitness com cintura alta e c�s transpassado que valoriza a silhueta. Conforto, fluidez e eleg�ncia para treinos ou looks casuais com estilo.",
       "stock": {
-        "M": 11,
-        "G": 40
+        "P": 56,
+        "M": 30,
+        "G": 11
       },
-      "totalStock": 51
+      "totalStock": 97
     },
     "macaquinho-com-manga-cereja": {
       "slug": "macaquinho-com-manga-cereja",
       "name": "Short Adapt Preto",
       "images": [
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/68713474d7fe9/img_2193-68716de92ecd8.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/68713474d7fe9/img_2201-68716dfa1bd41.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/68713474d7fe9/img_2199-68716e007d209.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/68713474d7fe9/img_8656-68755b84062c8.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/68713474d7fe9/img_8652-68755b8f5d450.jpg"
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68752bb4de4ce/img_2193-68754ed618bc9.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68752bb4de4ce/img_2201-68754ee684ab3.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68752bb4de4ce/img_2199-68754edcbbeb6.jpg"
       ],
       "sizeChart": "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/68713474d7fe9/template-duvidas-frequentes-6-69a9cf5d0dc64.png",
       "description": "Macaquinho com manga longa e efeito modelador. Sem costura frontal, valoriza a silhueta com conforto e zero marca��o. Ideal para treinos nos dias frios.",
       "stock": {
-        "P": 39,
-        "M": 30,
-        "G": 14
+        "P": 30,
+        "M": 22,
+        "G": 7
       },
-      "totalStock": 83
+      "totalStock": 59
     },
     "macaquinho-com-manga-forrado-off-white": {
       "slug": "macaquinho-com-manga-forrado-off-white",
       "name": "Top Move 2.0 Cereja",
       "images": [
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/687520471e067/macaquinho-manga-longa-off-4-6875321febfdf.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/687520471e067/macaquinho-manga-longa-off-2-68753219bde88.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/687520471e067/macaquinho-manga-longa-off-3-68753213d8e61.jpg"
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68752bb00ab57/img_1976-68754faf43a2a.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68752bb00ab57/img_1983-68754fa8eb2b3.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68752bb00ab57/img_1977-68754fb5c49f4.jpg"
       ],
       "sizeChart": "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/687520471e067/template-duvidas-frequentes-6-69a9cb28d5a59.png",
       "description": "Macaquinho com manga longa e efeito modelador. Sem costura frontal, valoriza a silhueta com conforto e zero marca��o. Ideal para treinos nos dias frios.",
       "stock": {
-        "G": 4
+        "P": 9,
+        "M": 5,
+        "G": 7
       },
-      "totalStock": 4
+      "totalStock": 21
     },
     "macaquinho-adapt-blush": {
       "slug": "macaquinho-adapt-blush",
       "name": "Short Adapt Cinza",
       "images": [
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/6823694242e6a/macaquinho-blush-6824b799038f7.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/6823694242e6a/macaquinho-blush-1-6824b79cafd83.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/6823694242e6a/macaquinho-blush-2-6824b7a02c599.jpg"
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/6824bfc7a0584/macaquinho-blush-sem-logo-6824e823c6381.jpeg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/6824bfc7a0584/macaquinho-blush-1-6824e827711d4.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/6824bfc7a0584/macaquinho-blush-2-sem-logooo-6824e82b355ea.jpeg"
       ],
       "sizeChart": "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/6823694242e6a/template-duvidas-frequentes-6-69a9d4d51e831.png",
       "description": "Macaquinho com bolsos laterais, modelagem acinturada e compress�o confort�vel. Ideal para treinos e corrida, pro dia a dia com liberdade e praticidade.",
       "stock": {
-        "G": 7
+        "P": 3,
+        "M": 4
       },
       "totalStock": 7
     },
@@ -1702,344 +1607,311 @@
       "slug": "macaquinho-adapt-preto",
       "name": "Short Basic Coffee",
       "images": [
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/680f8631edd26/macaquinho-adapt-preto-1-680fa06f0e650.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/680f8631edd26/macaquinho-adapt-preto-2-680fa07363060.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/680f8631edd26/macaquinho-adapt-preto-680fa077766a0.jpg"
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/680fbc702bb99/macaquinho-adapt-preto-4-sem-logo-680fe93ac4ab5.jpeg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/680fbc702bb99/macaquinho-adapt-preto-2-680fe93f1f89c.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/680fbc702bb99/macaquinho-adapt-preto-3-sem-logo-680fe9439168a.jpeg"
       ],
       "sizeChart": "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/680f8631edd26/template-duvidas-frequentes-6-69a9d5c71ccc6.png",
       "description": "Macaquinho com bolsos laterais, modelagem acinturada e compress�o confort�vel. Ideal para treinos e corrida, pro dia a dia com liberdade e praticidade.",
       "stock": {
-        "P": 64,
-        "M": 55,
-        "G": 31
+        "P": 17,
+        "M": 4
       },
-      "totalStock": 150
+      "totalStock": 21
     },
     "macaquinho-move-frente-unica-cereja": {
       "slug": "macaquinho-move-frente-unica-cereja",
       "name": "Top Speed Azul Petróleo",
       "images": [
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/67979e2bb8d23/thai9953-6797a3003351b.jpeg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/67979e2bb8d23/thai9962-6797a2fc0ee90.jpeg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/67979e2bb8d23/thai9964-6797a2f7dd2d2.jpeg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/67979e2bb8d23/thai9955-67996c626ee33.jpeg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/67979e2bb8d23/thai9959-67996c65f13ee.jpeg"
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/6797bc991504c/macaquinho-cereja-frente-unica-sem-logo-6797c1573e55a.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/6797bc991504c/thai9962-6797c15f1d3d6.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/6797bc991504c/macaquinho-cereja-frente-unica-sem-logo2-6797c15aee398.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/6797bc991504c/thai9959-6797c16372b85.jpg"
       ],
       "sizeChart": "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/67979e2bb8d23/template-duvidas-frequentes-68810b91c429d.png",
       "description": "Macaquinho com modelagem acinturada, costas nuas e sem costura frontal. Zero marca��o �ntima, conforto e estilo para treinos e produ��es fitness.",
       "stock": {
-        "G": 28
+        "P": 45,
+        "M": 30,
+        "G": 25
       },
-      "totalStock": 28
+      "totalStock": 100
     },
     "macaquinho-move-frente-unica-preto": {
       "slug": "macaquinho-move-frente-unica-preto",
       "name": "Short Classic Rosa Pink",
       "images": [
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/6797a7c26dc6e/thai9967-6797ade6af57c.jpeg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/6797a7c26dc6e/thai9978-6797ade311f3d.jpeg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/6797a7c26dc6e/thai9968-6797addf06d4d.jpeg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/6797a7c26dc6e/thai9979-6797addb7d027.jpeg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/6797a7c26dc6e/thai9971-6797add7bb2b6.jpeg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/6797a7c26dc6e/dsc05488-6797ae4dd617f.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/6797a7c26dc6e/thai9975-6797add406b85.jpeg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/6797a7c26dc6e/dsc05390-6797ae516c825.jpg"
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/6797bc905894a/macaquinho-move-frente-unica-preto-sem-logo-2-6797bf0cd0eca.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/6797bc905894a/macaquinho-preto-frente-unica-2-6797bf2f02a12.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/6797bc905894a/macaquinho-move-frente-unica-preto-sem-logo-6797bf046ab3b.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/6797bc905894a/macaquinho-frente-unica-preto-sem-logo-6797befc4d75c.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/6797bc905894a/macaquinho-preto-frente-unica-3-6797bf11cf884.jpg"
       ],
       "sizeChart": "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/6797a7c26dc6e/template-duvidas-frequentes-6-699f47fde69bf.png",
       "description": "Macaquinho com modelagem acinturada, costas nuas e sem costura frontal. Zero marca��o �ntima, conforto e estilo para treinos e produ��es fitness.",
       "stock": {
-        "P": 17,
-        "M": 4,
-        "G": 15
+        "P": 125,
+        "M": 101,
+        "G": 44
       },
-      "totalStock": 36
+      "totalStock": 270
     },
     "macacao-flare-preto": {
       "slug": "macacao-flare-preto",
       "name": "Macaquinho Move Preto",
       "images": [
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/688cdc3c65d62/img_2713-688ce7206c363.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/688cdc3c65d62/img_2718-688ce72667af0.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/688cdc3c65d62/img_2717-688ce7177eef7.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/688cdc3c65d62/img_3476-6893ad843665c.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/688cdc3c65d62/img_3632-6893ad7d4abde.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/688cdc3c65d62/img_3631-6893ad774c6e4.jpg"
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/688cde2b1362f/macacao-flare-preto-688d044bcbbe6.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/688cde2b1362f/img_2718-688d0459e9509.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/688cde2b1362f/macacao-flare-preto2-688d044b02881.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/688cde2b1362f/img_3630-6893acdfaf6cd.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/688cde2b1362f/img_3476-6893ad0754946.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/688cde2b1362f/img_3527-6893ad1ef1ead.jpg"
       ],
       "sizeChart": "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/688cdc3c65d62/template-duvidas-frequentes-6-699f49c0404eb.png",
       "description": "Descubra o macac�o flare fitness com decote X nas costas. Modelagem que valoriza a silhueta, tecido com compress�o ideal e m�ximo conforto para treinos e lifestyle.",
       "stock": {
-        "P": 42,
-        "M": 37,
-        "G": 14
+        "P": 7
       },
-      "totalStock": 93
+      "totalStock": 7
     },
     "macacao-flare-amora": {
       "slug": "macacao-flare-amora",
       "name": "Legging Básica Move Preto",
       "images": [
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/688cdc39abe26/img_2217-688ce5ec22a62.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/688cdc39abe26/img_2227-688ce5e57f670.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/688cdc39abe26/img_2223-688ce5f4ed6e2.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/688cdc39abe26/dsc09316-689dffcc5796e.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/688cdc39abe26/dsc09163-689dffd9a7d5e.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/688cdc39abe26/dsc09274-689dfff794e10.jpg"
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/688cde288bdb1/macacao-flare-amora-688d0384c32c5.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/688cde288bdb1/img_2227-688d0395e32ca.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/688cde288bdb1/macacao-flare-amora-editado-688d038408a52.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/688cde288bdb1/flare-amora-sem-logo-689e0389463e3.jpeg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/688cde288bdb1/flare-at-689e038fb8a30.jpeg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/688cde288bdb1/dsc09220-689e03a1c1a74.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/688cde288bdb1/dsc09163-689e03a4afff0.jpg"
       ],
       "sizeChart": "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/688cdc39abe26/template-duvidas-frequentes-6-699f499c007da.png",
       "description": "Descubra o macac�o flare fitness com decote X nas costas. Modelagem que valoriza a silhueta, tecido com compress�o ideal e m�ximo conforto para treinos e lifestyle.",
       "stock": {
-        "P": 5,
-        "M": 35,
-        "G": 39
+        "P": 10,
+        "G": 5
       },
-      "totalStock": 79
+      "totalStock": 15
     },
     "macacao-flare-azul-marinho": {
       "slug": "macacao-flare-azul-marinho",
       "name": "Top Speed Branco",
       "images": [
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/688cdc36aa8b5/img_2282-688ce4191506f.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/688cdc36aa8b5/img_2286-688ce24351fc4.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/688cdc36aa8b5/img_2284-688ce24c8f262.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/688cdc36aa8b5/dsc08961-689e001742a23.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/688cdc36aa8b5/dsc08986-689e00252b6b9.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/688cdc36aa8b5/dsc08935-689e003089c1b.jpg"
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/688cde261a987/macacao-flare-688d030fbb0d4.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/688cde261a987/img_2286-688d0320823a9.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/688cde261a987/macacao-flare2-688d030ecf59b.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/688cde261a987/macacao-flare-azul-at2-689e031e5a6a4.jpeg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/688cde261a987/macacao-flare-azul-sem-logo-689e031d9af4d.jpeg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/688cde261a987/dsc08986-689e03326f9c6.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/688cde261a987/dsc09027-689e03397b173.jpg"
       ],
       "sizeChart": "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/688cdc36aa8b5/template-duvidas-frequentes-6-699f49d36db09.png",
       "description": "Descubra o macac�o flare fitness com decote X nas costas. Modelagem que valoriza a silhueta, tecido com compress�o ideal e m�ximo conforto para treinos e lifestyle.",
       "stock": {
-        "P": 67,
-        "M": 88,
-        "G": 17
+        "P": 27,
+        "M": 17,
+        "G": 11
       },
-      "totalStock": 172
+      "totalStock": 55
     },
     "macacao-muse-cereja": {
       "slug": "macacao-muse-cereja",
       "name": "Legging Classic Terracota",
       "images": [
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/6871347db75d4/img_2100-68717095c734c.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/6871347db75d4/img_2106-6871760b3ccb7.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/6871347db75d4/img_2116-6871705c95e2a.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/6871347db75d4/img_2112-68717070203d7.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/6871347db75d4/img_2108-6871706946540.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/6871347db75d4/img_2102-68717074d6d65.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/6871347db75d4/img_8672-687555b31dc78.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/6871347db75d4/img_8673-687555b6bed29.jpg"
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68430acaa19a6/legging-classic-terracota-684342f8c757e.jpeg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68430acaa19a6/img_6092-68434321b71f2.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68430acaa19a6/legging-classic-terracota2-68434302a1fb9.jpeg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68430acaa19a6/conjunto-legging-classic-terracota-6843430e30f6f.jpeg"
       ],
       "sizeChart": "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/6871347db75d4/template-duvidas-frequentes-6-69a9cd7f8c0cc.png",
       "description": "Macac�o frente �nica com decote sutil nas costas, busto duplo e sem costura frontal. Sofistica��o, conforto e zero marca��o para um treino elegante.",
       "stock": {
-        "P": 16,
-        "G": 9
+        "P": 9
       },
-      "totalStock": 25
+      "totalStock": 9
     },
     "macacao-muse-preto": {
       "slug": "macacao-muse-preto",
       "name": "Short Speed c/ bolso Branco Forrado",
       "images": [
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/687134727c8e5/img_1902-68717125c2cbc.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/687134727c8e5/img_1916-687170f1d9ad9.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/687134727c8e5/img_1928-6871713c84e70.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/687134727c8e5/img_1920-68717114e3401.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/687134727c8e5/img_1922-6871712b3671e.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/687134727c8e5/img_1911-6871711f4c499.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/687134727c8e5/img_8031-687556a032dcb.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/687134727c8e5/img_8038-687556a6defc0.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/687134727c8e5/img_8034-687556b1a7ef8.jpg"
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68752bb26dd5f/img_1902-1-68754da099ba8.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68752bb26dd5f/img_1916-1-68754df587e24.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68752bb26dd5f/img_1911-1-68754dddcc392.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68752bb26dd5f/img_1928-1-68754e06c221e.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68752bb26dd5f/img_1920-1-68754de872cbe.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68752bb26dd5f/img_1922-1-68754dedf3ec8.jpg"
       ],
       "sizeChart": "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/687134727c8e5/template-duvidas-frequentes-6-69a9cea9b4b71.png",
       "description": "Macac�o frente �nica com decote sutil nas costas, busto duplo e sem costura frontal. Sofistica��o, conforto e zero marca��o para um treino elegante.",
       "stock": {
-        "G": 10
+        "P": 8
       },
-      "totalStock": 10
+      "totalStock": 8
     },
     "macacao-essential-preto": {
       "slug": "macacao-essential-preto",
       "name": "Top Basic Duplo Azul Marinho",
       "images": [
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/6759dced6ca21/thai6776-6797a7209d024.jpeg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/6759dced6ca21/thai6784-6797a72404799.jpeg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/6759dced6ca21/thai6780-6797a72789ba5.jpeg"
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/675ac96e2624d/macacao-essential-collection-675b475c8e093.jpeg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/675ac96e2624d/thai6783-675ad2a31fc17.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/675ac96e2624d/macaquinho-essential-collection2-675b47604d381.jpeg"
       ],
       "sizeChart": "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/6759dced6ca21/template-da-vidas-frequentes-680016c119ca1.jpg",
       "description": "- Macac�o longo com modelagem sem costura central frontal, que elimina marcas indesejadas e oferece conforto extra � pele. O decote frontal cavado, combinado com acabamento em vi�s e el�stico, garante firmeza e um ajuste seguro durante os movimentos....",
       "stock": {
-        "P": 9,
-        "M": 21,
-        "G": 28
+        "P": 25,
+        "M": 15,
+        "G": 16
       },
-      "totalStock": 58
+      "totalStock": 56
     },
     "macacao-essential-marrom": {
       "slug": "macacao-essential-marrom",
       "name": "Short Basic Preto",
       "images": [
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/6759dce782082/thai6900-675a01b1d21f3.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/6759dce782082/thai6905-675a01b5261e0.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/6759dce782082/thai6902-675a01b85ca2a.jpg"
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/675ac973631c7/macaquinho-essential-collection-marrom2-675b4ae2d6729.jpeg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/675ac973631c7/thai6905-675ad2349c936.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/675ac973631c7/macaquinho-essential-collection-marrom-675b4ae3caa9b.jpeg"
       ],
       "sizeChart": "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/6759dce782082/template-da-vidas-frequentes-680016dda3510.jpg",
       "description": "- Macac�o longo com modelagem sem costura central frontal, que elimina marcas indesejadas e oferece conforto extra � pele. O decote frontal cavado, combinado com acabamento em vi�s e el�stico, garante firmeza e um ajuste seguro durante os movimentos....",
-      "stock": {
-        "P": 60,
-        "M": 14,
-        "G": 10
-      },
-      "totalStock": 84
+      "stock": {},
+      "totalStock": 0
     },
     "short-edge-verde-militar-c-off": {
       "slug": "short-edge-verde-militar-c-off",
       "name": "Top Speed Preto",
       "images": [
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/68ac806b13703/img_2558-68af041f689f5.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/68ac806b13703/img_2553-68af04240928b.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/68ac806b13703/img_2556-68af042930fea.jpg"
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68ac8169a4d01/1c7f3840-0619-473e-b14e-83eedfd0452c-68af2275ee482.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68ac8169a4d01/img_2553-68af221d421dc.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68ac8169a4d01/e247c12c-2f91-4636-8370-b032014948e2-68af2223eaf93.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68ac8169a4d01/f703dda1-a72b-464c-bf87-a7c3f95006d8-68af2230cfa6d.jpg"
       ],
       "sizeChart": "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/68ac806b13703/template-duvidas-frequentes-68af043a3c971.png",
       "description": "- O short Edge possui c�s de altura m�dia que modela e oferece um ajuste perfeito ao corpo. Devido a aus�ncia de costura central na parte frontal, elimina qualquer desconforto na regi�o �ntima. Seu design foi pensado para garantir maior seguran�a e z...",
       "stock": {
-        "P": 68,
-        "M": 47
+        "P": 39,
+        "M": 2
       },
-      "totalStock": 115
+      "totalStock": 41
     },
     "short-speed-c-bolso-azul-marine": {
       "slug": "short-speed-c-bolso-azul-marine",
       "name": "Top Speed Verde Herb",
       "images": [
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/6841cf9b78eb9/img_6322-6841e23b80ec5.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/6841cf9b78eb9/img_6330-6841e2d2d8459.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/6841cf9b78eb9/img_6328-6841e262699d7.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/6841cf9b78eb9/img_6326-1-6841e25990999.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/6841cf9b78eb9/img_6316-6841e2895b481.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/6841cf9b78eb9/img_6317-6841e281e2d36.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/6841cf9b78eb9/img_6307-6841e26acb73f.jpg"
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68430ad4c98e6/short-speed-azul-marine-684325b88b37a.jpeg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68430ad4c98e6/img_6330-1-6843266428df2.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68430ad4c98e6/short-speed-azul-marine-6846c82bdbe6a.jpeg"
       ],
       "sizeChart": "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/6841cf9b78eb9/template-duvidas-frequentes-6-69a9d26eb9248.png",
       "description": "- O Short Speed combina design clean e funcionalidade. Com comprimento m�dio e bolsos laterais discretos, ele oferece praticidade sem abrir m�o do estilo. Feito para garantir conforto e liberdade de movimento, ele n�o possui costura central frontal, ...",
       "stock": {
-        "M": 7,
-        "G": 16
+        "P": 13
       },
-      "totalStock": 23
+      "totalStock": 13
     },
     "short-speed-c-bolso-lilas": {
       "slug": "short-speed-c-bolso-lilas",
       "name": "Short Fast Preto c/ Branco",
-      "images": [],
+      "images": [
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/69b465007aabd/4e2cd487-7f59-4f42-bd88-a6bd3efbe35f-69b4bebf432d0.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/69b465007aabd/20260312_79969-69b4bed5e71f3.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/69b465007aabd/239ae3d2-59e3-4c29-9402-4e7fa660683f-69b4beba90247.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/69b465007aabd/20260312_79710-69b4bee775ad0.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/69b465007aabd/5fa40013-ba4f-420e-9948-1c3783b699e8-69b4befc56391.jpg"
+      ],
       "sizeChart": "",
       "description": "Adentre ao nosso mundo de moda fitness e beachwear, onde cada pe�a � uma express�o de conforto e estilo feita especialmente para voc�. Somos apaixonados por criar pe�as que celebram a feminilidade e a modernidade, garantindo zero transpar�ncia em cada detalhe. Descubra agora como podemos elevar sua confian�a e beleza em cada movimento.",
       "stock": {
-        "P": 125,
-        "M": 103,
-        "G": 60
+        "P": 33,
+        "M": 25,
+        "G": 14
       },
-      "totalStock": 288
+      "totalStock": 72
     },
     "short-speed-c-bolso-preto": {
       "slug": "short-speed-c-bolso-preto",
       "name": "Top Basic Duplo Azul Marinho",
       "images": [
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/680f85bed69a2/shorts-speed-preto-680fafbdd4296.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/680f85bed69a2/shorts-speed-preto-1-680fafba52b36.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/680f85bed69a2/shorts-speed-preto-2-680fafb6a6a7c.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/680f85bed69a2/conjunto-speed-preto-680fafd8099bf.jpg"
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/680fbc0b0e925/shorts-speed-preto-sem-logo-680fd3711476e.jpeg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/680fbc0b0e925/shorts-speed-preto-1-680fd36d33956.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/680fbc0b0e925/shorts-speed-preto-2-sem-logo-680fd369eec63.jpeg"
       ],
       "sizeChart": "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/680f85bed69a2/template-duvidas-frequentes-6-69a9d61431887.png",
       "description": "- O Short Speed combina design clean e funcionalidade. Com comprimento m�dio e bolsos laterais discretos, ele oferece praticidade sem abrir m�o do estilo. Feito para garantir conforto e liberdade de movimento, ele n�o possui costura central frontal, ...",
       "stock": {
-        "P": 9,
-        "M": 21,
-        "G": 28
+        "P": 32,
+        "M": 10
       },
-      "totalStock": 58
+      "totalStock": 42
     },
     "legging-line-c-bolso-preto": {
       "slug": "legging-line-c-bolso-preto",
       "name": "Top Frente única Branco",
       "images": [
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/689f5380f30b4/img_7402-689f54541251f.png",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/689f5380f30b4/img_7389-689f545169b62.png",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/689f5380f30b4/img_7386-689f54500e55d.png"
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/689f536b75cbb/calca-line-preta-sem-logo-689f6419d7fb7.png",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/689f536b75cbb/costas-calca-line-preta-689f647696a5e.png",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/689f536b75cbb/calca-line-preta-sem-logo-2-689f63fb71062.jpeg"
       ],
       "sizeChart": "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/689f5380f30b4/template-duvidas-frequentes-6-69a9c90491628.png",
       "description": "- Com bolsos laterais e linha de contorno que valoriza o recorte do c�s � barra, a cal�a Line combina funcionalidade e sofistica��o para acompanhar todos os seus movimentos. Modelo veste: Tamanho PMedidas da Modelo: Cintura: 66cm l Quadril: 99cm l Bu...",
       "stock": {
-        "P": 28,
-        "M": 31,
-        "G": 23
+        "P": 31
       },
-      "totalStock": 82
+      "totalStock": 31
     },
     "legging-line-c-bolso-cereja": {
       "slug": "legging-line-c-bolso-cereja",
       "name": "Legging Classic Amora",
       "images": [
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/6871347b5da4c/img_2138-687171dd4a34e.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/6871347b5da4c/img_2141-687171d86f372.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/6871347b5da4c/img_2135-687171d2ec025.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/6871347b5da4c/calca-line-cropped-lume-cereja-687171f963fb9.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/6871347b5da4c/img_7936-68755e942c505.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/6871347b5da4c/img_7934-68755e95dc1d1.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/6871347b5da4c/img_7931-68755e7dd0091.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/6871347b5da4c/img_7933-68755ec8ac1af.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/6871347b5da4c/img_8091-68755e6c0f224.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/6871347b5da4c/img_8085-68755e744ef44.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/6871347b5da4c/img_7868-68755e89b7cd3.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/6871347b5da4c/img_7855-68755ec29afa7.jpg"
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68752bbd0cb73/img_2138-1-68754b65181d0.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68752bbd0cb73/img_2141-1-68754b6cc10fd.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68752bbd0cb73/img_2135-1-68754b5eb01de.jpg"
       ],
       "sizeChart": "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/6871347b5da4c/template-duvidas-frequentes-6-69a9cd9894461.png",
       "description": "- Com bolsos laterais e linha de contorno que valoriza o recorte do c�s � barra, a cal�a Line combina funcionalidade e sofistica��o para acompanhar todos os seus movimentos. Modelo veste: Tamanho PMedidas da Modelo: Cintura: 66cm l Quadril: 99cm l Bu...",
       "stock": {
-        "P": 22,
-        "M": 25,
-        "G": 17
+        "P": 20,
+        "M": 20,
+        "G": 1
       },
-      "totalStock": 64
+      "totalStock": 41
     },
     "legging-line-c-bolso-forrado-off-white": {
       "slug": "legging-line-c-bolso-forrado-off-white",
       "name": "Top Move Azul Azul Bebê",
       "images": [
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/687522fbcf505/calca-line-off-4-6875271408015.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/687522fbcf505/calca-line-off-3-6875270b405ed.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/687522fbcf505/calca-line-off-2-687526f589ad4.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/687522fbcf505/calca-line-off-top-orb-2-687526fb45e33.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/687522fbcf505/cropped-manga-longa-off-68752703939fb.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/687522fbcf505/img_8648-68755cb8c1192.jpg"
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68752ba8619e6/img_2011-1-687549f8256fa.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68752ba8619e6/img_2013-687549f3414e2.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68752ba8619e6/img_2015-1-687549ff8d410.jpg"
       ],
       "sizeChart": "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/687522fbcf505/template-duvidas-frequentes-6-69a9ca685d403.png",
       "description": "- Com bolsos laterais e linha de contorno que valoriza o recorte do c�s � barra, a cal�a Line combina funcionalidade e sofistica��o para acompanhar todos os seus movimentos. Possui forro na parte do bumbum, garantindo total seguran�a e zero transpar�...",
       "stock": {
-        "P": 17,
-        "M": 31,
-        "G": 53
+        "P": 24,
+        "M": 28,
+        "G": 15
       },
-      "totalStock": 101
+      "totalStock": 67
     },
     "macaquinho-ease-preto-c-off": {
       "slug": "macaquinho-ease-preto-c-off",
       "name": "Short Basic Coffee",
       "images": [
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/68ac805454d20/img_2656-68ac8cde24e42.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/68ac805454d20/img_2660-68ac8ce44017b.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/68ac805454d20/img_2658-68ac8cea80701.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/68ac805454d20/img_6399-68ae076987e20.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/68ac805454d20/img_6102-68ae077e11562.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/68ac805454d20/img_6398-68ae078f83baf.jpg",
-        "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/68ac805454d20/img_6393-68ae07701845c.jpg"
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68ac81541bb17/16436dde-e6ad-4ee7-badc-a14d7cd26915-68acc0ec42e49.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68ac81541bb17/img_2660-68acc0fe16628.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68ac81541bb17/35f4b4ef-c65e-42a6-a45b-1c86a8278671-68acc0f7c5875.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68ac81541bb17/c83c1b34-a6b4-4d94-8831-d1e6e2d892ba-68ae0bb58f7f4.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68ac81541bb17/img_6400-68ae0ba4c960b.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68ac81541bb17/47f7b437-8631-4a5b-b099-bb31d32004c8-68ae0bac5dead.jpg"
       ],
       "sizeChart": "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/68ac805454d20/template-duvidas-frequentes-6-69a9c84b6f486.png",
       "description": "- O Macaquinho Ease � uma pe�a �nica com presen�a minimalista. A frente mais comportada com decote quadrado equilibra perfeitamente com as costas abertas, revelando o diferencial da modelagem. N�o possui costura frontal central, evitando qualquer des...",
       "stock": {
-        "P": 64,
-        "M": 55,
-        "G": 31
+        "P": 19
       },
-      "totalStock": 150
+      "totalStock": 19
     }
   }
 }

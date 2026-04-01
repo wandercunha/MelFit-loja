@@ -1,0 +1,1813 @@
+{
+  "timestamp": "2026-04-01T02:12:16.770Z",
+  "source": "floraamaratacado.com.br",
+  "cdn": "97065044c3a1a212e5c7a4f183fed028",
+  "count": 106,
+  "products": {
+    "top-curve-cinza": {
+      "name": "Top Curve Cinza",
+      "atacadoSlug": "top-curve-cinza-at",
+      "images": [
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/69b4650495de8/a58934e4-781d-4e5f-a01c-9f91f49e04fb-69b4b96e8a904.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/69b4650495de8/20260312_80069-69b4b995dd82e.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/69b4650495de8/33ffb0ab-f91a-49aa-a571-c8934dd39fd0-69b4b96e7f86b.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/69b4650495de8/3b3bed4d-5a7a-4dbd-9a33-1ac6ea480b16-69b4b96e5eccd.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/69b4650495de8/20260312_80066-69b4b984d1789.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/69b4650495de8/a6058046-f645-4b62-8082-4a163e408a10-69b4b96e4a7ac.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/69b4650495de8/94659a6b-c87b-4f55-abc3-09ea87eb8a75-69b4b96e7cf25.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/69b4650495de8/d8b3cde7-13f0-4cd4-97fe-c6daf1de2040-69b4b96e6fff9.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/69b4650495de8/f69c443f-0f00-48d4-b77b-c0e83b79d96d-69b4b96e7247c.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/69b4650495de8/20260312_79511-69b4b9bec5d9b.jpg"
+      ],
+      "stock": {
+        "P": 36,
+        "M": 34,
+        "G": 20
+      },
+      "totalStock": 90,
+      "price": 39,
+      "folder": "69b4650495de8"
+    },
+    "top-curve-preto": {
+      "name": "Top Curve Preto",
+      "atacadoSlug": "top-curve-preto-at",
+      "images": [
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/69b464fd75a11/d12c13af-9443-4c9d-bbec-9b2a81004dba-69b4c3bc68510.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/69b464fd75a11/20260312_79783-69b4c3e017ed1.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/69b464fd75a11/5fa40013-ba4f-420e-9948-1c3783b699e8-69b4c3b16a24c.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/69b464fd75a11/90812804-714b-48b6-a065-a591faa2f255-69b4c495e2dae.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/69b464fd75a11/20260312_79710-69b4c3d74391d.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/69b464fd75a11/4d77e2d1-fc1c-4c11-a48d-96900d736421-69b4c4add264b.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/69b464fd75a11/ce38b4ba-fd8f-4244-a593-f68402c7a43c-69b4c49f621b8.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/69b464fd75a11/20260312_79783-69b4c4f99c9bb.jpg"
+      ],
+      "stock": {
+        "P": 28,
+        "M": 22,
+        "G": 8
+      },
+      "totalStock": 58,
+      "price": 39,
+      "folder": "69b464fd75a11"
+    },
+    "top-curve-azul-elegance": {
+      "name": "Top Curve Azul Elegance",
+      "atacadoSlug": "top-curve-azul-elegance-at",
+      "images": [
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/69b464fa7abb3/ab96937c-8867-4e06-8588-775b1c55ccf6-69b4c2d23f3fa.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/69b464fa7abb3/20260312_79412-69b4c334b67c4.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/69b464fa7abb3/080bb274-5826-4f49-9931-868ca3734df5-69b4c2f46da78.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/69b464fa7abb3/20260312_79586-69b4c319c10f4.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/69b464fa7abb3/6399fdcd-dc51-46cf-ba38-3270cd5b6681-69b4c300ae460.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/69b464fa7abb3/20260312_79404-69b4c3349bf2f.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/69b464fa7abb3/ee34cfb4-7f43-484b-adb5-17e35690914d-69b4c34ebd823.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/69b464fa7abb3/c5ad8755-7e2e-40a1-8895-7bbaecd9f3ef-1-69b4c2ecbbee6.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/69b464fa7abb3/87dcdc90-5520-470d-ad68-a9e8bc26ad95-69b4c2f96a476.jpg"
+      ],
+      "stock": {
+        "P": 33,
+        "M": 34,
+        "G": 25
+      },
+      "totalStock": 92,
+      "price": 39,
+      "folder": "69b464fa7abb3"
+    },
+    "regata-one-preto": {
+      "name": "Regata One Preto",
+      "atacadoSlug": "regata-one-preto-at",
+      "images": [
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/69b464f68674b/f693ac12-b7f8-4a4a-81a5-685bd22046d9-69b4c55a69d1d.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/69b464f68674b/20260312_79969-69b4c581e6841.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/69b464f68674b/239ae3d2-59e3-4c29-9402-4e7fa660683f-69b4c56166a66.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/69b464f68674b/20260312_79968-69b4c58210319.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/69b464f68674b/20260312_79936-69b4c599ea1ab.jpg"
+      ],
+      "stock": {
+        "P": 35,
+        "M": 28,
+        "G": 21
+      },
+      "totalStock": 84,
+      "price": 48,
+      "folder": "69b464f68674b"
+    },
+    "regata-one-cinza": {
+      "name": "Regata One Cinza",
+      "atacadoSlug": "regata-one-cinza-at",
+      "images": [
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/69b464f504b2a/de303df5-2bd0-463e-9114-92a82a7b7d77-69b4c8b9a9a2f.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/69b464f504b2a/20260312_79669-69b4c91616400.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/69b464f504b2a/d85a908e-2e02-4779-9aa9-21390092474d-69b4c8b9a16a2.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/69b464f504b2a/20260312_79999-69b4c9066273e.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/69b464f504b2a/c060c1d3-e0a6-47b3-88ea-688d0e841419-69b4c8d3755ee.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/69b464f504b2a/707c53ea-9d56-4ccf-acd8-ee9228005363-69b4c8c9591f3.jpg"
+      ],
+      "stock": {
+        "P": 43,
+        "M": 44,
+        "G": 28
+      },
+      "totalStock": 115,
+      "price": 48,
+      "folder": "69b464f504b2a"
+    },
+    "regata-one-azul-elegance": {
+      "name": "Regata One Azul Elegance",
+      "atacadoSlug": "regata-one-azul-elegance-at",
+      "images": [
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/69b464f258705/9752387b-31f7-40b0-933a-bc587e4a65e6-69b4c98d4481e.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/69b464f258705/20260312_80106-69b4c9b5c30dc.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/69b464f258705/20260312_79441-69b4ca0ee2a8a.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/69b464f258705/057571a4-2a52-44b8-8463-1a8b33842fdd-69b4c9948238c.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/69b464f258705/331cd002-9ba9-41e7-801f-ba67d92a1727-69b4ca6eaa951.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/69b464f258705/3b0f8eae-5f90-4ead-8d26-b9747381a903-69b4c9a2b3a46.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/69b464f258705/20260312_79457-69b4ca3e222dd.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/69b464f258705/20260312_79451-69b4ca0ed8ff2.jpg"
+      ],
+      "stock": {
+        "P": 36,
+        "M": 39,
+        "G": 25
+      },
+      "totalStock": 100,
+      "price": 48,
+      "folder": "69b464f258705"
+    },
+    "top-speed-azul-marinho": {
+      "name": "Top Speed Azul Marinho",
+      "atacadoSlug": "top-speed-azul-marinho-at",
+      "images": [
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/699f44166c9e0/a1adad6f-cc37-4762-b6f6-0c9ee2c9e0ae-699f53669f674.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/699f44166c9e0/img_8941-699f536860221.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/699f44166c9e0/6d8363e3-57a9-4a75-b411-9369771cfee2-699f53d4dfef3.jpg"
+      ],
+      "stock": {
+        "P": 14,
+        "G": 20
+      },
+      "totalStock": 34,
+      "price": 48,
+      "folder": "699f44166c9e0"
+    },
+    "top-speed-marrom": {
+      "name": "Top Speed Marrom",
+      "atacadoSlug": "top-speed-marrom-at",
+      "images": [
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/699f4414c5b99/d18d6ad1-e353-453e-88d2-933134b2a824-699f4e3812405.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/699f4414c5b99/img_8964-699f4e39b429f.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/699f4414c5b99/01a7b452-cc01-40f5-8324-9f26c196e2d7-699f4e3106ee4.jpg"
+      ],
+      "stock": {
+        "G": 5
+      },
+      "totalStock": 5,
+      "price": 48,
+      "folder": "699f4414c5b99"
+    },
+    "regata-basic-branca": {
+      "name": "Regata Basic Branca",
+      "atacadoSlug": "regata-basic-branca-at",
+      "images": [
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/698a36867168f/chatgpt-image-9-de-fev-de-2026-17_45_59-698a49678968d.png",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/698a36867168f/chatgpt-image-9-de-fev-de-2026-11_41_06-698a496ea44d3.png",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/698a36867168f/chatgpt-image-9-de-fev-de-2026-11_34_56-698a49763057b.png"
+      ],
+      "stock": {
+        "P": 1,
+        "M": 7,
+        "G": 4
+      },
+      "totalStock": 12,
+      "price": 50,
+      "folder": "698a36867168f"
+    },
+    "top-speed-azul-sky": {
+      "name": "Top Speed Azul Sky",
+      "atacadoSlug": "top-speed-azul-sky-at",
+      "images": [
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/69237e621e60c/wbuy-mobile-1763981625383-6924393b16084.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/69237e621e60c/wbuy-mobile-1763981694312-6924398001c51.jpg"
+      ],
+      "stock": {
+        "P": 9,
+        "G": 18
+      },
+      "totalStock": 27,
+      "price": 48,
+      "folder": "69237e621e60c"
+    },
+    "top-speed-amarelo-energy": {
+      "name": "Top Speed Amarelo Energy",
+      "atacadoSlug": "top-speed-amarelo-energy-at",
+      "images": [
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/69237e5fce132/6d72ed8b-bfc3-40a0-98c1-c220ce9c335d-6984b4bb4148e.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/69237e5fce132/img_8066-692067dd73484-6984b4c2ec482.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/69237e5fce132/cba6f4cb-43a4-4704-9211-79dcf82db507-6984b4b8b5788.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/69237e5fce132/wbuy-mobile-1763982412718-69243c4e5531f.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/69237e5fce132/wbuy-mobile-1763982356393-69243c15e6606-6984b5685efa0.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/69237e5fce132/wbuy-mobile-1763982399822-69243c41ae6fa.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/69237e5fce132/wbuy-mobile-1763982325201-69243bf6d6cb7-6984b5684a231.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/69237e5fce132/wbuy-mobile-1763982338742-69243c0446c63-6984b5688422b.jpg"
+      ],
+      "stock": {
+        "P": 7,
+        "M": 4,
+        "G": 10
+      },
+      "totalStock": 21,
+      "price": 48,
+      "folder": "69237e5fce132"
+    },
+    "top-speed-rosa-soft": {
+      "name": "Top Speed Rosa Soft",
+      "atacadoSlug": "top-speed-rosa-soft-at",
+      "images": [
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/69237e5d87360/wbuy-mobile-1763982444713-69243c6e8394f.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/69237e5d87360/wbuy-mobile-1763982457610-69243c7b5fe83.jpg"
+      ],
+      "stock": {
+        "P": 9,
+        "M": 16,
+        "G": 15
+      },
+      "totalStock": 40,
+      "price": 48,
+      "folder": "69237e5d87360"
+    },
+    "top-cross-verde-c-off": {
+      "name": "Top Cross Verde Militar c/ Off",
+      "atacadoSlug": "top-cross-verde-c-off-at",
+      "images": [
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68ac81d890d22/c81d3982-72c9-4ae9-b745-05dc48a5c99c-68b0445f19377.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68ac81d890d22/68046e72-4d58-4ed6-89bd-cab89c550472-68b0444363afc.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68ac81d890d22/img_2593-68aca83b57c96.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68ac81d890d22/21bd34d5-8f72-49a3-9e2b-e18526b7c815-68ae0a3f19187.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68ac81d890d22/9fd9d243-94f3-4763-9f96-885c19f73e83-68ae0a46d0b7a.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68ac81d890d22/img_5876-68ae0a50d355d.jpg"
+      ],
+      "stock": {
+        "P": 55,
+        "M": 52,
+        "G": 23
+      },
+      "totalStock": 130,
+      "price": 49,
+      "folder": "68ac81d890d22"
+    },
+    "top-cross-capuccino-c-off": {
+      "name": "Top Cross Capuccino c/ Off",
+      "atacadoSlug": "top-cross-capuccino-c-off-at",
+      "images": [
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68ac81d525e5c/38dea9c6-95ef-41f4-b500-6453f4a61a12-68b0436d62665.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68ac81d525e5c/2c153d7f-43a7-42cf-9d7b-3a1f466ab105-68b043a3e1fc5.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68ac81d525e5c/img_2484-68acad346efb3.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68ac81d525e5c/12c08f14-3b92-4b5b-a663-e4ff26bcea1c-68ae092c44d82.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68ac81d525e5c/ef9a9b64-1593-45a3-aac9-ecd392d85b57-68ae0937310a9.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68ac81d525e5c/img_5490-68ae093d4ea82.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68ac81d525e5c/126c1516-9c61-43e4-9932-cc4c71a16eaf-68ae0970c536c.jpg"
+      ],
+      "stock": {
+        "P": 54,
+        "M": 37,
+        "G": 19
+      },
+      "totalStock": 110,
+      "price": 49,
+      "folder": "68ac81d525e5c"
+    },
+    "top-air-verde-c-off": {
+      "name": "Top Air Verde Militar c/Off",
+      "atacadoSlug": "top-air-verde-c-off-at",
+      "images": [
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68ac81d1dd227/76449ee8-584e-477a-a57a-f4d522904a9a-68af1db4b531b.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68ac81d1dd227/img_2548-68af1dbcf1704.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68ac81d1dd227/f703dda1-a72b-464c-bf87-a7c3f95006d8-68af1dcb5a40a.jpg"
+      ],
+      "stock": {
+        "P": 43,
+        "M": 26,
+        "G": 20
+      },
+      "totalStock": 89,
+      "price": 49,
+      "folder": "68ac81d1dd227"
+    },
+    "top-cross-azul-marinho-c-azul": {
+      "name": "Top Cross Azul Marinho c/ Azul",
+      "atacadoSlug": "top-cross-azul-marinho-c-azul-at",
+      "images": [
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68ac81ce761d2/4f63b4cc-556c-418f-9b88-c12fb8f821f2-68acbaf1e70b8.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68ac81ce761d2/b3ad7347-9dc0-4d75-b405-1b17cf0438b9-68acbad56bc0c.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68ac81ce761d2/img_2399-68acb2586ec06.jpg"
+      ],
+      "stock": {
+        "P": 67,
+        "M": 65,
+        "G": 25
+      },
+      "totalStock": 157,
+      "price": 49,
+      "folder": "68ac81ce761d2"
+    },
+    "top-cross-preto-c-off": {
+      "name": "Top Cross Preto c/ Off",
+      "atacadoSlug": "top-cross-preto-c-off-at",
+      "images": [
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68ac81cbd1da3/262c042d-3038-4cff-9602-6315a7f94643-68acbb30eca5d.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68ac81cbd1da3/394732db-9e56-4ef2-bbca-b919d3183005-68acbb19860fd.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68ac81cbd1da3/img_2670-68acaa637d093.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68ac81cbd1da3/conjunto-preto-com-off-68acaa803729d.jpeg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68ac81cbd1da3/conjunto-preto-com-off2-68acaa405e552.jpeg"
+      ],
+      "stock": {
+        "P": 44,
+        "M": 9
+      },
+      "totalStock": 53,
+      "price": 49,
+      "folder": "68ac81cbd1da3"
+    },
+    "top-air-azul-marinho-c-azul": {
+      "name": "Top Air Azul Marinho c/ azul",
+      "atacadoSlug": "top-air-azul-marinho-c-azul-at",
+      "images": [
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68ac81c964935/3873f949-39b8-452d-817f-e9f7591bff44-68af1dfec2ac6.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68ac81c964935/img_2338-68af1e080ad53.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68ac81c964935/b45c8948-2580-4701-acc0-0b67752fdd46-68af1e0e25d37.jpg"
+      ],
+      "stock": {
+        "P": 80,
+        "M": 18,
+        "G": 42
+      },
+      "totalStock": 140,
+      "price": 49,
+      "folder": "68ac81c964935"
+    },
+    "top-air-cappuccino-c-off": {
+      "name": "Top Air Cappuccino c/ Off",
+      "atacadoSlug": "top-air-cappuccino-c-off-at",
+      "images": [
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68ac8162b295c/6368cd2b-dffc-4f09-9037-73965af892f0-68af21471abe8.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68ac8162b295c/img_2426-68af1fad7c88f.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68ac8162b295c/0949311b-8b82-43f9-b21b-b6d9288dddb4-68af1f9f914fb.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68ac8162b295c/img_2426-68af1fa6809ea.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68ac8162b295c/6a741851-ddb3-4e6a-88e0-8bf22e6a25e8-68af21411385b.jpg"
+      ],
+      "stock": {
+        "P": 50,
+        "M": 35,
+        "G": 16
+      },
+      "totalStock": 101,
+      "price": 49,
+      "folder": "68ac8162b295c"
+    },
+    "top-air-preto-c-off": {
+      "name": "Top Air Preto c/ Off",
+      "atacadoSlug": "top-air-preto-c-off-at",
+      "images": [
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68ac8157890fd/455422f1-ec0c-471d-a22e-2f97b5b501c0-68acbd22e20fe.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68ac8157890fd/4c57f8dc-0e9a-40e0-83d1-d59632129af1-68acbd5405995.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68ac8157890fd/img_2623-68acbd67d83c9.jpg"
+      ],
+      "stock": {
+        "P": 14,
+        "G": 5
+      },
+      "totalStock": 19,
+      "price": 49,
+      "folder": "68ac8157890fd"
+    },
+    "top-one-amora": {
+      "name": "Top One Amora",
+      "atacadoSlug": "top-one-amora-at",
+      "images": [
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/688cde3211c97/top-one-amora-688d0650706f4.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/688cde3211c97/img_2250-688d065b9041a.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/688cde3211c97/img_2259-688d06649cefb.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/688cde3211c97/img_3639-6893ac9c52402.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/688cde3211c97/img_3641-6893aca3798f7.jpg"
+      ],
+      "stock": {
+        "P": 22,
+        "M": 22,
+        "G": 35
+      },
+      "totalStock": 79,
+      "price": 54,
+      "folder": "688cde3211c97"
+    },
+    "top-one-azul-marinho": {
+      "name": "Top One Azul Marinho",
+      "atacadoSlug": "top-one-azul-marinho-at",
+      "images": [
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/688cde2ea509c/top-one-azul-688d05d54ae2d.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/688cde2ea509c/img_2386-688d05f093d53.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/688cde2ea509c/img_2382-688d05e976289.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/688cde2ea509c/img_2388-688d0d90d96a1.jpg"
+      ],
+      "stock": {
+        "G": 7
+      },
+      "totalStock": 7,
+      "price": 54,
+      "folder": "688cde2ea509c"
+    },
+    "cropped-manga-longa-off-white": {
+      "name": "Cropped Manga Longa Off White",
+      "atacadoSlug": "cropped-manga-longa-off-white-at",
+      "images": [
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68752d5f25780/img_2017-687554a249faa.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68752d5f25780/img_2028-6875549a7575e.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68752d5f25780/img_2022-687554aae208f.jpg"
+      ],
+      "stock": {
+        "G": 8
+      },
+      "totalStock": 8,
+      "price": 48,
+      "folder": "68752d5f25780"
+    },
+    "cropped-manga-longa-cereja": {
+      "name": "Cropped Manga Longa Cereja",
+      "atacadoSlug": "cropped-manga-longa-cereja-at",
+      "images": [
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68752d5bd5a74/img_2170-6875540317a9f.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68752d5bd5a74/img_2175-68755409cfcb5.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68752d5bd5a74/img_2172-68755412990e0.jpg"
+      ],
+      "stock": {
+        "P": 18,
+        "M": 1,
+        "G": 2
+      },
+      "totalStock": 21,
+      "price": 48,
+      "folder": "68752d5bd5a74"
+    },
+    "short-fast-cinza-c-branco": {
+      "name": "Short Fast Cinza c/ Branco",
+      "atacadoSlug": "short-fast-cinza-c-branco-at",
+      "images": [
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/69b465027b3fc/ee339276-5f91-428b-8149-00b0406adf13-69b4bcae73533.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/69b465027b3fc/20260312_79997-69b4bbab5ffdf.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/69b465027b3fc/f69c443f-0f00-48d4-b77b-c0e83b79d96d-69b4bbdf8796b.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/69b465027b3fc/20260312_79669-69b4bbc62464a.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/69b465027b3fc/7fbb4da2-20b1-49bc-ac22-43cfc75384dc-69b4bb95f371f.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/69b465027b3fc/d85a908e-2e02-4779-9aa9-21390092474d-69b4bb9e7ac6c.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/69b465027b3fc/36b4974e-2ee7-47ef-a176-a65082d66509-69b4bc36d81a9.jpg"
+      ],
+      "stock": {
+        "P": 33,
+        "M": 29,
+        "G": 20
+      },
+      "totalStock": 82,
+      "price": 69,
+      "folder": "69b465027b3fc"
+    },
+    "short-fast-preto-c-branco": {
+      "name": "Short Fast Preto c/ Branco",
+      "atacadoSlug": "short-fast-preto-c-branco-at",
+      "images": [
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/69b465007aabd/4e2cd487-7f59-4f42-bd88-a6bd3efbe35f-69b4bebf432d0.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/69b465007aabd/20260312_79969-69b4bed5e71f3.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/69b465007aabd/239ae3d2-59e3-4c29-9402-4e7fa660683f-69b4beba90247.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/69b465007aabd/20260312_79710-69b4bee775ad0.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/69b465007aabd/5fa40013-ba4f-420e-9948-1c3783b699e8-69b4befc56391.jpg"
+      ],
+      "stock": {
+        "P": 33,
+        "M": 25,
+        "G": 14
+      },
+      "totalStock": 72,
+      "price": 69,
+      "folder": "69b465007aabd"
+    },
+    "short-fast-azul-elegance-c-branco": {
+      "name": "Short Fast Azul Elegance c/ Branco",
+      "atacadoSlug": "short-fast-azul-elegance-c-branco-at",
+      "images": [
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/69b464f88e8bd/451a90cb-07c8-497b-93bc-bfd117646115-69b4c14a2706a.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/69b464f88e8bd/20260312_79453-69b4c1bb74873.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/69b464f88e8bd/673c40fd-c898-4ece-996e-80381efa7241-69b4c15114d1a.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/69b464f88e8bd/6399fdcd-dc51-46cf-ba38-3270cd5b6681-69b4c137ac77d.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/69b464f88e8bd/20260312_79586-69b4c19e292e5.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/69b464f88e8bd/057571a4-2a52-44b8-8463-1a8b33842fdd-69b4c155e86b1.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/69b464f88e8bd/20260312_80102-69b4c182baac9.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/69b464f88e8bd/87dcdc90-5520-470d-ad68-a9e8bc26ad95-69b4c160ab32c.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/69b464f88e8bd/cc1251f9-1f62-4447-9db1-025fa3d12681-69b4c16bc47d7.jpg"
+      ],
+      "stock": {
+        "P": 32,
+        "M": 28,
+        "G": 22
+      },
+      "totalStock": 82,
+      "price": 69,
+      "folder": "69b464f88e8bd"
+    },
+    "short-run-amarelo-energy": {
+      "name": "Short Run Amarelo Energy",
+      "atacadoSlug": "short-run-amarelo-energy-at",
+      "images": [
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/69237e68c5df0/wbuy-mobile-1763982325201-69243bf6d6cb7.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/69237e68c5df0/wbuy-mobile-1763982338742-69243c0446c63.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/69237e68c5df0/wbuy-mobile-1763982356393-69243c15e6606.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/69237e68c5df0/wbuy-mobile-1763982368755-69243c2276c4c.jpg"
+      ],
+      "stock": {
+        "P": 49,
+        "M": 50,
+        "G": 24
+      },
+      "totalStock": 123,
+      "price": 69,
+      "folder": "69237e68c5df0"
+    },
+    "short-run-azul-sky": {
+      "name": "Short Run Azul Sky",
+      "atacadoSlug": "short-run-azul-sky-at",
+      "images": [
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/69237e6459b85/wbuy-mobile-1763981488956-692438b28615b.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/69237e6459b85/wbuy-mobile-1763981529227-692438dacf253.jpg"
+      ],
+      "stock": {
+        "P": 37,
+        "M": 38,
+        "G": 21
+      },
+      "totalStock": 96,
+      "price": 69,
+      "folder": "69237e6459b85"
+    },
+    "short-edge-azul-marinho-c-azul": {
+      "name": "Short Edge Azul Marinho c/ Azul",
+      "atacadoSlug": "short-edge-azul-marinho-c-azul-at",
+      "images": [
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68ac816e6898a/7cbe6dfc-1a82-4abc-95fd-133cf442d129-68af1ea288765.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68ac816e6898a/img_2350-68af1ead68d6a.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68ac816e6898a/b45c8948-2580-4701-acc0-0b67752fdd46-68af1e475a9f0.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68ac816e6898a/6114f49d-c38f-48c3-9f9e-2017b2733313-68af1e9d19e83.jpg"
+      ],
+      "stock": {
+        "P": 39,
+        "M": 4
+      },
+      "totalStock": 43,
+      "price": 59,
+      "folder": "68ac816e6898a"
+    },
+    "short-edge-cappuccino-c-off": {
+      "name": "Short Edge Cappuccino c/ Off",
+      "atacadoSlug": "short-edge-cappuccino-c-off-at",
+      "images": [
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68ac816c0d39a/cf93314a-ec86-42a2-9d4d-70bc12496ead-68af1eeb0a196.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68ac816c0d39a/img_2426-68af1f1676f36.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68ac816c0d39a/0949311b-8b82-43f9-b21b-b6d9288dddb4-68af1f60c2871.jpg"
+      ],
+      "stock": {
+        "P": 69,
+        "M": 39,
+        "G": 23
+      },
+      "totalStock": 131,
+      "price": 59,
+      "folder": "68ac816c0d39a"
+    },
+    "short-edge-verde-militar-c-off": {
+      "name": "Short Edge Verde Militar c/ Off",
+      "atacadoSlug": "short-edge-verde-militar-c-off-at",
+      "images": [
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68ac8169a4d01/1c7f3840-0619-473e-b14e-83eedfd0452c-68af2275ee482.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68ac8169a4d01/img_2553-68af221d421dc.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68ac8169a4d01/e247c12c-2f91-4636-8370-b032014948e2-68af2223eaf93.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68ac8169a4d01/f703dda1-a72b-464c-bf87-a7c3f95006d8-68af2230cfa6d.jpg"
+      ],
+      "stock": {
+        "P": 39,
+        "M": 2
+      },
+      "totalStock": 41,
+      "price": 59,
+      "folder": "68ac8169a4d01"
+    },
+    "short-edge-preto-c-off": {
+      "name": "Short Edge Preto c/ Off",
+      "atacadoSlug": "short-edge-preto-c-off-at",
+      "images": [
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68ac815a11083/03b78fc5-662f-4504-b2fc-9168eb45f65a-68acca8260272.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68ac815a11083/img_2630-68acc2ac95937.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68ac815a11083/2731cb0f-e73b-4505-bee3-98c55e9ea09c-68acc2c87617f.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68ac815a11083/img_2623-68acca91a91ca.jpg"
+      ],
+      "stock": {
+        "P": 21,
+        "M": 20,
+        "G": 4
+      },
+      "totalStock": 45,
+      "price": 59,
+      "folder": "68ac815a11083"
+    },
+    "short-run-cereja": {
+      "name": "Short Run Cereja",
+      "atacadoSlug": "short-run-cereja-at",
+      "images": [
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68752bb98a84d/img_2093-1-6875488acddbd.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68752bb98a84d/img_2087-1-687548904689b.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68752bb98a84d/img_2080-2-687548867221d.jpg"
+      ],
+      "stock": {
+        "P": 36,
+        "M": 32,
+        "G": 10
+      },
+      "totalStock": 78,
+      "price": 69,
+      "folder": "68752bb98a84d"
+    },
+    "short-run-off-white": {
+      "name": "Short Run Off White",
+      "atacadoSlug": "short-run-off-white-at",
+      "images": [
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68752ba776320/img_1960-1-6877c9354d4e5.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68752ba776320/img_1958-1-6875478caff5f.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68752ba776320/img_1951-1-68754787595e5.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68752ba776320/img_1962-687547967db05.jpg"
+      ],
+      "stock": {
+        "P": 28,
+        "M": 23,
+        "G": 28
+      },
+      "totalStock": 79,
+      "price": 69,
+      "folder": "68752ba776320"
+    },
+    "short-adapt-canelado-preto": {
+      "name": "Short Adapt Canelado Preto",
+      "atacadoSlug": "short-adapt-canelado-preto-at",
+      "images": [
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/685d868a6535e/shorts-preto-2-685da4ace4cfd.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/685d868a6535e/shorts-preto-1-685da4a6c483e.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/685d868a6535e/shorts-preto-685da4b6d9c24.jpg"
+      ],
+      "stock": {
+        "P": 27
+      },
+      "totalStock": 27,
+      "price": 79,
+      "folder": "685d868a6535e"
+    },
+    "short-adapt-canelado-coffe": {
+      "name": "Short Adapt Canelado Coffee",
+      "atacadoSlug": "short-adapt-canelado-coffe-at",
+      "images": [
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/685d8686b7d02/shorts-adapt-marrom-2-685da3cd605ea.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/685d8686b7d02/shorts-adapt-marrom-1-685da3c158001.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/685d8686b7d02/shorts-adapt-marrom-685da3b7263e7.jpg"
+      ],
+      "stock": {
+        "P": 22
+      },
+      "totalStock": 22,
+      "price": 79,
+      "folder": "685d8686b7d02"
+    },
+    "short-basic-azul-marine": {
+      "name": "Short Basic Azul Marine",
+      "atacadoSlug": "short-basic-azul-marine-at",
+      "images": [
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68430ade944e6/short-basic-azul-marine-frente-68431718115b9.jpeg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68430ade944e6/img_6385-6843173311eca.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68430ade944e6/short-basic-azul-marine-lateral-68431722a7a36.jpeg"
+      ],
+      "stock": {
+        "P": 12
+      },
+      "totalStock": 12,
+      "price": 59,
+      "folder": "68430ade944e6"
+    },
+    "short-speed-c-bolso-azul-marine": {
+      "name": "Short Speed c/ bolso Azul Marine",
+      "atacadoSlug": "short-speed-c-bolso-azul-marine-at",
+      "images": [
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68430ad4c98e6/short-speed-azul-marine-684325b88b37a.jpeg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68430ad4c98e6/img_6330-1-6843266428df2.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68430ad4c98e6/short-speed-azul-marine-6846c82bdbe6a.jpeg"
+      ],
+      "stock": {
+        "P": 13
+      },
+      "totalStock": 13,
+      "price": 59,
+      "folder": "68430ad4c98e6"
+    },
+    "short-basic-terra-cota": {
+      "name": "Short Basic Terracota",
+      "atacadoSlug": "short-basic-terra-cota-at",
+      "images": [
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68430ac5f1446/short-basic-terracota-lateral-68431cf101f21.jpeg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68430ac5f1446/img_6057-1-68431d0465eaf.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68430ac5f1446/short-basic-terracota-68431ce603895.jpeg"
+      ],
+      "stock": {
+        "P": 5,
+        "G": 8
+      },
+      "totalStock": 13,
+      "price": 59,
+      "folder": "68430ac5f1446"
+    },
+    "short-adapt-terra-cota": {
+      "name": "Short Adapt Terracota",
+      "atacadoSlug": "short-adapt-terra-cota-at",
+      "images": [
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68430ac277274/short-adapt-terracota-frente-68430faebe592.jpeg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68430ac277274/img_6155-68430fbf58c01.jpg"
+      ],
+      "stock": {
+        "P": 14,
+        "M": 5,
+        "G": 16
+      },
+      "totalStock": 35,
+      "price": 65,
+      "folder": "68430ac277274"
+    },
+    "short-basic-lilas": {
+      "name": "Short Basic Lil�s",
+      "atacadoSlug": "short-basic-lilas-at",
+      "images": [
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68430abac3688/short-basic-lilas-frente-68431e50b9ceb.jpeg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68430abac3688/img_6644-68431e9363797.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68430abac3688/short-basic-lilas-lateral-68431e5cb2cf3.jpeg"
+      ],
+      "stock": {
+        "G": 4
+      },
+      "totalStock": 4,
+      "price": 59,
+      "folder": "68430abac3688"
+    },
+    "short-speed-c-bolso-lilas": {
+      "name": "Short Speed c/ Bolso Lilas",
+      "atacadoSlug": "short-speed-c-bolso-lilas-at",
+      "images": [
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68430ab77e4d3/short-speed-lilas3-684331e1f00da.jpeg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68430ab77e4d3/img_6538-684331fc73257.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68430ab77e4d3/short-speed-lilas2-684331d80d3ae.jpeg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68430ab77e4d3/short-speed-lilas-684331d0944f2.jpeg"
+      ],
+      "stock": {
+        "P": 13,
+        "G": 5
+      },
+      "totalStock": 18,
+      "price": 59,
+      "folder": "68430ab77e4d3"
+    },
+    "Short Adapt": {
+      "name": "Short Adapt Lilas",
+      "atacadoSlug": "Short Adapt",
+      "images": [
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68430ab058ace/short-adapt-lilas-frente-sem-logo-684310b26f7bd.jpeg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68430ab058ace/img_6601-684310d39d8ba.jpg"
+      ],
+      "stock": {
+        "P": 10,
+        "M": 5,
+        "G": 14
+      },
+      "totalStock": 29,
+      "price": 65,
+      "folder": "68430ab058ace"
+    },
+    "short-speed-c-bolso-verde-herb": {
+      "name": "Short Speed c/ Bolso Verde Herb",
+      "atacadoSlug": "short-speed-c-bolso-verde-herb-at",
+      "images": [
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/6824bfcf863ad/speed-verde-herb-2-sem-logo-6824e0355e331.jpeg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/6824bfcf863ad/speed-verde-herb-3-sem-logo-6824e02c70f46.jpeg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/6824bfcf863ad/speed-verde-herb-5-6824e03086bbf.jpg"
+      ],
+      "stock": {
+        "P": 1
+      },
+      "totalStock": 1,
+      "price": 59,
+      "folder": "6824bfcf863ad"
+    },
+    "short-run-branco": {
+      "name": "Short Run Branco",
+      "atacadoSlug": "short-run-branco-at",
+      "images": [
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68102cc837d7f/shorts-run-branco-1-sem-logoo-6810b2434a496.jpeg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68102cc837d7f/shorts-run-branco-6810b23f57f26.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68102cc837d7f/shorts-run-branco-4-sem-logo-6810b23c02edb.jpeg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68102cc837d7f/shorts-run-branco-3-sem-logo-6810b24704c1b.jpeg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68102cc837d7f/shorts-run-branco-2-sem-logo-6810b24a58e63.jpeg"
+      ],
+      "stock": {
+        "P": 65,
+        "M": 39,
+        "G": 12
+      },
+      "totalStock": 116,
+      "price": 69,
+      "folder": "68102cc837d7f"
+    },
+    "short-speed-c-bolso-preto": {
+      "name": "Short Speed c/ bolso Preto",
+      "atacadoSlug": "short-speed-c-bolso-preto-at",
+      "images": [
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/680fbc0b0e925/shorts-speed-preto-sem-logo-680fd3711476e.jpeg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/680fbc0b0e925/shorts-speed-preto-1-680fd36d33956.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/680fbc0b0e925/shorts-speed-preto-2-sem-logo-680fd369eec63.jpeg"
+      ],
+      "stock": {
+        "P": 32,
+        "M": 10
+      },
+      "totalStock": 42,
+      "price": 59,
+      "folder": "680fbc0b0e925"
+    },
+    "short-speed-c-bolso-azul-pacifico": {
+      "name": "Short Speed c/ bolso Azul Petr�leo",
+      "atacadoSlug": "short-speed-c-bolso-azul-pacifico-at",
+      "images": [
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/680fbc08acdc2/shorts-speed-petroleo-sem-logo-680fdb3622ee7.jpeg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/680fbc08acdc2/shorts-speed-petroleo-1-680fdb3ac80fb.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/680fbc08acdc2/shorts-speed-petroleo-2-sem-logo-680fdb3f07cb3.jpeg"
+      ],
+      "stock": {
+        "P": 4
+      },
+      "totalStock": 4,
+      "price": 59,
+      "folder": "680fbc08acdc2"
+    },
+    "legging-cross-preto-c-off": {
+      "name": "Legging Cross Preto c/ Off",
+      "atacadoSlug": "legging-cross-preto-c-off-at",
+      "images": [
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68ac815f46f90/c9d8bcf7-9052-498b-90d7-24afbf9cac26-68acc877d4df0.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68ac815f46f90/img_2673-68acc88f314ab.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68ac815f46f90/img_2675-68acc895dd630.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68ac815f46f90/659ec751-6d2f-4c65-ace1-73e6d300bf0b-68acc89f3e788.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68ac815f46f90/1bf1fb9d-d6a4-4bb2-8312-5ceca8da5238-68acc884b06e7.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68ac815f46f90/img_2670-68acc8a801032.jpg"
+      ],
+      "stock": {
+        "P": 15
+      },
+      "totalStock": 15,
+      "price": 85,
+      "folder": "68ac815f46f90"
+    },
+    "legging-cross-verde-militar-c-off": {
+      "name": "Legging Cross Verde Militar c/ Off",
+      "atacadoSlug": "legging-cross-verde-militar-c-off-at",
+      "images": [
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68ac815de76cc/d22abe60-557d-4c98-a178-2621cabe66ae-68acc51dc4fac.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68ac815de76cc/img_2603-68acb5a07d7cd.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68ac815de76cc/img_2601-68acc5376042b.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68ac815de76cc/51feb087-0779-4b9c-a9a9-0d8ad334a5b2-68acc52e5dee4.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68ac815de76cc/img_2593-68acc549f118b.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68ac815de76cc/21bd34d5-8f72-49a3-9e2b-e18526b7c815-68ae09f52eed4.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68ac815de76cc/img_5876-68ae09fd51740.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68ac815de76cc/9fd9d243-94f3-4763-9f96-885c19f73e83-68ae0a0686d1c.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68ac815de76cc/img_5878-68ae0a0f8c316.jpg"
+      ],
+      "stock": {
+        "P": 58,
+        "M": 42,
+        "G": 1
+      },
+      "totalStock": 101,
+      "price": 85,
+      "folder": "68ac815de76cc"
+    },
+    "legging-cross-cappuccino-c-off": {
+      "name": "Legging Cross Cappuccino c/ Off",
+      "atacadoSlug": "legging-cross-cappuccino-c-off-at",
+      "images": [
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68ac815ca959b/bbc6582f-d03a-40fc-86f5-03e9c92c8dcf-68acc8044c523.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68ac815ca959b/img_2502-68acc6492145a.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68ac815ca959b/img_2500-68acc6403b4bc.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68ac815ca959b/52ac2c28-bad8-46b1-a303-e6e0db61d73c-68acc811093eb.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68ac815ca959b/img_2484-68acc81b791ad.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68ac815ca959b/126c1516-9c61-43e4-9932-cc4c71a16eaf-68ae09b93fd24.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68ac815ca959b/12c08f14-3b92-4b5b-a663-e4ff26bcea1c-68ae09ab3fc9c.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68ac815ca959b/ef9a9b64-1593-45a3-aac9-ecd392d85b57-68ae09b2a3d34.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68ac815ca959b/img_5491-68ae09c94e999.jpg"
+      ],
+      "stock": {
+        "P": 18,
+        "M": 29,
+        "G": 21
+      },
+      "totalStock": 68,
+      "price": 85,
+      "folder": "68ac815ca959b"
+    },
+    "legging-cross-azul-marinho-c-azul": {
+      "name": "Legging Cross Azul Marinho c/ Azul",
+      "atacadoSlug": "legging-cross-azul-marinho-c-azul-at",
+      "images": [
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68ac815b6ec79/f40c3dc0-213e-4f05-b8de-dd5bc2c8cb3f-1-68acc8fb5bdbc.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68ac815b6ec79/img_2409-68acc904cc235.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68ac815b6ec79/img_2407-68acc90b7fb44.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68ac815b6ec79/5269f9dc-c272-4fdc-8e16-8b31c464f177-1-68acc9a925a3f.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68ac815b6ec79/img_2399-68acc9a130fd6.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68ac815b6ec79/7f08805f-2017-4267-9ec9-5a36c7665a6e-68acc9e5ca9a8.jpg"
+      ],
+      "stock": {
+        "P": 51
+      },
+      "totalStock": 51,
+      "price": 85,
+      "folder": "68ac815b6ec79"
+    },
+    "legging-line-c-bolso-preto": {
+      "name": "Legging Line C/ Bolso Preto",
+      "atacadoSlug": "legging-line-c-bolso-preto-at",
+      "images": [
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/689f536b75cbb/calca-line-preta-sem-logo-689f6419d7fb7.png",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/689f536b75cbb/costas-calca-line-preta-689f647696a5e.png",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/689f536b75cbb/calca-line-preta-sem-logo-2-689f63fb71062.jpeg"
+      ],
+      "stock": {
+        "P": 31
+      },
+      "totalStock": 31,
+      "price": 98,
+      "folder": "689f536b75cbb"
+    },
+    "legging-flare-amora": {
+      "name": "Legging Flare Amora",
+      "atacadoSlug": "legging-flare-amora-at",
+      "images": [
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/688cde3d8234c/flare-amora-688d0cccf06f1.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/688cde3d8234c/img_2262-688d0cde1e148.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/688cde3d8234c/flare-amora2-688d0cd12eba7.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/688cde3d8234c/legging-top-one-amora-688d0ce9776c5.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/688cde3d8234c/img_2261-1-688d0cf4e5aaf.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/688cde3d8234c/img_3641-6893abbb30ed0.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/688cde3d8234c/img_3639-6893abc240b66.jpg"
+      ],
+      "stock": {
+        "P": 25,
+        "M": 13,
+        "G": 11
+      },
+      "totalStock": 49,
+      "price": 98,
+      "folder": "688cde3d8234c"
+    },
+    "legging-flare-preta": {
+      "name": "Legging Flare Preta",
+      "atacadoSlug": "legging-flare-preta-at",
+      "images": [
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/688cde3adbd98/legging-flare-preta-688d096db043c.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/688cde3adbd98/img_2700-688d0a8be14cd.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/688cde3adbd98/img_2699-688d0a78ae223.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/688cde3adbd98/legging-flare-preta-2-688d0b2283b7e.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/688cde3adbd98/img_2694-688d0a7ea4a63.jpg"
+      ],
+      "stock": {
+        "P": 19,
+        "M": 13,
+        "G": 2
+      },
+      "totalStock": 34,
+      "price": 98,
+      "folder": "688cde3adbd98"
+    },
+    "legging-flare-azul-marinho": {
+      "name": "Legging Flare Azul Marinho",
+      "atacadoSlug": "legging-flare-azul-marinho-at",
+      "images": [
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/688cde37e5657/flare-azul-688d0803a7420.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/688cde37e5657/img_2389-688d081253f29.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/688cde37e5657/img_2374-1-688d080cbd224.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/688cde37e5657/flare-e-top-one-azul-688d081c0d9b4.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/688cde37e5657/img_2388-688d0829cbbc2.jpg"
+      ],
+      "stock": {
+        "P": 56,
+        "M": 30,
+        "G": 11
+      },
+      "totalStock": 97,
+      "price": 98,
+      "folder": "688cde37e5657"
+    },
+    "legging-line-c-bolso-cereja": {
+      "name": "Legging Line C/ Bolso Cereja",
+      "atacadoSlug": "legging-line-c-bolso-cereja-at",
+      "images": [
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68752bbd0cb73/img_2138-1-68754b65181d0.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68752bbd0cb73/img_2141-1-68754b6cc10fd.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68752bbd0cb73/img_2135-1-68754b5eb01de.jpg"
+      ],
+      "stock": {
+        "P": 20,
+        "M": 20,
+        "G": 1
+      },
+      "totalStock": 41,
+      "price": 98,
+      "folder": "68752bbd0cb73"
+    },
+    "legging-line-c-bolso-forrado-off-white": {
+      "name": "Legging Line C/ Bolso Forrado Off White",
+      "atacadoSlug": "legging-line-c-bolso-forrado-off-white-at",
+      "images": [
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68752ba8619e6/img_2011-1-687549f8256fa.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68752ba8619e6/img_2013-687549f3414e2.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68752ba8619e6/img_2015-1-687549ff8d410.jpg"
+      ],
+      "stock": {
+        "P": 24,
+        "M": 28,
+        "G": 15
+      },
+      "totalStock": 67,
+      "price": 98,
+      "folder": "68752ba8619e6"
+    },
+    "legging-classic-terra-cota": {
+      "name": "Legging Classic Terracota",
+      "atacadoSlug": "legging-classic-terra-cota-at",
+      "images": [
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68430acaa19a6/legging-classic-terracota-684342f8c757e.jpeg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68430acaa19a6/img_6092-68434321b71f2.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68430acaa19a6/legging-classic-terracota2-68434302a1fb9.jpeg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68430acaa19a6/conjunto-legging-classic-terracota-6843430e30f6f.jpeg"
+      ],
+      "stock": {
+        "P": 9
+      },
+      "totalStock": 9,
+      "price": 80,
+      "folder": "68430acaa19a6"
+    },
+    "legging-classic-coffe": {
+      "name": "Legging Classic Coffe",
+      "atacadoSlug": "legging-classic-coffe-at",
+      "images": [
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/66c4824c4f835/thai2921-66c489e20e98c.jpeg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/66c4824c4f835/thai2928-66c489e011f5f.jpeg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/66c4824c4f835/legging-coffee-sem-logo-66f221566e7e1.jpeg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/66c4824c4f835/img_2828-66c4871d2a902.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/66c4824c4f835/conjunto-dallas-coffe-sem-logo-66f21cfeaab77.jpeg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/66c4824c4f835/conjunto-coffee-sem-logo-66f21cff461d1.jpeg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/66c4824c4f835/conjunto-dallas-coffee-sem-logo-66f21cff98d62.jpeg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/66c4824c4f835/top-dallas-coffe-com-logo-frente-66f21cffdedd3.jpeg"
+      ],
+      "stock": {
+        "P": 24,
+        "M": 36,
+        "G": 19
+      },
+      "totalStock": 79,
+      "price": 80,
+      "folder": "66c4824c4f835"
+    },
+    "legging-cintura-alta-basica-preto": {
+      "name": "Legging Cintura Alta B�sica Preto",
+      "atacadoSlug": "legging-cintura-alta-basica-preto-at",
+      "images": [
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/662a76306c499/_mg_4836-662e813a440f9.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/662a76306c499/_mg_4832-662e81388b8e5.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/662a76306c499/_mg_4839-662e8136ce911.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/662a76306c499/legging-preto-cintura-alta-sem-logo-6701fbeb8271b.jpeg"
+      ],
+      "stock": {
+        "P": 8
+      },
+      "totalStock": 8,
+      "price": 72,
+      "folder": "662a76306c499"
+    },
+    "legging-flare-canelada-off-white": {
+      "name": "Legging Flare Canelada Off White",
+      "atacadoSlug": "legging-flare-canelada-off-white-at",
+      "images": [
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68e68aaf00025/img_8215-68e68b95a4d6a.png",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68e68aaf00025/img_8216-68e68b9571ed3.png"
+      ],
+      "stock": {},
+      "totalStock": 0,
+      "price": 0,
+      "folder": "68e68aaf00025"
+    },
+    "legging-flare-canelada-coffe": {
+      "name": "Legging Flare Canelada Coffee",
+      "atacadoSlug": "legging-flare-canelada-coffe-at",
+      "images": [
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/685d868d07244/flare-marrom-2-685da06a7f3d3.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/685d868d07244/flare-marrom-685da0595919d.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/685d868d07244/flare-marrom-1-685da06094815.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/685d868d07244/dsc05205-685da07ad6478.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/685d868d07244/dsc05228-685da0868b4f5.jpg"
+      ],
+      "stock": {},
+      "totalStock": 0,
+      "price": 0,
+      "folder": "685d868d07244"
+    },
+    "macaquinho-move-azul-marinho": {
+      "name": "Macaquinho Move Azul Marinho",
+      "atacadoSlug": "macaquinho-move-azul-marinho-at",
+      "images": [
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/699f441273dc6/5bba569a-7a7a-418e-b064-0aa49ce0abb2-699f59e74d3d8.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/699f441273dc6/img_8908-699f59ee4a7d5.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/699f441273dc6/26683082-29b2-4d48-b8bc-b0bc06f3a2b9-699f59dc81a0a.jpg"
+      ],
+      "stock": {
+        "P": 51,
+        "M": 50,
+        "G": 24
+      },
+      "totalStock": 125,
+      "price": 79,
+      "folder": "699f441273dc6"
+    },
+    "macaquinho-move-verde-militar": {
+      "name": "Macaquinho Move Verde Militar",
+      "atacadoSlug": "macaquinho-move-verde-militar-at",
+      "images": [
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/699f440eb3ab7/980f93d9-9e23-41bf-a0f2-921ea2db4e50-699f5a7f40d89.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/699f440eb3ab7/img_8919-699f5abaa072b.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/699f440eb3ab7/a825b398-a014-404b-80be-1854318fa293-699f5ab2e56be.jpg"
+      ],
+      "stock": {
+        "P": 68,
+        "M": 66,
+        "G": 34
+      },
+      "totalStock": 168,
+      "price": 79,
+      "folder": "699f440eb3ab7"
+    },
+    "macaquinho-one-marrom": {
+      "name": "Macaquinho One Marrom",
+      "atacadoSlug": "macaquinho-one-marrom-at",
+      "images": [
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/69237e5bb0d44/wbuy-mobile-1763939344379-69239411c4b7e.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/69237e5bb0d44/wbuy-mobile-1763939362233-69239423a3495.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/69237e5bb0d44/wbuy-mobile-1763939375632-692394312070f.jpg"
+      ],
+      "stock": {
+        "P": 66,
+        "M": 36,
+        "G": 23
+      },
+      "totalStock": 125,
+      "price": 79,
+      "folder": "69237e5bb0d44"
+    },
+    "macaquinho-one-preto": {
+      "name": "Macaquinho One Preto",
+      "atacadoSlug": "macaquinho-one-preto-at",
+      "images": [
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/69237e5890a1f/wbuy-mobile-1763936409864-6923889b5e50c.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/69237e5890a1f/wbuy-mobile-1763936395892-6923888d5c370.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/69237e5890a1f/wbuy-mobile-1763936378725-6923887c44e12.jpg"
+      ],
+      "stock": {
+        "P": 49,
+        "M": 30,
+        "G": 11
+      },
+      "totalStock": 90,
+      "price": 79,
+      "folder": "69237e5890a1f"
+    },
+    "macaquinho-one-vermelho": {
+      "name": "Macaquinho One Vermelho",
+      "atacadoSlug": "macaquinho-one-vermelho-at",
+      "images": [
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/69237e554ee42/wbuy-mobile-1763936671408-692389a0dc059.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/69237e554ee42/wbuy-mobile-1763936659711-6923899545aa9.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/69237e554ee42/wbuy-mobile-1763936647017-692389887dcfb.jpg"
+      ],
+      "stock": {
+        "P": 7
+      },
+      "totalStock": 7,
+      "price": 79,
+      "folder": "69237e554ee42"
+    },
+    "macaquinho-ease-azul-marinho-c-azul": {
+      "name": "Macaquinho Ease Azul Marinho c/ azul",
+      "atacadoSlug": "macaquinho-ease-azul-marinho-c-azul-at",
+      "images": [
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68ac81c614234/14d7b37b-4627-4d0d-8006-493bd7267ce6-68acbe13b6358.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68ac81c614234/img_2300-68acbe66c01bb.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68ac81c614234/2a89aef6-4397-41a3-9079-adee369c9f19-68acbe6cbf6bc.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68ac81c614234/3cbc201d-9f59-494c-ac5e-908950aead05-68ae0ae1c14c1.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68ac81c614234/img_6391-68ae0ae65aa21.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68ac81c614234/img_6384-68ae0aedc9798.jpg"
+      ],
+      "stock": {
+        "P": 29,
+        "M": 8
+      },
+      "totalStock": 37,
+      "price": 89,
+      "folder": "68ac81c614234"
+    },
+    "macaquinho-ease-verde-militar-c-off": {
+      "name": "Macaquinho Ease Verde Militar c/ Off",
+      "atacadoSlug": "macaquinho-ease-verde-militar-c-off-at",
+      "images": [
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68ac81c29d81f/13c892fb-7638-4ee8-bd77-1a42fbad7114-68acbefd0f804.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68ac81c29d81f/img_2539-68acbf0815705.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68ac81c29d81f/2787eaa1-1d42-4a4b-a03e-47727de626a6-68acbef2e3c95.jpg"
+      ],
+      "stock": {
+        "P": 31
+      },
+      "totalStock": 31,
+      "price": 89,
+      "folder": "68ac81c29d81f"
+    },
+    "macaquinho-ease-cappuccino-c-off": {
+      "name": "Macaquinho Ease Cappuccino c/ Off",
+      "atacadoSlug": "macaquinho-ease-cappuccino-c-off-at",
+      "images": [
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68ac81660f846/77045b5e-6b64-402a-8144-0a9ccab638c6-68acc011af967.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68ac81660f846/img_2475-68acc03c6a966.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68ac81660f846/f90fe08c-eb81-4633-b523-2d4de18f4f38-68acc04c1642d.jpg"
+      ],
+      "stock": {
+        "P": 53,
+        "M": 19,
+        "G": 21
+      },
+      "totalStock": 93,
+      "price": 89,
+      "folder": "68ac81660f846"
+    },
+    "macaquinho-ease-preto-c-off": {
+      "name": "Macaquinho Ease Preto c/ Off",
+      "atacadoSlug": "macaquinho-ease-preto-c-off-at",
+      "images": [
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68ac81541bb17/16436dde-e6ad-4ee7-badc-a14d7cd26915-68acc0ec42e49.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68ac81541bb17/img_2660-68acc0fe16628.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68ac81541bb17/35f4b4ef-c65e-42a6-a45b-1c86a8278671-68acc0f7c5875.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68ac81541bb17/c83c1b34-a6b4-4d94-8831-d1e6e2d892ba-68ae0bb58f7f4.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68ac81541bb17/img_6400-68ae0ba4c960b.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68ac81541bb17/47f7b437-8631-4a5b-b099-bb31d32004c8-68ae0bac5dead.jpg"
+      ],
+      "stock": {
+        "P": 19
+      },
+      "totalStock": 19,
+      "price": 89,
+      "folder": "68ac81541bb17"
+    },
+    "macacao-flare-preto": {
+      "name": "Macac�o Flare Preto",
+      "atacadoSlug": "macacao-flare-preto-at",
+      "images": [
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/688cde2b1362f/macacao-flare-preto-688d044bcbbe6.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/688cde2b1362f/img_2718-688d0459e9509.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/688cde2b1362f/macacao-flare-preto2-688d044b02881.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/688cde2b1362f/img_3630-6893acdfaf6cd.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/688cde2b1362f/img_3476-6893ad0754946.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/688cde2b1362f/img_3527-6893ad1ef1ead.jpg"
+      ],
+      "stock": {
+        "P": 7
+      },
+      "totalStock": 7,
+      "price": 105,
+      "folder": "688cde2b1362f"
+    },
+    "macacao-flare-amora": {
+      "name": "Macac�o Flare Amora",
+      "atacadoSlug": "macacao-flare-amora-at",
+      "images": [
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/688cde288bdb1/macacao-flare-amora-688d0384c32c5.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/688cde288bdb1/img_2227-688d0395e32ca.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/688cde288bdb1/macacao-flare-amora-editado-688d038408a52.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/688cde288bdb1/flare-amora-sem-logo-689e0389463e3.jpeg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/688cde288bdb1/flare-at-689e038fb8a30.jpeg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/688cde288bdb1/dsc09220-689e03a1c1a74.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/688cde288bdb1/dsc09163-689e03a4afff0.jpg"
+      ],
+      "stock": {
+        "P": 10,
+        "G": 5
+      },
+      "totalStock": 15,
+      "price": 105,
+      "folder": "688cde288bdb1"
+    },
+    "macacao-flare-azul-marinho": {
+      "name": "Macac�o Flare Azul Marinho",
+      "atacadoSlug": "macacao-flare-azul-marinho-at",
+      "images": [
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/688cde261a987/macacao-flare-688d030fbb0d4.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/688cde261a987/img_2286-688d0320823a9.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/688cde261a987/macacao-flare2-688d030ecf59b.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/688cde261a987/macacao-flare-azul-at2-689e031e5a6a4.jpeg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/688cde261a987/macacao-flare-azul-sem-logo-689e031d9af4d.jpeg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/688cde261a987/dsc08986-689e03326f9c6.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/688cde261a987/dsc09027-689e03397b173.jpg"
+      ],
+      "stock": {
+        "P": 27,
+        "M": 17,
+        "G": 11
+      },
+      "totalStock": 55,
+      "price": 105,
+      "folder": "688cde261a987"
+    },
+    "macacao-muse-cereja": {
+      "name": "Macac�o Muse Cereja",
+      "atacadoSlug": "macacao-muse-cereja-at",
+      "images": [
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68752d541846c/img_2100-1-68754cbe9ab99.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68752d541846c/img_2106-1-68754cc4ad8d3.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68752d541846c/img_2102-1-68754cb86d1a6.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68752d541846c/img_2116-1-68754ca532c5c.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68752d541846c/img_2108-1-68754cb1ea13d.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68752d541846c/img_2112-1-68754cab5f744.jpg"
+      ],
+      "stock": {
+        "P": 2,
+        "G": 1
+      },
+      "totalStock": 3,
+      "price": 99,
+      "folder": "68752d541846c"
+    },
+    "macaquinho-com-manga-cereja": {
+      "name": "Macaquinho com Manga Cereja",
+      "atacadoSlug": "macaquinho-com-manga-cereja-at",
+      "images": [
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68752bb4de4ce/img_2193-68754ed618bc9.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68752bb4de4ce/img_2201-68754ee684ab3.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68752bb4de4ce/img_2199-68754edcbbeb6.jpg"
+      ],
+      "stock": {
+        "P": 30,
+        "M": 22,
+        "G": 7
+      },
+      "totalStock": 59,
+      "price": 98,
+      "folder": "68752bb4de4ce"
+    },
+    "macacao-muse-preto": {
+      "name": "Macac�o Muse Preto",
+      "atacadoSlug": "macacao-muse-preto-at",
+      "images": [
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68752bb26dd5f/img_1902-1-68754da099ba8.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68752bb26dd5f/img_1916-1-68754df587e24.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68752bb26dd5f/img_1911-1-68754dddcc392.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68752bb26dd5f/img_1928-1-68754e06c221e.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68752bb26dd5f/img_1920-1-68754de872cbe.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68752bb26dd5f/img_1922-1-68754dedf3ec8.jpg"
+      ],
+      "stock": {
+        "P": 8
+      },
+      "totalStock": 8,
+      "price": 99,
+      "folder": "68752bb26dd5f"
+    },
+    "macaquinho-com-manga-forrado-off-white": {
+      "name": "Macaquinho com Manga Forrado Off White",
+      "atacadoSlug": "macaquinho-com-manga-forrado-off-white-at",
+      "images": [
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68752bb00ab57/img_1976-68754faf43a2a.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68752bb00ab57/img_1983-68754fa8eb2b3.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68752bb00ab57/img_1977-68754fb5c49f4.jpg"
+      ],
+      "stock": {
+        "P": 9,
+        "M": 5,
+        "G": 7
+      },
+      "totalStock": 21,
+      "price": 98,
+      "folder": "68752bb00ab57"
+    },
+    "macaquinho-adapt-blush": {
+      "name": "Macaquinho Adapt Blush",
+      "atacadoSlug": "macaquinho-adapt-blush-at",
+      "images": [
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/6824bfc7a0584/macaquinho-blush-sem-logo-6824e823c6381.jpeg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/6824bfc7a0584/macaquinho-blush-1-6824e827711d4.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/6824bfc7a0584/macaquinho-blush-2-sem-logooo-6824e82b355ea.jpeg"
+      ],
+      "stock": {
+        "P": 3,
+        "M": 4
+      },
+      "totalStock": 7,
+      "price": 79,
+      "folder": "6824bfc7a0584"
+    },
+    "macaquinho-adapt-preto": {
+      "name": "Macaquinho Adapt Preto",
+      "atacadoSlug": "macaquinho-adapt-preto-at",
+      "images": [
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/680fbc702bb99/macaquinho-adapt-preto-4-sem-logo-680fe93ac4ab5.jpeg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/680fbc702bb99/macaquinho-adapt-preto-2-680fe93f1f89c.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/680fbc702bb99/macaquinho-adapt-preto-3-sem-logo-680fe9439168a.jpeg"
+      ],
+      "stock": {
+        "P": 17,
+        "M": 4
+      },
+      "totalStock": 21,
+      "price": 79,
+      "folder": "680fbc702bb99"
+    },
+    "macaquinho-move-frente-unica-azul-marinho": {
+      "name": "Macaquinho Move Frente �nica Azul Marinho",
+      "atacadoSlug": "macaquinho-move-frente-unica-azul-marinho-at",
+      "images": [
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/67e43f4fd19f9/macaquinho-azul-marinho-sem-logo-67e4445e75a52.jpeg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/67e43f4fd19f9/dsc08193-67e444632e7eb.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/67e43f4fd19f9/macaquinho-azul-sem-logo3-67e4446736695.jpeg"
+      ],
+      "stock": {
+        "P": 25,
+        "M": 8
+      },
+      "totalStock": 33,
+      "price": 79,
+      "folder": "67e43f4fd19f9"
+    },
+    "macaquinho-move-frente-unica-cafe": {
+      "name": "Macaquinho Move Frente �nica Caf�",
+      "atacadoSlug": "macaquinho-move-frente-unica-cafe-at",
+      "images": [
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/67e43f4d8433f/macaquinho-cafa-sem-llogo-67e44395313de.jpeg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/67e43f4d8433f/dsc08215-67e44399aa04a.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/67e43f4d8433f/macaquinho-move-verde-militar-sem-logo-67e4439def6c8.jpeg"
+      ],
+      "stock": {
+        "P": 37,
+        "M": 19
+      },
+      "totalStock": 56,
+      "price": 79,
+      "folder": "67e43f4d8433f"
+    },
+    "macaquinho-move-frente-unica-verde-militar": {
+      "name": "Macaquinho Move Frente �nica Verde Militar",
+      "atacadoSlug": "macaquinho-move-frente-unica-verde-militar-at",
+      "images": [
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/67e43f4ac06ab/dsc08186-macaquinho-verde-sem-logo-67e442f226f8d.jpeg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/67e43f4ac06ab/dsc08172-67e442f75b013.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/67e43f4ac06ab/macaquinho-verde-militar-sem-logo-67e442fc1f0c5.jpeg"
+      ],
+      "stock": {
+        "P": 46,
+        "M": 34,
+        "G": 19
+      },
+      "totalStock": 99,
+      "price": 79,
+      "folder": "67e43f4ac06ab"
+    },
+    "macaquinho-move-frente-unica-cereja": {
+      "name": "Macaquinho Move Frente �nica Cereja",
+      "atacadoSlug": "macaquinho-move-frente-unica-cereja-at",
+      "images": [
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/6797bc991504c/macaquinho-cereja-frente-unica-sem-logo-6797c1573e55a.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/6797bc991504c/thai9962-6797c15f1d3d6.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/6797bc991504c/macaquinho-cereja-frente-unica-sem-logo2-6797c15aee398.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/6797bc991504c/thai9959-6797c16372b85.jpg"
+      ],
+      "stock": {
+        "P": 45,
+        "M": 30,
+        "G": 25
+      },
+      "totalStock": 100,
+      "price": 79,
+      "folder": "6797bc991504c"
+    },
+    "macaquinho-move-frente-unica-preto": {
+      "name": "Macaquinho Move Frente �nica Preto",
+      "atacadoSlug": "macaquinho-move-frente-unica-preto-at",
+      "images": [
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/6797bc905894a/macaquinho-move-frente-unica-preto-sem-logo-2-6797bf0cd0eca.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/6797bc905894a/macaquinho-preto-frente-unica-2-6797bf2f02a12.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/6797bc905894a/macaquinho-move-frente-unica-preto-sem-logo-6797bf046ab3b.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/6797bc905894a/macaquinho-frente-unica-preto-sem-logo-6797befc4d75c.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/6797bc905894a/macaquinho-preto-frente-unica-3-6797bf11cf884.jpg"
+      ],
+      "stock": {
+        "P": 125,
+        "M": 101,
+        "G": 44
+      },
+      "totalStock": 270,
+      "price": 79,
+      "folder": "6797bc905894a"
+    },
+    "macaquinho-move-verde-brilhoso": {
+      "name": "Macaquinho Move Verde Brilhoso",
+      "atacadoSlug": "macaquinho-move-verde-brilhoso-at",
+      "images": [
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/6740a41751fe7/thai5959-66f292f6517ae-6740a5c8e5b6e.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/6740a41751fe7/thai5962-66f292f824d9f-6740a5c96db59.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/6740a41751fe7/thai5949-66f292faee744-6740a5c9eabc1.jpg"
+      ],
+      "stock": {
+        "P": 12,
+        "G": 2
+      },
+      "totalStock": 14,
+      "price": 45,
+      "folder": "6740a41751fe7"
+    },
+    "macacao-flare-coffe": {
+      "name": "Macac�o Flare Coffee",
+      "atacadoSlug": "macacao-flare-coffe-at",
+      "images": [
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/699f44131ef76/1698bf36-4542-4c4d-9176-34ca39c8b605-699f575ed191d.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/699f44131ef76/img_8984-699f575689689.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/699f44131ef76/96c01848-1b81-420a-8139-1a8e2260b2bd-699f575f0e448.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/699f44131ef76/a831192e-144b-4fe1-99d6-428e3203de12-699f5782a3ee9.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/699f44131ef76/img_8976-699f578b055d3.jpg"
+      ],
+      "stock": {
+        "P": 12,
+        "M": 4
+      },
+      "totalStock": 16,
+      "price": 105,
+      "folder": "699f44131ef76"
+    },
+    "macacao-essential-preto": {
+      "name": "Macac�o Essential Preto",
+      "atacadoSlug": "macacao-essential-preto-at",
+      "images": [
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/675ac96e2624d/macacao-essential-collection-675b475c8e093.jpeg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/675ac96e2624d/thai6783-675ad2a31fc17.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/675ac96e2624d/macaquinho-essential-collection2-675b47604d381.jpeg"
+      ],
+      "stock": {
+        "P": 25,
+        "M": 15,
+        "G": 16
+      },
+      "totalStock": 56,
+      "price": 98,
+      "folder": "675ac96e2624d"
+    },
+    "macacao-essential-marrom": {
+      "name": "Macac�o Essential Marrom",
+      "atacadoSlug": "macacao-essential-marrom-at",
+      "images": [
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/675ac973631c7/macaquinho-essential-collection-marrom2-675b4ae2d6729.jpeg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/675ac973631c7/thai6905-675ad2349c936.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/675ac973631c7/macaquinho-essential-collection-marrom-675b4ae3caa9b.jpeg"
+      ],
+      "stock": {},
+      "totalStock": 0,
+      "price": 0,
+      "folder": "675ac973631c7"
+    },
+    "conjunto-top-speed-e-short-run-amarelo-energy": {
+      "name": "Conjunto Top Speed e Short Run Amarelo Energy",
+      "atacadoSlug": "conjunto-top-speed-e-short-run-amarelo-energy",
+      "images": [
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/6984b0be5e939/6d72ed8b-bfc3-40a0-98c1-c220ce9c335d-6984b5c334de8.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/6984b0be5e939/img_8066-692067dd73484-6984b5e549e99.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/6984b0be5e939/cba6f4cb-43a4-4704-9211-79dcf82db507-6984b5bd07a2a.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/6984b0be5e939/wbuy-mobile-1763982325201-69243bf6d6cb7-6984b5b0cc4be.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/6984b0be5e939/wbuy-mobile-1763982356393-69243c15e6606-6984b5b0cdceb.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/6984b0be5e939/wbuy-mobile-1763982399822-69243c41ae6fa-6984b3522be08.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/6984b0be5e939/wbuy-mobile-1763982412718-69243c4e5531f-6984b35246c77.jpg"
+      ],
+      "stock": {},
+      "totalStock": 0,
+      "price": 0,
+      "folder": "6984b0be5e939"
+    },
+    "conjunto-top-speed-e-short-run-rosa-soft": {
+      "name": "Conjunto Top Speed e Short Run Rosa Soft",
+      "atacadoSlug": "conjunto-top-speed-e-short-run-rosa-soft",
+      "images": [
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/6984a72d6a2de/5ae3426b-3da4-417d-b0ad-89ecac2e059c-6984ac2b73fb6.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/6984a72d6a2de/wbuy-mobile-1763982267751-69243bbd4c4c9-1-6984acda0ab69.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/6984a72d6a2de/cb79748d-f5c9-44fc-a440-70ec754ba5ec-6984ac535d5c6.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/6984a72d6a2de/wbuy-mobile-1763982249666-69243bab67138-1-6984ad0d7f4b6.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/6984a72d6a2de/wbuy-mobile-1763982287238-69243bd140df9-1-6984ace13fd35.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/6984a72d6a2de/wbuy-mobile-1763982444713-69243c6e8394f-6984ad6aaa6da.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/6984a72d6a2de/wbuy-mobile-1763982457610-69243c7b5fe83-6984ad6a74851.jpg"
+      ],
+      "stock": {},
+      "totalStock": 0,
+      "price": 0,
+      "folder": "6984a72d6a2de"
+    },
+    "conjunto-top-speed-e-short-run-azul-sky": {
+      "name": "Conjunto Top Speed e Short Run Azul Sky",
+      "atacadoSlug": "conjunto-top-speed-e-short-run-azul-sky",
+      "images": [
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/6984a03244f97/f19ed561-8719-44dc-98bf-aedfeb04c0bf-6984a718dddf2.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/6984a03244f97/atacado-run-sky-3-6984a19815068.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/6984a03244f97/7ea6e983-8104-4094-b95f-ae22e3bd5869-6984a7217e646.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/6984a03244f97/atacado-run-sky-2-6984a157457c0.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/6984a03244f97/atacado-run-sky-4-6984a197f1aac.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/6984a03244f97/atacado-run-sky-6984a1574611a.jpg"
+      ],
+      "stock": {},
+      "totalStock": 0,
+      "price": 0,
+      "folder": "6984a03244f97"
+    },
+    "conjunto-top-basic-duplo-e-short-basic-coffee": {
+      "name": "Conjunto Top Basic Duplo e Short Basic Coffee",
+      "atacadoSlug": "conjunto-top-basic-duplo-e-short-basic-coffee",
+      "images": [
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/6973b9fa4ca48/top-duplo-basic-coffe-sem-logo2-67020a45e6362-6973bb7f22c27.jpeg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/6973b9fa4ca48/_mg_5927-662e89b834315-6973bb77066c8.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/6973b9fa4ca48/top-duplo-basic-coffe-sem-logo-67020a459b562-6973bb8b06f7f.jpeg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/6973b9fa4ca48/short-basic-coffee-comsem-logo-6973bacdd9c93.jpeg"
+      ],
+      "stock": {},
+      "totalStock": 0,
+      "price": 0,
+      "folder": "6973b9fa4ca48"
+    },
+    "conjunto-top-basic-e-short-basic-preto": {
+      "name": "Conjunto Top Basic Duplo e Short Basic Preto",
+      "atacadoSlug": "conjunto-top-basic-e-short-basic-preto",
+      "images": [
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/6973b63ccc637/top-duplo-preto-sem-logo2-670205613b386-6973bc51381e7.jpeg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/6973b63ccc637/_mg_6291-662e87612722f-6973b8d607a6f.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/6973b63ccc637/short-basic-preto-sem-logo3-6973b6bb80320.jpeg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/6973b63ccc637/short-basic-preto-sem-logo-6973b6c2e3969.jpeg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/6973b63ccc637/top-duplo-preto-sem-logo-6973b7755fc64.jpeg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/6973b63ccc637/short-basic-preto-sem-logo2-6973b9195d59a.jpeg"
+      ],
+      "stock": {},
+      "totalStock": 0,
+      "price": 0,
+      "folder": "6973b63ccc637"
+    },
+    "conjunto-basic-top-e-short-azul-marinho": {
+      "name": "Conjunto Top Basic Duplo e Short Basic Azul Marinho",
+      "atacadoSlug": "conjunto-basic-top-e-short-azul-marinho",
+      "images": [
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/6973b46197b18/azul-basic-68701b66e663c-6973bcb55d415.jpeg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/6973b46197b18/_mg_5801-662be85723db5-6973bd2abd3d5.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/6973b46197b18/conjunto-azul-marinho-basic-6973b4b75673b.jpeg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/6973b46197b18/_mg_5838-662be81b49a85-6973bcdf91877.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/6973b46197b18/conjunto-marinho-basic-6973b4bbd3c18.jpeg"
+      ],
+      "stock": {},
+      "totalStock": 0,
+      "price": 0,
+      "folder": "6973b46197b18"
+    },
+    "conjunto-top-basic-e-short-basic-cereja": {
+      "name": "Conjunto Top Basic Duplo e Short Basic Cereja",
+      "atacadoSlug": "conjunto-top-basic-e-short-basic-cereja",
+      "images": [
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/6973a73dc7a56/short-cereja-sem-logo3-6701f48691e01-6973bd7554e1f.jpeg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/6973a73dc7a56/_mg_6119-1-662e7dbb1f193-6973bd84a8ee2.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/6973a73dc7a56/cereja-basic-duplo-6973aaa34c745.jpeg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/6973a73dc7a56/cereja-basic-6973ab7785423.jpeg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/6973a73dc7a56/short-cereja-sem-logo-6973aba4c2dee.jpeg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/6973a73dc7a56/conjunto-cereja-basic-6973ab90528cf.jpeg"
+      ],
+      "stock": {},
+      "totalStock": 0,
+      "price": 0,
+      "folder": "6973a73dc7a56"
+    },
+    "conjunto-top-air-e-short-edge-verde-militar": {
+      "name": "Conjunto Top Air e Short Edge Verde Militar",
+      "atacadoSlug": "conjunto-top-air-e-short-edge-verde-militar",
+      "images": [
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/6973a768c2674/1ba067c6-231b-4d29-8fe4-25700a659a4f-6973a840cdea8.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/6973a768c2674/img_2548-68af3a1c833d1-6973a85a0ce17.jpg"
+      ],
+      "stock": {},
+      "totalStock": 0,
+      "price": 0,
+      "folder": "6973a768c2674"
+    },
+    "conjunto-top-air-e-short-edge-azul-marinho-c-azul": {
+      "name": "Conjunto Top Air e Short Edge Azul Marinho c/ Azul",
+      "atacadoSlug": "conjunto-top-air-e-short-edge-azul-marinho-c-azul",
+      "images": [
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/6973a695edf4b/6114f49d-c38f-48c3-9f9e-2017b2733313-6973a700a8b36.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/6973a695edf4b/img_2338-68af3b648df2d-6973a6ff52bc3.jpg"
+      ],
+      "stock": {},
+      "totalStock": 0,
+      "price": 0,
+      "folder": "6973a695edf4b"
+    },
+    "conjunto-top-air-e-short-edge-cappuccino-c-off": {
+      "name": "Conjunto Top Air e Short Edge Cappuccino c/ Off",
+      "atacadoSlug": "conjunto-top-air-e-short-edge-cappuccino-c-off",
+      "images": [
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/6973a59aad2b6/437f8b95-ba35-46cf-abe6-cacbbd0166dd-6973a656b4ee3.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/6973a59aad2b6/img_2426-6973a65c43457.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/6973a59aad2b6/img_2426-6973a664d3420.jpg"
+      ],
+      "stock": {},
+      "totalStock": 0,
+      "price": 0,
+      "folder": "6973a59aad2b6"
+    },
+    "conjunto-top-air-e-short-edge-preto-c-off": {
+      "name": "Conjunto Top Air e Short Edge Preto c/ Off",
+      "atacadoSlug": "conjunto-top-air-e-short-edge-preto-c-off",
+      "images": [
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/6973a4f41f24a/top-air-short-edge-preto-e-off-6973a5479d657.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/6973a4f41f24a/img_2623-68af3e7992e26-6973a5628bf8e.jpg"
+      ],
+      "stock": {},
+      "totalStock": 0,
+      "price": 0,
+      "folder": "6973a4f41f24a"
+    },
+    "conjunto-top-e-legging-cross-verde-militar": {
+      "name": "Conjunto Top e Legging Cross Verde Militar",
+      "atacadoSlug": "conjunto-top-e-legging-cross-verde-militar",
+      "images": [
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/6973a271b1e2e/9936f954-1366-434b-8940-16fc5fab1dbf-6973a2dda3a0c.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/6973a271b1e2e/img_2593-68af25781ba45-6973a2ec92b3f.jpg"
+      ],
+      "stock": {},
+      "totalStock": 0,
+      "price": 0,
+      "folder": "6973a271b1e2e"
+    },
+    "conjunto-top-e-legging-cross-cappuccino-c-off": {
+      "name": "Conjunto Top e Legging Cross Cappuccino c/ Off",
+      "atacadoSlug": "conjunto-top-e-legging-cross-cappuccino-c-off",
+      "images": [
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/6973a1773fbe2/7ece20d7-2c3b-42e7-9469-1048c7f63492-6973a24165b33.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/6973a1773fbe2/img_2484-68af2abf6a94a-6973a24131d07.jpg"
+      ],
+      "stock": {},
+      "totalStock": 0,
+      "price": 0,
+      "folder": "6973a1773fbe2"
+    },
+    "conjunto-top-e-legging-cross-azul-marinho-c-azul": {
+      "name": "Conjunto Top e Legging Cross Azul Marinho c/ Azul",
+      "atacadoSlug": "conjunto-top-e-legging-cross-azul-marinho-c-azul",
+      "images": [
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/6973a0eca4492/top-cross-calca-cross-azul-6973a14547f5e.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/6973a0eca4492/img_2399-68af2be1512a0-6973a146dbc5d.jpg"
+      ],
+      "stock": {},
+      "totalStock": 0,
+      "price": 0,
+      "folder": "6973a0eca4492"
+    },
+    "conjunto-top-e-legging-cross-preto-c-off": {
+      "name": "Conjunto Top e Legging Cross Preto c/ Off",
+      "atacadoSlug": "conjunto-top-e-legging-cross-preto-c-off",
+      "images": [
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/69739e5f207e2/1acf9262-925b-47b3-a6df-babc5e1dae00-69739ec3cd474.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/69739e5f207e2/img_2670-68af36d1ee889-69739ee1c72fc.jpg"
+      ],
+      "stock": {},
+      "totalStock": 0,
+      "price": 0,
+      "folder": "69739e5f207e2"
+    },
+    "short-run-rosa-soft": {
+      "name": "Short Run Rosa Soft",
+      "atacadoSlug": "short-run-rosa-soft-at",
+      "images": [
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/69237e6694a24/wbuy-mobile-1763982249666-69243bab67138.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/69237e6694a24/wbuy-mobile-1763982267751-69243bbd4c4c9.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/69237e6694a24/wbuy-mobile-1763982287238-69243bd140df9.jpg"
+      ],
+      "stock": {},
+      "totalStock": 0,
+      "price": 0,
+      "folder": "69237e6694a24"
+    }
+  }
+}
