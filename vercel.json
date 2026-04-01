@@ -1,7 +1,7 @@
 {
   "crons": [
     {
-      "path": "/api/scrape?secret=melfit2024",
+      "path": "/api/scrape",
       "schedule": "0 9,21 * * *"
     }
   ]
