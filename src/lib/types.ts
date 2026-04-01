@@ -31,6 +31,9 @@ export interface GlobalSettings {
   cardRate: number;       // taxa total do cartão parcelado (ex: 13.99%)
   pixDiscount: number;    // desconto PIX (ex: 4%)
   installments: number;   // número de parcelas (ex: 6)
+  // WhatsApp config
+  whatsappNumber: string; // ex: "5511982863050"
+  whatsappGreeting: string; // mensagem inicial
 }
 
 export interface PriceCalc {

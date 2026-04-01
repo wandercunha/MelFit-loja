@@ -184,6 +184,49 @@ export function AdminPanel({ open, onClose }: Props) {
             </div>
           </section>
 
+          {/* WhatsApp */}
+          <section className="bg-gray-50 rounded-xl p-5 mb-4">
+            <h3 className="text-xs font-bold text-brand-500 uppercase tracking-widest mb-4">
+              WhatsApp / Checkout
+            </h3>
+            <div className="space-y-4">
+              <div>
+                <label className="block text-xs font-semibold text-gray-500 mb-1">
+                  Numero WhatsApp (com DDI+DDD)
+                </label>
+                <input
+                  type="text"
+                  value={globalSettings.whatsappNumber}
+                  onChange={(e) =>
+                    setGlobalSettings({ ...globalSettings, whatsappNumber: e.target.value.replace(/\D/g, "") })
+                  }
+                  placeholder="5511982863050"
+                  className="input-field"
+                />
+                <p className="text-[11px] text-gray-400 mt-1">
+                  Somente numeros, ex: 5511982863050
+                </p>
+              </div>
+              <div>
+                <label className="block text-xs font-semibold text-gray-500 mb-1">
+                  Mensagem Inicial do Pedido
+                </label>
+                <textarea
+                  value={globalSettings.whatsappGreeting}
+                  onChange={(e) =>
+                    setGlobalSettings({ ...globalSettings, whatsappGreeting: e.target.value })
+                  }
+                  rows={3}
+                  className="input-field text-sm"
+                  placeholder="Ola! Gostaria de comprar essas pecas..."
+                />
+                <p className="text-[11px] text-gray-400 mt-1">
+                  Texto que aparece no inicio da mensagem do WhatsApp
+                </p>
+              </div>
+            </div>
+          </section>
+
           {/* Historico de Precos */}
           <PriceHistory />
 

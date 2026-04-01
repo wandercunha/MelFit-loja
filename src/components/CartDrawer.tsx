@@ -17,21 +17,29 @@ export function CartDrawer({ open, onClose }: Props) {
     useCart();
   const { globalSettings, overrides } = useCatalog();
   const [payment, setPayment] = useState<PaymentMethod>("pix");
+  const [selectedInstallments, setSelectedInstallments] = useState(globalSettings.installments);
   const [showCheckout, setShowCheckout] = useState(false);
 
   if (!open) return null;
 
+  const maxInstallments = globalSettings.installments;
+
   const getPrice = (productId: number) => {
     const product = PRODUCTS.find((p) => p.id === productId);
-    if (!product) return { pricePix: 0, priceCard: 0, priceInstallment: 0, installmentMonthly: 0, installments: 6 };
+    if (!product) return { pricePix: 0, priceCard: 0, priceInstallment: 0, installmentMonthly: 0, installments: 6, cardRate: 0 };
     return calcProduct(product, globalSettings, overrides[productId]);
   };
 
   const getUnitPrice = (productId: number) => {
     const calc = getPrice(productId);
     if (payment === "pix") return calc.pricePix;
-    if (payment === "credito_parcelado") return calc.priceInstallment;
-    return calc.priceCard; // credito_vista e debito
+    if (payment === "credito_parcelado") {
+      // Recalculate with selected installments
+      const ratePerInstallment = calc.cardRate / maxInstallments;
+      const adjustedRate = ratePerInstallment * selectedInstallments;
+      return calc.priceCard * (1 + adjustedRate / 100);
+    }
+    return calc.priceCard;
   };
 
   const subtotal = items.reduce(
@@ -39,9 +47,13 @@ export function CartDrawer({ open, onClose }: Props) {
     0
   );
 
+  const installmentMonthly = payment === "credito_parcelado" && selectedInstallments > 0
+    ? subtotal / selectedInstallments
+    : 0;
+
   const buildWhatsAppMessage = () => {
     const lines: string[] = [];
-    lines.push(`Ola! Gostaria de comprar essas pecas no site MelFit e fechar o pedido.`);
+    lines.push(globalSettings.whatsappGreeting);
     lines.push(``);
     lines.push(`*Pedido ${cartId}*`);
     if (customer.name) lines.push(`Cliente: ${customer.name}`);
@@ -61,8 +73,7 @@ export function CartDrawer({ open, onClose }: Props) {
     lines.push(`*Forma de pagamento:* ${PAYMENT_LABELS[payment]}`);
 
     if (payment === "credito_parcelado") {
-      const calc = getPrice(items[0]?.productId || 0);
-      lines.push(`Parcelas: ${calc.installments}x`);
+      lines.push(`Parcelas: ${selectedInstallments}x de ${formatBRL(installmentMonthly)}`);
     }
 
     lines.push(`*Total: ${formatBRL(subtotal)}*`);
@@ -70,7 +81,7 @@ export function CartDrawer({ open, onClose }: Props) {
     return encodeURIComponent(lines.join("\n"));
   };
 
-  const whatsappUrl = `https://wa.me/5511982863050?text=${buildWhatsAppMessage()}`;
+  const whatsappUrl = `https://wa.me/${globalSettings.whatsappNumber}?text=${buildWhatsAppMessage()}`;
 
   return (
     <>
@@ -215,6 +226,35 @@ export function CartDrawer({ open, onClose }: Props) {
                     ))}
                   </div>
                 </div>
+
+                {/* Installment selector */}
+                {payment === "credito_parcelado" && (
+                  <div>
+                    <p className="text-[10px] font-bold text-gray-500 uppercase mb-1.5">
+                      Parcelas
+                    </p>
+                    <div className="flex gap-1.5 flex-wrap">
+                      {Array.from({ length: maxInstallments }, (_, i) => i + 1).map((n) => (
+                        <button
+                          key={n}
+                          onClick={() => setSelectedInstallments(n)}
+                          className={`text-xs font-semibold py-1 px-2.5 rounded-lg transition-colors ${
+                            selectedInstallments === n
+                              ? "bg-brand-400 text-white"
+                              : "bg-white text-gray-500 hover:bg-gray-100 border border-gray-200"
+                          }`}
+                        >
+                          {n}x
+                        </button>
+                      ))}
+                    </div>
+                    {selectedInstallments > 0 && (
+                      <p className="text-xs text-brand-500 font-semibold mt-1">
+                        {selectedInstallments}x de {formatBRL(installmentMonthly)}
+                      </p>
+                    )}
+                  </div>
+                )}
 
                 {/* Total */}
                 <div className="flex justify-between items-center">
