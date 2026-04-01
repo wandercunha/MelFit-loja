@@ -12,6 +12,12 @@ export function SystemTab() {
   const [saved, setSaved] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
 
+  // Password change
+  const [newPassword, setNewPassword] = useState("");
+  const [newPasswordConfirm, setNewPasswordConfirm] = useState("");
+  const [passwordHash, setPasswordHash] = useState("");
+  const [passwordCopied, setPasswordCopied] = useState(false);
+
   const hasChanges =
     draft.atacadoEmail !== globalSettings.atacadoEmail ||
     draft.atacadoPassword !== globalSettings.atacadoPassword;
@@ -29,21 +35,43 @@ export function SystemTab() {
     });
   };
 
+  const generateHash = async () => {
+    if (!newPassword) return;
+    if (newPassword !== newPasswordConfirm) return;
+    // SHA-256 via Web Crypto API (funciona no browser)
+    const encoder = new TextEncoder();
+    const data = encoder.encode(newPassword);
+    const hashBuffer = await crypto.subtle.digest("SHA-256", data);
+    const hashArray = Array.from(new Uint8Array(hashBuffer));
+    const hash = hashArray.map((b) => b.toString(16).padStart(2, "0")).join("");
+    setPasswordHash(hash);
+  };
+
+  const copyHash = () => {
+    navigator.clipboard.writeText(passwordHash);
+    setPasswordCopied(true);
+    setTimeout(() => setPasswordCopied(false), 2000);
+  };
+
+  const passwordsMatch = newPassword && newPassword === newPasswordConfirm;
+  const passwordsMismatch = newPasswordConfirm && newPassword !== newPasswordConfirm;
+
   return (
     <div className="space-y-6 max-w-lg">
       <p className="text-sm text-gray-500">
-        Configuracoes do sistema, credenciais de acesso e integracao.
+        Configuracoes do sistema, credenciais e integracao.
       </p>
 
       {/* Login Atacado */}
       <div className="bg-gray-50 rounded-xl p-5 space-y-5">
-        <h4 className="text-xs font-bold text-gray-500 uppercase tracking-widest">
-          Login Site Atacado (Flora Amar)
-        </h4>
-        <p className="text-xs text-gray-400 -mt-3">
-          Credenciais para scraping autenticado de precos e imagens.
-          Salvas localmente no navegador.
-        </p>
+        <div>
+          <h4 className="text-xs font-bold text-gray-500 uppercase tracking-widest">
+            Login Site Atacado (Flora Amar)
+          </h4>
+          <p className="text-xs text-gray-400 mt-1">
+            Credenciais para scraping de precos e imagens. Salvas no navegador.
+          </p>
+        </div>
 
         <div>
           <label className="block text-sm font-semibold text-gray-700 mb-1">
@@ -69,7 +97,7 @@ export function SystemTab() {
               value={draft.atacadoPassword}
               onChange={(e) => setDraft({ ...draft, atacadoPassword: e.target.value })}
               placeholder="••••••••"
-              className="input-field pr-12"
+              className="input-field pr-16"
               autoComplete="off"
             />
             <button
@@ -83,64 +111,7 @@ export function SystemTab() {
         </div>
       </div>
 
-      {/* Admin password */}
-      <div className="bg-gray-50 rounded-xl p-5 space-y-4">
-        <h4 className="text-xs font-bold text-gray-500 uppercase tracking-widest">
-          Senha do Painel Admin
-        </h4>
-
-        <div className="bg-amber-50 border border-amber-200 rounded-lg p-3 space-y-2">
-          <p className="text-xs font-semibold text-amber-700">Como trocar a senha</p>
-          <div className="text-xs text-amber-600 space-y-1.5">
-            <p>1. Escolha sua nova senha</p>
-            <p>2. Gere o hash SHA-256 em qualquer um destes sites:</p>
-            <ul className="list-disc ml-4 space-y-0.5">
-              <li>
-                <a href="https://emn178.github.io/online-tools/sha256.html" target="_blank" rel="noopener noreferrer" className="underline">
-                  emn178.github.io/online-tools/sha256
-                </a>
-              </li>
-              <li>
-                <a href="https://coding.tools/sha256" target="_blank" rel="noopener noreferrer" className="underline">
-                  coding.tools/sha256
-                </a>
-              </li>
-            </ul>
-            <p>3. Cole o hash gerado como valor da variavel:</p>
-            <code className="block bg-white rounded px-2 py-1 text-[10px] font-mono text-gray-700 break-all">
-              ADMIN_PASSWORD_HASH=cole_o_hash_aqui
-            </code>
-          </div>
-        </div>
-
-        <div className="text-xs text-gray-500 space-y-2">
-          <p className="font-semibold">Onde configurar:</p>
-          <div className="space-y-1.5">
-            <p>
-              <span className="font-semibold text-gray-700">Local:</span>{" "}
-              No arquivo <code className="bg-gray-200 px-1 rounded">.env.local</code> na raiz do projeto, ou rode:
-            </p>
-            <code className="block bg-gray-100 rounded px-2 py-1 font-mono text-[10px]">
-              npm run admin:reset -- sua-nova-senha
-            </code>
-            <p>
-              <span className="font-semibold text-gray-700">Vercel:</span>{" "}
-              Settings &gt; Environment Variables &gt; adicione <code className="bg-gray-200 px-1 rounded">ADMIN_PASSWORD_HASH</code> com o hash gerado.
-              Depois clique em Redeploy.
-            </p>
-          </div>
-        </div>
-
-        <div className="bg-red-50 border border-red-200 rounded-lg p-3">
-          <p className="text-xs text-red-600">
-            <span className="font-semibold">Perdeu a senha?</span>{" "}
-            Gere um novo hash e configure a variavel acima.
-            Nao precisa acessar o banco — a senha fica na variavel de ambiente, nao no SQLite.
-          </p>
-        </div>
-      </div>
-
-      {/* Save bar */}
+      {/* Save bar atacado */}
       {hasChanges && (
         <div className="flex gap-3 items-center bg-amber-50 border border-amber-200 rounded-xl p-4">
           <svg className="w-5 h-5 text-amber-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -164,6 +135,143 @@ export function SystemTab() {
           Configuracoes salvas!
         </div>
       )}
+
+      {/* Trocar senha admin */}
+      <div className="bg-gray-50 rounded-xl p-5 space-y-4">
+        <div>
+          <h4 className="text-xs font-bold text-gray-500 uppercase tracking-widest">
+            Trocar Senha do Painel Admin
+          </h4>
+          <p className="text-xs text-gray-400 mt-1">
+            Gere o codigo de seguranca aqui e depois configure no servidor.
+          </p>
+        </div>
+
+        {!passwordHash ? (
+          <>
+            <div>
+              <label className="block text-xs font-semibold text-gray-600 mb-1">
+                Nova senha
+              </label>
+              <input
+                type="password"
+                value={newPassword}
+                onChange={(e) => setNewPassword(e.target.value)}
+                placeholder="Digite a nova senha"
+                className="input-field text-sm"
+              />
+            </div>
+
+            <div>
+              <label className="block text-xs font-semibold text-gray-600 mb-1">
+                Confirmar nova senha
+              </label>
+              <input
+                type="password"
+                value={newPasswordConfirm}
+                onChange={(e) => setNewPasswordConfirm(e.target.value)}
+                placeholder="Repita a nova senha"
+                className={`input-field text-sm ${passwordsMismatch ? "border-red-400" : ""}`}
+              />
+              {passwordsMismatch && (
+                <p className="text-xs text-red-500 mt-1">As senhas nao conferem</p>
+              )}
+            </div>
+
+            <button
+              onClick={generateHash}
+              disabled={!passwordsMatch}
+              className={`w-full py-2.5 rounded-lg font-semibold text-sm transition-colors ${
+                passwordsMatch
+                  ? "bg-brand-400 text-white hover:bg-brand-500"
+                  : "bg-gray-200 text-gray-400 cursor-not-allowed"
+              }`}
+            >
+              Gerar Codigo de Seguranca
+            </button>
+          </>
+        ) : (
+          <>
+            <div className="bg-emerald-50 border border-emerald-200 rounded-lg p-4 space-y-3">
+              <p className="text-sm font-semibold text-emerald-700">
+                Codigo gerado com sucesso!
+              </p>
+              <p className="text-xs text-emerald-600">
+                Copie o codigo abaixo e siga as instrucoes:
+              </p>
+
+              <div className="bg-white rounded-lg p-2 border border-emerald-300">
+                <code className="text-[10px] font-mono text-gray-700 break-all select-all block">
+                  {passwordHash}
+                </code>
+              </div>
+
+              <button
+                onClick={copyHash}
+                className="w-full py-2 bg-emerald-500 text-white rounded-lg font-semibold text-sm hover:bg-emerald-600 transition-colors"
+              >
+                {passwordCopied ? "Copiado!" : "Copiar Codigo"}
+              </button>
+            </div>
+
+            <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 space-y-3">
+              <p className="text-sm font-bold text-blue-700">
+                Agora configure no servidor:
+              </p>
+
+              <div className="space-y-3 text-xs text-blue-600">
+                <div className="bg-white rounded-lg p-3 border border-blue-200">
+                  <p className="font-bold text-blue-700 mb-1">Opcao 1: Rodando local (seu computador)</p>
+                  <p>Abra o terminal na pasta do projeto e rode:</p>
+                  <code className="block bg-blue-50 rounded px-2 py-1.5 mt-1 font-mono text-[10px] text-gray-700">
+                    npm run admin:reset -- {newPassword}
+                  </code>
+                  <p className="mt-1">Depois reinicie: <code className="bg-blue-50 px-1 rounded">npm run dev</code></p>
+                </div>
+
+                <div className="bg-white rounded-lg p-3 border border-blue-200">
+                  <p className="font-bold text-blue-700 mb-1">Opcao 2: Na Vercel (producao)</p>
+                  <ol className="list-decimal ml-4 space-y-1">
+                    <li>Abra o painel da Vercel do seu projeto</li>
+                    <li>Va em <strong>Settings</strong> &gt; <strong>Environment Variables</strong></li>
+                    <li>Adicione uma nova variavel:</li>
+                  </ol>
+                  <div className="mt-1.5 bg-blue-50 rounded px-2 py-1.5 font-mono text-[10px] text-gray-700">
+                    <p>Nome: <strong>ADMIN_PASSWORD_HASH</strong></p>
+                    <p>Valor: <strong className="break-all">{passwordHash}</strong></p>
+                  </div>
+                  <ol className="list-decimal ml-4 mt-1.5" start={4}>
+                    <li>Clique em <strong>Save</strong></li>
+                    <li>Va em <strong>Deployments</strong> &gt; clique nos 3 pontinhos do deploy atual &gt; <strong>Redeploy</strong></li>
+                  </ol>
+                </div>
+              </div>
+            </div>
+
+            <button
+              onClick={() => {
+                setPasswordHash("");
+                setNewPassword("");
+                setNewPasswordConfirm("");
+              }}
+              className="w-full py-2 text-xs text-gray-400 hover:text-gray-600"
+            >
+              Voltar
+            </button>
+          </>
+        )}
+      </div>
+
+      {/* Recovery info */}
+      <div className="bg-red-50 border border-red-200 rounded-xl p-4">
+        <p className="text-xs font-semibold text-red-600 mb-1">Perdeu o acesso ao admin?</p>
+        <p className="text-xs text-red-500">
+          A senha nao fica no banco de dados. Para recuperar, basta repetir
+          o processo acima gerando um novo codigo e configurando no servidor.
+          Se estiver na Vercel, qualquer pessoa com acesso ao painel da Vercel
+          pode redefinir.
+        </p>
+      </div>
     </div>
   );
 }
