@@ -8,8 +8,11 @@ import * as cheerio from "cheerio";
 import * as fs from "fs";
 import * as path from "path";
 import * as https from "https";
+import * as dotenv from "dotenv";
+dotenv.config({ path: path.join(__dirname, "..", ".env.local") });
 
 const BASE_URL = "https://www.floraamaratacado.com.br";
+const SCRAPE_DELAY = parseInt(process.env.SCRAPE_DELAY || "5000", 10);
 const ATACADO_CDN = "97065044c3a1a212e5c7a4f183fed028";
 
 const CATEGORIES = [
@@ -155,12 +158,12 @@ function parseListingPage(html: string): AtacadoProduct[] {
   return products;
 }
 
-async function scrapeProductPage(slug: string, folder: string): Promise<string[]> {
+async function scrapeProductPage(slug: string, folder: string): Promise<{ images: string[]; price: number }> {
   // Product pages need login on atacado, but we can try
   // If it fails, we use listing images only
   try {
     const html = await fetchHTML(`${BASE_URL}/${slug}/`);
-    if (html.length < 5000) return []; // login page
+    if (html.length < 5000) return { images: [], price: 0 }; // login page
 
     const $ = cheerio.load(html);
     const images: string[] = [];
@@ -181,9 +184,22 @@ async function scrapeProductPage(slug: string, folder: string): Promise<string[]
       }
     });
 
-    return images;
+    // Conjuntos (grade_biquini): sum per-piece prices
+    let price = 0;
+    if ($(".grade_biquini").length > 0) {
+      $(".grade_biquini .opcao").each((_, opcao) => {
+        const item = $(opcao).find(".item[data-valorvenda]").first();
+        const val = parseFloat(item.attr("data-valorvenda") || "0");
+        if (val > 0) price += val;
+      });
+      if (price > 0) {
+        console.log(` [CONJUNTO R$ ${price}]`);
+      }
+    }
+
+    return { images, price };
   } catch {
-    return [];
+    return { images: [], price: 0 };
   }
 }
 
@@ -211,7 +227,7 @@ async function main() {
     } catch (err) {
       console.error(`    ERROR: ${err}`);
     }
-    await delay(300);
+    await delay(SCRAPE_DELAY);
   }
 
   console.log(`\n  Total unique: ${allProducts.size}`);
@@ -226,7 +242,11 @@ async function main() {
     if (!product.folder) continue;
 
     process.stdout.write(`  [${i + 1}/${entries.length}] ${product.atacadoSlug}...`);
-    const fullImages = await scrapeProductPage(product.atacadoSlug, product.folder);
+    const { images: fullImages, price: pagePrice } = await scrapeProductPage(product.atacadoSlug, product.folder);
+
+    if (pagePrice > 0 && !product.price) {
+      product.price = pagePrice;
+    }
 
     if (fullImages.length > product.images.length) {
       product.images = fullImages;
@@ -235,7 +255,7 @@ async function main() {
     } else {
       console.log(` listing only (${product.images.length})`);
     }
-    await delay(400);
+    await delay(SCRAPE_DELAY);
   }
 
   console.log(`\n  Enhanced ${enhanced} products with full galleries`);

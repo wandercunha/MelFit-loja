@@ -18,9 +18,9 @@ export function MarginsTab() {
     if (overrideCount > 0) {
       const apply = confirm(
         `Voce tem ${overrideCount} produto(s) com margem individual.\n\n` +
-        `Deseja manter as margens individuais ou aplicar a nova configuracao global para TODOS os produtos?\n\n` +
-        `OK = Manter individuais (so novos produtos usam o valor global)\n` +
-        `Cancelar = Nao salvar`
+        `Deseja manter as margens individuais ou aplicar a nova configuração global para TODOS os produtos?\n\n` +
+        `OK = Manter individuais (só novos produtos usam o valor global)\n` +
+        `Cancelar = Não salvar`
       );
       if (!apply) return;
     }
@@ -36,8 +36,8 @@ export function MarginsTab() {
   return (
     <div className="space-y-6 max-w-lg">
       <p className="text-sm text-gray-500">
-        Configure a margem de lucro e o frete que serao aplicados a todos os produtos.
-        Voce pode sobrescrever valores individuais na aba Produtos.
+        Configure a margem de lucro e o frete que serão aplicados a todos os produtos.
+        Você pode sobrescrever valores individuais na aba Produtos.
       </p>
 
       <div className="bg-gray-50 rounded-xl p-5 space-y-5">
@@ -60,7 +60,7 @@ export function MarginsTab() {
 
         <div>
           <label className="block text-sm font-semibold text-gray-700 mb-1">
-            Frete por Peca (R$)
+            Frete por Peça (R$)
           </label>
           <input
             type="number"
@@ -71,7 +71,7 @@ export function MarginsTab() {
             className="input-field text-lg font-bold"
           />
           <p className="text-xs text-gray-400 mt-1">
-            Valor de frete rateado por peca. Soma ao custo para calculo do lucro liquido.
+            Valor de frete rateado por peça. Soma ao custo para cálculo do lucro líquido.
           </p>
         </div>
       </div>
@@ -83,7 +83,7 @@ export function MarginsTab() {
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L4.082 16.5c-.77.833.192 2.5 1.732 2.5z" />
           </svg>
           <p className="text-sm text-amber-700 flex-1">
-            Alteracoes nao salvas
+            Alterações não salvas
           </p>
           <button
             onClick={handleDiscard}

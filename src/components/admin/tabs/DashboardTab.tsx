@@ -6,14 +6,14 @@ import { calcProduct, formatBRL } from "@/lib/pricing";
 import { ExportButton } from "@/components/ExportButton";
 
 export function DashboardTab() {
-  const { globalSettings, overrides } = useCatalog();
+  const { globalSettings, overrides, categoryOverrides, isProductVisible } = useCatalog();
 
-  const available = PRODUCTS.filter((p) => !p.soldOut);
+  const available = PRODUCTS.filter((p) => isProductVisible(p.id, p.soldOut));
   let totalCost = 0;
   let totalSell = 0;
   let totalProfit = 0;
   available.forEach((p) => {
-    const c = calcProduct(p, globalSettings, overrides[p.id]);
+    const c = calcProduct(p, globalSettings, overrides[p.id], categoryOverrides[p.category]);
     totalCost += c.totalCost;
     totalSell += c.priceCard;
     totalProfit += c.netProfit;
@@ -21,8 +21,8 @@ export function DashboardTab() {
 
   const customCount = Object.keys(overrides).length;
   const ex = 50 * (1 + globalSettings.margin / 100);
-  const exPix = ex * (1 - globalSettings.pixDiscount / 100);
   const exParc = ex * (1 + globalSettings.cardRate / 100);
+  const exPix = exParc * (1 - globalSettings.pixDiscount / 100);
   const exMensal = globalSettings.installments > 0 ? exParc / globalSettings.installments : 0;
 
   return (
@@ -61,18 +61,15 @@ export function DashboardTab() {
         <h4 className="text-xs font-bold text-blue-600 uppercase tracking-widest mb-2">
           Simulacao Rapida (custo R$ 50)
         </h4>
-        <div className="grid grid-cols-3 gap-3 text-sm">
+        <div className="grid grid-cols-2 gap-3 text-sm">
           <div className="bg-white rounded-lg p-3 text-center">
-            <p className="text-[10px] text-gray-400 uppercase">Cartao</p>
-            <p className="font-bold text-gray-700">{formatBRL(ex)}</p>
+            <p className="text-[10px] text-brand-400 uppercase">{globalSettings.installments}x sem juros</p>
+            <p className="font-bold text-brand-500">{formatBRL(exMensal)}/mes</p>
+            <p className="text-[9px] text-gray-400 mt-0.5">total {formatBRL(exParc)}</p>
           </div>
           <div className="bg-white rounded-lg p-3 text-center">
             <p className="text-[10px] text-emerald-500 uppercase">PIX (-{globalSettings.pixDiscount}%)</p>
             <p className="font-bold text-emerald-600">{formatBRL(exPix)}</p>
-          </div>
-          <div className="bg-white rounded-lg p-3 text-center">
-            <p className="text-[10px] text-brand-400 uppercase">{globalSettings.installments}x</p>
-            <p className="font-bold text-brand-500">{formatBRL(exMensal)}/mes</p>
           </div>
         </div>
       </div>

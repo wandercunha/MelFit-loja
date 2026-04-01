@@ -9,12 +9,12 @@ import { CartDrawer } from "./CartDrawer";
 import { AdminPanel } from "./admin/AdminPanel";
 
 export function Header() {
-  const { isAdmin, logout } = useCatalog();
+  const { isAdmin, logout, isProductVisible } = useCatalog();
   const { totalItems } = useCart();
   const [showLogin, setShowLogin] = useState(false);
   const [showCart, setShowCart] = useState(false);
   const [showAdmin, setShowAdmin] = useState(false);
-  const available = PRODUCTS.filter((p) => !p.soldOut).length;
+  const available = PRODUCTS.filter((p) => isProductVisible(p.id, p.soldOut)).length;
 
   return (
     <>

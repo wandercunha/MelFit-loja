@@ -117,7 +117,7 @@ export function SystemTab() {
           <svg className="w-5 h-5 text-amber-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L4.082 16.5c-.77.833.192 2.5 1.732 2.5z" />
           </svg>
-          <p className="text-sm text-amber-700 flex-1">Alteracoes nao salvas</p>
+          <p className="text-sm text-amber-700 flex-1">Alterações não salvas</p>
           <button onClick={handleDiscard} className="text-xs font-semibold px-3 py-1.5 text-gray-500 bg-white rounded-lg border hover:bg-gray-50">
             Descartar
           </button>
@@ -132,7 +132,7 @@ export function SystemTab() {
           <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
           </svg>
-          Configuracoes salvas!
+          Configurações salvas!
         </div>
       )}
 
@@ -143,7 +143,7 @@ export function SystemTab() {
             Trocar Senha do Painel Admin
           </h4>
           <p className="text-xs text-gray-400 mt-1">
-            Gere o codigo de seguranca aqui e depois configure no servidor.
+            Gere o código de segurança aqui e depois configure no servidor.
           </p>
         </div>
 
@@ -174,7 +174,7 @@ export function SystemTab() {
                 className={`input-field text-sm ${passwordsMismatch ? "border-red-400" : ""}`}
               />
               {passwordsMismatch && (
-                <p className="text-xs text-red-500 mt-1">As senhas nao conferem</p>
+                <p className="text-xs text-red-500 mt-1">As senhas não conferem</p>
               )}
             </div>
 
@@ -187,17 +187,17 @@ export function SystemTab() {
                   : "bg-gray-200 text-gray-400 cursor-not-allowed"
               }`}
             >
-              Gerar Codigo de Seguranca
+              Gerar Código de Segurança
             </button>
           </>
         ) : (
           <>
             <div className="bg-emerald-50 border border-emerald-200 rounded-lg p-4 space-y-3">
               <p className="text-sm font-semibold text-emerald-700">
-                Codigo gerado com sucesso!
+                Código gerado com sucesso!
               </p>
               <p className="text-xs text-emerald-600">
-                Copie o codigo abaixo e siga as instrucoes:
+                Copie o código abaixo e siga as instruções:
               </p>
 
               <div className="bg-white rounded-lg p-2 border border-emerald-300">
@@ -210,7 +210,7 @@ export function SystemTab() {
                 onClick={copyHash}
                 className="w-full py-2 bg-emerald-500 text-white rounded-lg font-semibold text-sm hover:bg-emerald-600 transition-colors"
               >
-                {passwordCopied ? "Copiado!" : "Copiar Codigo"}
+                {passwordCopied ? "Copiado!" : "Copiar Código"}
               </button>
             </div>
 
@@ -221,7 +221,7 @@ export function SystemTab() {
 
               <div className="space-y-3 text-xs text-blue-600">
                 <div className="bg-white rounded-lg p-3 border border-blue-200">
-                  <p className="font-bold text-blue-700 mb-1">Opcao 1: Rodando local (seu computador)</p>
+                  <p className="font-bold text-blue-700 mb-1">Opção 1: Rodando local (seu computador)</p>
                   <p>Abra o terminal na pasta do projeto e rode:</p>
                   <code className="block bg-blue-50 rounded px-2 py-1.5 mt-1 font-mono text-[10px] text-gray-700">
                     npm run admin:reset -- {newPassword}
@@ -230,7 +230,7 @@ export function SystemTab() {
                 </div>
 
                 <div className="bg-white rounded-lg p-3 border border-blue-200">
-                  <p className="font-bold text-blue-700 mb-1">Opcao 2: Na Vercel (producao)</p>
+                  <p className="font-bold text-blue-700 mb-1">Opção 2: Na Vercel (produção)</p>
                   <ol className="list-decimal ml-4 space-y-1">
                     <li>Abra o painel da Vercel do seu projeto</li>
                     <li>Va em <strong>Settings</strong> &gt; <strong>Environment Variables</strong></li>
@@ -266,8 +266,8 @@ export function SystemTab() {
       <div className="bg-red-50 border border-red-200 rounded-xl p-4">
         <p className="text-xs font-semibold text-red-600 mb-1">Perdeu o acesso ao admin?</p>
         <p className="text-xs text-red-500">
-          A senha nao fica no banco de dados. Para recuperar, basta repetir
-          o processo acima gerando um novo codigo e configurando no servidor.
+          A senha não fica no banco de dados. Para recuperar, basta repetir
+          o processo acima gerando um novo código e configurando no servidor.
           Se estiver na Vercel, qualquer pessoa com acesso ao painel da Vercel
           pode redefinir.
         </p>

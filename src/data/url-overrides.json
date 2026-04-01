@@ -1,0 +1,10 @@
+{
+  "_doc": "Mapeamento manual de URLs do varejo. Use quando o scraper nao encontra automaticamente.",
+  "_exemplo": {
+    "Nome Do Produto No Catalogo": {
+      "varejoSlug": "slug-no-site-varejo",
+      "atacadoSlug": "slug-no-site-atacado"
+    }
+  },
+  "products": {}
+}

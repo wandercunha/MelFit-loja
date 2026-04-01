@@ -10,11 +10,15 @@ export const dynamic = "force-dynamic";
  * E coloque em ADMIN_PASSWORD_HASH no .env.local
  */
 function getAdminHash(): string {
-  return process.env.ADMIN_PASSWORD_HASH || "26fed88b7cb618ad902e7bd27655a5c6908c570a5ea0ee7cd9afbc2a7ba03800";
+  const hash = process.env.ADMIN_PASSWORD_HASH;
+  if (!hash) throw new Error("ADMIN_PASSWORD_HASH nao configurado nas variaveis de ambiente");
+  return hash;
 }
 
 function getApiSecret(): string {
-  return process.env.API_SECRET || "ac1cf3b3155ba57edb1c501c311840cb131bcc1f343c6aac77e0de3adad7ea3b";
+  const secret = process.env.API_SECRET;
+  if (!secret) throw new Error("API_SECRET nao configurado nas variaveis de ambiente");
+  return secret;
 }
 
 export async function POST(request: Request) {

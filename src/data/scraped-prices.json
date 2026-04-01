@@ -1,59 +1,59 @@
 {
-  "timestamp": "2026-03-31T19:53:56.852Z",
+  "timestamp": "2026-04-01T23:02:49.382Z",
   "source": "https://www.floraamar.com.br",
   "productCount": 100,
   "products": [
     {
       "name": "Top Curve Cinza",
-      "price": 75,
+      "price": 45,
       "slug": "top-curve-cinza",
       "img": "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/69b464405cf36/20260312_80063-69b4ad8e46b3f.jpg"
     },
     {
       "name": "Short Fast Cinza c/ Branco",
-      "price": 99,
+      "price": 79,
       "slug": "short-fast-cinza-c-branco",
       "img": "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/69b4643e5f709/20260312_79496-69b4b1280cb22.jpg"
     },
     {
       "name": "Short Fast Preto c/ Branco",
-      "price": 99,
+      "price": 79,
       "slug": "short-fast-preto-c-branco",
       "img": "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/69b4643c5e16a/20260312_79961-69b4af5b18370.jpg"
     },
     {
       "name": "Top Curve Preto",
-      "price": 75,
+      "price": 45,
       "slug": "top-curve-preto",
       "img": "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/69b4643a48bd5/20260312_79777-69b4acd84fac0.jpg"
     },
     {
       "name": "Top Curve Azul Elegance",
-      "price": 75,
+      "price": 45,
       "slug": "top-curve-azul-elegance",
       "img": "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/69b464382ee4a/20260312_79432-69b4aa56106aa.jpg"
     },
     {
       "name": "Short Fast Azul Elegance c/ Branco",
-      "price": 99,
+      "price": 79,
       "slug": "short-fast-azul-elegance-c-branco",
       "img": "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/69b464362810b/20260312_79396-69b4b2b696c3c.jpg"
     },
     {
       "name": "Regata One Preto",
-      "price": 72,
+      "price": 52,
       "slug": "regata-one-preto",
       "img": "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/69b464340e7f6/20260312_79943-69b4b37bc0fe5.jpg"
     },
     {
       "name": "Regata One Cinza",
-      "price": 72,
+      "price": 52,
       "slug": "regata-one-cinza",
       "img": "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/69b464328a2b9/20260312_79651-69b4b428033ca.jpg"
     },
     {
       "name": "Regata One Azul Elegance",
-      "price": 72,
+      "price": 52,
       "slug": "regata-one-azul-elegance",
       "img": "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/69b46430c7aa9/20260312_80107-69b4b57c8c01c.jpg"
     },
@@ -154,6 +154,12 @@
       "img": "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/691f3a66b9e2b/img_8072-692067be2c128.jpg"
     },
     {
+      "name": "Short Run Rosa Soft",
+      "price": 99,
+      "slug": "short-run-rosa-soft",
+      "img": "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/691f3a64270c6/img_8095-6920f6337f853.jpg"
+    },
+    {
       "name": "Short Run Azul Sky",
       "price": 99,
       "slug": "short-run-azul-sky",
@@ -232,16 +238,16 @@
       "img": "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/68af3c7604db2/img_2429-68af3d6b813e2.jpg"
     },
     {
-      "name": "Conjunto Top Air e Short Edge Azul Marinho c/ Azul",
-      "price": 0,
-      "slug": "conjunto-top-air-e-short-edge-azul-marinho-c-azul",
-      "img": "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/68af3aa5e3bfc/img_2335-68af3b5836367.jpg"
-    },
-    {
       "name": "Conjunto Top e Short Preto",
       "price": 0,
       "slug": "conjunto-top-e-short-preto-1645831",
       "img": "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/64041040d025f/_mg_4641-656a885d3ceac.jpeg"
+    },
+    {
+      "name": "Conjunto Top Air e Short Edge Azul Marinho c/ Azul",
+      "price": 0,
+      "slug": "conjunto-top-air-e-short-edge-azul-marinho-c-azul",
+      "img": "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/68af3aa5e3bfc/img_2335-68af3b5836367.jpg"
     },
     {
       "name": "Conjunto Top Air e Short Edge Verde Militar",
@@ -450,14 +456,14 @@
     {
       "name": "Cropped Manga Longa Off White",
       "slug": "cropped-manga-longa-off-white",
-      "img": "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/69b4643a48bd5/20260312_79777-69b4acd84fac0.jpg",
-      "price": 75
+      "img": "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/69b46430c7aa9/20260312_80107-69b4b57c8c01c.jpg",
+      "price": 52
     },
     {
       "name": "Cropped Manga Longa Cereja",
       "slug": "cropped-manga-longa-cereja",
       "img": "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/68713484689fa/img_2170-68716ea5e5d06_mini.jpg",
-      "price": 178
+      "price": 74
     },
     {
       "name": "Short Run Cereja",
@@ -481,13 +487,13 @@
       "name": "Short Basic Azul Marine",
       "slug": "short-basic-azul-marine",
       "img": "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/6841cfa68d925/img_6379-6841f6ce00352_mini.jpg",
-      "price": 55
+      "price": 74
     },
     {
       "name": "Short Adapt Lilas",
       "slug": "short-adapt-lilas",
-      "img": "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/69b4643a48bd5/20260312_79777-69b4acd84fac0.jpg",
-      "price": 75
+      "img": "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/69b46430c7aa9/20260312_80107-69b4b57c8c01c.jpg",
+      "price": 52
     },
     {
       "name": "Short Run Branco",
@@ -500,12 +506,6 @@
       "slug": "short-run-preto",
       "img": "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/680fbb8b52adf/shorts-run-preto-2-680fbffa2376f_mini.jpg",
       "price": 0
-    },
-    {
-      "name": "Short Run Rosa Soft",
-      "slug": "short-run-rosa-soft",
-      "img": "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/691f3a64270c6/img_8095-6920f6337f853_mini.jpg",
-      "price": 130
     },
     {
       "name": "Legging Flare Amora",
@@ -523,13 +523,13 @@
       "name": "Legging Flare Azul Marinho",
       "slug": "legging-flare-azul-marinho",
       "img": "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/688cdc4d1d4f1/img_2370-688cf6e471e3b_mini.jpg",
-      "price": 188
+      "price": 130
     },
     {
       "name": "Macaquinho com Manga Cereja",
       "slug": "macaquinho-com-manga-cereja",
       "img": "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/68713474d7fe9/img_2193-68716de92ecd8_mini.jpg",
-      "price": 139
+      "price": 95
     },
     {
       "name": "Macaquinho com Manga Forrado Off White",
@@ -541,25 +541,25 @@
       "name": "Macaquinho Adapt Blush",
       "slug": "macaquinho-adapt-blush",
       "img": "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/6823694242e6a/macaquinho-blush-6824b799038f7_mini.jpg",
-      "price": 75
+      "price": 109
     },
     {
       "name": "Macaquinho Adapt Preto",
       "slug": "macaquinho-adapt-preto",
       "img": "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/680f8631edd26/macaquinho-adapt-preto-1-680fa06f0e650_mini.jpg",
-      "price": 39
+      "price": 65
     },
     {
       "name": "Macaquinho Move Frente Unica Cereja",
       "slug": "macaquinho-move-frente-unica-cereja",
       "img": "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/67979e2bb8d23/thai9953-6797a3003351b_mini.jpeg",
-      "price": 89
+      "price": 188
     },
     {
       "name": "Macaquinho Move Frente Unica Preto",
       "slug": "macaquinho-move-frente-unica-preto",
       "img": "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/6797a7c26dc6e/thai9967-6797ade6af57c_mini.jpeg",
-      "price": 130
+      "price": 95
     },
     {
       "name": "Macacão Flare Preto",
@@ -595,13 +595,13 @@
       "name": "Macacão Essential Preto",
       "slug": "macacao-essential-preto",
       "img": "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/6759dced6ca21/thai6776-6797a7209d024_mini.jpeg",
-      "price": 59
+      "price": 45
     },
     {
       "name": "Macacão Essential Marrom",
       "slug": "macacao-essential-marrom",
       "img": "https://cdn.sistemawbuy.com.br/arquivos/4c530abf5329d872682fccbe13832669/produtos/6759dce782082/thai6900-675a01b1d21f3_mini.jpg",
-      "price": 39
+      "price": 95
     }
   ]
 }

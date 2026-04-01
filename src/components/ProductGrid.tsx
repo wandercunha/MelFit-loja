@@ -9,11 +9,11 @@ import { ProductCard } from "./ProductCard";
 import { MarginEditor } from "./MarginEditor";
 
 export function ProductGrid() {
-  const { activeCategory, searchQuery, globalSettings, overrides } = useCatalog();
+  const { activeCategory, searchQuery, globalSettings, overrides, categoryOverrides, isProductVisible } = useCatalog();
   const [editingProduct, setEditingProduct] = useState<Product | null>(null);
 
   const grouped = useMemo(() => {
-    let filtered = PRODUCTS;
+    let filtered = PRODUCTS.filter((p) => isProductVisible(p.id, p.soldOut));
 
     // Filter by search
     if (searchQuery.trim()) {
@@ -79,7 +79,7 @@ export function ProductGrid() {
 
             <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
               {products.map((product) => {
-                const price = calcProduct(product, globalSettings, overrides[product.id]);
+                const price = calcProduct(product, globalSettings, overrides[product.id], categoryOverrides[product.category]);
                 return (
                   <ProductCard
                     key={product.id}

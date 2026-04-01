@@ -25,6 +25,11 @@ export interface ProductOverride {
   shipping?: number;
 }
 
+export interface CategoryOverride {
+  margin?: number;
+  shipping?: number;
+}
+
 export interface GlobalSettings {
   margin: number;
   shipping: number;
@@ -97,9 +102,9 @@ export type PaymentMethod = "pix" | "credito_vista" | "credito_parcelado" | "deb
 
 export const PAYMENT_LABELS: Record<PaymentMethod, string> = {
   pix: "PIX",
-  credito_vista: "Cartao de Credito a Vista",
-  credito_parcelado: "Cartao de Credito Parcelado",
-  debito: "Cartao de Debito",
+  credito_vista: "Cartão de Crédito à Vista",
+  credito_parcelado: "Cartão de Crédito Parcelado",
+  debito: "Cartão de Débito",
 };
 
 export const CATEGORY_ORDER: Category[] = [

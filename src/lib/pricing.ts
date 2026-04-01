@@ -1,12 +1,14 @@
-import { Product, ProductOverride, GlobalSettings, PriceCalc } from "./types";
+import { Product, ProductOverride, GlobalSettings, PriceCalc, CategoryOverride } from "./types";
 
 export function calcProduct(
   product: Product,
   global: GlobalSettings,
-  override?: ProductOverride
+  override?: ProductOverride,
+  categoryOverride?: CategoryOverride
 ): PriceCalc {
-  const margin = override?.margin ?? global.margin;
-  const shipping = override?.shipping ?? global.shipping;
+  // Cascata: individual > categoria > global
+  const margin = override?.margin ?? categoryOverride?.margin ?? global.margin;
+  const shipping = override?.shipping ?? categoryOverride?.shipping ?? global.shipping;
   const cardRate = global.cardRate;
   const pixDiscount = global.pixDiscount;
   const installments = global.installments;
@@ -14,19 +16,21 @@ export function calcProduct(
   const cost = product.cost;
   const totalCost = cost + shipping;
 
-  // Preço cartão à vista = custo * (1 + margem%) → preço REAL
+  // Preço base (custo + margem) — sem taxa do cartão
   const priceCard = cost * (1 + margin / 100);
 
-  // PIX = preço cartão - desconto%
-  const pricePix = priceCard * (1 - pixDiscount / 100);
-
-  // Parcelado = preço cartão + taxa do cartão%
+  // Preço final com taxa embutida — este é o preço de venda real
+  // (cartão 1x ou 6x, mesmo total; taxa repassada ao cliente)
   const priceInstallment = priceCard * (1 + cardRate / 100);
 
-  // Parcela mensal
+  // PIX = preço com taxa − desconto PIX%
+  // (o cliente que paga no pix economiza o desconto sobre o valor com taxa)
+  const pricePix = priceInstallment * (1 - pixDiscount / 100);
+
+  // Parcela mensal (total com taxa / nº parcelas)
   const installmentMonthly = installments > 0 ? priceInstallment / installments : priceInstallment;
 
-  // Lucro líquido baseado no cartão à vista (cenário mais conservador, sem taxa)
+  // Lucro líquido: receita líquida do cartão (priceCard) menos custo total
   const netProfit = priceCard - totalCost;
   const netMargin = priceCard > 0 ? (netProfit / priceCard) * 100 : 0;
 
@@ -49,6 +53,32 @@ export function calcProduct(
 
 export function formatBRL(value: number): string {
   return value.toLocaleString("pt-BR", { style: "currency", currency: "BRL" });
+}
+
+// ── Atacado URL ──
+import atacadoDetails from "@/data/atacado-details.json";
+
+const SUPPLIER_BASE = "https://www.floraamaratacado.com.br";
+
+const atacadoSlugMap: Record<string, string> = {};
+const atacadoProducts = (atacadoDetails as { products?: Record<string, { name?: string; atacadoSlug?: string }> }).products || {};
+for (const [, detail] of Object.entries(atacadoProducts)) {
+  if (detail.name && detail.atacadoSlug) {
+    atacadoSlugMap[detail.name] = detail.atacadoSlug;
+  }
+}
+
+function toSlugInternal(name: string) {
+  return name.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "")
+    .replace(/\s+c\/\s*/g, "-c-").replace(/\s+/g, "-").replace(/[^a-z0-9-]/g, "");
+}
+
+export function getAtacadoUrl(product: { name: string; slug?: string; category: string }): string {
+  const slug = atacadoSlugMap[product.name];
+  if (slug) return `${SUPPLIER_BASE}/${slug}/`;
+  const fallback = product.slug || toSlugInternal(product.name);
+  const suffix = product.category === "conjuntos" ? "" : "-at";
+  return `${SUPPLIER_BASE}/${fallback}${suffix}/`;
 }
 
 const COLOR_MAP: Record<string, string> = {

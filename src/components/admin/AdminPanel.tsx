@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { DashboardTab } from "./tabs/DashboardTab";
+import { SalesTab } from "./tabs/SalesTab";
 import { MarginsTab } from "./tabs/MarginsTab";
 import { PaymentsTab } from "./tabs/PaymentsTab";
 import { WhatsAppTab } from "./tabs/WhatsAppTab";
@@ -16,6 +17,15 @@ const TABS = [
     icon: (
       <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+      </svg>
+    ),
+  },
+  {
+    id: "vendas",
+    label: "Vendas",
+    icon: (
+      <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01" />
       </svg>
     ),
   },
@@ -57,7 +67,7 @@ const TABS = [
   },
   {
     id: "historico",
-    label: "Historico",
+    label: "Histórico",
     icon: (
       <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -92,6 +102,14 @@ export function AdminPanel({ open, onClose }: Props) {
     }
   }, [open]);
 
+  // Close on ESC
+  useEffect(() => {
+    if (!open) return;
+    const handler = (e: KeyboardEvent) => { if (e.key === "Escape") onClose(); };
+    document.addEventListener("keydown", handler);
+    return () => document.removeEventListener("keydown", handler);
+  }, [open, onClose]);
+
   if (!open) return null;
 
   const currentTab = TABS.find((t) => t.id === activeTab)!;
@@ -100,8 +118,8 @@ export function AdminPanel({ open, onClose }: Props) {
     <>
       <div className="fixed inset-0 bg-black/40 z-[60]" onClick={onClose} />
 
-      <div className="fixed inset-0 z-[70] flex items-center justify-center md:p-6">
-        <div className="relative w-full h-full md:max-w-5xl md:max-h-[90vh] md:rounded-2xl bg-white shadow-2xl flex flex-col md:flex-row overflow-hidden">
+      <div className="fixed inset-0 z-[70] flex items-center justify-center md:p-4">
+        <div className="relative w-full h-full md:max-w-7xl md:max-h-[95vh] md:rounded-2xl bg-white shadow-2xl flex flex-col md:flex-row overflow-hidden">
           {/* Desktop: sidebar tabs */}
           <nav className="hidden md:flex flex-col w-52 bg-gray-50 border-r border-gray-200 py-4">
             <div className="px-4 mb-6">
@@ -143,6 +161,7 @@ export function AdminPanel({ open, onClose }: Props) {
             {/* Tab content */}
             <div className="flex-1 overflow-y-auto p-4 sm:p-6 pb-24 md:pb-6">
               {activeTab === "resumo" && <DashboardTab />}
+              {activeTab === "vendas" && <SalesTab />}
               {activeTab === "margens" && <MarginsTab />}
               {activeTab === "pagamentos" && <PaymentsTab />}
               {activeTab === "whatsapp" && <WhatsAppTab />}

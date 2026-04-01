@@ -93,7 +93,29 @@ export async function initSchema() {
       value TEXT NOT NULL,
       updated_at TEXT NOT NULL DEFAULT (datetime('now'))
     );
+
+    CREATE TABLE IF NOT EXISTS orders (
+      id TEXT PRIMARY KEY,
+      customer_name TEXT,
+      customer_phone TEXT,
+      customer_email TEXT,
+      payment_method TEXT NOT NULL DEFAULT 'pix',
+      installments INTEGER DEFAULT 1,
+      total_price REAL NOT NULL DEFAULT 0,
+      status TEXT NOT NULL DEFAULT 'pending',
+      notes TEXT,
+      created_at TEXT NOT NULL DEFAULT (datetime('now'))
+    );
   `);
+
+  // Migrations: add columns if they don't exist yet
+  const migrations = [
+    "ALTER TABLE sales ADD COLUMN order_id TEXT",
+    "ALTER TABLE sales ADD COLUMN product_name TEXT",
+  ];
+  for (const sql of migrations) {
+    try { await db.execute(sql); } catch { /* column already exists */ }
+  }
 }
 
 // ─── Scraped prices ───
@@ -245,4 +267,128 @@ export async function getSalesSummary(days: number = 30) {
     args: [],
   });
   return result.rows[0];
+}
+
+// ─── Orders ───
+
+export async function createOrder(order: {
+  id: string;
+  customerName?: string;
+  customerPhone?: string;
+  customerEmail?: string;
+  paymentMethod: string;
+  installments: number;
+  totalPrice: number;
+}) {
+  const db = getDb();
+  await db.execute({
+    sql: `INSERT OR IGNORE INTO orders
+            (id, customer_name, customer_phone, customer_email, payment_method, installments, total_price)
+          VALUES (?, ?, ?, ?, ?, ?, ?)`,
+    args: [
+      order.id,
+      order.customerName || null,
+      order.customerPhone || null,
+      order.customerEmail || null,
+      order.paymentMethod,
+      order.installments,
+      order.totalPrice,
+    ],
+  });
+}
+
+export async function addOrderItem(item: {
+  orderId: string;
+  productId: number;
+  productName: string;
+  quantity: number;
+  size?: string;
+  unitCost: number;
+  unitPrice: number;
+  paymentMethod: string;
+  installments?: number;
+  customerName?: string;
+  customerPhone?: string;
+}) {
+  const db = getDb();
+  await db.execute({
+    sql: `INSERT INTO sales
+            (order_id, product_id, product_name, quantity, size, unit_cost, unit_price,
+             payment_method, installments, customer_name, customer_phone)
+          VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+    args: [
+      item.orderId,
+      item.productId,
+      item.productName,
+      item.quantity,
+      item.size || null,
+      item.unitCost,
+      item.unitPrice,
+      item.paymentMethod,
+      item.installments || 1,
+      item.customerName || null,
+      item.customerPhone || null,
+    ],
+  });
+}
+
+export async function getOrders(days: number = 60, status?: string) {
+  const db = getDb();
+  let sql = `
+    SELECT o.*,
+           COALESCE(
+             (SELECT SUM(s.quantity) FROM sales s WHERE s.order_id = o.id), 0
+           ) as total_items,
+           COALESCE(
+             (SELECT json_group_array(json_object(
+               'id', s.id,
+               'product_id', s.product_id,
+               'product_name', COALESCE(s.product_name, ''),
+               'quantity', s.quantity,
+               'size', COALESCE(s.size, ''),
+               'unit_price', s.unit_price,
+               'unit_cost', s.unit_cost
+             )) FROM sales s WHERE s.order_id = o.id), '[]'
+           ) as items_json
+    FROM orders o
+    WHERE o.created_at >= datetime('now', '-${days} days')
+  `;
+  const args: any[] = [];
+  if (status) {
+    sql += " AND o.status = ?";
+    args.push(status);
+  }
+  sql += " ORDER BY o.created_at DESC";
+  const result = await db.execute({ sql, args });
+  return result.rows.map((row) => ({
+    ...row,
+    items: (() => {
+      try { return JSON.parse(row.items_json as string); } catch { return []; }
+    })(),
+  }));
+}
+
+export async function getOrdersSummary(days: number = 30) {
+  const db = getDb();
+  const result = await db.execute({
+    sql: `SELECT
+            COUNT(*) as total_orders,
+            COALESCE(SUM(CASE WHEN status = 'completed' THEN 1 ELSE 0 END), 0) as completed,
+            COALESCE(SUM(CASE WHEN status = 'pending' THEN 1 ELSE 0 END), 0) as pending,
+            COALESCE(SUM(CASE WHEN status = 'cancelled' THEN 1 ELSE 0 END), 0) as cancelled,
+            COALESCE(SUM(CASE WHEN status = 'completed' THEN total_price ELSE 0 END), 0) as revenue_completed,
+            COALESCE(SUM(CASE WHEN status != 'cancelled' THEN total_price ELSE 0 END), 0) as revenue_total
+          FROM orders
+          WHERE created_at >= datetime('now', '-${days} days')`,
+    args: [],
+  });
+  return result.rows[0];
+}
+
+export async function updateOrderStatus(id: string, status: string) {
+  const db = getDb();
+  await db.execute({
+    sql: "UPDATE orders SET status = ? WHERE id = ?",
+    args: [status, id],
+  });
 }

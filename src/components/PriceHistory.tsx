@@ -40,8 +40,10 @@ export function PriceHistory({ defaultExpanded = false }: { defaultExpanded?: bo
     setLoading(true);
     setError("");
     try {
-      const res = await fetch(`/api/history?secret=${apiSecret}&days=${days}`);
-      if (!res.ok) throw new Error("Erro ao buscar historico");
+      const res = await fetch(`/api/history?days=${days}`, {
+        headers: { Authorization: `Bearer ${apiSecret}` },
+      });
+      if (!res.ok) throw new Error("Erro ao buscar histórico");
       const json = await res.json();
       setData(json);
     } catch (e: any) {
@@ -72,7 +74,7 @@ export function PriceHistory({ defaultExpanded = false }: { defaultExpanded?: bo
         className="w-full flex items-center justify-between"
       >
         <h3 className="text-xs font-bold text-brand-500 uppercase tracking-widest">
-          Historico de Precos
+          Histórico de Preços
         </h3>
         <span className="text-gray-400 text-sm">{expanded ? "▲" : "▼"}</span>
       </button>
@@ -241,7 +243,7 @@ export function PriceHistory({ defaultExpanded = false }: { defaultExpanded?: bo
                 onClick={load}
                 className="w-full py-2 text-xs font-semibold text-brand-500 hover:bg-brand-400/10 rounded-lg transition-colors"
               >
-                Atualizar Historico
+                Atualizar Histórico
               </button>
             </>
           )}

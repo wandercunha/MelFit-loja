@@ -59,7 +59,7 @@ export function PaymentsTab() {
             className="input-field"
           />
           <p className="text-xs text-gray-400 mt-1">
-            Desconto sobre o preco de cartao a vista para pagamento via PIX
+            Desconto sobre o preço de cartão à vista para pagamento via PIX
           </p>
         </div>
 
@@ -102,7 +102,7 @@ export function PaymentsTab() {
           <svg className="w-5 h-5 text-amber-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L4.082 16.5c-.77.833.192 2.5 1.732 2.5z" />
           </svg>
-          <p className="text-sm text-amber-700 flex-1">Alteracoes nao salvas</p>
+          <p className="text-sm text-amber-700 flex-1">Alterações não salvas</p>
           <button onClick={handleDiscard} className="text-xs font-semibold px-3 py-1.5 text-gray-500 bg-white rounded-lg border hover:bg-gray-50">
             Descartar
           </button>
@@ -128,7 +128,7 @@ export function PaymentsTab() {
         </h4>
         <div className="space-y-2 text-sm">
           <div className="flex justify-between">
-            <span className="text-gray-600">Cartao a vista:</span>
+            <span className="text-gray-600">Cartão à vista:</span>
             <span className="font-bold">{formatBRL(ex)}</span>
           </div>
           <div className="flex justify-between">
@@ -137,7 +137,7 @@ export function PaymentsTab() {
           </div>
           <div className="flex justify-between">
             <span className="text-brand-500">Parcelado {draft.installments}x (+{draft.cardRate}%):</span>
-            <span className="font-bold text-brand-500">{formatBRL(exMensal)}/mes</span>
+            <span className="font-bold text-brand-500">{formatBRL(exMensal)}/mês</span>
           </div>
           <div className="flex justify-between text-gray-400 text-xs">
             <span>Total parcelado:</span>

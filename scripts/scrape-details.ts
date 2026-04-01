@@ -9,8 +9,11 @@ import * as cheerio from "cheerio";
 import * as fs from "fs";
 import * as path from "path";
 import * as https from "https";
+import * as dotenv from "dotenv";
+dotenv.config({ path: path.join(__dirname, "..", ".env.local") });
 
 const BASE_URL = "https://www.floraamar.com.br";
+const SCRAPE_DELAY = parseInt(process.env.SCRAPE_DELAY || "5000", 10);
 
 interface ProductDetail {
   slug: string;
@@ -171,7 +174,7 @@ async function main() {
       console.log(" skip");
     }
 
-    await delay(400);
+    await delay(SCRAPE_DELAY);
   }
 
   // Save details

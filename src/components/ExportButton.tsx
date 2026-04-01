@@ -6,10 +6,10 @@ import { calcProduct, formatBRL, getColorFromName, getInitials } from "@/lib/pri
 import { CATEGORY_LABELS, CATEGORY_ORDER } from "@/lib/types";
 
 export function ExportButton() {
-  const { globalSettings, overrides } = useCatalog();
+  const { globalSettings, overrides, categoryOverrides, isProductVisible } = useCatalog();
 
   const handleExport = () => {
-    const products = PRODUCTS.filter((p) => !p.soldOut);
+    const products = PRODUCTS.filter((p) => isProductVisible(p.id, p.soldOut));
 
     const groups: Record<string, typeof products> = {};
     CATEGORY_ORDER.forEach((cat) => {
@@ -23,7 +23,7 @@ export function ExportButton() {
 
       let cards = "";
       items.forEach((p) => {
-        const calc = calcProduct(p, globalSettings, overrides[p.id]);
+        const calc = calcProduct(p, globalSettings, overrides[p.id], categoryOverrides[p.category]);
         const color = getColorFromName(p.name);
         cards += `
           <div style="background:#fff;border-radius:14px;overflow:hidden;box-shadow:0 2px 15px rgba(0,0,0,0.07);">
@@ -42,7 +42,7 @@ export function ExportButton() {
                 </div>
                 <div style="font-size:10px;color:#059669;margin-top:2px;">${calc.pixDiscount}% de desconto</div>
               </div>
-              <div style="font-size:12px;color:#4b5563;margin-bottom:2px;">Cartao: <strong>${formatBRL(calc.priceCard)}</strong></div>
+              <div style="font-size:12px;color:#4b5563;margin-bottom:2px;">Cartão: <strong>${formatBRL(calc.priceCard)}</strong></div>
               <div style="font-size:12px;color:#92400e;">Parcelado: <strong>${calc.installments}x de ${formatBRL(calc.installmentMonthly)}</strong></div>
             </div>
           </div>`;
@@ -65,7 +65,7 @@ export function ExportButton() {
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>MelFit - Catalogo Moda Fitness</title>
+<title>MelFit - Catálogo Moda Fitness</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box;}
 body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;background:#faf8f5;color:#1f2937;line-height:1.6;}
@@ -85,7 +85,7 @@ footer{background:#1a1a1a;color:rgba(255,255,255,0.4);text-align:center;padding:
 <body>
 <header>
 <h1><span style="color:#daa520;">Mel</span><span style="font-weight:300;">Fit</span></h1>
-<p>Catalogo de Moda Fitness | Precos atualizados</p>
+<p>Catálogo de Moda Fitness | Preços atualizados</p>
 </header>
 <div class="whatsapp-bar">
 <a href="https://wa.me/?text=Oi!%20Vi%20seu%20catalogo%20MelFit%20e%20gostaria%20de%20saber%20mais!" target="_blank">
@@ -96,12 +96,12 @@ Fale comigo no WhatsApp
 <div class="container">
 <div class="payment-info">
 <h3>Formas de Pagamento</h3>
-<p><strong style="color:#047857;">PIX:</strong> ${globalSettings.pixDiscount}% de desconto | <strong>Cartao a vista</strong> | <strong style="color:#92400e;">Parcelado em ate ${globalSettings.installments}x</strong> no cartao de credito</p>
+<p><strong style="color:#047857;">PIX:</strong> ${globalSettings.pixDiscount}% de desconto | <strong>Cartão à vista</strong> | <strong style="color:#92400e;">Parcelado em até ${globalSettings.installments}x</strong> no cartão de crédito</p>
 </div>
 ${sections}
 </div>
 <footer>
-<p>Catalogo MelFit - Moda Fitness</p>
+<p>Catálogo MelFit - Moda Fitness</p>
 <p style="margin-top:4px;">Consulte disponibilidade e tamanhos</p>
 </footer>
 </body>
@@ -118,7 +118,7 @@ ${sections}
 
   return (
     <button onClick={handleExport} className="btn-success w-full py-3">
-      Exportar Catalogo (HTML)
+      Exportar Catálogo (HTML)
     </button>
   );
 }

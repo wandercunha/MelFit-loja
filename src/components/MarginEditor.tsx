@@ -3,7 +3,7 @@
 import { Product } from "@/lib/types";
 import { useCatalog } from "@/context/CatalogContext";
 import { useState, useEffect } from "react";
-import { formatBRL } from "@/lib/pricing";
+import { formatBRL, getAtacadoUrl } from "@/lib/pricing";
 
 interface Props {
   product: Product;
@@ -55,7 +55,7 @@ export function MarginEditor({ product, onClose }: Props) {
       >
         <h3 className="text-lg font-bold text-brand-500 mb-1">{product.name}</h3>
         <a
-          href={`https://www.floraamaratacado.com.br/${product.slug || product.name.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/\s+c\/\s*/g, "-c-").replace(/\s+/g, "-").replace(/[^a-z0-9-]/g, "")}/`}
+          href={getAtacadoUrl(product)}
           target="_blank"
           rel="noopener noreferrer"
           className="inline-flex items-center gap-1 text-sm text-blue-500 hover:text-blue-700 hover:underline mb-5"
@@ -106,7 +106,7 @@ export function MarginEditor({ product, onClose }: Props) {
           </div>
           <div>
             <label className="block text-xs font-semibold text-gray-500 mb-1">
-              Taxa Cartao ({installments}x)
+              Taxa Cartão ({installments}x)
             </label>
             <input
               type="text"
@@ -136,10 +136,10 @@ export function MarginEditor({ product, onClose }: Props) {
 
         {/* Prices Preview */}
         <div className="bg-emerald-50 border-2 border-emerald-200 rounded-xl p-4 mb-5 space-y-2">
-          <h4 className="text-xs font-bold text-emerald-700 uppercase tracking-wider">Precos de Venda</h4>
+          <h4 className="text-xs font-bold text-emerald-700 uppercase tracking-wider">Preços de Venda</h4>
 
           <div className="flex justify-between text-sm">
-            <span className="text-gray-600">Cartao a vista:</span>
+            <span className="text-gray-600">Cartão à vista:</span>
             <span className="font-bold">{formatBRL(priceCard)}</span>
           </div>
           <div className="flex justify-between text-sm">
@@ -152,7 +152,7 @@ export function MarginEditor({ product, onClose }: Props) {
           </div>
           <div className="flex justify-between text-sm">
             <span className="text-gray-600">Parcela mensal:</span>
-            <span className="font-semibold">{formatBRL(installmentMonthly)}/mes</span>
+            <span className="font-semibold">{formatBRL(installmentMonthly)}/mês</span>
           </div>
 
           <div className="border-t-2 border-emerald-300 pt-2 mt-2">

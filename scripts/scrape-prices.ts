@@ -11,15 +11,20 @@ import * as cheerio from "cheerio";
 import * as fs from "fs";
 import * as path from "path";
 import * as https from "https";
+import * as dotenv from "dotenv";
+dotenv.config({ path: path.join(__dirname, "..", ".env.local") });
 
 const BASE_URL = "https://www.floraamar.com.br";
+const SCRAPE_DELAY = parseInt(process.env.SCRAPE_DELAY || "5000", 10);
 
-// Páginas de categoria no site de varejo
+// Categorias do varejo (só as que revendemos)
 const CATEGORY_PAGES = [
-  { url: "/colecoes/", label: "Todas Coleções" },
-  { url: "/exclusiva/", label: "Exclusiva" },
-  { url: "/colecoes/move-collection/", label: "Move Collection" },
-  { url: "/colecoes/vibe-collection/", label: "Vibe Collection" },
+  { url: "/tops/", label: "Tops" },
+  { url: "/shorts/", label: "Shorts" },
+  { url: "/leggings/", label: "Leggings" },
+  { url: "/macaquinhos/", label: "Macaquinhos" },
+  { url: "/macacao/", label: "Macacoes" },
+  { url: "/conjuntos/", label: "Conjuntos" },
 ];
 
 interface ScrapedProduct {
@@ -146,6 +151,18 @@ async function scrapeProductPage(slug: string): Promise<{ img: string; price: nu
       } catch {}
     }
 
+    // Conjuntos (grade_biquini): soma das pecas
+    if (!price && $(".grade_biquini").length > 0) {
+      $(".grade_biquini .opcao").each((_, opcao) => {
+        const item = $(opcao).find(".item[data-valorvenda]").first();
+        const val = parseFloat(item.attr("data-valorvenda") || "0");
+        if (val > 0) price += val;
+      });
+      if (price > 0) {
+        console.log(`    [CONJUNTO] ${slug}: total R$ ${price} (soma das pecas)`);
+      }
+    }
+
     // Fallback: JSON-LD
     if (!price) {
       $('script[type="application/ld+json"]').each((_, el) => {
@@ -166,18 +183,54 @@ async function scrapeProductPage(slug: string): Promise<{ img: string; price: nu
 }
 
 async function main() {
-  console.log(`[${new Date().toISOString()}] Starting scrape from ${BASE_URL}...`);
+  const startTime = Date.now();
+  const log = (phase: string, msg: string) => console.log(`  [${phase}] ${msg}`);
+  const logErr = (phase: string, msg: string) => console.error(`  [${phase}][ERRO] ${msg}`);
 
+  console.log(`\n${"=".repeat(60)}`);
+  console.log(`  SCRAPE VAREJO — ${new Date().toISOString()}`);
+  console.log(`  Fonte: ${BASE_URL}`);
+  console.log(`  Delay: ${SCRAPE_DELAY}ms entre requests`);
+  console.log(`${"=".repeat(60)}\n`);
+
+  const dataDir = path.join(__dirname, "..", "src", "data");
   const allScraped: ScrapedProduct[] = [];
   const seenSlugs = new Set<string>();
+  let totalRequests = 0;
+  const stats = { fase1: 0, fase2: 0, fase3: 0, fase4: 0, fase5: 0, erros: 0 };
 
-  // Phase 1: Scrape category listing pages
+  // ── Carregar URL overrides manuais ──
+  const overridesPath = path.join(dataDir, "url-overrides.json");
+  let urlOverrides: Record<string, { varejoSlug?: string; atacadoSlug?: string }> = {};
+  try {
+    const overridesData = JSON.parse(fs.readFileSync(overridesPath, "utf-8"));
+    urlOverrides = overridesData.products || {};
+    const count = Object.keys(urlOverrides).length;
+    if (count > 0) log("INIT", `${count} URL overrides manuais carregados`);
+  } catch {
+    log("INIT", "Sem url-overrides.json (opcional)");
+  }
+
+  // Helper: gera slug a partir do nome
+  const nameToSlug = (name: string) =>
+    name.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "")
+      .replace(/\s+c\/\s*/g, "-c-").replace(/\s+/g, "-").replace(/[^a-z0-9-]/g, "");
+
+  // Helper: busca produto com override ou slug gerado
+  const getVarejoSlug = (name: string): string => {
+    if (urlOverrides[name]?.varejoSlug) return urlOverrides[name].varejoSlug!;
+    return nameToSlug(name);
+  };
+
+  // ══════════════════════════════════════════════════════════════
+  // FASE 1: Categorias do varejo
+  // ══════════════════════════════════════════════════════════════
+  console.log(`\n── FASE 1: Listagens de categoria (${CATEGORY_PAGES.length} paginas) ──`);
   for (const cat of CATEGORY_PAGES) {
-    console.log(`  Scraping ${cat.label} (${cat.url})...`);
     try {
       const html = await fetchHTML(`${BASE_URL}${cat.url}`);
+      totalRequests++;
       const products = parseProductsFromHTML(html);
-
       let added = 0;
       for (const p of products) {
         if (!seenSlugs.has(p.slug)) {
@@ -186,36 +239,43 @@ async function main() {
           added++;
         }
       }
-      console.log(`    Found ${products.length} products (${added} new)`);
-    } catch (err) {
-      console.error(`    [ERROR] ${err}`);
+      stats.fase1 += added;
+      log("FASE1", `${cat.label}: ${products.length} encontrados, ${added} novos`);
+    } catch (err: any) {
+      stats.erros++;
+      logErr("FASE1", `${cat.label}: ${err.message || err}`);
     }
-    await delay(300);
+    await delay(SCRAPE_DELAY);
   }
+  log("FASE1", `Total unico: ${allScraped.length} produtos`);
 
-  console.log(`  Total unique from listings: ${allScraped.length}`);
-
-  // Phase 2: For products missing images, scrape individual pages
+  // ══════════════════════════════════════════════════════════════
+  // FASE 2: Produtos sem imagem — busca pagina individual
+  // ══════════════════════════════════════════════════════════════
   const needDetail = allScraped.filter((p) => !p.img);
   if (needDetail.length > 0) {
-    console.log(`\n  Fetching details for ${needDetail.length} products without images...`);
+    console.log(`\n── FASE 2: Imagens faltantes (${needDetail.length} produtos) ──`);
     for (let i = 0; i < needDetail.length; i++) {
       const p = needDetail[i];
-      console.log(`    [${i + 1}/${needDetail.length}] ${p.slug}...`);
-      const detail = await scrapeProductPage(p.slug);
-      if (detail.img) p.img = detail.img;
-      if (detail.price > 0 && !p.price) p.price = detail.price;
-      await delay(500);
+      try {
+        const detail = await scrapeProductPage(p.slug);
+        totalRequests++;
+        if (detail.img) { p.img = detail.img; stats.fase2++; }
+        if (detail.price > 0 && !p.price) p.price = detail.price;
+        log("FASE2", `[${i + 1}/${needDetail.length}] ${p.slug} → ${detail.img ? "img OK" : "sem img"}${detail.price > 0 ? ` R$${detail.price}` : ""}`);
+      } catch (err: any) {
+        stats.erros++;
+        logErr("FASE2", `${p.slug}: ${err.message || err}`);
+      }
+      await delay(SCRAPE_DELAY);
     }
   }
 
-  // Phase 3: Also try to fetch individual pages for products in our catalog
-  // that weren't found in the listings
-  const dataDir = path.join(__dirname, "..", "src", "data");
+  // ══════════════════════════════════════════════════════════════
+  // FASE 3: Produtos do catalogo nao encontrados nas listagens
+  // ══════════════════════════════════════════════════════════════
   const productsFile = path.join(dataDir, "products.ts");
   const productsContent = fs.readFileSync(productsFile, "utf-8");
-
-  // Extract all product names from products.ts
   const nameRegex = /name:\s*"([^"]+)"/g;
   const catalogNames: string[] = [];
   let match;
@@ -223,40 +283,170 @@ async function main() {
     catalogNames.push(match[1]);
   }
 
-  // Generate slugs from catalog names that we haven't scraped yet
   const missingFromCatalog: { name: string; slug: string }[] = [];
   for (const name of catalogNames) {
-    const slug = name
-      .toLowerCase()
-      .normalize("NFD")
-      .replace(/[\u0300-\u036f]/g, "")
-      .replace(/\s+c\/\s+/g, "-com-")
-      .replace(/\s+/g, "-")
-      .replace(/[^a-z0-9-]/g, "");
-
+    if (name.toLowerCase().startsWith("conjunto ")) continue; // conjuntos vao na fase 4
+    const slug = getVarejoSlug(name);
     if (!seenSlugs.has(slug)) {
       missingFromCatalog.push({ name, slug });
     }
   }
 
   if (missingFromCatalog.length > 0) {
-    console.log(`\n  Trying ${missingFromCatalog.length} additional products from catalog...`);
+    console.log(`\n── FASE 3: Pecas avulsas faltantes (${missingFromCatalog.length} produtos) ──`);
     for (let i = 0; i < missingFromCatalog.length; i++) {
       const { name, slug } = missingFromCatalog[i];
-      console.log(`    [${i + 1}/${missingFromCatalog.length}] ${slug}...`);
-      const detail = await scrapeProductPage(slug);
-      if (detail.img || detail.price > 0) {
-        seenSlugs.add(slug);
-        allScraped.push({
-          name,
-          slug,
-          img: detail.img,
-          price: detail.price,
-        });
+      const isOverride = urlOverrides[name]?.varejoSlug ? " [OVERRIDE]" : "";
+      try {
+        const detail = await scrapeProductPage(slug);
+        totalRequests++;
+        if (detail.img || detail.price > 0) {
+          seenSlugs.add(slug);
+          allScraped.push({ name, slug, img: detail.img, price: detail.price });
+          stats.fase3++;
+          log("FASE3", `[${i + 1}/${missingFromCatalog.length}] ${slug}${isOverride} → R$${detail.price || "?"}`);
+        } else {
+          log("FASE3", `[${i + 1}/${missingFromCatalog.length}] ${slug}${isOverride} → nao encontrado`);
+        }
+      } catch (err: any) {
+        stats.erros++;
+        logErr("FASE3", `${slug}: ${err.message || err}`);
       }
-      await delay(500);
+      await delay(SCRAPE_DELAY);
     }
   }
+
+  // ══════════════════════════════════════════════════════════════
+  // FASE 4: Pecas de conjuntos (desmembra e busca individual)
+  // ══════════════════════════════════════════════════════════════
+  const conjuntoNames = catalogNames.filter((n) => n.toLowerCase().startsWith("conjunto "));
+  const pieceSlugs: { name: string; slug: string; conjuntoName: string; source: string }[] = [];
+
+  for (const conjName of conjuntoNames) {
+    // Primeiro: checa se tem override manual para o conjunto inteiro
+    if (urlOverrides[conjName]?.varejoSlug) {
+      const slug = urlOverrides[conjName].varejoSlug!;
+      if (!seenSlugs.has(slug)) {
+        pieceSlugs.push({ name: conjName, slug, conjuntoName: conjName, source: "override" });
+      }
+      continue;
+    }
+
+    const norm = conjName.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+    const pieceMatch = norm.match(/^conjunto\s+(.+?)\s+e\s+((?:short|legging|calca|calcinha).+)$/);
+    if (!pieceMatch) {
+      log("FASE4", `${conjName} → nao consegui extrair pecas do nome`);
+      continue;
+    }
+
+    const piece1Base = pieceMatch[1];
+    const piece2Full = pieceMatch[2];
+    const piece2Words = piece2Full.split(" ");
+    const pieceTypes = ["short", "legging", "calca", "calcinha", "basic", "edge", "cross", "run", "speed", "adapt", "line", "flare", "classic"];
+    const colorWords = piece2Words.filter((w) => !pieceTypes.includes(w));
+    const color = colorWords.join(" ");
+
+    const toSlugLocal = (s: string) =>
+      s.replace(/\s+c\/\s*/g, "-c-").replace(/\s+/g, "-").replace(/[^a-z0-9-]/g, "");
+
+    const piece1HasColor = colorWords.some((w) => piece1Base.includes(w));
+    const piece1Name = piece1HasColor ? piece1Base : `${piece1Base} ${color}`;
+    const slug1 = toSlugLocal(piece1Name);
+    const slug2 = toSlugLocal(piece2Full);
+
+    // Checa overrides para pecas individuais tambem
+    const titleCase = (s: string) => s.replace(/\b\w/g, (c) => c.toUpperCase());
+    const p1Name = titleCase(piece1Name);
+    const p2Name = titleCase(piece2Full);
+
+    if (!seenSlugs.has(urlOverrides[p1Name]?.varejoSlug || slug1)) {
+      pieceSlugs.push({
+        name: p1Name,
+        slug: urlOverrides[p1Name]?.varejoSlug || slug1,
+        conjuntoName: conjName,
+        source: urlOverrides[p1Name]?.varejoSlug ? "override" : "auto",
+      });
+    }
+    if (!seenSlugs.has(urlOverrides[p2Name]?.varejoSlug || slug2)) {
+      pieceSlugs.push({
+        name: p2Name,
+        slug: urlOverrides[p2Name]?.varejoSlug || slug2,
+        conjuntoName: conjName,
+        source: urlOverrides[p2Name]?.varejoSlug ? "override" : "auto",
+      });
+    }
+  }
+
+  if (pieceSlugs.length > 0) {
+    console.log(`\n── FASE 4: Pecas de conjuntos (${pieceSlugs.length} pecas) ──`);
+    for (let i = 0; i < pieceSlugs.length; i++) {
+      const { name, slug, conjuntoName, source } = pieceSlugs[i];
+      if (seenSlugs.has(slug)) {
+        log("FASE4", `[${i + 1}/${pieceSlugs.length}] ${slug} → ja existe (skip)`);
+        continue;
+      }
+      const tag = source === "override" ? " [OVERRIDE]" : "";
+      try {
+        const detail = await scrapeProductPage(slug);
+        totalRequests++;
+        if (detail.price > 0) {
+          seenSlugs.add(slug);
+          allScraped.push({ name, slug, img: detail.img, price: detail.price });
+          stats.fase4++;
+          log("FASE4", `[${i + 1}/${pieceSlugs.length}] ${slug}${tag} → R$${detail.price} (${conjuntoName})`);
+        } else {
+          log("FASE4", `[${i + 1}/${pieceSlugs.length}] ${slug}${tag} → nao encontrado`);
+        }
+      } catch (err: any) {
+        stats.erros++;
+        logErr("FASE4", `${slug}: ${err.message || err}`);
+      }
+      await delay(SCRAPE_DELAY);
+    }
+  }
+
+  // ══════════════════════════════════════════════════════════════
+  // FASE 5: URL overrides manuais que ainda nao foram buscados
+  // ══════════════════════════════════════════════════════════════
+  const manualPending = Object.entries(urlOverrides).filter(
+    ([name, o]) => o.varejoSlug && !seenSlugs.has(o.varejoSlug)
+  );
+  if (manualPending.length > 0) {
+    console.log(`\n── FASE 5: Overrides manuais pendentes (${manualPending.length}) ──`);
+    for (const [name, o] of manualPending) {
+      const slug = o.varejoSlug!;
+      try {
+        const detail = await scrapeProductPage(slug);
+        totalRequests++;
+        if (detail.price > 0) {
+          seenSlugs.add(slug);
+          allScraped.push({ name, slug, img: detail.img, price: detail.price });
+          stats.fase5++;
+          log("FASE5", `${slug} → R$${detail.price} [OVERRIDE manual]`);
+        } else {
+          log("FASE5", `${slug} → nao encontrado [OVERRIDE manual]`);
+        }
+      } catch (err: any) {
+        stats.erros++;
+        logErr("FASE5", `${slug}: ${err.message || err}`);
+      }
+      await delay(SCRAPE_DELAY);
+    }
+  }
+
+  // ── Resumo ──
+  const elapsed = ((Date.now() - startTime) / 1000).toFixed(1);
+  console.log(`\n${"─".repeat(60)}`);
+  console.log(`  RESUMO DO SCRAPE`);
+  console.log(`  Tempo: ${elapsed}s | Requests: ${totalRequests} | Delay: ${SCRAPE_DELAY}ms`);
+  console.log(`  Fase 1 (categorias):     ${stats.fase1} produtos`);
+  console.log(`  Fase 2 (imagens):        ${stats.fase2} atualizadas`);
+  console.log(`  Fase 3 (pecas avulsas):  ${stats.fase3} encontradas`);
+  console.log(`  Fase 4 (conjuntos):      ${stats.fase4} pecas encontradas`);
+  console.log(`  Fase 5 (overrides):      ${stats.fase5} encontrados`);
+  console.log(`  Erros:                   ${stats.erros}`);
+  console.log(`  Total final:             ${allScraped.length} produtos`);
+  console.log(`${"─".repeat(60)}\n`);
 
   // Save scraped data
   const outputPath = path.join(dataDir, "scraped-prices.json");

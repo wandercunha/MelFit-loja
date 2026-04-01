@@ -1,7 +1,7 @@
 "use client";
 
 import { Product, PriceCalc, CATEGORY_LABELS } from "@/lib/types";
-import { formatBRL, getColorFromName, getInitials } from "@/lib/pricing";
+import { formatBRL, getColorFromName, getInitials, getAtacadoUrl } from "@/lib/pricing";
 import { useCatalog } from "@/context/CatalogContext";
 import { useCart } from "@/context/CartContext";
 import { useState, useRef } from "react";
@@ -252,27 +252,30 @@ export function ProductCard({ product, priceCalc, hasOverride, onEdit }: Props) 
           {/* === CLIENT VIEW === */}
           {!isAdmin && (
             <div className="space-y-1.5">
-              <div className="bg-emerald-50 rounded-lg px-2 py-1.5">
-                <div className="flex items-center gap-1">
-                  <span className="text-[9px] sm:text-[10px] font-bold text-emerald-700 bg-emerald-200 px-1 sm:px-1.5 py-0.5 rounded">PIX</span>
-                  <span className="text-base sm:text-lg font-extrabold text-emerald-700">
-                    {formatBRL(priceCalc.pricePix)}
-                  </span>
-                </div>
-                <p className="text-[9px] sm:text-[10px] text-emerald-600 mt-0.5">
-                  {priceCalc.pixDiscount}% de desconto
-                </p>
-              </div>
-              <div className="flex items-center gap-1">
-                <span className="text-[9px] sm:text-[10px] font-semibold text-gray-400">Cartao:</span>
-                <span className="text-xs sm:text-sm font-bold text-gray-700">
-                  {formatBRL(priceCalc.priceCard)}
+              {/* Preço em destaque */}
+              <p className="text-2xl sm:text-3xl font-black text-gray-800 leading-none">
+                {formatBRL(Math.round(priceCalc.priceInstallment))}
+              </p>
+
+              {/* Parcelamento */}
+              <p className="text-[11px] sm:text-xs text-gray-500">
+                {priceCalc.installments}x de{" "}
+                <span className="font-bold text-gray-700">
+                  {formatBRL(Math.round(priceCalc.installmentMonthly))}
+                </span>{" "}
+                sem juros
+              </p>
+
+              {/* PIX */}
+              <div className="flex items-center gap-1.5">
+                <span className="text-[9px] sm:text-[10px] font-bold text-emerald-700 bg-emerald-100 px-1.5 py-0.5 rounded">
+                  PIX
                 </span>
-              </div>
-              <div className="flex items-center gap-1 flex-wrap">
-                <span className="text-[9px] sm:text-[10px] font-semibold text-gray-400">Parcelado:</span>
-                <span className="text-xs sm:text-sm font-bold text-brand-500">
-                  {priceCalc.installments}x {formatBRL(priceCalc.installmentMonthly)}
+                <span className="text-sm sm:text-base font-extrabold text-emerald-600">
+                  {formatBRL(Math.round(priceCalc.pricePix))}
+                </span>
+                <span className="text-[9px] sm:text-[10px] text-emerald-500">
+                  ({priceCalc.pixDiscount}% off)
                 </span>
               </div>
 
@@ -343,18 +346,29 @@ export function ProductCard({ product, priceCalc, hasOverride, onEdit }: Props) 
               </p>
               <div className="flex items-center gap-2 flex-wrap">
                 <span className="text-lg font-extrabold text-brand-500">
-                  {formatBRL(priceCalc.priceCard)}
+                  {formatBRL(Math.round(priceCalc.priceInstallment))}
                 </span>
                 <span className="text-[10px] font-bold text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded-full">
                   +{priceCalc.appliedMargin}%{hasOverride ? " *" : ""}
                 </span>
               </div>
               <div className="text-[11px] text-gray-400 space-y-0.5">
-                <p>PIX: {formatBRL(priceCalc.pricePix)} | Parc: {formatBRL(priceCalc.priceInstallment)}</p>
+                <p>PIX: {formatBRL(Math.round(priceCalc.pricePix))} | {priceCalc.installments}x: {formatBRL(Math.round(priceCalc.installmentMonthly))}</p>
                 <p>
                   Lucro: {formatBRL(priceCalc.netProfit)} | Margem: {priceCalc.netMargin.toFixed(1)}%
                 </p>
               </div>
+              <a
+                href={getAtacadoUrl(product)}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1 text-[10px] text-brand-400 hover:text-brand-500 hover:underline mt-0.5"
+              >
+                <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                </svg>
+                Ver no fornecedor
+              </a>
               {totalStock >= 0 && (
                 <p className={`text-[10px] font-semibold ${totalStock === 0 ? "text-red-500" : totalStock <= 10 ? "text-amber-500" : "text-emerald-500"}`}>
                   Estoque fabricante: {totalStock} un

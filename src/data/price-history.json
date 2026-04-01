@@ -1,5 +1,5 @@
 {
-  "lastUpdate": "2026-03-31T19:53:56.856Z",
+  "lastUpdate": "2026-04-01T23:02:49.385Z",
   "changes": [
     {
       "date": "2026-03-31T19:31:12.316Z",
@@ -192,6 +192,278 @@
       "field": "price",
       "oldValue": 55,
       "newValue": 39
+    },
+    {
+      "date": "2026-04-01T12:01:29.399Z",
+      "product": "Short Run Rosa Soft",
+      "slug": "short-run-rosa-soft",
+      "field": "price",
+      "oldValue": 130,
+      "newValue": 99
+    },
+    {
+      "date": "2026-04-01T12:01:29.399Z",
+      "product": "Cropped Manga Longa Off White",
+      "slug": "cropped-manga-longa-off-white",
+      "field": "price",
+      "oldValue": 75,
+      "newValue": 98
+    },
+    {
+      "date": "2026-04-01T12:01:29.399Z",
+      "product": "Cropped Manga Longa Cereja",
+      "slug": "cropped-manga-longa-cereja",
+      "field": "price",
+      "oldValue": 178,
+      "newValue": 65
+    },
+    {
+      "date": "2026-04-01T12:01:29.399Z",
+      "product": "Short Basic Azul Marine",
+      "slug": "short-basic-azul-marine",
+      "field": "price",
+      "oldValue": 55,
+      "newValue": 59
+    },
+    {
+      "date": "2026-04-01T12:01:29.399Z",
+      "product": "Short Adapt Lilas",
+      "slug": "short-adapt-lilas",
+      "field": "price",
+      "oldValue": 75,
+      "newValue": 98
+    },
+    {
+      "date": "2026-04-01T12:01:29.399Z",
+      "product": "Legging Flare Azul Marinho",
+      "slug": "legging-flare-azul-marinho",
+      "field": "price",
+      "oldValue": 188,
+      "newValue": 95
+    },
+    {
+      "date": "2026-04-01T12:01:29.399Z",
+      "product": "Macaquinho com Manga Cereja",
+      "slug": "macaquinho-com-manga-cereja",
+      "field": "price",
+      "oldValue": 139,
+      "newValue": 75
+    },
+    {
+      "date": "2026-04-01T12:01:29.399Z",
+      "product": "Macaquinho Adapt Blush",
+      "slug": "macaquinho-adapt-blush",
+      "field": "price",
+      "oldValue": 75,
+      "newValue": 74
+    },
+    {
+      "date": "2026-04-01T12:01:29.399Z",
+      "product": "Macaquinho Adapt Preto",
+      "slug": "macaquinho-adapt-preto",
+      "field": "price",
+      "oldValue": 39,
+      "newValue": 109
+    },
+    {
+      "date": "2026-04-01T12:01:29.399Z",
+      "product": "Macaquinho Move Frente Unica Cereja",
+      "slug": "macaquinho-move-frente-unica-cereja",
+      "field": "price",
+      "oldValue": 89,
+      "newValue": 75
+    },
+    {
+      "date": "2026-04-01T12:01:29.399Z",
+      "product": "Macaquinho Move Frente Unica Preto",
+      "slug": "macaquinho-move-frente-unica-preto",
+      "field": "price",
+      "oldValue": 130,
+      "newValue": 45
+    },
+    {
+      "date": "2026-04-01T12:01:29.399Z",
+      "product": "Macacão Essential Preto",
+      "slug": "macacao-essential-preto",
+      "field": "price",
+      "oldValue": 59,
+      "newValue": 39
+    },
+    {
+      "date": "2026-04-01T12:01:29.399Z",
+      "product": "Macacão Essential Marrom",
+      "slug": "macacao-essential-marrom",
+      "field": "price",
+      "oldValue": 39,
+      "newValue": 55
+    },
+    {
+      "date": "2026-04-01T23:02:49.385Z",
+      "product": "Top Curve Cinza",
+      "slug": "top-curve-cinza",
+      "field": "price",
+      "oldValue": 75,
+      "newValue": 45
+    },
+    {
+      "date": "2026-04-01T23:02:49.385Z",
+      "product": "Short Fast Cinza c/ Branco",
+      "slug": "short-fast-cinza-c-branco",
+      "field": "price",
+      "oldValue": 99,
+      "newValue": 79
+    },
+    {
+      "date": "2026-04-01T23:02:49.385Z",
+      "product": "Short Fast Preto c/ Branco",
+      "slug": "short-fast-preto-c-branco",
+      "field": "price",
+      "oldValue": 99,
+      "newValue": 79
+    },
+    {
+      "date": "2026-04-01T23:02:49.385Z",
+      "product": "Top Curve Preto",
+      "slug": "top-curve-preto",
+      "field": "price",
+      "oldValue": 75,
+      "newValue": 45
+    },
+    {
+      "date": "2026-04-01T23:02:49.385Z",
+      "product": "Top Curve Azul Elegance",
+      "slug": "top-curve-azul-elegance",
+      "field": "price",
+      "oldValue": 75,
+      "newValue": 45
+    },
+    {
+      "date": "2026-04-01T23:02:49.385Z",
+      "product": "Short Fast Azul Elegance c/ Branco",
+      "slug": "short-fast-azul-elegance-c-branco",
+      "field": "price",
+      "oldValue": 99,
+      "newValue": 79
+    },
+    {
+      "date": "2026-04-01T23:02:49.385Z",
+      "product": "Regata One Preto",
+      "slug": "regata-one-preto",
+      "field": "price",
+      "oldValue": 72,
+      "newValue": 52
+    },
+    {
+      "date": "2026-04-01T23:02:49.385Z",
+      "product": "Regata One Cinza",
+      "slug": "regata-one-cinza",
+      "field": "price",
+      "oldValue": 72,
+      "newValue": 52
+    },
+    {
+      "date": "2026-04-01T23:02:49.385Z",
+      "product": "Regata One Azul Elegance",
+      "slug": "regata-one-azul-elegance",
+      "field": "price",
+      "oldValue": 72,
+      "newValue": 52
+    },
+    {
+      "date": "2026-04-01T23:02:49.385Z",
+      "product": "Cropped Manga Longa Off White",
+      "slug": "cropped-manga-longa-off-white",
+      "field": "price",
+      "oldValue": 98,
+      "newValue": 52
+    },
+    {
+      "date": "2026-04-01T23:02:49.385Z",
+      "product": "Cropped Manga Longa Cereja",
+      "slug": "cropped-manga-longa-cereja",
+      "field": "price",
+      "oldValue": 65,
+      "newValue": 74
+    },
+    {
+      "date": "2026-04-01T23:02:49.385Z",
+      "product": "Short Basic Azul Marine",
+      "slug": "short-basic-azul-marine",
+      "field": "price",
+      "oldValue": 59,
+      "newValue": 74
+    },
+    {
+      "date": "2026-04-01T23:02:49.385Z",
+      "product": "Short Adapt Lilas",
+      "slug": "short-adapt-lilas",
+      "field": "price",
+      "oldValue": 98,
+      "newValue": 52
+    },
+    {
+      "date": "2026-04-01T23:02:49.385Z",
+      "product": "Legging Flare Azul Marinho",
+      "slug": "legging-flare-azul-marinho",
+      "field": "price",
+      "oldValue": 95,
+      "newValue": 130
+    },
+    {
+      "date": "2026-04-01T23:02:49.385Z",
+      "product": "Macaquinho com Manga Cereja",
+      "slug": "macaquinho-com-manga-cereja",
+      "field": "price",
+      "oldValue": 75,
+      "newValue": 95
+    },
+    {
+      "date": "2026-04-01T23:02:49.385Z",
+      "product": "Macaquinho Adapt Blush",
+      "slug": "macaquinho-adapt-blush",
+      "field": "price",
+      "oldValue": 74,
+      "newValue": 109
+    },
+    {
+      "date": "2026-04-01T23:02:49.385Z",
+      "product": "Macaquinho Adapt Preto",
+      "slug": "macaquinho-adapt-preto",
+      "field": "price",
+      "oldValue": 109,
+      "newValue": 65
+    },
+    {
+      "date": "2026-04-01T23:02:49.385Z",
+      "product": "Macaquinho Move Frente Unica Cereja",
+      "slug": "macaquinho-move-frente-unica-cereja",
+      "field": "price",
+      "oldValue": 75,
+      "newValue": 188
+    },
+    {
+      "date": "2026-04-01T23:02:49.385Z",
+      "product": "Macaquinho Move Frente Unica Preto",
+      "slug": "macaquinho-move-frente-unica-preto",
+      "field": "price",
+      "oldValue": 45,
+      "newValue": 95
+    },
+    {
+      "date": "2026-04-01T23:02:49.385Z",
+      "product": "Macacão Essential Preto",
+      "slug": "macacao-essential-preto",
+      "field": "price",
+      "oldValue": 39,
+      "newValue": 45
+    },
+    {
+      "date": "2026-04-01T23:02:49.385Z",
+      "product": "Macacão Essential Marrom",
+      "slug": "macacao-essential-marrom",
+      "field": "price",
+      "oldValue": 55,
+      "newValue": 95
     }
   ],
   "snapshots": [
@@ -206,6 +478,20 @@
       "date": "2026-03-31T19:53:56.856Z",
       "productCount": 65,
       "avgPrice": 90.05,
+      "minPrice": 39,
+      "maxPrice": 188
+    },
+    {
+      "date": "2026-04-01T12:01:29.399Z",
+      "productCount": 65,
+      "avgPrice": 85.66,
+      "minPrice": 39,
+      "maxPrice": 180
+    },
+    {
+      "date": "2026-04-01T23:02:49.385Z",
+      "productCount": 65,
+      "avgPrice": 85.31,
       "minPrice": 39,
       "maxPrice": 188
     }
