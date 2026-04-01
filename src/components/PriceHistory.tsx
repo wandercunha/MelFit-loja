@@ -27,12 +27,12 @@ interface HistoryData {
   snapshots: Snapshot[];
 }
 
-export function PriceHistory() {
+export function PriceHistory({ defaultExpanded = false }: { defaultExpanded?: boolean } = {}) {
   const [data, setData] = useState<HistoryData | null>(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const [days, setDays] = useState(30);
-  const [expanded, setExpanded] = useState(false);
+  const [expanded, setExpanded] = useState(defaultExpanded);
 
   const load = async () => {
     setLoading(true);

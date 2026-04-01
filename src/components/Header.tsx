@@ -6,7 +6,7 @@ import { PRODUCTS } from "@/data/products";
 import { useState } from "react";
 import { LoginModal } from "./LoginModal";
 import { CartDrawer } from "./CartDrawer";
-import { AdminPanel } from "./AdminPanel";
+import { AdminPanel } from "./admin/AdminPanel";
 
 export function Header() {
   const { isAdmin, logout } = useCatalog();
