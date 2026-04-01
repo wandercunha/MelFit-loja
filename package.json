@@ -9,7 +9,8 @@
     "lint": "next lint",
     "scrape": "tsx scripts/scrape-prices.ts",
     "scrape:details": "tsx scripts/scrape-details.ts",
-    "db:migrate": "tsx scripts/migrate-to-sqlite.ts"
+    "db:migrate": "tsx scripts/migrate-to-sqlite.ts",
+    "admin:reset": "tsx scripts/reset-admin.ts"
   },
   "dependencies": {
     "@libsql/client": "^0.17.2",
