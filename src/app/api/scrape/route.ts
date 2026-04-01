@@ -6,6 +6,7 @@ import {
   addPriceChange,
   addPriceSnapshot,
 } from "@/lib/db";
+import { isAuthorized as checkAuth } from "@/lib/api-auth";
 
 export const dynamic = "force-dynamic";
 export const maxDuration = 60; // Vercel Pro: até 60s
@@ -92,16 +93,7 @@ function parseProducts(html: string): ScrapedProduct[] {
 }
 
 export async function GET(request: Request) {
-  const { searchParams } = new URL(request.url);
-  const secret = searchParams.get("secret");
-
-  // Também aceita header Authorization para cron jobs
-  const authHeader = request.headers.get("authorization");
-  const isAuthorized =
-    secret === "melfit2024" ||
-    authHeader === `Bearer ${process.env.CRON_SECRET}`;
-
-  if (!isAuthorized) {
+  if (!checkAuth(request)) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 

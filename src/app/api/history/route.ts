@@ -1,17 +1,18 @@
 import { NextResponse } from "next/server";
 import { initSchema, getPriceHistory, getPriceSnapshots } from "@/lib/db";
+import { isAuthorized } from "@/lib/api-auth";
 
 export const dynamic = "force-dynamic";
 
 export async function GET(request: Request) {
-  const { searchParams } = new URL(request.url);
-  if (searchParams.get("secret") !== "melfit2024") {
+  if (!isAuthorized(request)) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
   try {
     await initSchema();
 
+    const { searchParams } = new URL(request.url);
     const days = parseInt(searchParams.get("days") || "30");
     const product = searchParams.get("product") || undefined;
 

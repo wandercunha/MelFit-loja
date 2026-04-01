@@ -12,8 +12,9 @@ interface CatalogState {
 }
 
 interface CatalogContextType extends CatalogState {
-  login: (user: string, pass: string) => boolean;
+  login: (user: string, pass: string) => Promise<boolean>;
   logout: () => void;
+  apiSecret: string;
   setGlobalSettings: (s: GlobalSettings) => void;
   setOverride: (productId: number, o: ProductOverride) => void;
   removeOverride: (productId: number) => void;
@@ -24,8 +25,7 @@ interface CatalogContextType extends CatalogState {
 const CatalogContext = createContext<CatalogContextType | null>(null);
 
 const STORAGE_KEY = "melfit_catalog_state";
-const ADMIN_USER = "admin";
-const ADMIN_PASS = "flora2024";
+const SESSION_KEY = "melfit_session";
 
 function loadState(): Partial<CatalogState> {
   if (typeof window === "undefined") return {};
@@ -43,8 +43,22 @@ function saveState(state: Pick<CatalogState, "globalSettings" | "overrides">) {
   } catch {}
 }
 
+function loadSession(): { token: string; expiry: number; apiSecret: string } | null {
+  if (typeof window === "undefined") return null;
+  try {
+    const raw = localStorage.getItem(SESSION_KEY);
+    if (raw) {
+      const session = JSON.parse(raw);
+      if (session.expiry > Date.now()) return session;
+      localStorage.removeItem(SESSION_KEY);
+    }
+  } catch {}
+  return null;
+}
+
 export function CatalogProvider({ children }: { children: React.ReactNode }) {
   const [isAdmin, setIsAdmin] = useState(false);
+  const [apiSecret, setApiSecret] = useState("");
   const [globalSettings, setGlobalSettingsState] = useState<GlobalSettings>({
     margin: 50,
     shipping: 0,
@@ -64,6 +78,13 @@ export function CatalogProvider({ children }: { children: React.ReactNode }) {
     const saved = loadState();
     if (saved.globalSettings) setGlobalSettingsState(saved.globalSettings);
     if (saved.overrides) setOverrides(saved.overrides as Record<number, ProductOverride>);
+
+    // Restore session
+    const session = loadSession();
+    if (session) {
+      setIsAdmin(true);
+      setApiSecret(session.apiSecret);
+    }
   }, []);
 
   const persist = useCallback(
@@ -73,15 +94,40 @@ export function CatalogProvider({ children }: { children: React.ReactNode }) {
     []
   );
 
-  const login = (user: string, pass: string): boolean => {
-    if (user === ADMIN_USER && pass === ADMIN_PASS) {
-      setIsAdmin(true);
-      return true;
+  const login = async (user: string, pass: string): Promise<boolean> => {
+    try {
+      const res = await fetch("/api/auth", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ user, pass }),
+      });
+      if (!res.ok) return false;
+      const data = await res.json();
+      if (data.success) {
+        setIsAdmin(true);
+        setApiSecret(data.apiSecret);
+        if (typeof window !== "undefined") {
+          localStorage.setItem(SESSION_KEY, JSON.stringify({
+            token: data.token,
+            expiry: data.expiry,
+            apiSecret: data.apiSecret,
+          }));
+        }
+        return true;
+      }
+      return false;
+    } catch {
+      return false;
     }
-    return false;
   };
 
-  const logout = () => setIsAdmin(false);
+  const logout = () => {
+    setIsAdmin(false);
+    setApiSecret("");
+    if (typeof window !== "undefined") {
+      localStorage.removeItem(SESSION_KEY);
+    }
+  };
 
   const setGlobalSettings = (s: GlobalSettings) => {
     setGlobalSettingsState(s);
@@ -109,6 +155,7 @@ export function CatalogProvider({ children }: { children: React.ReactNode }) {
         overrides,
         searchQuery,
         activeCategory,
+        apiSecret,
         login,
         logout,
         setGlobalSettings,

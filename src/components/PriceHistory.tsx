@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { formatBRL } from "@/lib/pricing";
+import { useCatalog } from "@/context/CatalogContext";
 
 interface PriceChange {
   date: string;
@@ -28,6 +29,7 @@ interface HistoryData {
 }
 
 export function PriceHistory({ defaultExpanded = false }: { defaultExpanded?: boolean } = {}) {
+  const { apiSecret } = useCatalog();
   const [data, setData] = useState<HistoryData | null>(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
@@ -38,7 +40,7 @@ export function PriceHistory({ defaultExpanded = false }: { defaultExpanded?: bo
     setLoading(true);
     setError("");
     try {
-      const res = await fetch(`/api/history?secret=melfit2024&days=${days}`);
+      const res = await fetch(`/api/history?secret=${apiSecret}&days=${days}`);
       if (!res.ok) throw new Error("Erro ao buscar historico");
       const json = await res.json();
       setData(json);

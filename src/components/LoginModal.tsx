@@ -12,13 +12,18 @@ export function LoginModal({ onClose }: Props) {
   const [user, setUser] = useState("");
   const [pass, setPass] = useState("");
   const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (login(user, pass)) {
+    setError("");
+    setLoading(true);
+    const ok = await login(user, pass);
+    setLoading(false);
+    if (ok) {
       onClose();
     } else {
-      setError("Usuário ou senha incorretos");
+      setError("Usuario ou senha incorretos");
     }
   };
 
@@ -33,12 +38,12 @@ export function LoginModal({ onClose }: Props) {
         className="bg-white rounded-2xl p-8 w-full max-w-sm shadow-2xl"
       >
         <h2 className="text-2xl font-bold text-brand-500 text-center mb-6">
-          Área Administrativa
+          Area Administrativa
         </h2>
 
         <input
           type="text"
-          placeholder="Usuário"
+          placeholder="Usuario"
           value={user}
           onChange={(e) => setUser(e.target.value)}
           className="input-field mb-3"
@@ -56,13 +61,9 @@ export function LoginModal({ onClose }: Props) {
           <p className="text-red-600 text-sm text-center mb-3">{error}</p>
         )}
 
-        <button type="submit" className="btn-primary w-full">
-          Entrar
+        <button type="submit" disabled={loading} className="btn-primary w-full">
+          {loading ? "Verificando..." : "Entrar"}
         </button>
-
-        <p className="text-xs text-gray-400 text-center mt-4">
-          Padrão: admin / flora2024
-        </p>
       </form>
     </div>
   );

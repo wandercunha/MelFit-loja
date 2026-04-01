@@ -83,17 +83,14 @@ export function SystemTab() {
         </div>
       </div>
 
-      {/* Admin credentials info */}
+      {/* Admin info */}
       <div className="bg-gray-50 rounded-xl p-5 space-y-3">
         <h4 className="text-xs font-bold text-gray-500 uppercase tracking-widest">
           Acesso Admin
         </h4>
-        <div className="text-sm text-gray-600 space-y-1">
-          <p>Usuario: <code className="bg-gray-200 px-1.5 py-0.5 rounded text-xs">admin</code></p>
-          <p>Senha: <code className="bg-gray-200 px-1.5 py-0.5 rounded text-xs">flora2024</code></p>
-        </div>
-        <p className="text-[10px] text-gray-400">
-          Credenciais de acesso ao painel admin deste catalogo.
+        <p className="text-xs text-gray-400">
+          Para alterar a senha admin, configure a variavel de ambiente ADMIN_PASSWORD_HASH
+          no servidor com o SHA-256 da nova senha.
         </p>
       </div>
 

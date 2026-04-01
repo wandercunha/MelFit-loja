@@ -1,11 +1,12 @@
 import { NextResponse } from "next/server";
 import { initSchema, addSale, getSales, getSalesSummary, updateSaleStatus } from "@/lib/db";
+import { isAuthorized } from "@/lib/api-auth";
 
 export const dynamic = "force-dynamic";
 
 export async function GET(request: Request) {
   const { searchParams } = new URL(request.url);
-  if (searchParams.get("secret") !== "melfit2024") {
+  if (!isAuthorized(request)) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
@@ -21,7 +22,7 @@ export async function GET(request: Request) {
 
 export async function POST(request: Request) {
   const { searchParams } = new URL(request.url);
-  if (searchParams.get("secret") !== "melfit2024") {
+  if (!isAuthorized(request)) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
@@ -52,7 +53,7 @@ export async function POST(request: Request) {
 
 export async function PATCH(request: Request) {
   const { searchParams } = new URL(request.url);
-  if (searchParams.get("secret") !== "melfit2024") {
+  if (!isAuthorized(request)) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
