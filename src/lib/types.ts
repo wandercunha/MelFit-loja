@@ -32,8 +32,11 @@ export interface GlobalSettings {
   pixDiscount: number;    // desconto PIX (ex: 4%)
   installments: number;   // número de parcelas (ex: 6)
   // WhatsApp config
-  whatsappNumber: string; // ex: "5511982863050"
-  whatsappGreeting: string; // mensagem inicial
+  whatsappNumber: string;
+  whatsappGreeting: string;
+  // Login atacado (para scraping)
+  atacadoEmail: string;
+  atacadoPassword: string;
 }
 
 export interface PriceCalc {

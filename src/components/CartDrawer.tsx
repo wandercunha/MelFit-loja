@@ -5,7 +5,7 @@ import { useCatalog } from "@/context/CatalogContext";
 import { calcProduct, formatBRL } from "@/lib/pricing";
 import { PRODUCTS } from "@/data/products";
 import { PaymentMethod, PAYMENT_LABELS } from "@/lib/types";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 interface Props {
   open: boolean;
@@ -13,6 +13,12 @@ interface Props {
 }
 
 export function CartDrawer({ open, onClose }: Props) {
+  useEffect(() => {
+    if (open) {
+      document.body.style.overflow = "hidden";
+      return () => { document.body.style.overflow = ""; };
+    }
+  }, [open]);
   const { items, customer, cartId, removeItem, updateQuantity, clearCart, setCustomer } =
     useCart();
   const { globalSettings, overrides } = useCatalog();

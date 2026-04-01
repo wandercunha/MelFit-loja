@@ -53,6 +53,8 @@ export function CatalogProvider({ children }: { children: React.ReactNode }) {
     installments: 6,
     whatsappNumber: "5511982863050",
     whatsappGreeting: "Ola! Gostaria de comprar essas pecas no site MelFit e fechar o pedido.",
+    atacadoEmail: "",
+    atacadoPassword: "",
   });
   const [overrides, setOverrides] = useState<Record<number, ProductOverride>>({});
   const [searchQuery, setSearchQuery] = useState("");
