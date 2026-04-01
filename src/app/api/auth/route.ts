@@ -4,20 +4,17 @@ import { createHash } from "crypto";
 export const dynamic = "force-dynamic";
 
 /**
- * Senha admin verificada server-side.
- * Hash SHA-256 — a senha plain text nunca vai pro bundle JS do browser.
+ * Senha admin verificada server-side via SHA-256 hash.
  * Para mudar a senha: gere o hash com:
  *   node -e "console.log(require('crypto').createHash('sha256').update('sua-nova-senha').digest('hex'))"
  * E coloque em ADMIN_PASSWORD_HASH no .env.local
  */
-const DEFAULT_HASH = createHash("sha256").update("flora2024").digest("hex");
-
 function getAdminHash(): string {
-  return process.env.ADMIN_PASSWORD_HASH || DEFAULT_HASH;
+  return process.env.ADMIN_PASSWORD_HASH || "26fed88b7cb618ad902e7bd27655a5c6908c570a5ea0ee7cd9afbc2a7ba03800";
 }
 
 function getApiSecret(): string {
-  return process.env.API_SECRET || "melfit2024";
+  return process.env.API_SECRET || "ac1cf3b3155ba57edb1c501c311840cb131bcc1f343c6aac77e0de3adad7ea3b";
 }
 
 export async function POST(request: Request) {
