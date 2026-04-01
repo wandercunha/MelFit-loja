@@ -1,36 +1,69 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# MelFit - Catalogo de Moda Fitness
 
-## Getting Started
+Catalogo de revenda de roupas fitness com sistema de precificacao, carrinho e checkout via WhatsApp.
 
-First, run the development server:
+## Rodando o projeto
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Abra http://localhost:3000
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Senha padrao do admin
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- **Usuario:** admin
+- **Senha:** flora2024
 
-## Learn More
+## Perdeu a senha do admin?
 
-To learn more about Next.js, take a look at the following resources:
+Voce NAO precisa acessar o painel admin para recuperar. Escolha uma das opcoes:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Opcao 1: Rodando local (seu computador)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Abra o terminal na pasta do projeto e rode:
 
-## Deploy on Vercel
+```bash
+npm run admin:reset -- sua-nova-senha
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Reinicie o servidor (`npm run dev`). Pronto, pode logar com a nova senha.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### Opcao 2: Na Vercel (producao)
+
+1. Abra https://vercel.com e entre no seu projeto
+2. Va em **Settings** > **Environment Variables**
+3. Se ja existe `ADMIN_PASSWORD_HASH`, clique em editar. Se nao, clique em **Add New**
+4. Para gerar o codigo da nova senha, abra https://emn178.github.io/online-tools/sha256.html
+   - Digite sua nova senha no campo "Input"
+   - Copie o resultado do campo "Output" (um codigo longo com letras e numeros)
+5. Na Vercel:
+   - **Nome:** `ADMIN_PASSWORD_HASH`
+   - **Valor:** cole o codigo que voce copiou
+   - Clique em **Save**
+6. Va em **Deployments** > clique nos **3 pontinhos** do deploy mais recente > **Redeploy**
+7. Pronto! Acesse o site e logue com a nova senha
+
+## Scripts disponiveis
+
+| Comando | O que faz |
+|---|---|
+| `npm run dev` | Roda o servidor local |
+| `npm run build` | Gera build de producao |
+| `npm run scrape` | Atualiza precos e imagens do fabricante |
+| `npm run scrape:details` | Busca imagens extras, estoque e medidas |
+| `npm run admin:reset` | Reseta a senha admin (veja acima) |
+| `npm run db:migrate` | Migra dados para o SQLite |
+
+## Deploy na Vercel
+
+1. Suba o projeto no GitHub
+2. Importe no Vercel (https://vercel.com/new)
+3. Configure as variaveis de ambiente (opcional):
+   - `ADMIN_PASSWORD_HASH` - hash SHA-256 da senha admin (se quiser trocar a padrao)
+   - `API_SECRET` - secret para proteger as APIs (se quiser trocar o padrao)
+   - `CRON_SECRET` - gerado automaticamente pela Vercel para os cron jobs
+   - `TURSO_DATABASE_URL` - URL do banco Turso (se quiser usar banco na nuvem)
+   - `TURSO_AUTH_TOKEN` - token do Turso
+4. Deploy! O scraping automatico roda 2x por dia (9h e 21h UTC)
