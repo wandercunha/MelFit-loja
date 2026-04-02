@@ -109,21 +109,21 @@ export function ProductCard({ product, priceCalc, hasOverride, onEdit }: Props) 
     if (idx !== currentImg) setCurrentImg(idx);
   };
 
-  // Distinguir tap de swipe no mobile
-  const touchStart = useRef<{ x: number; y: number; t: number } | null>(null);
-  const handleTouchStart = useCallback((e: React.TouchEvent) => {
-    touchStart.current = { x: e.touches[0].clientX, y: e.touches[0].clientY, t: Date.now() };
+  // Distinguir tap/click de swipe/drag (funciona em mobile e desktop)
+  const pointerStart = useRef<{ x: number; y: number; t: number } | null>(null);
+  const handlePointerDown = useCallback((e: React.PointerEvent) => {
+    pointerStart.current = { x: e.clientX, y: e.clientY, t: Date.now() };
   }, []);
-  const handleTouchEnd = useCallback((e: React.TouchEvent) => {
-    if (!touchStart.current || isAdmin) return;
-    const dx = Math.abs(e.changedTouches[0].clientX - touchStart.current.x);
-    const dy = Math.abs(e.changedTouches[0].clientY - touchStart.current.y);
-    const dt = Date.now() - touchStart.current.t;
-    // Tap: pouco movimento (<15px) e rápido (<300ms)
-    if (dx < 15 && dy < 15 && dt < 300) {
+  const handlePointerUp = useCallback((e: React.PointerEvent) => {
+    if (!pointerStart.current || isAdmin) return;
+    const dx = Math.abs(e.clientX - pointerStart.current.x);
+    const dy = Math.abs(e.clientY - pointerStart.current.y);
+    const dt = Date.now() - pointerStart.current.t;
+    pointerStart.current = null;
+    // Tap/click: pouco movimento (<10px) e rápido (<400ms)
+    if (dx < 10 && dy < 10 && dt < 400) {
       setShowDetail(true);
     }
-    touchStart.current = null;
   }, [isAdmin]);
 
   return (
@@ -135,18 +135,14 @@ export function ProductCard({ product, priceCalc, hasOverride, onEdit }: Props) 
           style={{
             background: `linear-gradient(135deg, ${color}15, ${color}30)`,
           }}
-          onTouchStart={handleTouchStart}
-          onTouchEnd={handleTouchEnd}
-          onClick={(e) => {
-            // Desktop only — mobile usa touch handlers
-            if (!isAdmin && !("ontouchstart" in window)) setShowDetail(true);
-          }}
         >
           {allImages.length > 0 && !imgError ? (
             <>
               <div
                 ref={scrollRef}
                 onScroll={handleScroll}
+                onPointerDown={handlePointerDown}
+                onPointerUp={handlePointerUp}
                 className="flex w-full h-full overflow-x-auto snap-x snap-mandatory scrollbar-hide"
                 style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
               >
@@ -157,7 +153,8 @@ export function ProductCard({ product, priceCalc, hasOverride, onEdit }: Props) 
                     alt={`${product.name} - foto ${i + 1}`}
                     loading="lazy"
                     onError={() => i === 0 && setImgError(true)}
-                    className="w-full h-full object-cover flex-shrink-0 snap-center"
+                    className="w-full h-full object-cover flex-shrink-0 snap-center pointer-events-none select-none"
+                    draggable={false}
                   />
                 ))}
               </div>
