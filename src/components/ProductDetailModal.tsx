@@ -75,35 +75,32 @@ export function ProductDetailModal({ product, priceCalc, onClose }: Props) {
   };
 
   // Mouse wheel/trackpad → 1 foto por gesto
-  // Trava após o primeiro evento, só destrava quando o gesto para (150ms sem eventos)
-  const wheelState = useRef<{ locked: boolean; timer: ReturnType<typeof setTimeout> | null }>({ locked: false, timer: null });
+  // Lock por 300ms após navegar. Exige delta mínimo para filtrar inércia do trackpad.
+  const wheelLockedUntil = useRef(0);
   useEffect(() => {
     const el = scrollRef.current;
     if (!el || allImages.length <= 1) return;
+    const DELTA_MIN = 15; // ignora inércia residual (deltas pequenos)
+    const COOLDOWN = 300; // ms de lock após navegar
+
     const handler = (e: WheelEvent) => {
       e.preventDefault();
-      const ws = wheelState.current;
+      const now = Date.now();
+      const delta = Math.abs(e.deltaY) + Math.abs(e.deltaX);
 
-      // Reseta o timer de "fim do gesto" a cada evento
-      if (ws.timer) clearTimeout(ws.timer);
-      ws.timer = setTimeout(() => { ws.locked = false; }, 150);
+      // Ignora: ainda em cooldown OU delta muito baixo (inércia)
+      if (now < wheelLockedUntil.current || delta < DELTA_MIN) return;
 
-      // Se já navegou neste gesto, ignora
-      if (ws.locked) return;
-      ws.locked = true;
-
+      wheelLockedUntil.current = now + COOLDOWN;
       const idx = Math.round(el.scrollLeft / el.offsetWidth);
       if (e.deltaY > 0 || e.deltaX > 0) {
         el.scrollTo({ left: Math.min(idx + 1, allImages.length - 1) * el.offsetWidth, behavior: "smooth" });
-      } else if (e.deltaY < 0 || e.deltaX < 0) {
+      } else {
         el.scrollTo({ left: Math.max(idx - 1, 0) * el.offsetWidth, behavior: "smooth" });
       }
     };
     el.addEventListener("wheel", handler, { passive: false });
-    return () => {
-      el.removeEventListener("wheel", handler);
-      if (wheelState.current.timer) clearTimeout(wheelState.current.timer);
-    };
+    return () => el.removeEventListener("wheel", handler);
   }, [allImages.length]);
 
   // Keyboard arrows
