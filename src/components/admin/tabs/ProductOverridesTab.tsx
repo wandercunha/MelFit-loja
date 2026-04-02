@@ -734,19 +734,49 @@ export function ProductOverridesTab() {
             const isCollapsed = collapsedCats.has(category);
             const catOv = categoryOverrides[category];
             const hasCatOverride = !!catOv;
+            const catMargin = catOv?.margin ?? globalSettings.margin;
+            const catShipping = catOv?.shipping ?? globalSettings.shipping;
 
             return (
               <div key={category}>
-                <button
-                  onClick={() => toggleCat(category)}
-                  className={`w-full flex items-center gap-2 px-3 py-2 rounded-lg text-left ${hasCatOverride ? "bg-brand-400/10" : "bg-gray-100"}`}
-                >
-                  <svg className={`w-3.5 h-3.5 text-gray-400 transition-transform ${isCollapsed ? "" : "rotate-90"}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                  </svg>
-                  <span className="text-sm font-bold text-gray-700 flex-1">{CATEGORY_LABELS[category]}</span>
-                  <span className="text-[10px] text-gray-400">{catProducts.length}</span>
-                </button>
+                {/* Category header with margin/shipping controls */}
+                <div className={`rounded-lg ${hasCatOverride ? "bg-brand-400/10" : "bg-gray-100"}`}>
+                  <button
+                    onClick={() => toggleCat(category)}
+                    className="w-full flex items-center gap-2 px-3 py-2.5 text-left"
+                  >
+                    <svg className={`w-3.5 h-3.5 text-gray-400 transition-transform ${isCollapsed ? "" : "rotate-90"}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                    </svg>
+                    <span className="text-sm font-bold text-gray-700 flex-1">{CATEGORY_LABELS[category]}</span>
+                    <span className="text-[10px] text-gray-400">{catProducts.length}</span>
+                  </button>
+                  {/* Category margin/shipping edit */}
+                  <div className="flex gap-2 px-3 pb-2" onClick={(e) => e.stopPropagation()}>
+                    <div className="relative">
+                      <button
+                        onClick={() => (editingCat === category && editingCatField === "margin") ? setEditingCat(null) : startCatEdit(category, "margin")}
+                        className={`text-[11px] px-2 py-0.5 rounded hover:underline decoration-dotted ${hasCatOverride && catOv?.margin !== undefined ? "text-brand-500 font-bold" : "text-gray-500"}`}
+                      >
+                        Margem: {catMargin}%
+                      </button>
+                      {editingCat === category && editingCatField === "margin" &&
+                        renderPopover(editCatMargin, "Margem da Categoria %", setEditCatMargin, () => saveCatMargin(category), hasCatOverride && catOv?.margin !== undefined ? () => requestResetCatField(category, "margin") : null, hasCatOverride && catOv?.margin !== undefined)
+                      }
+                    </div>
+                    <div className="relative">
+                      <button
+                        onClick={() => (editingCat === category && editingCatField === "shipping") ? setEditingCat(null) : startCatEdit(category, "shipping")}
+                        className={`text-[11px] px-2 py-0.5 rounded hover:underline decoration-dotted ${hasCatOverride && catOv?.shipping !== undefined ? "text-brand-500 font-bold" : "text-gray-500"}`}
+                      >
+                        Frete: {formatBRL(catShipping)}
+                      </button>
+                      {editingCat === category && editingCatField === "shipping" &&
+                        renderPopover(editCatShipping, "Frete da Categoria R$", setEditCatShipping, () => saveCatShipping(category), hasCatOverride && catOv?.shipping !== undefined ? () => requestResetCatField(category, "shipping") : null, hasCatOverride && catOv?.shipping !== undefined)
+                      }
+                    </div>
+                  </div>
+                </div>
 
                 {!isCollapsed && (
                   <div className="space-y-2 mt-2">
@@ -756,66 +786,79 @@ export function ProductOverridesTab() {
                       const hasOverride = !!ov;
                       const isEditing = editingId === p.id;
                       const visible = isProductVisible(p.id, p.soldOut);
+                      const retail = retailPriceMap[p.name];
+                      const myPrice = Math.round(calc.priceInstallment);
+                      const retailDiff = retail ? ((myPrice - retail) / retail * 100).toFixed(0) : null;
 
                       return (
                         <div
                           key={p.id}
                           className={`rounded-xl p-3 border ${!visible ? "opacity-40" : ""} ${hasOverride ? "border-brand-300 bg-brand-400/5" : "border-gray-200 bg-white"}`}
                         >
-                          <div className="flex items-start justify-between gap-2">
-                            <div className="min-w-0 flex items-start gap-2">
-                              <button
-                                onClick={() => setProductVisibility(p.id, !visible)}
-                                className={`mt-1 flex-shrink-0 w-9 h-5 rounded-full relative transition-colors inline-flex items-center ${visible ? "bg-emerald-400" : "bg-gray-300"}`}
-                              >
-                                <span className={`inline-block w-4 h-4 rounded-full bg-white shadow-sm transition-transform ${visible ? "translate-x-[18px]" : "translate-x-[2px]"}`} />
-                              </button>
-                              <div>
-                                <p className="text-sm font-semibold text-gray-800 flex items-start gap-1">
-                                  {hasOverride && <span className="inline-block w-1.5 h-1.5 rounded-full bg-brand-400 flex-shrink-0 mt-1.5" />}
-                                  <span className="leading-snug">{p.name}</span>
-                                </p>
-                                <p className="text-[10px] text-gray-400 mt-0.5">Custo: {formatBRL(p.cost)}</p>
+                          {/* Linha 1: Toggle + Nome + Editar */}
+                          <div className="flex items-center gap-2">
+                            <button
+                              onClick={() => setProductVisibility(p.id, !visible)}
+                              className={`flex-shrink-0 w-9 h-5 rounded-full relative transition-colors inline-flex items-center ${visible ? "bg-emerald-400" : "bg-gray-300"}`}
+                            >
+                              <span className={`inline-block w-4 h-4 rounded-full bg-white shadow-sm transition-transform ${visible ? "translate-x-[18px]" : "translate-x-[2px]"}`} />
+                            </button>
+                            <p className="flex-1 text-sm font-semibold text-gray-800 leading-snug min-w-0">
+                              {hasOverride && <span className="inline-block w-1.5 h-1.5 rounded-full bg-brand-400 mr-1 align-middle" />}
+                              {p.name}
+                            </p>
+                            {isEditing ? (
+                              <div className="flex gap-1 flex-shrink-0">
+                                <button onClick={() => { setOverride(p.id, { margin: editMargin, shipping: editShipping }); setEditingId(null); }} className="text-[11px] px-2 py-1 bg-emerald-500 text-white rounded-lg font-semibold">Salvar</button>
+                                <button onClick={() => setEditingId(null)} className="text-[11px] px-2 py-1 bg-gray-200 text-gray-600 rounded-lg">X</button>
                               </div>
-                            </div>
-                            <div className="flex gap-1 flex-shrink-0">
-                              {isEditing ? (
-                                <>
-                                  <button onClick={() => { setOverride(p.id, { margin: editMargin, shipping: editShipping }); setEditingId(null); }} className="text-xs px-2 py-1 bg-emerald-500 text-white rounded font-semibold">Salvar</button>
-                                  <button onClick={() => setEditingId(null)} className="text-xs px-2 py-1 bg-gray-200 text-gray-600 rounded">X</button>
-                                </>
-                              ) : (
-                                <>
-                                  <button onClick={() => startEdit(p.id, "margin")} className="text-xs px-2 py-1 bg-gray-100 text-gray-500 rounded">Editar</button>
-                                  {hasOverride && (
-                                    <button onClick={() => removeOverride(p.id)} className="text-xs px-2 py-1 bg-red-50 text-red-400 rounded">Reset</button>
-                                  )}
-                                </>
-                              )}
-                            </div>
+                            ) : (
+                              <button onClick={() => startEdit(p.id, "margin")} className="flex-shrink-0 text-[11px] px-2.5 py-1 bg-gray-100 text-gray-500 rounded-lg font-medium">Editar</button>
+                            )}
                           </div>
 
                           {isEditing ? (
                             <div className="grid grid-cols-2 gap-2 mt-2">
                               <div>
-                                <label className="text-[10px] text-gray-400">Margem %</label>
-                                <input type="number" value={editMargin} onChange={(e) => setEditMargin(Number(e.target.value))} className="w-full px-2 py-1 border rounded text-sm" />
+                                <label className="text-[10px] font-semibold text-gray-500">Margem %</label>
+                                <input type="text" inputMode="decimal" value={editMargin || ""} onChange={(e) => { const v = parseFloat(e.target.value); setEditMargin(isNaN(v) ? 0 : v); }} onFocus={(e) => e.target.select()} className="w-full px-2 py-1.5 border rounded-lg text-sm text-right" />
                               </div>
                               <div>
-                                <label className="text-[10px] text-gray-400">Frete R$</label>
-                                <input type="number" value={editShipping} onChange={(e) => setEditShipping(Number(e.target.value))} className="w-full px-2 py-1 border rounded text-sm" step={0.5} />
+                                <label className="text-[10px] font-semibold text-gray-500">Frete R$</label>
+                                <input type="text" inputMode="decimal" value={editShipping || ""} onChange={(e) => { const v = parseFloat(e.target.value); setEditShipping(isNaN(v) ? 0 : v); }} onFocus={(e) => e.target.select()} className="w-full px-2 py-1.5 border rounded-lg text-sm text-right" />
                               </div>
                             </div>
                           ) : (
-                            <div className="flex flex-wrap gap-x-3 gap-y-0.5 mt-1.5 text-xs">
-                              <span className={hasOverride ? "text-brand-500 font-bold" : "text-gray-500"}>{calc.appliedMargin}%</span>
-                              {retailPriceMap[p.name] && (
-                                <span className="text-gray-400">Varejo {formatBRL(retailPriceMap[p.name])}</span>
-                              )}
-                              <span className="text-gray-700 font-semibold">Cartao {formatBRL(Math.round(calc.priceInstallment))}</span>
-                              <span className="text-emerald-600 font-semibold">PIX {formatBRL(Math.round(calc.pricePix))}</span>
-                              <span className={`font-semibold ${calc.netProfit >= 0 ? "text-emerald-600" : "text-red-500"}`}>Lucro {formatBRL(calc.netProfit)}</span>
-                            </div>
+                            <>
+                              {/* Linha 2: Margem + Custo Atacado + Varejo */}
+                              <div className="flex items-center gap-3 mt-2 text-xs">
+                                <span className={`font-bold ${hasOverride ? "text-brand-500" : "text-gray-600"}`}>
+                                  {calc.appliedMargin}%
+                                </span>
+                                <span className="text-gray-800 font-semibold">
+                                  Custo {formatBRL(p.cost)}
+                                </span>
+                                {retail ? (
+                                  <span className="flex items-center gap-1">
+                                    <span className="text-gray-600 font-medium">Varejo {formatBRL(retail)}</span>
+                                    <span className={`text-[10px] font-bold ${Number(retailDiff) < 0 ? "text-emerald-500" : Number(retailDiff) === 0 ? "text-gray-400" : "text-red-400"}`}>
+                                      {Number(retailDiff) < 0 ? retailDiff : `+${retailDiff}`}%
+                                    </span>
+                                  </span>
+                                ) : (
+                                  <span className="text-gray-300 text-[10px]">Varejo —</span>
+                                )}
+                              </div>
+
+                              {/* Linha 3: Cartao + PIX + Lucro */}
+                              <div className="flex items-center gap-3 mt-1 text-xs">
+                                <span className="text-gray-800 font-semibold">Cartao {formatBRL(myPrice)}</span>
+                                <span className="text-emerald-600 font-semibold">PIX {formatBRL(Math.round(calc.pricePix))}</span>
+                                <span className={`font-bold ${calc.netProfit >= 0 ? "text-emerald-600" : "text-red-500"}`}>
+                                  Lucro {formatBRL(calc.netProfit)}
+                                </span>
+                              </div>
+                            </>
                           )}
                         </div>
                       );
