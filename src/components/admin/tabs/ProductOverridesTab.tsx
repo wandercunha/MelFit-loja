@@ -13,6 +13,22 @@ function goToProduct(name: string) {
 }
 import { CATEGORY_LABELS, CATEGORY_ORDER } from "@/lib/types";
 import scrapeMaps from "@/data/scrape-maps.json";
+import atacadoDetailsData from "@/data/atacado-details.json";
+
+// Mapa de estoque do atacado por nome do produto
+const atacadoProducts = (atacadoDetailsData as any).products as Record<string, { name: string; stock: Record<string, number>; totalStock: number }>;
+function toSlug(name: string) {
+  return name.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "")
+    .replace(/\s+c\/\s*/g, "-c-").replace(/\s+/g, "-").replace(/[^a-z0-9-]/g, "");
+}
+function getStock(product: { name: string; slug?: string }): { stock: Record<string, number>; totalStock: number } | null {
+  const slug = product.slug || toSlug(product.name);
+  const d = atacadoProducts[slug];
+  if (d) return { stock: d.stock, totalStock: d.totalStock };
+  const byName = Object.values(atacadoProducts).find((x) => x.name === product.name);
+  if (byName) return { stock: byName.stock, totalStock: byName.totalStock };
+  return null;
+}
 
 function normalizeName(s: string) {
   return s
@@ -652,6 +668,7 @@ export function ProductOverridesTab() {
                         <th className="text-right px-3 py-1.5">Cartao</th>
                         <th className="text-right px-3 py-1.5">PIX</th>
                         <th className="text-right px-3 py-1.5">Lucro</th>
+                        <th className="text-center px-3 py-1.5">Estoque</th>
                         <th className="text-center px-2 py-1.5 w-10"></th>
                       </tr>
                     </thead>
@@ -662,6 +679,7 @@ export function ProductOverridesTab() {
                         const isEditing = editingId === p.id;
                         const hasOverride = !!ov;
                         const visible = isProductVisible(p.id, p.soldOut);
+                        const stockInfo = getStock(p);
 
                         return (
                           <tr
@@ -772,6 +790,23 @@ export function ProductOverridesTab() {
                                 {formatBRL(calc.netProfit)}
                               </span>
                             </td>
+                            <td className="px-3 py-2 text-center">
+                              {stockInfo ? (
+                                <div className="flex items-center justify-center gap-1">
+                                  {Object.keys(stockInfo.stock).length > 0 ? (
+                                    Object.entries(stockInfo.stock).map(([size, qty]) => (
+                                      <span key={size} className={`text-[10px] font-bold px-1 py-0.5 rounded ${qty > 0 ? (qty <= 5 ? "bg-amber-50 text-amber-600" : "bg-emerald-50 text-emerald-600") : "bg-red-50 text-red-400 line-through"}`}>
+                                        {size}:{qty}
+                                      </span>
+                                    ))
+                                  ) : (
+                                    <span className="text-[10px] font-bold text-red-400">Esgotado</span>
+                                  )}
+                                </div>
+                              ) : (
+                                <span className="text-gray-300 text-[10px]">—</span>
+                              )}
+                            </td>
                             <td className="px-2 py-2 text-center">
                               <button
                                 onClick={() => setProductVisibility(p.id, !visible)}
@@ -853,6 +888,7 @@ export function ProductOverridesTab() {
                       const retail = retailPriceMap[p.name];
                       const myPrice = Math.round(calc.priceInstallment);
                       const retailDiff = retail ? ((myPrice - retail) / retail * 100).toFixed(0) : null;
+                      const stockData = getStock(p);
 
                       return (
                         <div
@@ -935,6 +971,25 @@ export function ProductOverridesTab() {
                                   Lucro {formatBRL(calc.netProfit)}
                                 </span>
                               </div>
+
+                              {/* Linha 4: Estoque por tamanho */}
+                              {stockData && (
+                                <div className="flex items-center gap-1.5 mt-1.5">
+                                  <span className="text-[10px] text-gray-400">Estoque:</span>
+                                  {Object.keys(stockData.stock).length > 0 ? (
+                                    Object.entries(stockData.stock).map(([size, qty]) => (
+                                      <span key={size} className={`text-[10px] font-bold px-1.5 py-0.5 rounded ${qty > 0 ? (qty <= 5 ? "bg-amber-50 text-amber-600" : "bg-emerald-50 text-emerald-600") : "bg-red-50 text-red-400 line-through"}`}>
+                                        {size}:{qty}
+                                      </span>
+                                    ))
+                                  ) : (
+                                    <span className="text-[10px] font-bold text-red-400">Esgotado</span>
+                                  )}
+                                  <span className={`text-[10px] font-bold ml-auto ${stockData.totalStock === 0 ? "text-red-400" : stockData.totalStock <= 10 ? "text-amber-500" : "text-emerald-500"}`}>
+                                    Total: {stockData.totalStock}
+                                  </span>
+                                </div>
+                              )}
                             </>
                           )}
                         </div>

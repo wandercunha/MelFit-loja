@@ -6,6 +6,7 @@ import { useCatalog } from "@/context/CatalogContext";
 import { useCart } from "@/context/CartContext";
 import { useState, useRef } from "react";
 import productDetailsData from "@/data/product-details.json";
+import atacadoDetailsData from "@/data/atacado-details.json";
 import { ProductDetailModal } from "./ProductDetailModal";
 
 const SIZE_CHART_URL =
@@ -21,6 +22,11 @@ const details = (productDetailsData as any).products as Record<
   }
 >;
 
+const atacadoProducts = (atacadoDetailsData as any).products as Record<
+  string,
+  { name: string; atacadoSlug: string; images: string[]; stock: Record<string, number>; totalStock: number }
+>;
+
 /** Gera slug a partir do nome do produto */
 function toSlug(name: string) {
   return name
@@ -32,15 +38,27 @@ function toSlug(name: string) {
     .replace(/[^a-z0-9-]/g, "");
 }
 
-/** Busca detalhes por slug (tenta variações) */
+/** Busca detalhes do atacado (prioridade) e varejo (fallback imagens) */
 function getDetail(product: Product) {
   const slug = product.slug || toSlug(product.name);
-  if (details[slug]) return details[slug];
-  // Tenta encontrar por prefixo
-  for (const key of Object.keys(details)) {
-    if (key.includes(slug) || slug.includes(key)) return details[key];
-  }
-  return null;
+
+  // Atacado: estoque + imagens sem marca
+  const atacado = atacadoProducts[slug]
+    || Object.values(atacadoProducts).find((d) => d.atacadoSlug?.replace(/-at$/, "") === slug || d.name === product.name);
+
+  // Varejo: fallback para imagens e sizeChart
+  const varejo = details[slug]
+    || Object.values(details).find((_, i) => { const k = Object.keys(details)[i]; return k.includes(slug) || slug.includes(k); })
+    || null;
+
+  if (!atacado && !varejo) return null;
+
+  return {
+    images: atacado?.images?.length ? atacado.images : varejo?.images || [],
+    sizeChart: varejo?.sizeChart || "",
+    stock: atacado?.stock || varejo?.stock || {},
+    totalStock: atacado?.totalStock ?? varejo?.totalStock ?? -1,
+  };
 }
 
 interface Props {
