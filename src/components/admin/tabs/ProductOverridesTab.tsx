@@ -440,7 +440,7 @@ export function ProductOverridesTab() {
             const num = parseFloat(raw);
             if (!isNaN(num)) onChange(num);
           }}
-          className="w-full px-2 py-1.5 text-sm border rounded-lg text-right"
+          className="w-full px-2 py-1.5 text-base border rounded-lg text-right"
           autoFocus
           onFocus={(e) => e.target.select()}
         />
@@ -869,25 +869,20 @@ export function ProductOverridesTab() {
                             </button>
                             {renderThumb(p.img, "w-11 h-11")}
                             <div className="flex-1 min-w-0">
-                              <p
-                                className="text-sm font-semibold text-gray-800 leading-snug cursor-pointer underline decoration-dotted decoration-gray-300"
-                                onClick={() => setTooltipId(tooltipId === p.id ? null : p.id)}
-                              >
+                              <p className="text-sm font-semibold text-gray-800 leading-snug">
                                 {hasOverride && <span className="inline-block w-1.5 h-1.5 rounded-full bg-brand-400 mr-1 align-middle" />}
                                 {p.name}
                               </p>
-                              {tooltipId === p.id && (
-                                <div className="flex gap-3 mt-1">
-                                  <button onClick={() => goToProduct(p.name)} className="text-[10px] text-brand-400 font-semibold flex items-center gap-1">
-                                    <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg>
-                                    Meu catalogo
-                                  </button>
-                                  <a href={getAtacadoUrl(p)} target="_blank" rel="noopener noreferrer" className="text-[10px] text-gray-400 font-semibold flex items-center gap-1">
-                                    <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" /></svg>
-                                    Fornecedor
-                                  </a>
-                                </div>
-                              )}
+                              <div className="flex gap-3 mt-0.5">
+                                <button onClick={() => goToProduct(p.name)} className="text-[10px] text-brand-400 font-semibold flex items-center gap-1">
+                                  <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg>
+                                  Catalogo
+                                </button>
+                                <a href={getAtacadoUrl(p)} target="_blank" rel="noopener noreferrer" className="text-[10px] text-gray-400 font-semibold flex items-center gap-1">
+                                  <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" /></svg>
+                                  Fornecedor
+                                </a>
+                              </div>
                             </div>
                             {isEditing ? (
                               <div className="flex gap-1 flex-shrink-0">
@@ -903,11 +898,11 @@ export function ProductOverridesTab() {
                             <div className="grid grid-cols-2 gap-2 mt-2">
                               <div>
                                 <label className="text-[10px] font-semibold text-gray-500">Margem %</label>
-                                <input type="text" inputMode="decimal" value={editMargin || ""} onChange={(e) => { const v = parseFloat(e.target.value); setEditMargin(isNaN(v) ? 0 : v); }} onFocus={(e) => e.target.select()} className="w-full px-2 py-1.5 border rounded-lg text-sm text-right" />
+                                <input type="text" inputMode="decimal" value={editMargin || ""} onChange={(e) => { const v = parseFloat(e.target.value); setEditMargin(isNaN(v) ? 0 : v); }} onFocus={(e) => e.target.select()} className="w-full px-2 py-1.5 border rounded-lg text-base text-right" />
                               </div>
                               <div>
                                 <label className="text-[10px] font-semibold text-gray-500">Frete R$</label>
-                                <input type="text" inputMode="decimal" value={editShipping || ""} onChange={(e) => { const v = parseFloat(e.target.value); setEditShipping(isNaN(v) ? 0 : v); }} onFocus={(e) => e.target.select()} className="w-full px-2 py-1.5 border rounded-lg text-sm text-right" />
+                                <input type="text" inputMode="decimal" value={editShipping || ""} onChange={(e) => { const v = parseFloat(e.target.value); setEditShipping(isNaN(v) ? 0 : v); }} onFocus={(e) => e.target.select()} className="w-full px-2 py-1.5 border rounded-lg text-base text-right" />
                               </div>
                             </div>
                           ) : (
