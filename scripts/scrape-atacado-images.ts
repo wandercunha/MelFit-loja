@@ -14,6 +14,8 @@ dotenv.config({ path: path.join(__dirname, "..", ".env.local") });
 const BASE_URL = "https://www.floraamaratacado.com.br";
 const SCRAPE_DELAY = parseInt(process.env.SCRAPE_DELAY || "5000", 10);
 const ATACADO_CDN = "97065044c3a1a212e5c7a4f183fed028";
+const ATACADO_EMAIL = process.env.ATACADO_EMAIL || "";
+const ATACADO_PASSWORD = process.env.ATACADO_PASSWORD || "";
 
 const CATEGORIES = [
   { url: "/pecas-avulsas/tops/", label: "tops" },
@@ -56,6 +58,65 @@ async function initSession() {
         resolve();
       });
     }).on("error", reject);
+  });
+}
+
+async function loginAtacado(): Promise<boolean> {
+  if (!ATACADO_EMAIL || !ATACADO_PASSWORD) {
+    console.log("  [LOGIN] ATACADO_EMAIL / ATACADO_PASSWORD nao configurados — usando acesso sem login");
+    return false;
+  }
+
+  console.log(`  [LOGIN] Tentando login com ${ATACADO_EMAIL}...`);
+
+  return new Promise<boolean>((resolve) => {
+    const postData = `email=${encodeURIComponent(ATACADO_EMAIL)}&senha=${encodeURIComponent(ATACADO_PASSWORD)}`;
+    const url = new URL("/login/", BASE_URL);
+
+    const req = https.request({
+      hostname: url.hostname,
+      path: url.pathname,
+      method: "POST",
+      headers: {
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36",
+        "Content-Type": "application/x-www-form-urlencoded",
+        "Content-Length": Buffer.byteLength(postData),
+        Accept: "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+        Referer: `${BASE_URL}/login/`,
+        Cookie: sessionCookies,
+      },
+    }, (res) => {
+      // Capture cookies from login response
+      const newCookies = res.headers["set-cookie"] || [];
+      if (newCookies.length > 0) {
+        const existing = new Map(sessionCookies.split("; ").filter(Boolean).map(c => {
+          const [k] = c.split("=");
+          return [k, c] as [string, string];
+        }));
+        newCookies.forEach(c => {
+          const pair = c.split(";")[0];
+          const [k] = pair.split("=");
+          existing.set(k, pair);
+        });
+        sessionCookies = Array.from(existing.values()).join("; ");
+      }
+
+      res.resume();
+      res.on("end", () => {
+        // Login OK = redirect (302) or cookies set
+        const loggedIn = (res.statusCode === 302 || newCookies.length > 0);
+        console.log(`  [LOGIN] Status ${res.statusCode} — ${loggedIn ? "OK" : "FALHOU"}`);
+        resolve(loggedIn);
+      });
+    });
+
+    req.on("error", (err) => {
+      console.error(`  [LOGIN] Erro: ${err.message}`);
+      resolve(false);
+    });
+
+    req.write(postData);
+    req.end();
   });
 }
 
@@ -158,12 +219,17 @@ function parseListingPage(html: string): AtacadoProduct[] {
   return products;
 }
 
-async function scrapeProductPage(slug: string, folder: string): Promise<{ images: string[]; price: number }> {
-  // Product pages need login on atacado, but we can try
-  // If it fails, we use listing images only
+async function scrapeProductPage(slug: string, folder: string): Promise<{
+  images: string[];
+  price: number;
+  stock: Record<string, number>;
+  totalStock: number;
+}> {
+  // Product pages need login on atacado
+  // If not logged in or fails, we use listing data only
   try {
     const html = await fetchHTML(`${BASE_URL}/${slug}/`);
-    if (html.length < 5000) return { images: [], price: 0 }; // login page
+    if (html.length < 5000) return { images: [], price: 0, stock: {}, totalStock: 0 }; // login page
 
     const $ = cheerio.load(html);
     const images: string[] = [];
@@ -184,6 +250,22 @@ async function scrapeProductPage(slug: string, folder: string): Promise<{ images
       }
     });
 
+    // Extract stock from compra_rapida (available when logged in)
+    const stock: Record<string, number> = {};
+    let totalStock = 0;
+    const b64 = $("[data-comprarapida]").first().attr("data-comprarapida") || "";
+    if (b64) {
+      try {
+        const data = JSON.parse(Buffer.from(b64, "base64").toString("utf-8"));
+        for (const v of data.variacoes || []) {
+          const sizeName = v.atributos?.tamanho?.nome || "U";
+          const qty = parseInt(v.estoque || "0");
+          stock[sizeName] = qty;
+          totalStock += qty;
+        }
+      } catch {}
+    }
+
     // Conjuntos (grade_biquini): sum per-piece prices
     let price = 0;
     if ($(".grade_biquini").length > 0) {
@@ -197,16 +279,22 @@ async function scrapeProductPage(slug: string, folder: string): Promise<{ images
       }
     }
 
-    return { images, price };
+    return { images, price, stock, totalStock };
   } catch {
-    return { images: [], price: 0 };
+    return { images: [], price: 0, stock: {}, totalStock: 0 };
   }
 }
 
 async function main() {
-  console.log(`[${new Date().toISOString()}] Scraping atacado images...\n`);
+  console.log(`[${new Date().toISOString()}] Scraping atacado images + stock...\n`);
 
   await initSession();
+
+  // Tenta login para acessar paginas de produto (stock completo)
+  const loggedIn = await loginAtacado();
+  if (loggedIn) {
+    await delay(1000); // aguarda sessao estabilizar
+  }
 
   const allProducts = new Map<string, AtacadoProduct>();
 
@@ -242,18 +330,24 @@ async function main() {
     if (!product.folder) continue;
 
     process.stdout.write(`  [${i + 1}/${entries.length}] ${product.atacadoSlug}...`);
-    const { images: fullImages, price: pagePrice } = await scrapeProductPage(product.atacadoSlug, product.folder);
+    const pageData = await scrapeProductPage(product.atacadoSlug, product.folder);
 
-    if (pagePrice > 0 && !product.price) {
-      product.price = pagePrice;
+    if (pageData.price > 0 && !product.price) {
+      product.price = pageData.price;
     }
 
-    if (fullImages.length > product.images.length) {
-      product.images = fullImages;
+    // Update stock from product page if more detailed
+    if (pageData.totalStock > 0 && Object.keys(pageData.stock).length > 0) {
+      product.stock = pageData.stock;
+      product.totalStock = pageData.totalStock;
+    }
+
+    if (pageData.images.length > product.images.length) {
+      product.images = pageData.images;
       enhanced++;
-      console.log(` ${fullImages.length} imgs`);
+      console.log(` ${pageData.images.length} imgs, stock: ${pageData.totalStock}`);
     } else {
-      console.log(` listing only (${product.images.length})`);
+      console.log(` listing only (${product.images.length} imgs, stock: ${product.totalStock})`);
     }
     await delay(SCRAPE_DELAY);
   }

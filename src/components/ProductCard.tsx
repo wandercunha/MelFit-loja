@@ -15,7 +15,7 @@ const SIZE_CHART_URL =
 const details = (productDetailsData as any).products as Record<
   string,
   {
-    images: string[];
+    images?: string[];
     sizeChart: string;
     stock: Record<string, number>;
     totalStock: number;
@@ -38,15 +38,15 @@ function toSlug(name: string) {
     .replace(/[^a-z0-9-]/g, "");
 }
 
-/** Busca detalhes do atacado (prioridade) e varejo (fallback imagens) */
+/** Busca detalhes do atacado (imagens + estoque) e varejo (sizeChart fallback) */
 function getDetail(product: Product) {
   const slug = product.slug || toSlug(product.name);
 
-  // Atacado: estoque + imagens sem marca
+  // Atacado: estoque + imagens sem marca (fonte primária)
   const atacado = atacadoProducts[slug]
     || Object.values(atacadoProducts).find((d) => d.atacadoSlug?.replace(/-at$/, "") === slug || d.name === product.name);
 
-  // Varejo: fallback para imagens e sizeChart
+  // Varejo: apenas sizeChart e stock fallback (sem imagens)
   const varejo = details[slug]
     || Object.values(details).find((_, i) => { const k = Object.keys(details)[i]; return k.includes(slug) || slug.includes(k); })
     || null;
@@ -54,7 +54,7 @@ function getDetail(product: Product) {
   if (!atacado && !varejo) return null;
 
   return {
-    images: atacado?.images?.length ? atacado.images : varejo?.images || [],
+    images: atacado?.images || [],
     sizeChart: varejo?.sizeChart || "",
     stock: atacado?.stock || varejo?.stock || {},
     totalStock: atacado?.totalStock ?? varejo?.totalStock ?? -1,
@@ -90,6 +90,8 @@ export function ProductCard({ product, priceCalc, hasOverride, onEdit }: Props) 
   const hasMultiple = allImages.length > 1;
   const stock = detail?.stock || {};
   const totalStock = detail?.totalStock ?? -1; // -1 = unknown
+  // Atacado stock > 0 sobrescreve soldOut hardcoded do products.ts
+  const isSoldOut = totalStock > 0 ? false : (product.soldOut || totalStock === 0);
 
   const goTo = (idx: number) => {
     const clamped = Math.max(0, Math.min(idx, allImages.length - 1));
@@ -200,7 +202,7 @@ export function ProductCard({ product, priceCalc, hasOverride, onEdit }: Props) 
           )}
 
           {/* Stock badge */}
-          {product.soldOut || totalStock === 0 ? (
+          {isSoldOut ? (
             <span className="absolute top-3 left-3 bg-red-600 text-white text-[10px] font-bold px-2.5 py-1 rounded-full uppercase tracking-wider">
               Esgotado
             </span>
@@ -210,7 +212,7 @@ export function ProductCard({ product, priceCalc, hasOverride, onEdit }: Props) 
             </span>
           ) : null}
 
-          {product.tags.includes("novidade") && !product.soldOut && !isAdmin && (
+          {product.tags.includes("novidade") && !isSoldOut && !isAdmin && (
             <span className="absolute top-3 right-3 bg-emerald-600 text-white text-[10px] font-bold px-2.5 py-1 rounded-full uppercase">
               Novo
             </span>
@@ -304,7 +306,7 @@ export function ProductCard({ product, priceCalc, hasOverride, onEdit }: Props) 
               </div>
 
               {/* Add to cart */}
-              {!product.soldOut && totalStock !== 0 && (
+              {!isSoldOut && (
                 <div className="pt-2 space-y-1.5">
                   {/* Size selector */}
                   <div className="flex gap-1">

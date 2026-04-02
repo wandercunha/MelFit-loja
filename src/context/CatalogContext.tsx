@@ -2,6 +2,8 @@
 
 import React, { createContext, useContext, useState, useEffect, useCallback, useRef } from "react";
 import { GlobalSettings, ProductOverride, CategoryOverride } from "@/lib/types";
+import { PRODUCTS } from "@/data/products";
+import atacadoDetailsData from "@/data/atacado-details.json";
 
 interface CatalogState {
   isAdmin: boolean;
@@ -70,6 +72,23 @@ function loadSession(): { token: string; expiry: number; apiSecret: string } | n
     }
   } catch {}
   return null;
+}
+
+// ─── Estoque atacado por product ID (fonte primária de disponibilidade) ───
+const atacadoProducts = (atacadoDetailsData as any).products as Record<string, { totalStock: number; name: string }>;
+
+function toSlug(name: string) {
+  return name.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "")
+    .replace(/\s+c\/\s*/g, "-c-").replace(/\s+/g, "-").replace(/[^a-z0-9-]/g, "");
+}
+
+// Mapa productId → totalStock do atacado
+const atacadoStockById: Record<number, number> = {};
+for (const p of PRODUCTS) {
+  const slug = p.slug || toSlug(p.name);
+  const at = atacadoProducts[slug]
+    || Object.values(atacadoProducts).find((d) => d.name === p.name);
+  if (at) atacadoStockById[p.id] = at.totalStock;
 }
 
 // ─── Default values ───
@@ -261,6 +280,10 @@ export function CatalogProvider({ children }: { children: React.ReactNode }) {
 
   const isProductVisible = (productId: number, soldOut?: boolean) => {
     if (productId in productVisibility) return productVisibility[productId];
+    // Atacado stock > 0 sobrescreve soldOut do products.ts
+    if (soldOut && productId in atacadoStockById && atacadoStockById[productId] > 0) {
+      return true;
+    }
     return !soldOut;
   };
 
