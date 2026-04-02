@@ -178,9 +178,11 @@ export function ProductOverridesTab() {
     globalSettings, overrides, setOverride, removeOverride,
     categoryOverrides, setCategoryOverride, removeCategoryOverride,
     productVisibility, setProductVisibility, isProductVisible,
-    setSearchQuery,
+    refreshFromDb, setSearchQuery,
     apiSecret,
   } = useCatalog();
+
+  const [refreshing, setRefreshing] = useState(false);
 
   const [filter, setFilter] = useState("");
   const [editingId, setEditingId] = useState<number | null>(null);
@@ -196,24 +198,8 @@ export function ProductOverridesTab() {
   const [editCatMargin, setEditCatMargin] = useState(0);
   const [editCatShipping, setEditCatShipping] = useState(0);
 
-  // Image zoom state
+  // Image zoom state — simple fullscreen overlay
   const [zoomImg, setZoomImg] = useState<string | null>(null);
-  const [zoomPos, setZoomPos] = useState<{ x: number; y: number } | null>(null);
-  const zoomTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
-
-  const showZoom = (img: string, e: React.MouseEvent | React.TouchEvent) => {
-    if (zoomTimer.current) clearTimeout(zoomTimer.current);
-    const rect = (e.target as HTMLElement).getBoundingClientRect();
-    setZoomPos({ x: rect.right + 8, y: rect.top });
-    setZoomImg(img);
-  };
-  const hideZoom = () => {
-    zoomTimer.current = setTimeout(() => { setZoomImg(null); setZoomPos(null); }, 150);
-  };
-  const toggleZoom = (img: string, e: React.MouseEvent | React.TouchEvent) => {
-    if (zoomImg === img) { setZoomImg(null); setZoomPos(null); }
-    else showZoom(img, e);
-  };
 
   // Sync state
   const [syncing, setSyncing] = useState(false);
@@ -413,9 +399,7 @@ export function ProductOverridesTab() {
         alt=""
         className={`${size} rounded-lg object-cover flex-shrink-0 cursor-zoom-in`}
         loading="lazy"
-        onMouseEnter={(e) => showZoom(img, e)}
-        onMouseLeave={hideZoom}
-        onClick={(e) => toggleZoom(img, e)}
+        onClick={(e) => { e.stopPropagation(); setZoomImg(zoomImg === img ? null : img); }}
       />
     );
   };
@@ -438,8 +422,11 @@ export function ProductOverridesTab() {
     onReset: (() => void) | null,
     hasOverride: boolean,
   ) => (
+    <>
+    {/* Backdrop to catch clicks outside */}
+    <div className="fixed inset-0 z-[90]" onClick={closePopover} />
     <div
-      className="absolute top-full right-0 mt-1.5 z-50 bg-white rounded-xl shadow-2xl border border-gray-200 p-3 w-48 space-y-2.5"
+      className="fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 lg:absolute lg:left-auto lg:top-full lg:right-0 lg:translate-x-0 lg:translate-y-0 lg:mt-1.5 z-[95] bg-white rounded-xl shadow-2xl border border-gray-200 p-3 w-52 lg:w-48 space-y-2.5"
       onClick={(e) => e.stopPropagation()}
       onKeyDown={popoverKeyDown}
     >
@@ -474,26 +461,17 @@ export function ProductOverridesTab() {
         )}
       </div>
     </div>
+    </>
   );
 
   return (
     <>
       {dialog && <ConfirmDialog config={dialog} onCancel={() => setDialog(null)} />}
 
-      {/* Image zoom preview */}
+      {/* Image zoom overlay */}
       {zoomImg && (
-        <div
-          className="fixed z-[150] pointer-events-none"
-          style={zoomPos ? {
-            left: Math.min(zoomPos.x, (typeof window !== "undefined" ? window.innerWidth - 220 : 500)),
-            top: Math.max(8, Math.min(zoomPos.y - 40, (typeof window !== "undefined" ? window.innerHeight - 220 : 500))),
-          } : { left: "50%", top: "50%", transform: "translate(-50%, -50%)" }}
-        >
-          <img
-            src={zoomImg}
-            alt=""
-            className="w-48 h-48 rounded-xl object-cover shadow-2xl border-2 border-white ring-1 ring-black/10"
-          />
+        <div className="fixed inset-0 z-[150] bg-black/50 flex items-center justify-center p-8" onClick={() => setZoomImg(null)}>
+          <img src={zoomImg} alt="" className="max-w-[280px] max-h-[280px] rounded-2xl object-cover shadow-2xl border-2 border-white" />
         </div>
       )}
 
@@ -507,7 +485,20 @@ export function ProductOverridesTab() {
             onChange={(e) => setFilter(e.target.value)}
             className="input-field text-sm py-2 flex-1"
           />
-          <div className="flex gap-2">
+          <div className="flex gap-2 flex-wrap">
+            <button
+              onClick={async () => { setRefreshing(true); await refreshFromDb(); setRefreshing(false); }}
+              disabled={refreshing}
+              className={`text-xs font-semibold px-3 py-2 rounded-lg transition-colors whitespace-nowrap flex items-center gap-1.5 ${
+                refreshing ? "bg-gray-200 text-gray-400 cursor-wait" : "bg-gray-100 text-gray-600 hover:bg-gray-200"
+              }`}
+              title="Recarregar valores do banco"
+            >
+              <svg className={`w-3.5 h-3.5 ${refreshing ? "animate-spin" : ""}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+              </svg>
+              {refreshing ? "..." : "Refresh"}
+            </button>
             <button
               onClick={runSync}
               disabled={syncing}
@@ -868,10 +859,27 @@ export function ProductOverridesTab() {
                               <span className={`inline-block w-4 h-4 rounded-full bg-white shadow-sm transition-transform ${visible ? "translate-x-[18px]" : "translate-x-[2px]"}`} />
                             </button>
                             {renderThumb(p.img, "w-11 h-11")}
-                            <p className="flex-1 text-sm font-semibold text-gray-800 leading-snug min-w-0">
-                              {hasOverride && <span className="inline-block w-1.5 h-1.5 rounded-full bg-brand-400 mr-1 align-middle" />}
-                              {p.name}
-                            </p>
+                            <div className="flex-1 min-w-0">
+                              <p
+                                className="text-sm font-semibold text-gray-800 leading-snug cursor-pointer underline decoration-dotted decoration-gray-300"
+                                onClick={() => setTooltipId(tooltipId === p.id ? null : p.id)}
+                              >
+                                {hasOverride && <span className="inline-block w-1.5 h-1.5 rounded-full bg-brand-400 mr-1 align-middle" />}
+                                {p.name}
+                              </p>
+                              {tooltipId === p.id && (
+                                <div className="flex gap-3 mt-1">
+                                  <button onClick={() => goToProduct(p.name, setSearchQuery)} className="text-[10px] text-brand-400 font-semibold flex items-center gap-1">
+                                    <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg>
+                                    Meu catalogo
+                                  </button>
+                                  <a href={getAtacadoUrl(p)} target="_blank" rel="noopener noreferrer" className="text-[10px] text-gray-400 font-semibold flex items-center gap-1">
+                                    <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" /></svg>
+                                    Fornecedor
+                                  </a>
+                                </div>
+                              )}
+                            </div>
                             {isEditing ? (
                               <div className="flex gap-1 flex-shrink-0">
                                 <button onClick={() => { setOverride(p.id, { margin: editMargin, shipping: editShipping }); setEditingId(null); }} className="text-[11px] px-2 py-1 bg-emerald-500 text-white rounded-lg font-semibold">Salvar</button>

@@ -24,6 +24,7 @@ interface CatalogContextType extends CatalogState {
   removeCategoryOverride: (category: string) => void;
   setProductVisibility: (productId: number, visible: boolean) => void;
   isProductVisible: (productId: number, soldOut?: boolean) => boolean;
+  refreshFromDb: () => Promise<void>;
   setSearchQuery: (q: string) => void;
   setActiveCategory: (c: string) => void;
 }
@@ -263,6 +264,11 @@ export function CatalogProvider({ children }: { children: React.ReactNode }) {
     return !soldOut;
   };
 
+  const refreshFromDb = async () => {
+    const session = loadSession();
+    if (session) await loadFromDb(session.apiSecret);
+  };
+
   return (
     <CatalogContext.Provider
       value={{
@@ -283,6 +289,7 @@ export function CatalogProvider({ children }: { children: React.ReactNode }) {
         removeCategoryOverride,
         setProductVisibility,
         isProductVisible,
+        refreshFromDb,
         setSearchQuery,
         setActiveCategory,
       }}
