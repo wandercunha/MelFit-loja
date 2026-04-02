@@ -9,6 +9,7 @@
     "lint": "next lint",
     "scrape": "tsx scripts/scrape-prices.ts",
     "scrape:details": "tsx scripts/scrape-details.ts",
+    "scrape:info": "tsx scripts/scrape-product-info.ts",
     "db:migrate": "tsx scripts/migrate-to-sqlite.ts",
     "admin:reset": "tsx scripts/reset-admin.ts"
   },

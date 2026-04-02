@@ -4,6 +4,13 @@ import { useState, useMemo, useRef } from "react";
 import { useCatalog } from "@/context/CatalogContext";
 import { PRODUCTS } from "@/data/products";
 import { calcProduct, formatBRL, getAtacadoUrl } from "@/lib/pricing";
+
+// Fecha admin e busca produto no catalogo
+function goToProduct(name: string, setSearchQuery: (q: string) => void) {
+  setSearchQuery(name);
+  // Dispara evento para fechar o admin modal
+  window.dispatchEvent(new CustomEvent("melfit:close-admin"));
+}
 import { CATEGORY_LABELS, CATEGORY_ORDER } from "@/lib/types";
 import scrapeMaps from "@/data/scrape-maps.json";
 
@@ -171,6 +178,7 @@ export function ProductOverridesTab() {
     globalSettings, overrides, setOverride, removeOverride,
     categoryOverrides, setCategoryOverride, removeCategoryOverride,
     productVisibility, setProductVisibility, isProductVisible,
+    setSearchQuery,
     apiSecret,
   } = useCatalog();
 
@@ -681,10 +689,10 @@ export function ProductOverridesTab() {
                                     onMouseEnter={() => showTooltip(p.id)}
                                     onMouseLeave={hideTooltip}
                                   >
-                                    <a href="/" className="flex items-center gap-1.5 hover:text-brand-300" target="_blank" rel="noopener noreferrer">
-                                      <svg className="w-3 h-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" /></svg>
-                                      Meu catalogo
-                                    </a>
+                                    <button onClick={() => goToProduct(p.name, setSearchQuery)} className="flex items-center gap-1.5 hover:text-brand-300">
+                                      <svg className="w-3 h-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg>
+                                      Ver no catalogo
+                                    </button>
                                     <a href={getAtacadoUrl(p)} className="flex items-center gap-1.5 hover:text-brand-300" target="_blank" rel="noopener noreferrer">
                                       <svg className="w-3 h-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" /></svg>
                                       Fornecedor (atacado)
