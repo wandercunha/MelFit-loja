@@ -74,28 +74,36 @@ export function ProductDetailModal({ product, priceCalc, onClose }: Props) {
     if (idx !== currentImg) setCurrentImg(idx);
   };
 
-  // Mouse wheel → navegar galeria (1 foto por gesto, com cooldown)
-  const wheelLocked = useRef(false);
+  // Mouse wheel/trackpad → 1 foto por gesto
+  // Trava após o primeiro evento, só destrava quando o gesto para (150ms sem eventos)
+  const wheelState = useRef<{ locked: boolean; timer: ReturnType<typeof setTimeout> | null }>({ locked: false, timer: null });
   useEffect(() => {
     const el = scrollRef.current;
     if (!el || allImages.length <= 1) return;
     const handler = (e: WheelEvent) => {
       e.preventDefault();
-      if (wheelLocked.current) return;
-      wheelLocked.current = true;
-      setTimeout(() => { wheelLocked.current = false; }, 400);
+      const ws = wheelState.current;
+
+      // Reseta o timer de "fim do gesto" a cada evento
+      if (ws.timer) clearTimeout(ws.timer);
+      ws.timer = setTimeout(() => { ws.locked = false; }, 150);
+
+      // Se já navegou neste gesto, ignora
+      if (ws.locked) return;
+      ws.locked = true;
 
       const idx = Math.round(el.scrollLeft / el.offsetWidth);
       if (e.deltaY > 0 || e.deltaX > 0) {
-        const next = Math.min(idx + 1, allImages.length - 1);
-        el.scrollTo({ left: next * el.offsetWidth, behavior: "smooth" });
+        el.scrollTo({ left: Math.min(idx + 1, allImages.length - 1) * el.offsetWidth, behavior: "smooth" });
       } else if (e.deltaY < 0 || e.deltaX < 0) {
-        const prev = Math.max(idx - 1, 0);
-        el.scrollTo({ left: prev * el.offsetWidth, behavior: "smooth" });
+        el.scrollTo({ left: Math.max(idx - 1, 0) * el.offsetWidth, behavior: "smooth" });
       }
     };
     el.addEventListener("wheel", handler, { passive: false });
-    return () => el.removeEventListener("wheel", handler);
+    return () => {
+      el.removeEventListener("wheel", handler);
+      if (wheelState.current.timer) clearTimeout(wheelState.current.timer);
+    };
   }, [allImages.length]);
 
   // Keyboard arrows
