@@ -74,16 +74,34 @@ export function ProductDetailModal({ product, priceCalc, onClose }: Props) {
     if (idx !== currentImg) setCurrentImg(idx);
   };
 
-  // Mouse wheel → scroll horizontal na galeria
-  const handleWheel = useCallback((e: React.WheelEvent) => {
-    if (!scrollRef.current || allImages.length <= 1) return;
-    e.preventDefault();
-    if (e.deltaY > 0 || e.deltaX > 0) {
-      goTo(currentImg + 1);
-    } else if (e.deltaY < 0 || e.deltaX < 0) {
-      goTo(currentImg - 1);
-    }
-  }, [currentImg, allImages.length]);
+  // Mouse wheel → navegar galeria (non-passive para preventDefault funcionar)
+  useEffect(() => {
+    const el = scrollRef.current;
+    if (!el || allImages.length <= 1) return;
+    const handler = (e: WheelEvent) => {
+      e.preventDefault();
+      const idx = Math.round(el.scrollLeft / el.offsetWidth);
+      if (e.deltaY > 0 || e.deltaX > 0) {
+        const next = Math.min(idx + 1, allImages.length - 1);
+        el.scrollTo({ left: next * el.offsetWidth, behavior: "smooth" });
+      } else {
+        const prev = Math.max(idx - 1, 0);
+        el.scrollTo({ left: prev * el.offsetWidth, behavior: "smooth" });
+      }
+    };
+    el.addEventListener("wheel", handler, { passive: false });
+    return () => el.removeEventListener("wheel", handler);
+  }, [allImages.length]);
+
+  // Keyboard arrows
+  useEffect(() => {
+    const handler = (e: KeyboardEvent) => {
+      if (e.key === "ArrowLeft") goTo(currentImg - 1);
+      else if (e.key === "ArrowRight") goTo(currentImg + 1);
+    };
+    document.addEventListener("keydown", handler);
+    return () => document.removeEventListener("keydown", handler);
+  }, [currentImg]);
 
   const handleAdd = () => {
     if (!selectedSize) return;
@@ -92,14 +110,14 @@ export function ProductDetailModal({ product, priceCalc, onClose }: Props) {
     setTimeout(() => setAddedFeedback(false), 1500);
   };
 
-  // ── Gallery component ──
-  const Gallery = () => (
+  // ── Gallery JSX (inline — não pode ser sub-componente para não remontar) ──
+  const galleryJSX = (
     <div className="relative w-full aspect-square lg:aspect-auto lg:h-full bg-gray-50">
       {allImages.length > 0 ? (
         <>
-          <div ref={scrollRef} onScroll={handleScroll} onWheel={handleWheel} className="flex w-full h-full overflow-x-auto snap-x snap-mandatory scrollbar-hide" style={{ scrollbarWidth: "none" }}>
-            {allImages.map((src, i) => (
-              <img key={i} src={src} alt={`${product.name} - ${i + 1}`} loading="lazy" draggable={false} className="w-full h-full object-contain flex-shrink-0 snap-center bg-white select-none" />
+          <div ref={scrollRef} onScroll={handleScroll} className="flex w-full h-full overflow-x-auto snap-x snap-mandatory scrollbar-hide" style={{ scrollbarWidth: "none" }}>
+            {allImages.map((src: string, i: number) => (
+              <img key={i} src={src} alt={`${product.name} - ${i + 1}`} loading="lazy" draggable={false} className="w-full h-full object-contain flex-shrink-0 snap-center bg-white select-none pointer-events-none" />
             ))}
           </div>
           {allImages.length > 1 && currentImg > 0 && (
@@ -118,7 +136,7 @@ export function ProductDetailModal({ product, priceCalc, onClose }: Props) {
           {/* Thumbnail strip (desktop only) */}
           {allImages.length > 1 && (
             <div className="hidden lg:flex absolute bottom-3 left-3 right-14 gap-1.5 overflow-x-auto">
-              {allImages.slice(0, 8).map((src, i) => (
+              {allImages.slice(0, 8).map((src: string, i: number) => (
                 <button key={i} onClick={() => goTo(i)} className={`flex-shrink-0 w-10 h-10 rounded-lg overflow-hidden border-2 transition-all ${i === currentImg ? "border-brand-400 scale-110" : "border-white/60 opacity-70 hover:opacity-100"}`}>
                   <img src={src} alt="" className="w-full h-full object-cover" />
                 </button>
@@ -136,8 +154,8 @@ export function ProductDetailModal({ product, priceCalc, onClose }: Props) {
     </div>
   );
 
-  // ── Info panel ──
-  const InfoPanel = () => (
+  // ── Info panel JSX (inline) ──
+  const infoPanelJSX = (
     <div className="flex flex-col h-full">
       {/* Header - desktop only (mobile has it in the outer shell) */}
       <div className="hidden lg:block px-5 pt-5 pb-3 border-b border-gray-100">
@@ -278,21 +296,21 @@ export function ProductDetailModal({ product, priceCalc, onClose }: Props) {
 
         {/* Mobile: scrollable column */}
         <div className="lg:hidden flex-1 overflow-y-auto">
-          <Gallery />
-          <InfoPanel />
+          {galleryJSX}
+          {infoPanelJSX}
         </div>
 
         {/* Desktop: side by side */}
         <div className="hidden lg:flex lg:flex-row w-full h-full">
           {/* Left: gallery */}
           <div className="w-1/2 h-full">
-            <Gallery />
+            {galleryJSX}
           </div>
           {/* Right: info */}
           <div className="w-1/2 h-full border-l border-gray-100 relative">
             {/* Close button */}
             <button onClick={onClose} className="absolute top-3 right-3 z-20 w-9 h-9 flex items-center justify-center rounded-full hover:bg-gray-100 text-gray-400 text-xl">&times;</button>
-            <InfoPanel />
+            {infoPanelJSX}
           </div>
         </div>
       </div>
