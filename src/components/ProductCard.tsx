@@ -3,10 +3,10 @@
 import { Product, PriceCalc, CATEGORY_LABELS } from "@/lib/types";
 import { formatBRL, getColorFromName, getInitials, getAtacadoUrl } from "@/lib/pricing";
 import { useCatalog } from "@/context/CatalogContext";
+import { useCatalogData } from "@/context/CatalogDataContext";
 import { useCart } from "@/context/CartContext";
-import { useState, useRef } from "react";
+import { useState, useRef, useMemo } from "react";
 import productDetailsData from "@/data/product-details.json";
-import atacadoDetailsData from "@/data/atacado-details.json";
 import { ProductDetailModal } from "./ProductDetailModal";
 
 const SIZE_CHART_URL =
@@ -22,11 +22,6 @@ const details = (productDetailsData as any).products as Record<
   }
 >;
 
-const atacadoProducts = (atacadoDetailsData as any).products as Record<
-  string,
-  { name: string; atacadoSlug: string; images: string[]; stock: Record<string, number>; totalStock: number }
->;
-
 /** Gera slug a partir do nome do produto */
 function toSlug(name: string) {
   return name
@@ -38,29 +33,6 @@ function toSlug(name: string) {
     .replace(/[^a-z0-9-]/g, "");
 }
 
-/** Busca detalhes do atacado (imagens + estoque) e varejo (sizeChart fallback) */
-function getDetail(product: Product) {
-  const slug = product.slug || toSlug(product.name);
-
-  // Atacado: estoque + imagens sem marca (fonte primária)
-  const atacado = atacadoProducts[slug]
-    || Object.values(atacadoProducts).find((d) => d.atacadoSlug?.replace(/-at$/, "") === slug || d.name === product.name);
-
-  // Varejo: apenas sizeChart e stock fallback (sem imagens)
-  const varejo = details[slug]
-    || Object.values(details).find((_, i) => { const k = Object.keys(details)[i]; return k.includes(slug) || slug.includes(k); })
-    || null;
-
-  if (!atacado && !varejo) return null;
-
-  return {
-    images: atacado?.images || [],
-    sizeChart: varejo?.sizeChart || "",
-    stock: atacado?.stock || varejo?.stock || {},
-    totalStock: atacado?.totalStock ?? varejo?.totalStock ?? -1,
-  };
-}
-
 interface Props {
   product: Product;
   priceCalc: PriceCalc;
@@ -70,6 +42,7 @@ interface Props {
 
 export function ProductCard({ product, priceCalc, hasOverride, onEdit }: Props) {
   const { isAdmin } = useCatalog();
+  const { atacadoProducts } = useCatalogData();
   const { addItem } = useCart();
   const color = getColorFromName(product.name);
   const [imgError, setImgError] = useState(false);
@@ -80,7 +53,25 @@ export function ProductCard({ product, priceCalc, hasOverride, onEdit }: Props) 
   const [showDetail, setShowDetail] = useState(false);
   const scrollRef = useRef<HTMLDivElement>(null);
 
-  const detail = getDetail(product);
+  const detail = useMemo(() => {
+    const slug = product.slug || toSlug(product.name);
+
+    const atacado = atacadoProducts[slug]
+      || Object.values(atacadoProducts).find((d: any) => d.atacadoSlug?.replace(/-at$/, "") === slug || d.name === product.name);
+
+    const varejo = details[slug]
+      || Object.values(details).find((_, i) => { const k = Object.keys(details)[i]; return k.includes(slug) || slug.includes(k); })
+      || null;
+
+    if (!atacado && !varejo) return null;
+
+    return {
+      images: ((atacado as any)?.images || []) as string[],
+      sizeChart: varejo?.sizeChart || "",
+      stock: ((atacado as any)?.stock || varejo?.stock || {}) as Record<string, number>,
+      totalStock: ((atacado as any)?.totalStock ?? varejo?.totalStock ?? -1) as number,
+    };
+  }, [product, atacadoProducts]);
   const allImages =
     detail?.images && detail.images.length > 0
       ? detail.images

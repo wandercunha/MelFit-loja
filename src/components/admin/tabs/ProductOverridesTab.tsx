@@ -12,22 +12,12 @@ function goToProduct(name: string) {
   window.open(url.toString(), "_blank");
 }
 import { CATEGORY_LABELS, CATEGORY_ORDER } from "@/lib/types";
+import { useCatalogData } from "@/context/CatalogDataContext";
 import scrapeMaps from "@/data/scrape-maps.json";
-import atacadoDetailsData from "@/data/atacado-details.json";
 
-// Mapa de estoque do atacado por nome do produto
-const atacadoProducts = (atacadoDetailsData as any).products as Record<string, { name: string; stock: Record<string, number>; totalStock: number }>;
 function toSlug(name: string) {
   return name.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "")
     .replace(/\s+c\/\s*/g, "-c-").replace(/\s+/g, "-").replace(/[^a-z0-9-]/g, "");
-}
-function getStock(product: { name: string; slug?: string }): { stock: Record<string, number>; totalStock: number } | null {
-  const slug = product.slug || toSlug(product.name);
-  const d = atacadoProducts[slug];
-  if (d) return { stock: d.stock, totalStock: d.totalStock };
-  const byName = Object.values(atacadoProducts).find((x) => x.name === product.name);
-  if (byName) return { stock: byName.stock, totalStock: byName.totalStock };
-  return null;
 }
 
 function normalizeName(s: string) {
@@ -197,6 +187,17 @@ export function ProductOverridesTab() {
     refreshFromDb,
     apiSecret,
   } = useCatalog();
+  const { atacadoProducts } = useCatalogData();
+
+  // Helper para buscar estoque do atacado
+  const getStock = (product: { name: string; slug?: string }): { stock: Record<string, number>; totalStock: number } | null => {
+    const slug = product.slug || toSlug(product.name);
+    const d = atacadoProducts[slug] as any;
+    if (d) return { stock: d.stock, totalStock: d.totalStock };
+    const byName = Object.values(atacadoProducts).find((x: any) => x.name === product.name) as any;
+    if (byName) return { stock: byName.stock, totalStock: byName.totalStock };
+    return null;
+  };
 
   const [refreshing, setRefreshing] = useState(false);
 

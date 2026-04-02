@@ -421,7 +421,43 @@ async function main() {
   console.log(`    With images: ${withImgs}`);
   console.log(`    Stock data: ${Array.from(allProducts.values()).filter(p => p.totalStock > 0).length}`);
 
+  // ── Sync para Turso (dados acessíveis na Vercel sem redeploy) ──
+  await syncToTurso(outputPath);
+
   console.log(`\n[${new Date().toISOString()}] Done!`);
+}
+
+async function syncToTurso(atacadoJsonPath: string) {
+  const url = process.env.TURSO_DATABASE_URL;
+  const authToken = process.env.TURSO_AUTH_TOKEN;
+  if (!url || !authToken) {
+    console.log("\n  [SYNC] TURSO_DATABASE_URL nao configurado — skip sync");
+    return;
+  }
+
+  try {
+    const { createClient } = await import("@libsql/client");
+    const db = createClient({ url, authToken });
+
+    await db.execute(`
+      CREATE TABLE IF NOT EXISTS settings (
+        key TEXT PRIMARY KEY,
+        value TEXT NOT NULL,
+        updated_at TEXT NOT NULL DEFAULT (datetime('now'))
+      )
+    `);
+
+    const atacadoData = fs.readFileSync(atacadoJsonPath, "utf-8");
+    const size = (Buffer.byteLength(atacadoData) / 1024).toFixed(1);
+    await db.execute({
+      sql: `INSERT INTO settings (key, value, updated_at) VALUES (?, ?, datetime('now'))
+            ON CONFLICT(key) DO UPDATE SET value = excluded.value, updated_at = datetime('now')`,
+      args: ["catalog_atacado_data", atacadoData],
+    });
+    console.log(`\n  [SYNC] atacado-details → Turso (${size}KB) ✓`);
+  } catch (err) {
+    console.error(`\n  [SYNC] Falha ao sincronizar com Turso: ${err}`);
+  }
 }
 
 main().catch(console.error);

@@ -661,7 +661,43 @@ async function main() {
   console.log(`    Products scraped: ${allScraped.length}`);
   console.log(`    With prices: ${withPrices}`);
 
+  // ── Sync precos para Turso ──
+  await syncPricesToTurso(priceMap);
+
   console.log(`\n[${new Date().toISOString()}] Scrape complete!`);
+}
+
+async function syncPricesToTurso(priceMap: Record<string, number>) {
+  const url = process.env.TURSO_DATABASE_URL;
+  const authToken = process.env.TURSO_AUTH_TOKEN;
+  if (!url || !authToken) {
+    console.log("\n  [SYNC] TURSO_DATABASE_URL nao configurado — skip sync");
+    return;
+  }
+
+  try {
+    const { createClient } = await import("@libsql/client");
+    const db = createClient({ url, authToken });
+
+    await db.execute(`
+      CREATE TABLE IF NOT EXISTS settings (
+        key TEXT PRIMARY KEY,
+        value TEXT NOT NULL,
+        updated_at TEXT NOT NULL DEFAULT (datetime('now'))
+      )
+    `);
+
+    const priceJson = JSON.stringify(priceMap);
+    const size = (Buffer.byteLength(priceJson) / 1024).toFixed(1);
+    await db.execute({
+      sql: `INSERT INTO settings (key, value, updated_at) VALUES (?, ?, datetime('now'))
+            ON CONFLICT(key) DO UPDATE SET value = excluded.value, updated_at = datetime('now')`,
+      args: ["catalog_varejo_prices", priceJson],
+    });
+    console.log(`\n  [SYNC] varejo prices → Turso (${size}KB) ✓`);
+  } catch (err) {
+    console.error(`\n  [SYNC] Falha ao sincronizar com Turso: ${err}`);
+  }
 }
 
 main().catch(console.error);

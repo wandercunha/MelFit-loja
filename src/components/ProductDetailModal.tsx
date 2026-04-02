@@ -3,16 +3,11 @@
 import { Product, PriceCalc, CATEGORY_LABELS } from "@/lib/types";
 import { formatBRL } from "@/lib/pricing";
 import { useCart } from "@/context/CartContext";
-import { useState, useRef, useEffect } from "react";
-import atacadoDetailsData from "@/data/atacado-details.json";
+import { useCatalogData } from "@/context/CatalogDataContext";
+import { useState, useRef, useEffect, useMemo } from "react";
 import productInfoFile from "@/data/product-info.json";
 
 const productInfoData = (productInfoFile as any).products || {};
-
-const atacadoProducts = (atacadoDetailsData as any).products as Record<
-  string,
-  { name: string; atacadoSlug: string; images: string[]; stock: Record<string, number>; totalStock: number }
->;
 
 // Tabela de medidas simplificada por tamanho
 const SIZE_MEASURES: Record<string, string> = {
@@ -27,15 +22,6 @@ function toSlug(name: string) {
     .replace(/\s+c\/\s*/g, "-c-").replace(/\s+/g, "-").replace(/[^a-z0-9-]/g, "");
 }
 
-function getProductData(product: Product) {
-  const slug = product.slug || toSlug(product.name);
-  const atacado = atacadoProducts[slug] || Object.values(atacadoProducts).find(
-    (d) => d.atacadoSlug?.replace(/-at$/, "") === slug || d.name === product.name
-  );
-  const info = productInfoData[atacado?.atacadoSlug || ""] || productInfoData[slug + "-at"] || null;
-  return { atacado, info };
-}
-
 interface Props {
   product: Product;
   priceCalc: PriceCalc;
@@ -44,17 +30,25 @@ interface Props {
 
 export function ProductDetailModal({ product, priceCalc, onClose }: Props) {
   const { addItem } = useCart();
+  const { atacadoProducts } = useCatalogData();
   const [selectedSize, setSelectedSize] = useState("");
   const [addedFeedback, setAddedFeedback] = useState(false);
   const [currentImg, setCurrentImg] = useState(0);
   const [showDetails, setShowDetails] = useState(false);
   const scrollRef = useRef<HTMLDivElement>(null);
 
-  const { atacado, info } = getProductData(product);
-  const allImages = atacado?.images?.length > 0 ? atacado.images : product.img ? [product.img] : [];
-  const stock = atacado?.stock || {};
-  const totalStock = atacado?.totalStock ?? -1;
-  const isSoldOut = product.soldOut || totalStock === 0;
+  const { atacado, info } = useMemo(() => {
+    const slug = product.slug || toSlug(product.name);
+    const at = atacadoProducts[slug] || Object.values(atacadoProducts).find(
+      (d: any) => d.atacadoSlug?.replace(/-at$/, "") === slug || d.name === product.name
+    );
+    const inf = productInfoData[(at as any)?.atacadoSlug || ""] || productInfoData[slug + "-at"] || null;
+    return { atacado: at as any, info: inf };
+  }, [product, atacadoProducts]);
+  const allImages: string[] = atacado?.images?.length > 0 ? atacado.images : product.img ? [product.img] : [];
+  const stock: Record<string, number> = atacado?.stock || {};
+  const totalStock: number = atacado?.totalStock ?? -1;
+  const isSoldOut = totalStock > 0 ? false : (product.soldOut || totalStock === 0);
   const hasInfo = info && (info.description || info.composition);
 
   useEffect(() => {
