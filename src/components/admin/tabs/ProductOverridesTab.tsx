@@ -505,7 +505,7 @@ export function ProductOverridesTab() {
         </div>
 
         {/* Desktop table — grouped by category */}
-        <div className="hidden md:block space-y-3">
+        <div className="hidden lg:block space-y-3">
           {groupedProducts.map(({ category, products: catProducts }) => {
             const isCollapsed = collapsedCats.has(category);
             const catOv = categoryOverrides[category];
@@ -729,7 +729,7 @@ export function ProductOverridesTab() {
         </div>
 
         {/* Mobile cards — grouped by category */}
-        <div className="md:hidden space-y-4">
+        <div className="lg:hidden space-y-4">
           {groupedProducts.map(({ category, products: catProducts }) => {
             const isCollapsed = collapsedCats.has(category);
             const catOv = categoryOverrides[category];
