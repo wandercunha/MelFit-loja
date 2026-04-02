@@ -3,7 +3,7 @@
 import { useCatalog } from "@/context/CatalogContext";
 import { useCart } from "@/context/CartContext";
 import { PRODUCTS } from "@/data/products";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { LoginModal } from "./LoginModal";
 import { CartDrawer } from "./CartDrawer";
 import { AdminPanel } from "./admin/AdminPanel";
@@ -15,13 +15,6 @@ export function Header() {
   const [showCart, setShowCart] = useState(false);
   const [showAdmin, setShowAdmin] = useState(false);
   const available = PRODUCTS.filter((p) => isProductVisible(p.id, p.soldOut)).length;
-
-  // Escuta evento de fechar admin (disparado pelo "Ver no catalogo")
-  useEffect(() => {
-    const handler = () => setShowAdmin(false);
-    window.addEventListener("melfit:close-admin", handler);
-    return () => window.removeEventListener("melfit:close-admin", handler);
-  }, []);
 
   return (
     <>

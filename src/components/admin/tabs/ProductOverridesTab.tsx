@@ -5,11 +5,11 @@ import { useCatalog } from "@/context/CatalogContext";
 import { PRODUCTS } from "@/data/products";
 import { calcProduct, formatBRL, getAtacadoUrl } from "@/lib/pricing";
 
-// Fecha admin e busca produto no catalogo
-function goToProduct(name: string, setSearchQuery: (q: string) => void) {
-  setSearchQuery(name);
-  // Dispara evento para fechar o admin modal
-  window.dispatchEvent(new CustomEvent("melfit:close-admin"));
+// Abre produto no catalogo em nova aba (mesma origem)
+function goToProduct(name: string) {
+  const url = new URL(window.location.origin);
+  url.searchParams.set("q", name);
+  window.open(url.toString(), "_blank");
 }
 import { CATEGORY_LABELS, CATEGORY_ORDER } from "@/lib/types";
 import scrapeMaps from "@/data/scrape-maps.json";
@@ -178,7 +178,7 @@ export function ProductOverridesTab() {
     globalSettings, overrides, setOverride, removeOverride,
     categoryOverrides, setCategoryOverride, removeCategoryOverride,
     productVisibility, setProductVisibility, isProductVisible,
-    refreshFromDb, setSearchQuery,
+    refreshFromDb,
     apiSecret,
   } = useCatalog();
 
@@ -421,48 +421,57 @@ export function ProductOverridesTab() {
     onSave: () => void,
     onReset: (() => void) | null,
     hasOverride: boolean,
-  ) => (
-    <>
-    {/* Backdrop to catch clicks outside */}
-    <div className="fixed inset-0 z-[90]" onClick={closePopover} />
-    <div
-      className="fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 lg:absolute lg:left-auto lg:top-full lg:right-0 lg:translate-x-0 lg:translate-y-0 lg:mt-1.5 z-[95] bg-white rounded-xl shadow-2xl border border-gray-200 p-3 w-52 lg:w-48 space-y-2.5"
-      onClick={(e) => e.stopPropagation()}
-      onKeyDown={popoverKeyDown}
-    >
-      <div className="flex items-center justify-between">
-        <span className="text-xs font-bold text-gray-700">{label}</span>
-        <button onClick={closePopover} className="text-gray-400 hover:text-gray-600">
-          <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" /></svg>
-        </button>
-      </div>
-      <input
-        type="text"
-        inputMode="decimal"
-        value={value || ""}
-        onChange={(e) => {
-          const raw = e.target.value;
-          if (raw === "" || raw === "-") { onChange(0); return; }
-          const num = parseFloat(raw);
-          if (!isNaN(num)) onChange(num);
-        }}
-        className="w-full px-2 py-1.5 text-sm border rounded-lg text-right"
-        autoFocus
-        onFocus={(e) => e.target.select()}
-      />
-      <div className="flex gap-1.5">
-        <button onClick={onSave} className="flex-1 text-xs font-semibold py-1.5 rounded-lg bg-emerald-500 hover:bg-emerald-600 text-white transition-colors">
-          Salvar
-        </button>
-        {hasOverride && onReset && (
-          <button onClick={onReset} className="text-xs font-semibold px-2.5 py-1.5 rounded-lg bg-red-50 text-red-500 hover:bg-red-100 transition-colors">
-            Redefinir
+  ) => {
+    const content = (
+      <div className="space-y-2.5" onKeyDown={popoverKeyDown}>
+        <div className="flex items-center justify-between">
+          <span className="text-xs font-bold text-gray-700">{label}</span>
+          <button onClick={closePopover} className="text-gray-400 hover:text-gray-600">
+            <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" /></svg>
           </button>
-        )}
+        </div>
+        <input
+          type="text"
+          inputMode="decimal"
+          value={value || ""}
+          onChange={(e) => {
+            const raw = e.target.value;
+            if (raw === "" || raw === "-") { onChange(0); return; }
+            const num = parseFloat(raw);
+            if (!isNaN(num)) onChange(num);
+          }}
+          className="w-full px-2 py-1.5 text-sm border rounded-lg text-right"
+          autoFocus
+          onFocus={(e) => e.target.select()}
+        />
+        <div className="flex gap-1.5">
+          <button onClick={onSave} className="flex-1 text-xs font-semibold py-1.5 rounded-lg bg-emerald-500 hover:bg-emerald-600 text-white transition-colors">
+            Salvar
+          </button>
+          {hasOverride && onReset && (
+            <button onClick={onReset} className="text-xs font-semibold px-2.5 py-1.5 rounded-lg bg-red-50 text-red-500 hover:bg-red-100 transition-colors">
+              Redefinir
+            </button>
+          )}
+        </div>
       </div>
-    </div>
-    </>
-  );
+    );
+
+    return (
+      <>
+        {/* Mobile: centered overlay */}
+        <div className="lg:hidden fixed inset-0 z-[90] bg-black/20 flex items-center justify-center" onClick={closePopover}>
+          <div className="bg-white rounded-xl shadow-2xl border border-gray-200 p-4 w-56" onClick={(e) => e.stopPropagation()}>
+            {content}
+          </div>
+        </div>
+        {/* Desktop: dropdown */}
+        <div className="hidden lg:block absolute top-full right-0 mt-1.5 z-[95] bg-white rounded-xl shadow-2xl border border-gray-200 p-3 w-48" onClick={(e) => e.stopPropagation()}>
+          {content}
+        </div>
+      </>
+    );
+  };
 
   return (
     <>
@@ -680,7 +689,7 @@ export function ProductOverridesTab() {
                                     onMouseEnter={() => showTooltip(p.id)}
                                     onMouseLeave={hideTooltip}
                                   >
-                                    <button onClick={() => goToProduct(p.name, setSearchQuery)} className="flex items-center gap-1.5 hover:text-brand-300">
+                                    <button onClick={() => goToProduct(p.name)} className="flex items-center gap-1.5 hover:text-brand-300">
                                       <svg className="w-3 h-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg>
                                       Ver no catalogo
                                     </button>
@@ -869,7 +878,7 @@ export function ProductOverridesTab() {
                               </p>
                               {tooltipId === p.id && (
                                 <div className="flex gap-3 mt-1">
-                                  <button onClick={() => goToProduct(p.name, setSearchQuery)} className="text-[10px] text-brand-400 font-semibold flex items-center gap-1">
+                                  <button onClick={() => goToProduct(p.name)} className="text-[10px] text-brand-400 font-semibold flex items-center gap-1">
                                     <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg>
                                     Meu catalogo
                                   </button>
