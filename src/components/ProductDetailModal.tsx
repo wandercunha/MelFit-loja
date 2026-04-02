@@ -74,29 +74,13 @@ export function ProductDetailModal({ product, priceCalc, onClose }: Props) {
     if (idx !== currentImg) setCurrentImg(idx);
   };
 
-  // Mouse wheel/trackpad → 1 foto por gesto
-  // Lock por 300ms após navegar. Exige delta mínimo para filtrar inércia do trackpad.
-  const wheelLockedUntil = useRef(0);
+  // Bloqueia wheel vertical de rolar fotos no modal (scroll horizontal nativo via CSS snap)
   useEffect(() => {
     const el = scrollRef.current;
     if (!el || allImages.length <= 1) return;
-    const DELTA_MIN = 15; // ignora inércia residual (deltas pequenos)
-    const COOLDOWN = 300; // ms de lock após navegar
-
     const handler = (e: WheelEvent) => {
-      e.preventDefault();
-      const now = Date.now();
-      const delta = Math.abs(e.deltaY) + Math.abs(e.deltaX);
-
-      // Ignora: ainda em cooldown OU delta muito baixo (inércia)
-      if (now < wheelLockedUntil.current || delta < DELTA_MIN) return;
-
-      wheelLockedUntil.current = now + COOLDOWN;
-      const idx = Math.round(el.scrollLeft / el.offsetWidth);
-      if (e.deltaY > 0 || e.deltaX > 0) {
-        el.scrollTo({ left: Math.min(idx + 1, allImages.length - 1) * el.offsetWidth, behavior: "smooth" });
-      } else {
-        el.scrollTo({ left: Math.max(idx - 1, 0) * el.offsetWidth, behavior: "smooth" });
+      if (Math.abs(e.deltaY) > Math.abs(e.deltaX)) {
+        e.preventDefault();
       }
     };
     el.addEventListener("wheel", handler, { passive: false });

@@ -109,35 +109,21 @@ export function ProductCard({ product, priceCalc, hasOverride, onEdit }: Props) 
     if (idx !== currentImg) setCurrentImg(idx);
   };
 
-  // Wheel/trackpad → navegar fotos (como no modal)
-  // Vertical (deltaY) → rola a página. Horizontal (deltaX) → muda foto.
-  const wheelLockedUntil = useRef(0);
+  // Bloqueia wheel vertical de rolar fotos (deixa rolar a página)
   useEffect(() => {
     const el = scrollRef.current;
     if (!el || !hasMultiple) return;
     const handler = (e: WheelEvent) => {
-      // Só horizontal — vertical rola a página
-      if (Math.abs(e.deltaX) <= Math.abs(e.deltaY)) return;
-      if (Math.abs(e.deltaX) < 10) return;
-
-      e.preventDefault();
-      const now = Date.now();
-      if (now < wheelLockedUntil.current) return;
-      wheelLockedUntil.current = now + 300;
-
-      const idx = Math.round(el.scrollLeft / el.offsetWidth);
-      const target = e.deltaX > 0
-        ? Math.min(idx + 1, allImages.length - 1)
-        : Math.max(idx - 1, 0);
-
-      // Desativa snap durante scrollTo para evitar conflito
-      el.style.scrollSnapType = "none";
-      el.scrollTo({ left: target * el.offsetWidth, behavior: "smooth" });
-      setTimeout(() => { el.style.scrollSnapType = ""; }, 350);
+      // Scroll vertical sobre o carrossel → não muda foto, rola a página
+      if (Math.abs(e.deltaY) > Math.abs(e.deltaX)) {
+        e.preventDefault();
+        // Propaga manualmente para a página
+        window.scrollBy(0, e.deltaY);
+      }
     };
     el.addEventListener("wheel", handler, { passive: false });
     return () => el.removeEventListener("wheel", handler);
-  }, [hasMultiple, allImages.length]);
+  }, [hasMultiple]);
 
   // Distinguir tap/click de swipe/drag (funciona em mobile e desktop)
   const pointerStart = useRef<{ x: number; y: number; t: number } | null>(null);
