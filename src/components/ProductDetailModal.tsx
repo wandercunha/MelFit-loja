@@ -87,15 +87,6 @@ export function ProductDetailModal({ product, priceCalc, onClose }: Props) {
     return () => el.removeEventListener("wheel", handler);
   }, [allImages.length]);
 
-  // Keyboard arrows
-  useEffect(() => {
-    const handler = (e: KeyboardEvent) => {
-      if (e.key === "ArrowLeft") goTo(currentImg - 1);
-      else if (e.key === "ArrowRight") goTo(currentImg + 1);
-    };
-    document.addEventListener("keydown", handler);
-    return () => document.removeEventListener("keydown", handler);
-  }, [currentImg]);
 
   const handleAdd = () => {
     if (!selectedSize) return;
