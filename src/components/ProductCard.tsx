@@ -5,7 +5,14 @@ import { formatBRL, getColorFromName, getInitials, getAtacadoUrl } from "@/lib/p
 import { useCatalog } from "@/context/CatalogContext";
 import { useCatalogData } from "@/context/CatalogDataContext";
 import { useCart } from "@/context/CartContext";
-import { useState, useRef, useMemo } from "react";
+import { useState, useRef, useMemo, useCallback } from "react";
+
+const SIZE_MEASURES: Record<string, string> = {
+  P: "Busto 82-86 | Cintura 64-68 | Quadril 90-94",
+  M: "Busto 86-90 | Cintura 68-72 | Quadril 94-98",
+  G: "Busto 90-96 | Cintura 72-78 | Quadril 98-104",
+  GG: "Busto 96-102 | Cintura 78-84 | Quadril 104-110",
+};
 import productDetailsData from "@/data/product-details.json";
 import { ProductDetailModal } from "./ProductDetailModal";
 
@@ -102,6 +109,23 @@ export function ProductCard({ product, priceCalc, hasOverride, onEdit }: Props) 
     if (idx !== currentImg) setCurrentImg(idx);
   };
 
+  // Distinguir tap de swipe no mobile
+  const touchStart = useRef<{ x: number; y: number; t: number } | null>(null);
+  const handleTouchStart = useCallback((e: React.TouchEvent) => {
+    touchStart.current = { x: e.touches[0].clientX, y: e.touches[0].clientY, t: Date.now() };
+  }, []);
+  const handleTouchEnd = useCallback((e: React.TouchEvent) => {
+    if (!touchStart.current || isAdmin) return;
+    const dx = Math.abs(e.changedTouches[0].clientX - touchStart.current.x);
+    const dy = Math.abs(e.changedTouches[0].clientY - touchStart.current.y);
+    const dt = Date.now() - touchStart.current.t;
+    // Tap: pouco movimento (<15px) e rápido (<300ms)
+    if (dx < 15 && dy < 15 && dt < 300) {
+      setShowDetail(true);
+    }
+    touchStart.current = null;
+  }, [isAdmin]);
+
   return (
     <>
       <div className="card overflow-hidden group">
@@ -111,7 +135,12 @@ export function ProductCard({ product, priceCalc, hasOverride, onEdit }: Props) 
           style={{
             background: `linear-gradient(135deg, ${color}15, ${color}30)`,
           }}
-          onClick={() => !isAdmin && setShowDetail(true)}
+          onTouchStart={handleTouchStart}
+          onTouchEnd={handleTouchEnd}
+          onClick={(e) => {
+            // Desktop only — mobile usa touch handlers
+            if (!isAdmin && !("ontouchstart" in window)) setShowDetail(true);
+          }}
         >
           {allImages.length > 0 && !imgError ? (
             <>
@@ -321,6 +350,12 @@ export function ProductCard({ product, priceCalc, hasOverride, onEdit }: Props) 
                       </button>
                     ))}
                   </div>
+                  {/* Medidas do tamanho selecionado */}
+                  {selectedSize && SIZE_MEASURES[selectedSize] && (
+                    <p className="text-[10px] text-gray-400 leading-tight">
+                      {SIZE_MEASURES[selectedSize]}
+                    </p>
+                  )}
                   <button
                     disabled={!selectedSize}
                     onClick={() => {
