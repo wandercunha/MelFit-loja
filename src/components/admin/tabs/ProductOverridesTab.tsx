@@ -574,6 +574,7 @@ export function ProductOverridesTab() {
                   <table className="w-full text-sm">
                     <thead className="bg-gray-50/50 text-[10px] text-gray-400 uppercase">
                       <tr>
+                        <th className="w-10 px-2 py-1.5"></th>
                         <th className="text-left px-3 py-1.5">Produto</th>
                         <th className="text-right px-3 py-1.5">Custo</th>
                         <th className="text-right px-3 py-1.5">Margem</th>
@@ -608,6 +609,14 @@ export function ProductOverridesTab() {
                             key={p.id}
                             className={`group/row hover:bg-gray-50 transition-colors ${!visible ? "opacity-40" : ""} ${hasOverride ? "bg-brand-400/5" : ""}`}
                           >
+                            {/* Thumb */}
+                            <td className="px-2 py-1.5 w-10">
+                              {p.img ? (
+                                <img src={p.img} alt="" className="w-9 h-9 rounded-lg object-cover" loading="lazy" />
+                              ) : (
+                                <div className="w-9 h-9 rounded-lg bg-gray-100 flex items-center justify-center text-gray-300 text-[10px]">?</div>
+                              )}
+                            </td>
                             {/* Nome — max 2 linhas */}
                             <td className="px-3 py-2 font-semibold text-gray-800 max-w-[250px]">
                               <div className="relative inline-flex items-start gap-1">
@@ -795,7 +804,7 @@ export function ProductOverridesTab() {
                           key={p.id}
                           className={`rounded-xl p-3 border ${!visible ? "opacity-40" : ""} ${hasOverride ? "border-brand-300 bg-brand-400/5" : "border-gray-200 bg-white"}`}
                         >
-                          {/* Linha 1: Toggle + Nome + Editar */}
+                          {/* Linha 1: Toggle + Thumb + Nome + Editar */}
                           <div className="flex items-center gap-2">
                             <button
                               onClick={() => setProductVisibility(p.id, !visible)}
@@ -803,6 +812,11 @@ export function ProductOverridesTab() {
                             >
                               <span className={`inline-block w-4 h-4 rounded-full bg-white shadow-sm transition-transform ${visible ? "translate-x-[18px]" : "translate-x-[2px]"}`} />
                             </button>
+                            {p.img ? (
+                              <img src={p.img} alt="" className="flex-shrink-0 w-10 h-10 rounded-lg object-cover" loading="lazy" />
+                            ) : (
+                              <div className="flex-shrink-0 w-10 h-10 rounded-lg bg-gray-100 flex items-center justify-center text-gray-300 text-xs">?</div>
+                            )}
                             <p className="flex-1 text-sm font-semibold text-gray-800 leading-snug min-w-0">
                               {hasOverride && <span className="inline-block w-1.5 h-1.5 rounded-full bg-brand-400 mr-1 align-middle" />}
                               {p.name}
