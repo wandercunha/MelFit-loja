@@ -74,17 +74,22 @@ export function ProductDetailModal({ product, priceCalc, onClose }: Props) {
     if (idx !== currentImg) setCurrentImg(idx);
   };
 
-  // Mouse wheel → navegar galeria (non-passive para preventDefault funcionar)
+  // Mouse wheel → navegar galeria (1 foto por gesto, com cooldown)
+  const wheelLocked = useRef(false);
   useEffect(() => {
     const el = scrollRef.current;
     if (!el || allImages.length <= 1) return;
     const handler = (e: WheelEvent) => {
       e.preventDefault();
+      if (wheelLocked.current) return;
+      wheelLocked.current = true;
+      setTimeout(() => { wheelLocked.current = false; }, 400);
+
       const idx = Math.round(el.scrollLeft / el.offsetWidth);
       if (e.deltaY > 0 || e.deltaX > 0) {
         const next = Math.min(idx + 1, allImages.length - 1);
         el.scrollTo({ left: next * el.offsetWidth, behavior: "smooth" });
-      } else {
+      } else if (e.deltaY < 0 || e.deltaX < 0) {
         const prev = Math.max(idx - 1, 0);
         el.scrollTo({ left: prev * el.offsetWidth, behavior: "smooth" });
       }
