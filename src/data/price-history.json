@@ -1,5 +1,5 @@
 {
-  "lastUpdate": "2026-04-01T23:02:49.385Z",
+  "lastUpdate": "2026-04-02T12:05:01.937Z",
   "changes": [
     {
       "date": "2026-03-31T19:31:12.316Z",
@@ -464,6 +464,238 @@
       "field": "price",
       "oldValue": 55,
       "newValue": 95
+    },
+    {
+      "date": "2026-04-02T12:05:01.937Z",
+      "product": "Top Speed Azul Marinho",
+      "slug": "top-speed-azul-marinho",
+      "field": "price",
+      "oldValue": 62,
+      "newValue": 74
+    },
+    {
+      "date": "2026-04-02T12:05:01.937Z",
+      "product": "Top Speed Marrom",
+      "slug": "top-speed-marrom",
+      "field": "price",
+      "oldValue": 62,
+      "newValue": 74
+    },
+    {
+      "date": "2026-04-02T12:05:01.937Z",
+      "product": "Regata Basic Branca",
+      "slug": "regata-basic-branca",
+      "field": "price",
+      "oldValue": 72,
+      "newValue": 95
+    },
+    {
+      "date": "2026-04-02T12:05:01.937Z",
+      "product": "Top Cross Azul Marinho c/ Azul",
+      "slug": "top-cross-azul-marinho-c-azul",
+      "field": "price",
+      "oldValue": 62,
+      "newValue": 55
+    },
+    {
+      "date": "2026-04-02T12:05:01.937Z",
+      "product": "Top Cross Preto c/ Off",
+      "slug": "top-cross-preto-c-off",
+      "field": "price",
+      "oldValue": 62,
+      "newValue": 45
+    },
+    {
+      "date": "2026-04-02T12:05:01.937Z",
+      "product": "Top Air Cappuccino c/ Off",
+      "slug": "top-air-cappuccino-c-off",
+      "field": "price",
+      "oldValue": 55,
+      "newValue": 95
+    },
+    {
+      "date": "2026-04-02T12:05:01.937Z",
+      "product": "Top Air Preto c/ Off",
+      "slug": "top-air-preto-c-off",
+      "field": "price",
+      "oldValue": 55,
+      "newValue": 98
+    },
+    {
+      "date": "2026-04-02T12:05:01.937Z",
+      "product": "Cropped Manga Longa Cereja",
+      "slug": "cropped-manga-longa-cereja",
+      "field": "price",
+      "oldValue": 74,
+      "newValue": 65
+    },
+    {
+      "date": "2026-04-02T12:05:01.937Z",
+      "product": "Short Edge Azul Marinho c/ Azul",
+      "slug": "short-edge-azul-marinho-c-azul",
+      "field": "price",
+      "oldValue": 90,
+      "newValue": 95
+    },
+    {
+      "date": "2026-04-02T12:05:01.937Z",
+      "product": "Short Basic Azul Marine",
+      "slug": "short-basic-azul-marine",
+      "field": "price",
+      "oldValue": 74,
+      "newValue": 65
+    },
+    {
+      "date": "2026-04-02T12:05:01.937Z",
+      "product": "Legging Cross Preto c/ Off",
+      "slug": "legging-cross-preto-c-off",
+      "field": "price",
+      "oldValue": 108,
+      "newValue": 75
+    },
+    {
+      "date": "2026-04-02T12:05:01.937Z",
+      "product": "Legging Cross Verde Militar c/ Off",
+      "slug": "legging-cross-verde-militar-c-off",
+      "field": "price",
+      "oldValue": 108,
+      "newValue": 89
+    },
+    {
+      "date": "2026-04-02T12:05:01.937Z",
+      "product": "Legging Cross Cappuccino c/ Off",
+      "slug": "legging-cross-cappuccino-c-off",
+      "field": "price",
+      "oldValue": 108,
+      "newValue": 55
+    },
+    {
+      "date": "2026-04-02T12:05:01.937Z",
+      "product": "Legging Cross Azul Marinho c/ Azul",
+      "slug": "legging-cross-azul-marinho-c-azul",
+      "field": "price",
+      "oldValue": 108,
+      "newValue": 55
+    },
+    {
+      "date": "2026-04-02T12:05:01.937Z",
+      "product": "Legging Flare Azul Marinho",
+      "slug": "legging-flare-azul-marinho",
+      "field": "price",
+      "oldValue": 130,
+      "newValue": 75
+    },
+    {
+      "date": "2026-04-02T12:05:01.937Z",
+      "product": "Legging Flare Canelada Off White",
+      "slug": "legging-flare-canelada-off-white",
+      "field": "price",
+      "oldValue": 145,
+      "newValue": 75
+    },
+    {
+      "date": "2026-04-02T12:05:01.937Z",
+      "product": "Macaquinho Move Azul Marinho",
+      "slug": "macaquinho-move-azul-marinho",
+      "field": "price",
+      "oldValue": 98,
+      "newValue": 75
+    },
+    {
+      "date": "2026-04-02T12:05:01.937Z",
+      "product": "Macaquinho Move Verde Militar",
+      "slug": "macaquinho-move-verde-militar",
+      "field": "price",
+      "oldValue": 98,
+      "newValue": 95
+    },
+    {
+      "date": "2026-04-02T12:05:01.937Z",
+      "product": "Macaquinho One Marrom",
+      "slug": "macaquinho-one-marrom",
+      "field": "price",
+      "oldValue": 135,
+      "newValue": 95
+    },
+    {
+      "date": "2026-04-02T12:05:01.937Z",
+      "product": "Macaquinho One Preto",
+      "slug": "macaquinho-one-preto",
+      "field": "price",
+      "oldValue": 135,
+      "newValue": 98
+    },
+    {
+      "date": "2026-04-02T12:05:01.937Z",
+      "product": "Macaquinho One Vermelho",
+      "slug": "macaquinho-one-vermelho",
+      "field": "price",
+      "oldValue": 135,
+      "newValue": 55
+    },
+    {
+      "date": "2026-04-02T12:05:01.937Z",
+      "product": "Macaquinho Ease Verde Militar c/ Off",
+      "slug": "macaquinho-ease-verde-militar-c-off",
+      "field": "price",
+      "oldValue": 139,
+      "newValue": 95
+    },
+    {
+      "date": "2026-04-02T12:05:01.937Z",
+      "product": "Macaquinho Ease Cappuccino c/ Off",
+      "slug": "macaquinho-ease-cappuccino-c-off",
+      "field": "price",
+      "oldValue": 139,
+      "newValue": 39
+    },
+    {
+      "date": "2026-04-02T12:05:01.937Z",
+      "product": "Macaquinho com Manga Cereja",
+      "slug": "macaquinho-com-manga-cereja",
+      "field": "price",
+      "oldValue": 95,
+      "newValue": 75
+    },
+    {
+      "date": "2026-04-02T12:05:01.937Z",
+      "product": "Macaquinho Adapt Blush",
+      "slug": "macaquinho-adapt-blush",
+      "field": "price",
+      "oldValue": 109,
+      "newValue": 74
+    },
+    {
+      "date": "2026-04-02T12:05:01.937Z",
+      "product": "Macaquinho Adapt Preto",
+      "slug": "macaquinho-adapt-preto",
+      "field": "price",
+      "oldValue": 65,
+      "newValue": 98
+    },
+    {
+      "date": "2026-04-02T12:05:01.937Z",
+      "product": "Macaquinho Move Frente Unica Cereja",
+      "slug": "macaquinho-move-frente-unica-cereja",
+      "field": "price",
+      "oldValue": 188,
+      "newValue": 95
+    },
+    {
+      "date": "2026-04-02T12:05:01.937Z",
+      "product": "Macacão Essential Preto",
+      "slug": "macacao-essential-preto",
+      "field": "price",
+      "oldValue": 45,
+      "newValue": 98
+    },
+    {
+      "date": "2026-04-02T12:05:01.937Z",
+      "product": "Macacão Essential Marrom",
+      "slug": "macacao-essential-marrom",
+      "field": "price",
+      "oldValue": 95,
+      "newValue": 58
     }
   ],
   "snapshots": [
@@ -494,6 +726,13 @@
       "avgPrice": 85.31,
       "minPrice": 39,
       "maxPrice": 188
+    },
+    {
+      "date": "2026-04-02T12:05:01.937Z",
+      "productCount": 53,
+      "avgPrice": 79.13,
+      "minPrice": 39,
+      "maxPrice": 178
     }
   ]
 }

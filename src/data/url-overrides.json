@@ -6,5 +6,10 @@
       "atacadoSlug": "slug-no-site-atacado"
     }
   },
-  "products": {}
+  "products": {
+    "Short Speed c/ Bolso Azul Petroleo": {
+      "varejoSlug": "short-speed-c-bolso-azul-pacifico",
+      "atacadoSlug": "short-speed-c-bolso-azul-pacifico-at"
+    }
+  }
 }
