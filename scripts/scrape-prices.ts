@@ -31,7 +31,6 @@ interface ScrapedProduct {
   name: string;
   price: number;
   slug: string;
-  img: string;
 }
 
 function fetchHTML(url: string): Promise<string> {
@@ -87,15 +86,6 @@ function parseProductsFromHTML(html: string): ScrapedProduct[] {
     const name = h3.attr("title") || "";
     const slug = $el.find("a").first().attr("href")?.replace(/\//g, "") || "";
 
-    // Get image from data-src (lazy loaded)
-    let img = "";
-    const imgEl = $el.find("img[data-src]").first();
-    const dataSrc = imgEl.attr("data-src") || "";
-    if (dataSrc.includes("cdn.sistemawbuy.com.br") && dataSrc.includes("/produtos/")) {
-      // Replace _mini with larger version
-      img = dataSrc.replace("_mini.", ".");
-    }
-
     // Try to extract price from data-comprarapida (base64 JSON)
     let price = 0;
     const compraRapida = h3.attr("data-comprarapida") || "";
@@ -110,33 +100,17 @@ function parseProductsFromHTML(html: string): ScrapedProduct[] {
     }
 
     if (name && slug) {
-      products.push({ name, price, slug, img });
+      products.push({ name, price, slug });
     }
   });
 
   return products;
 }
 
-async function scrapeProductPage(slug: string): Promise<{ img: string; price: number }> {
+async function scrapeProductPage(slug: string): Promise<{ price: number }> {
   try {
     const html = await fetchHTML(`${BASE_URL}/${slug}/`);
     const $ = cheerio.load(html);
-
-    let img = "";
-    // Try og:image first
-    const ogImg = $('meta[property="og:image"]').attr("content") || "";
-    if (ogImg.includes("cdn.sistemawbuy.com.br")) {
-      img = ogImg;
-    }
-    // Fallback to product images
-    if (!img) {
-      $("img[data-src], img[src]").each((_, el) => {
-        const src = $(el).attr("data-src") || $(el).attr("src") || "";
-        if (src.includes("cdn.sistemawbuy.com.br") && src.includes("/produtos/") && !img) {
-          img = src.replace("_mini.", ".");
-        }
-      });
-    }
 
     // Extract price from compra_rapida data
     let price = 0;
@@ -175,10 +149,10 @@ async function scrapeProductPage(slug: string): Promise<{ img: string; price: nu
       });
     }
 
-    return { img, price };
+    return { price };
   } catch (err) {
     console.error(`  [WARN] Failed to scrape ${slug}: ${err}`);
-    return { img: "", price: 0 };
+    return { price: 0 };
   }
 }
 
@@ -250,19 +224,18 @@ async function main() {
   log("FASE1", `Total unico: ${allScraped.length} produtos`);
 
   // ══════════════════════════════════════════════════════════════
-  // FASE 2: Produtos sem imagem — busca pagina individual
+  // FASE 2: Produtos sem preco — busca pagina individual
   // ══════════════════════════════════════════════════════════════
-  const needDetail = allScraped.filter((p) => !p.img);
-  if (needDetail.length > 0) {
-    console.log(`\n── FASE 2: Imagens faltantes (${needDetail.length} produtos) ──`);
-    for (let i = 0; i < needDetail.length; i++) {
-      const p = needDetail[i];
+  const needPrice = allScraped.filter((p) => !p.price);
+  if (needPrice.length > 0) {
+    console.log(`\n── FASE 2: Precos faltantes (${needPrice.length} produtos) ──`);
+    for (let i = 0; i < needPrice.length; i++) {
+      const p = needPrice[i];
       try {
         const detail = await scrapeProductPage(p.slug);
         totalRequests++;
-        if (detail.img) { p.img = detail.img; stats.fase2++; }
-        if (detail.price > 0 && !p.price) p.price = detail.price;
-        log("FASE2", `[${i + 1}/${needDetail.length}] ${p.slug} → ${detail.img ? "img OK" : "sem img"}${detail.price > 0 ? ` R$${detail.price}` : ""}`);
+        if (detail.price > 0) { p.price = detail.price; stats.fase2++; }
+        log("FASE2", `[${i + 1}/${needPrice.length}] ${p.slug} → ${detail.price > 0 ? `R$${detail.price}` : "sem preco"}`);
       } catch (err: any) {
         stats.erros++;
         logErr("FASE2", `${p.slug}: ${err.message || err}`);
@@ -300,11 +273,11 @@ async function main() {
       try {
         const detail = await scrapeProductPage(slug);
         totalRequests++;
-        if (detail.img || detail.price > 0) {
+        if (detail.price > 0) {
           seenSlugs.add(slug);
-          allScraped.push({ name, slug, img: detail.img, price: detail.price });
+          allScraped.push({ name, slug, price: detail.price });
           stats.fase3++;
-          log("FASE3", `[${i + 1}/${missingFromCatalog.length}] ${slug}${isOverride} → R$${detail.price || "?"}`);
+          log("FASE3", `[${i + 1}/${missingFromCatalog.length}] ${slug}${isOverride} → R$${detail.price}`);
         } else {
           log("FASE3", `[${i + 1}/${missingFromCatalog.length}] ${slug}${isOverride} → nao encontrado`);
         }
@@ -391,7 +364,7 @@ async function main() {
         totalRequests++;
         if (detail.price > 0) {
           seenSlugs.add(slug);
-          allScraped.push({ name, slug, img: detail.img, price: detail.price });
+          allScraped.push({ name, slug, price: detail.price });
           stats.fase4++;
           log("FASE4", `[${i + 1}/${pieceSlugs.length}] ${slug}${tag} → R$${detail.price} (${conjuntoName})`);
         } else {
@@ -420,7 +393,7 @@ async function main() {
         totalRequests++;
         if (detail.price > 0) {
           seenSlugs.add(slug);
-          allScraped.push({ name, slug, img: detail.img, price: detail.price });
+          allScraped.push({ name, slug, price: detail.price });
           stats.fase5++;
           log("FASE5", `${slug} → R$${detail.price} [OVERRIDE manual]`);
         } else {
@@ -440,7 +413,7 @@ async function main() {
   console.log(`  RESUMO DO SCRAPE`);
   console.log(`  Tempo: ${elapsed}s | Requests: ${totalRequests} | Delay: ${SCRAPE_DELAY}ms`);
   console.log(`  Fase 1 (categorias):     ${stats.fase1} produtos`);
-  console.log(`  Fase 2 (imagens):        ${stats.fase2} atualizadas`);
+  console.log(`  Fase 2 (precos):         ${stats.fase2} encontrados`);
   console.log(`  Fase 3 (pecas avulsas):  ${stats.fase3} encontradas`);
   console.log(`  Fase 4 (conjuntos):      ${stats.fase4} pecas encontradas`);
   console.log(`  Fase 5 (overrides):      ${stats.fase5} encontrados`);
@@ -565,67 +538,22 @@ async function main() {
     console.log(`    No price changes detected`);
   }
 
-  // Generate maps for quick lookup
-  const imageMap: Record<string, string> = {};
+  // Generate maps for quick lookup (somente precos — imagens vem do atacado)
   const priceMap: Record<string, number> = {};
-  const slugImageMap: Record<string, string> = {};
 
   allScraped.forEach((p) => {
-    if (p.img) {
-      imageMap[p.name] = p.img;
-      slugImageMap[p.slug] = p.img;
-    }
     if (p.price > 0) priceMap[p.name] = p.price;
   });
 
   const mapsPath = path.join(dataDir, "scrape-maps.json");
   fs.writeFileSync(
     mapsPath,
-    JSON.stringify({ timestamp: new Date().toISOString(), imageMap, priceMap, slugImageMap }, null, 2)
+    JSON.stringify({ timestamp: new Date().toISOString(), priceMap }, null, 2)
   );
-  console.log(`  Saved maps (${Object.keys(imageMap).length} images, ${Object.keys(priceMap).length} prices)`);
+  console.log(`  Saved maps (${Object.keys(priceMap).length} prices)`);
 
-  // Phase 4: Update products.ts with scraped images
-  console.log(`\n  Updating products.ts...`);
-
-  let updatedContent = productsContent;
-  let updatedImages = 0;
-
-  for (const scraped of allScraped) {
-    if (!scraped.img) continue;
-
-    // Normalize the scraped name for matching
-    const normalize = (s: string) =>
-      s.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/\s+/g, " ").trim();
-
-    const normalizedScraped = normalize(scraped.name);
-
-    // Find the matching line in products.ts
-    const lines = updatedContent.split("\n");
-    for (let li = 0; li < lines.length; li++) {
-      const nameMatch = lines[li].match(/name:\s*"([^"]+)"/);
-      if (!nameMatch) continue;
-
-      const normalizedExisting = normalize(nameMatch[1]);
-
-      if (
-        normalizedScraped === normalizedExisting ||
-        normalizedScraped.includes(normalizedExisting) ||
-        normalizedExisting.includes(normalizedScraped)
-      ) {
-        const imgMatch = lines[li].match(/img:\s*"([^"]*)"/);
-        if (imgMatch && imgMatch[1] !== scraped.img) {
-          lines[li] = lines[li].replace(/img:\s*"[^"]*"/, `img: "${scraped.img}"`);
-          updatedImages++;
-        }
-        break;
-      }
-    }
-    updatedContent = lines.join("\n");
-  }
-
-  fs.writeFileSync(productsFile, updatedContent);
-  console.log(`  Updated ${updatedImages} images in products.ts`);
+  // NOTA: Imagens NÃO são atualizadas aqui — vêm exclusivamente do atacado
+  // (via scrape-atacado-images.ts)
 
   // === SYNC TO SQLITE ===
   console.log(`\n  Syncing to SQLite...`);
@@ -679,20 +607,19 @@ async function main() {
       );
     `);
 
-    // Upsert scraped prices
+    // Upsert scraped prices (somente precos — sem imagens)
     const upsertScraped = db.prepare(`
-      INSERT INTO scraped_prices (product_name, slug, price, img, updated_at)
-      VALUES (?, ?, ?, ?, datetime('now'))
+      INSERT INTO scraped_prices (product_name, slug, price, updated_at)
+      VALUES (?, ?, ?, datetime('now'))
       ON CONFLICT(slug) DO UPDATE SET
         product_name = excluded.product_name,
         price = excluded.price,
-        img = CASE WHEN excluded.img != '' THEN excluded.img ELSE scraped_prices.img END,
         updated_at = datetime('now')
     `);
 
     const upsertMany = db.transaction((products: ScrapedProduct[]) => {
       for (const p of products) {
-        upsertScraped.run(p.name, p.slug, p.price, p.img);
+        upsertScraped.run(p.name, p.slug, p.price);
       }
     });
     upsertMany(allScraped);
@@ -723,42 +650,54 @@ async function main() {
       );
     }
 
-    // Update product images in DB
-    const upsertProduct = db.prepare(`
-      INSERT INTO products (id, name, cost, category, tags, sizes, img, slug, sold_out, updated_at)
-      VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, datetime('now'))
-      ON CONFLICT(id) DO UPDATE SET
-        img = CASE WHEN excluded.img != '' THEN excluded.img ELSE products.img END,
-        updated_at = datetime('now')
-    `);
-    // Re-parse products.ts for DB sync
-    const prodRegex = /\{\s*id:\s*(\d+),\s*name:\s*"([^"]+)",\s*cost:\s*(\d+(?:\.\d+)?),\s*category:\s*"([^"]+)",\s*tags:\s*\[([^\]]*)\],\s*sizes:\s*"([^"]+)",\s*img:\s*"([^"]*)"(?:,\s*slug:\s*"([^"]*)")?(?:,\s*soldOut:\s*(true|false))?\s*\}/g;
-    const finalContent = fs.readFileSync(productsFile, "utf-8");
-    let pm;
-    while ((pm = prodRegex.exec(finalContent)) !== null) {
-      const [, id, name, cost, category, tagsStr, sizes, img, slug, soldOut] = pm;
-      const tags = tagsStr.split(",").map(t => t.trim().replace(/"/g, "")).filter(Boolean);
-      upsertProduct.run(
-        parseInt(id), name, parseFloat(cost), category,
-        JSON.stringify(tags), sizes, img, slug || null,
-        soldOut === "true" ? 1 : 0
-      );
-    }
-
     db.close();
     console.log(`    SQLite synced successfully`);
   } catch (err) {
     console.error(`    [WARN] SQLite sync failed: ${err}`);
   }
 
-  const withImages = allScraped.filter((p) => p.img).length;
   const withPrices = allScraped.filter((p) => p.price > 0).length;
   console.log(`\n  Summary:`);
   console.log(`    Products scraped: ${allScraped.length}`);
-  console.log(`    With images: ${withImages}`);
   console.log(`    With prices: ${withPrices}`);
 
+  // ── Sync precos para Turso ──
+  await syncPricesToTurso(priceMap);
+
   console.log(`\n[${new Date().toISOString()}] Scrape complete!`);
+}
+
+async function syncPricesToTurso(priceMap: Record<string, number>) {
+  const url = process.env.TURSO_DATABASE_URL;
+  const authToken = process.env.TURSO_AUTH_TOKEN;
+  if (!url || !authToken) {
+    console.log("\n  [SYNC] TURSO_DATABASE_URL nao configurado — skip sync");
+    return;
+  }
+
+  try {
+    const { createClient } = await import("@libsql/client");
+    const db = createClient({ url, authToken });
+
+    await db.execute(`
+      CREATE TABLE IF NOT EXISTS settings (
+        key TEXT PRIMARY KEY,
+        value TEXT NOT NULL,
+        updated_at TEXT NOT NULL DEFAULT (datetime('now'))
+      )
+    `);
+
+    const priceJson = JSON.stringify(priceMap);
+    const size = (Buffer.byteLength(priceJson) / 1024).toFixed(1);
+    await db.execute({
+      sql: `INSERT INTO settings (key, value, updated_at) VALUES (?, ?, datetime('now'))
+            ON CONFLICT(key) DO UPDATE SET value = excluded.value, updated_at = datetime('now')`,
+      args: ["catalog_varejo_prices", priceJson],
+    });
+    console.log(`\n  [SYNC] varejo prices → Turso (${size}KB) ✓`);
+  } catch (err) {
+    console.error(`\n  [SYNC] Falha ao sincronizar com Turso: ${err}`);
+  }
 }
 
 main().catch(console.error);

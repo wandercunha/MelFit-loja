@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { CatalogProvider } from "@/context/CatalogContext";
+import { CatalogDataProvider } from "@/context/CatalogDataContext";
 import { CartProvider } from "@/context/CartContext";
 
 export const metadata: Metadata = {
@@ -16,9 +17,11 @@ export default function RootLayout({
   return (
     <html lang="pt-BR">
       <body>
-        <CatalogProvider>
-          <CartProvider>{children}</CartProvider>
-        </CatalogProvider>
+        <CatalogDataProvider>
+          <CatalogProvider>
+            <CartProvider>{children}</CartProvider>
+          </CatalogProvider>
+        </CatalogDataProvider>
       </body>
     </html>
   );

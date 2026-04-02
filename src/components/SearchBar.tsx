@@ -1,9 +1,21 @@
 "use client";
 
 import { useCatalog } from "@/context/CatalogContext";
+import { useEffect } from "react";
 
 export function SearchBar() {
   const { searchQuery, setSearchQuery } = useCatalog();
+
+  // Ler ?q= da URL ao abrir (usado por "Ver no catalogo")
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const q = params.get("q");
+    if (q) {
+      setSearchQuery(q);
+      // Limpar URL sem recarregar
+      window.history.replaceState({}, "", window.location.pathname);
+    }
+  }, []);
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 pt-5 no-print">

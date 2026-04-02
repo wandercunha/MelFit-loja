@@ -1,14 +1,20 @@
 "use client";
 
 import { useCatalog } from "@/context/CatalogContext";
+import { useCatalogData } from "@/context/CatalogDataContext";
 import { PRODUCTS } from "@/data/products";
 import { calcProduct, formatBRL } from "@/lib/pricing";
 import { ExportButton } from "@/components/ExportButton";
 
 export function DashboardTab() {
   const { globalSettings, overrides, categoryOverrides, isProductVisible } = useCatalog();
+  const { updatedAt, dataSource } = useCatalogData();
 
   const available = PRODUCTS.filter((p) => isProductVisible(p.id, p.soldOut));
+
+  // Alerta se scrape não rodou há mais de 36h
+  const hoursAgo = updatedAt ? (Date.now() - new Date(updatedAt).getTime()) / 3600000 : Infinity;
+  const scrapeStale = hoursAgo > 36;
   let totalCost = 0;
   let totalSell = 0;
   let totalProfit = 0;
@@ -25,8 +31,44 @@ export function DashboardTab() {
   const exPix = exParc * (1 - globalSettings.pixDiscount / 100);
   const exMensal = globalSettings.installments > 0 ? exParc / globalSettings.installments : 0;
 
+  const formatDate = (iso: string) => {
+    const d = new Date(iso);
+    return d.toLocaleDateString("pt-BR", { day: "2-digit", month: "2-digit" })
+      + " " + d.toLocaleTimeString("pt-BR", { hour: "2-digit", minute: "2-digit" });
+  };
+
   return (
     <div className="space-y-6">
+      {/* Scrape status */}
+      {scrapeStale ? (
+        <div className="bg-red-50 border border-red-200 rounded-xl p-4 flex items-start gap-3">
+          <svg className="w-5 h-5 text-red-500 mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L4.082 16.5c-.77.833.192 2.5 1.732 2.5z" />
+          </svg>
+          <div>
+            <p className="text-sm font-semibold text-red-700">Dados desatualizados</p>
+            <p className="text-xs text-red-600 mt-0.5">
+              {updatedAt
+                ? `Ultimo scrape: ${formatDate(updatedAt)} (${Math.floor(hoursAgo)}h atras)`
+                : "Nenhum scrape registrado"}
+            </p>
+            <p className="text-[11px] text-red-500 mt-1">
+              Rode <code className="bg-red-100 px-1 rounded">npm run scrape:all</code> no seu computador
+            </p>
+          </div>
+        </div>
+      ) : (
+        <div className="bg-emerald-50 border border-emerald-200 rounded-xl px-4 py-3 flex items-center gap-2">
+          <svg className="w-4 h-4 text-emerald-500 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+          </svg>
+          <p className="text-xs text-emerald-700">
+            Dados atualizados{updatedAt ? ` em ${formatDate(updatedAt)}` : ""}
+            <span className="text-emerald-500 ml-1">({dataSource === "turso" ? "banco" : "local"})</span>
+          </p>
+        </div>
+      )}
+
       {/* Summary */}
       <div className="bg-gradient-to-br from-brand-400 to-brand-500 text-white rounded-xl p-5">
         <h3 className="font-bold text-sm uppercase tracking-wider mb-3 opacity-80">

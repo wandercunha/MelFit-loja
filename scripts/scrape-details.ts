@@ -1,6 +1,7 @@
 /**
- * Scrape de detalhes dos produtos: múltiplas imagens, estoque por tamanho,
- * tabela de medidas e descrição.
+ * Scrape de detalhes dos produtos do VAREJO: estoque por tamanho,
+ * tabela de medidas e descrição. (Fallback — dados primários vêm do atacado)
+ * NOTA: Imagens NÃO são capturadas do varejo (vêm do atacado).
  *
  * Roda via: npx tsx scripts/scrape-details.ts
  */
@@ -18,7 +19,6 @@ const SCRAPE_DELAY = parseInt(process.env.SCRAPE_DELAY || "5000", 10);
 interface ProductDetail {
   slug: string;
   name: string;
-  images: string[];
   sizeChart: string;
   description: string;
   stock: Record<string, number>;
@@ -62,36 +62,12 @@ async function scrapeProductDetail(slug: string): Promise<ProductDetail | null> 
 
     const $ = cheerio.load(html);
 
-    // 1. Get the product's image folder from og:image
+    // 1. Get the product's image folder from og:image (para tabela de medidas)
     const ogImg = $('meta[property="og:image"]').attr("content") || "";
     const folderMatch = ogImg.match(/\/produtos\/([^/]+)\//);
     const productFolder = folderMatch?.[1] || "";
 
-    // 2. Get ALL gallery images belonging to this product's folder
-    const images: string[] = [];
-    $(".galeria img, .fotos img, .gallery img").each((_, el) => {
-      const src = $(el).attr("data-src") || $(el).attr("src") || "";
-      if (src.includes("/produtos/") && src.includes(productFolder) && !src.includes("_mini")) {
-        // Skip size chart images
-        if (!src.includes("template") && !src.includes("duvida")) {
-          const fullUrl = src.startsWith("http") ? src : `https://${src}`;
-          if (!images.includes(fullUrl)) images.push(fullUrl);
-        }
-      }
-    });
-
-    // If no gallery images found, also check regular img tags
-    if (images.length === 0 && productFolder) {
-      $("img").each((_, el) => {
-        const src = $(el).attr("data-src") || $(el).attr("src") || "";
-        if (src.includes(productFolder) && !src.includes("_mini") && !src.includes("template")) {
-          const fullUrl = src.startsWith("http") ? src : `https://${src}`;
-          if (!images.includes(fullUrl)) images.push(fullUrl);
-        }
-      });
-    }
-
-    // 3. Get size chart image
+    // 2. Get size chart image (unica imagem que capturamos do varejo)
     let sizeChart = "";
     $("img").each((_, el) => {
       const src = $(el).attr("data-src") || $(el).attr("src") || "";
@@ -123,7 +99,7 @@ async function scrapeProductDetail(slug: string): Promise<ProductDetail | null> 
     // 5. Get description
     const description = $('meta[name="description"]').attr("content") || "";
 
-    return { slug, name, images, sizeChart, description, stock, totalStock };
+    return { slug, name, sizeChart, description, stock, totalStock };
   } catch (err) {
     console.error(`  [WARN] ${slug}: ${err}`);
     return null;
@@ -166,10 +142,10 @@ async function main() {
     process.stdout.write(`  [${i + 1}/${slugs.length}] ${slug}...`);
 
     const detail = await scrapeProductDetail(slug);
-    if (detail && (detail.images.length > 0 || detail.totalStock > 0)) {
+    if (detail && (detail.totalStock > 0 || detail.sizeChart || detail.description)) {
       details[slug] = detail;
       success++;
-      console.log(` ${detail.images.length} imgs, stock: ${detail.totalStock}, chart: ${detail.sizeChart ? "yes" : "no"}`);
+      console.log(` stock: ${detail.totalStock}, chart: ${detail.sizeChart ? "yes" : "no"}`);
     } else {
       console.log(" skip");
     }

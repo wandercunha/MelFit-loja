@@ -392,3 +392,87 @@ export async function updateOrderStatus(id: string, status: string) {
     args: [status, id],
   });
 }
+
+// ─── Settings (chave/valor persistente) ───
+
+export async function getSetting(key: string): Promise<string | null> {
+  const db = getDb();
+  const result = await db.execute({ sql: "SELECT value FROM settings WHERE key = ?", args: [key] });
+  return result.rows.length > 0 ? (result.rows[0].value as string) : null;
+}
+
+export async function getAllSettings(): Promise<Record<string, string>> {
+  const db = getDb();
+  const result = await db.execute("SELECT key, value FROM settings");
+  const map: Record<string, string> = {};
+  for (const row of result.rows) {
+    map[row.key as string] = row.value as string;
+  }
+  return map;
+}
+
+export async function setSetting(key: string, value: string): Promise<void> {
+  const db = getDb();
+  await db.execute({
+    sql: `INSERT INTO settings (key, value, updated_at) VALUES (?, ?, datetime('now'))
+          ON CONFLICT(key) DO UPDATE SET value = excluded.value, updated_at = datetime('now')`,
+    args: [key, value],
+  });
+}
+
+export async function deleteSetting(key: string): Promise<void> {
+  const db = getDb();
+  await db.execute({ sql: "DELETE FROM settings WHERE key = ?", args: [key] });
+}
+
+// ─── Catalog data (atacado stock + varejo prices — atualizados via scrape) ───
+
+const CATALOG_KEYS = {
+  atacado: "catalog_atacado_data",
+  varejoPrecos: "catalog_varejo_prices",
+};
+
+export async function saveCatalogData(atacadoData: any, varejoPrecos?: Record<string, number>): Promise<void> {
+  const db = getDb();
+  await db.execute({
+    sql: `INSERT INTO settings (key, value, updated_at) VALUES (?, ?, datetime('now'))
+          ON CONFLICT(key) DO UPDATE SET value = excluded.value, updated_at = datetime('now')`,
+    args: [CATALOG_KEYS.atacado, JSON.stringify(atacadoData)],
+  });
+  if (varejoPrecos) {
+    await db.execute({
+      sql: `INSERT INTO settings (key, value, updated_at) VALUES (?, ?, datetime('now'))
+            ON CONFLICT(key) DO UPDATE SET value = excluded.value, updated_at = datetime('now')`,
+      args: [CATALOG_KEYS.varejoPrecos, JSON.stringify(varejoPrecos)],
+    });
+  }
+}
+
+export async function getCatalogData(): Promise<{
+  atacado: any | null;
+  varejoPrecos: Record<string, number> | null;
+  updatedAt: string | null;
+}> {
+  const db = getDb();
+  const result = await db.execute({
+    sql: "SELECT key, value, updated_at FROM settings WHERE key IN (?, ?)",
+    args: [CATALOG_KEYS.atacado, CATALOG_KEYS.varejoPrecos],
+  });
+
+  let atacado = null;
+  let varejoPrecos = null;
+  let updatedAt = null;
+
+  for (const row of result.rows) {
+    try {
+      if (row.key === CATALOG_KEYS.atacado) {
+        atacado = JSON.parse(row.value as string);
+        updatedAt = row.updated_at as string;
+      } else if (row.key === CATALOG_KEYS.varejoPrecos) {
+        varejoPrecos = JSON.parse(row.value as string);
+      }
+    } catch {}
+  }
+
+  return { atacado, varejoPrecos, updatedAt };
+}

@@ -3,9 +3,11 @@
 import { Product, PriceCalc, CATEGORY_LABELS } from "@/lib/types";
 import { formatBRL, getColorFromName, getInitials, getAtacadoUrl } from "@/lib/pricing";
 import { useCatalog } from "@/context/CatalogContext";
+import { useCatalogData } from "@/context/CatalogDataContext";
 import { useCart } from "@/context/CartContext";
-import { useState, useRef } from "react";
+import { useState, useRef, useMemo } from "react";
 import productDetailsData from "@/data/product-details.json";
+import { ProductDetailModal } from "./ProductDetailModal";
 
 const SIZE_CHART_URL =
   "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/tabelas/template-duvidas-frequentes-3-697cfa2dd7aa71.png";
@@ -13,7 +15,7 @@ const SIZE_CHART_URL =
 const details = (productDetailsData as any).products as Record<
   string,
   {
-    images: string[];
+    images?: string[];
     sizeChart: string;
     stock: Record<string, number>;
     totalStock: number;
@@ -31,17 +33,6 @@ function toSlug(name: string) {
     .replace(/[^a-z0-9-]/g, "");
 }
 
-/** Busca detalhes por slug (tenta variações) */
-function getDetail(product: Product) {
-  const slug = product.slug || toSlug(product.name);
-  if (details[slug]) return details[slug];
-  // Tenta encontrar por prefixo
-  for (const key of Object.keys(details)) {
-    if (key.includes(slug) || slug.includes(key)) return details[key];
-  }
-  return null;
-}
-
 interface Props {
   product: Product;
   priceCalc: PriceCalc;
@@ -51,6 +42,7 @@ interface Props {
 
 export function ProductCard({ product, priceCalc, hasOverride, onEdit }: Props) {
   const { isAdmin } = useCatalog();
+  const { atacadoProducts } = useCatalogData();
   const { addItem } = useCart();
   const color = getColorFromName(product.name);
   const [imgError, setImgError] = useState(false);
@@ -58,9 +50,28 @@ export function ProductCard({ product, priceCalc, hasOverride, onEdit }: Props) 
   const [showSizeChart, setShowSizeChart] = useState(false);
   const [selectedSize, setSelectedSize] = useState("");
   const [addedFeedback, setAddedFeedback] = useState(false);
+  const [showDetail, setShowDetail] = useState(false);
   const scrollRef = useRef<HTMLDivElement>(null);
 
-  const detail = getDetail(product);
+  const detail = useMemo(() => {
+    const slug = product.slug || toSlug(product.name);
+
+    const atacado = atacadoProducts[slug]
+      || Object.values(atacadoProducts).find((d: any) => d.atacadoSlug?.replace(/-at$/, "") === slug || d.name === product.name);
+
+    const varejo = details[slug]
+      || Object.values(details).find((_, i) => { const k = Object.keys(details)[i]; return k.includes(slug) || slug.includes(k); })
+      || null;
+
+    if (!atacado && !varejo) return null;
+
+    return {
+      images: ((atacado as any)?.images || []) as string[],
+      sizeChart: varejo?.sizeChart || "",
+      stock: ((atacado as any)?.stock || varejo?.stock || {}) as Record<string, number>,
+      totalStock: ((atacado as any)?.totalStock ?? varejo?.totalStock ?? -1) as number,
+    };
+  }, [product, atacadoProducts]);
   const allImages =
     detail?.images && detail.images.length > 0
       ? detail.images
@@ -70,6 +81,8 @@ export function ProductCard({ product, priceCalc, hasOverride, onEdit }: Props) 
   const hasMultiple = allImages.length > 1;
   const stock = detail?.stock || {};
   const totalStock = detail?.totalStock ?? -1; // -1 = unknown
+  // Atacado stock > 0 sobrescreve soldOut hardcoded do products.ts
+  const isSoldOut = totalStock > 0 ? false : (product.soldOut || totalStock === 0);
 
   const goTo = (idx: number) => {
     const clamped = Math.max(0, Math.min(idx, allImages.length - 1));
@@ -94,10 +107,11 @@ export function ProductCard({ product, priceCalc, hasOverride, onEdit }: Props) 
       <div className="card overflow-hidden group">
         {/* Image Carousel */}
         <div
-          className="relative w-full aspect-[3/4] overflow-hidden"
+          className={`relative w-full aspect-[3/4] overflow-hidden ${!isAdmin ? "cursor-pointer" : ""}`}
           style={{
             background: `linear-gradient(135deg, ${color}15, ${color}30)`,
           }}
+          onClick={() => !isAdmin && setShowDetail(true)}
         >
           {allImages.length > 0 && !imgError ? (
             <>
@@ -179,7 +193,7 @@ export function ProductCard({ product, priceCalc, hasOverride, onEdit }: Props) 
           )}
 
           {/* Stock badge */}
-          {product.soldOut || totalStock === 0 ? (
+          {isSoldOut ? (
             <span className="absolute top-3 left-3 bg-red-600 text-white text-[10px] font-bold px-2.5 py-1 rounded-full uppercase tracking-wider">
               Esgotado
             </span>
@@ -189,7 +203,7 @@ export function ProductCard({ product, priceCalc, hasOverride, onEdit }: Props) 
             </span>
           ) : null}
 
-          {product.tags.includes("novidade") && !product.soldOut && !isAdmin && (
+          {product.tags.includes("novidade") && !isSoldOut && !isAdmin && (
             <span className="absolute top-3 right-3 bg-emerald-600 text-white text-[10px] font-bold px-2.5 py-1 rounded-full uppercase">
               Novo
             </span>
@@ -213,7 +227,10 @@ export function ProductCard({ product, priceCalc, hasOverride, onEdit }: Props) 
           <p className="text-[10px] font-bold text-brand-400 uppercase tracking-widest mb-1">
             {CATEGORY_LABELS[product.category]}
           </p>
-          <h3 className="font-semibold text-sm text-gray-800 leading-snug mb-1.5">
+          <h3
+            className={`font-semibold text-sm text-gray-800 leading-snug mb-1.5 ${!isAdmin ? "cursor-pointer hover:text-brand-500 transition-colors" : ""}`}
+            onClick={() => !isAdmin && setShowDetail(true)}
+          >
             {product.name}
           </h3>
 
@@ -280,7 +297,7 @@ export function ProductCard({ product, priceCalc, hasOverride, onEdit }: Props) 
               </div>
 
               {/* Add to cart */}
-              {!product.soldOut && totalStock !== 0 && (
+              {!isSoldOut && (
                 <div className="pt-2 space-y-1.5">
                   {/* Size selector */}
                   <div className="flex gap-1">
@@ -423,6 +440,15 @@ export function ProductCard({ product, priceCalc, hasOverride, onEdit }: Props) 
             )}
           </div>
         </div>
+      )}
+
+      {/* Product Detail Modal */}
+      {showDetail && !isAdmin && (
+        <ProductDetailModal
+          product={product}
+          priceCalc={priceCalc}
+          onClose={() => setShowDetail(false)}
+        />
       )}
     </>
   );

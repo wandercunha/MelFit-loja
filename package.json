@@ -8,7 +8,11 @@
     "start": "next start",
     "lint": "next lint",
     "scrape": "tsx scripts/scrape-prices.ts",
+    "scrape:atacado": "tsx scripts/scrape-atacado-images.ts",
     "scrape:details": "tsx scripts/scrape-details.ts",
+    "scrape:info": "tsx scripts/scrape-product-info.ts",
+    "scrape:sync": "tsx scripts/sync-to-turso.ts",
+    "scrape:all": "tsx scripts/scrape-atacado-images.ts && tsx scripts/scrape-prices.ts && tsx scripts/sync-to-turso.ts",
     "db:migrate": "tsx scripts/migrate-to-sqlite.ts",
     "admin:reset": "tsx scripts/reset-admin.ts"
   },
