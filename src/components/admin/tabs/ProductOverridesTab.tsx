@@ -188,6 +188,25 @@ export function ProductOverridesTab() {
   const [editCatMargin, setEditCatMargin] = useState(0);
   const [editCatShipping, setEditCatShipping] = useState(0);
 
+  // Image zoom state
+  const [zoomImg, setZoomImg] = useState<string | null>(null);
+  const [zoomPos, setZoomPos] = useState<{ x: number; y: number } | null>(null);
+  const zoomTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  const showZoom = (img: string, e: React.MouseEvent | React.TouchEvent) => {
+    if (zoomTimer.current) clearTimeout(zoomTimer.current);
+    const rect = (e.target as HTMLElement).getBoundingClientRect();
+    setZoomPos({ x: rect.right + 8, y: rect.top });
+    setZoomImg(img);
+  };
+  const hideZoom = () => {
+    zoomTimer.current = setTimeout(() => { setZoomImg(null); setZoomPos(null); }, 150);
+  };
+  const toggleZoom = (img: string, e: React.MouseEvent | React.TouchEvent) => {
+    if (zoomImg === img) { setZoomImg(null); setZoomPos(null); }
+    else showZoom(img, e);
+  };
+
   // Sync state
   const [syncing, setSyncing] = useState(false);
   const [syncResult, setSyncResult] = useState<{ ok: boolean; msg: string } | null>(null);
@@ -378,6 +397,21 @@ export function ProductOverridesTab() {
   };
 
   // ── Render helpers ──
+  const renderThumb = (img: string | undefined, size = "w-9 h-9") => {
+    if (!img) return <div className={`${size} rounded-lg bg-gray-100 flex items-center justify-center text-gray-300 text-[10px] flex-shrink-0`}>?</div>;
+    return (
+      <img
+        src={img}
+        alt=""
+        className={`${size} rounded-lg object-cover flex-shrink-0 cursor-zoom-in`}
+        loading="lazy"
+        onMouseEnter={(e) => showZoom(img, e)}
+        onMouseLeave={hideZoom}
+        onClick={(e) => toggleZoom(img, e)}
+      />
+    );
+  };
+
   const closePopover = () => { setEditingId(null); setEditingCat(null); };
 
   const popoverKeyDown = (e: React.KeyboardEvent) => {
@@ -437,6 +471,23 @@ export function ProductOverridesTab() {
   return (
     <>
       {dialog && <ConfirmDialog config={dialog} onCancel={() => setDialog(null)} />}
+
+      {/* Image zoom preview */}
+      {zoomImg && (
+        <div
+          className="fixed z-[150] pointer-events-none"
+          style={zoomPos ? {
+            left: Math.min(zoomPos.x, (typeof window !== "undefined" ? window.innerWidth - 220 : 500)),
+            top: Math.max(8, Math.min(zoomPos.y - 40, (typeof window !== "undefined" ? window.innerHeight - 220 : 500))),
+          } : { left: "50%", top: "50%", transform: "translate(-50%, -50%)" }}
+        >
+          <img
+            src={zoomImg}
+            alt=""
+            className="w-48 h-48 rounded-xl object-cover shadow-2xl border-2 border-white ring-1 ring-black/10"
+          />
+        </div>
+      )}
 
       <div className="space-y-4">
         {/* Toolbar */}
@@ -611,11 +662,7 @@ export function ProductOverridesTab() {
                           >
                             {/* Thumb */}
                             <td className="px-2 py-1.5 w-10">
-                              {p.img ? (
-                                <img src={p.img} alt="" className="w-9 h-9 rounded-lg object-cover" loading="lazy" />
-                              ) : (
-                                <div className="w-9 h-9 rounded-lg bg-gray-100 flex items-center justify-center text-gray-300 text-[10px]">?</div>
-                              )}
+                              {renderThumb(p.img)}
                             </td>
                             {/* Nome — max 2 linhas */}
                             <td className="px-3 py-2 font-semibold text-gray-800 max-w-[250px]">
@@ -812,11 +859,7 @@ export function ProductOverridesTab() {
                             >
                               <span className={`inline-block w-4 h-4 rounded-full bg-white shadow-sm transition-transform ${visible ? "translate-x-[18px]" : "translate-x-[2px]"}`} />
                             </button>
-                            {p.img ? (
-                              <img src={p.img} alt="" className="flex-shrink-0 w-10 h-10 rounded-lg object-cover" loading="lazy" />
-                            ) : (
-                              <div className="flex-shrink-0 w-10 h-10 rounded-lg bg-gray-100 flex items-center justify-center text-gray-300 text-xs">?</div>
-                            )}
+                            {renderThumb(p.img, "w-11 h-11")}
                             <p className="flex-1 text-sm font-semibold text-gray-800 leading-snug min-w-0">
                               {hasOverride && <span className="inline-block w-1.5 h-1.5 rounded-full bg-brand-400 mr-1 align-middle" />}
                               {p.name}
