@@ -109,32 +109,6 @@ export function ProductCard({ product, priceCalc, hasOverride, onEdit }: Props) 
     if (idx !== currentImg) setCurrentImg(idx);
   };
 
-  // Trackpad horizontal (deltaX) → navegar fotos. Vertical (deltaY) → scroll da página.
-  const wheelLockedUntil = useRef(0);
-  useEffect(() => {
-    const el = scrollRef.current;
-    if (!el || !hasMultiple) return;
-    const handler = (e: WheelEvent) => {
-      // Só intercepta scroll horizontal — vertical rola a página normalmente
-      if (Math.abs(e.deltaX) < Math.abs(e.deltaY)) return;
-      if (Math.abs(e.deltaX) < 10) return;
-
-      e.preventDefault();
-      const now = Date.now();
-      if (now < wheelLockedUntil.current) return;
-      wheelLockedUntil.current = now + 300;
-
-      const idx = Math.round(el.scrollLeft / el.offsetWidth);
-      if (e.deltaX > 0) {
-        el.scrollTo({ left: Math.min(idx + 1, allImages.length - 1) * el.offsetWidth, behavior: "smooth" });
-      } else {
-        el.scrollTo({ left: Math.max(idx - 1, 0) * el.offsetWidth, behavior: "smooth" });
-      }
-    };
-    el.addEventListener("wheel", handler, { passive: false });
-    return () => el.removeEventListener("wheel", handler);
-  }, [hasMultiple, allImages.length]);
-
   // Distinguir tap/click de swipe/drag (funciona em mobile e desktop)
   const pointerStart = useRef<{ x: number; y: number; t: number } | null>(null);
   const handlePointerDown = useCallback((e: React.PointerEvent) => {
