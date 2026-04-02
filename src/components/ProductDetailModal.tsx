@@ -4,7 +4,7 @@ import { Product, PriceCalc, CATEGORY_LABELS } from "@/lib/types";
 import { formatBRL } from "@/lib/pricing";
 import { useCart } from "@/context/CartContext";
 import { useCatalogData } from "@/context/CatalogDataContext";
-import { useState, useRef, useEffect, useMemo } from "react";
+import { useState, useRef, useEffect, useMemo, useCallback } from "react";
 import productInfoFile from "@/data/product-info.json";
 
 const productInfoData = (productInfoFile as any).products || {};
@@ -74,6 +74,17 @@ export function ProductDetailModal({ product, priceCalc, onClose }: Props) {
     if (idx !== currentImg) setCurrentImg(idx);
   };
 
+  // Mouse wheel → scroll horizontal na galeria
+  const handleWheel = useCallback((e: React.WheelEvent) => {
+    if (!scrollRef.current || allImages.length <= 1) return;
+    e.preventDefault();
+    if (e.deltaY > 0 || e.deltaX > 0) {
+      goTo(currentImg + 1);
+    } else if (e.deltaY < 0 || e.deltaX < 0) {
+      goTo(currentImg - 1);
+    }
+  }, [currentImg, allImages.length]);
+
   const handleAdd = () => {
     if (!selectedSize) return;
     addItem({ productId: product.id, name: product.name, size: selectedSize, quantity: 1, img: allImages[0] || product.img, category: product.category });
@@ -86,9 +97,9 @@ export function ProductDetailModal({ product, priceCalc, onClose }: Props) {
     <div className="relative w-full aspect-square lg:aspect-auto lg:h-full bg-gray-50">
       {allImages.length > 0 ? (
         <>
-          <div ref={scrollRef} onScroll={handleScroll} className="flex w-full h-full overflow-x-auto snap-x snap-mandatory scrollbar-hide" style={{ scrollbarWidth: "none" }}>
+          <div ref={scrollRef} onScroll={handleScroll} onWheel={handleWheel} className="flex w-full h-full overflow-x-auto snap-x snap-mandatory scrollbar-hide" style={{ scrollbarWidth: "none" }}>
             {allImages.map((src, i) => (
-              <img key={i} src={src} alt={`${product.name} - ${i + 1}`} loading="lazy" className="w-full h-full object-contain flex-shrink-0 snap-center bg-white" />
+              <img key={i} src={src} alt={`${product.name} - ${i + 1}`} loading="lazy" draggable={false} className="w-full h-full object-contain flex-shrink-0 snap-center bg-white select-none" />
             ))}
           </div>
           {allImages.length > 1 && currentImg > 0 && (
