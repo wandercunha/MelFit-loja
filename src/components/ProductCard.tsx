@@ -109,19 +109,23 @@ export function ProductCard({ product, priceCalc, hasOverride, onEdit }: Props) 
     if (idx !== currentImg) setCurrentImg(idx);
   };
 
-  // Mouse wheel/trackpad → 1 foto por gesto no carrossel
+  // Trackpad horizontal (deltaX) → navegar fotos. Vertical (deltaY) → scroll da página.
   const wheelLockedUntil = useRef(0);
   useEffect(() => {
     const el = scrollRef.current;
     if (!el || !hasMultiple) return;
     const handler = (e: WheelEvent) => {
+      // Só intercepta scroll horizontal — vertical rola a página normalmente
+      if (Math.abs(e.deltaX) < Math.abs(e.deltaY)) return;
+      if (Math.abs(e.deltaX) < 10) return;
+
       e.preventDefault();
       const now = Date.now();
-      const delta = Math.abs(e.deltaY) + Math.abs(e.deltaX);
-      if (now < wheelLockedUntil.current || delta < 15) return;
+      if (now < wheelLockedUntil.current) return;
       wheelLockedUntil.current = now + 300;
+
       const idx = Math.round(el.scrollLeft / el.offsetWidth);
-      if (e.deltaY > 0 || e.deltaX > 0) {
+      if (e.deltaX > 0) {
         el.scrollTo({ left: Math.min(idx + 1, allImages.length - 1) * el.offsetWidth, behavior: "smooth" });
       } else {
         el.scrollTo({ left: Math.max(idx - 1, 0) * el.offsetWidth, behavior: "smooth" });
