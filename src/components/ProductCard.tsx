@@ -6,6 +6,7 @@ import { useCatalog } from "@/context/CatalogContext";
 import { useCart } from "@/context/CartContext";
 import { useState, useRef } from "react";
 import productDetailsData from "@/data/product-details.json";
+import { ProductDetailModal } from "./ProductDetailModal";
 
 const SIZE_CHART_URL =
   "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/tabelas/template-duvidas-frequentes-3-697cfa2dd7aa71.png";
@@ -58,6 +59,7 @@ export function ProductCard({ product, priceCalc, hasOverride, onEdit }: Props) 
   const [showSizeChart, setShowSizeChart] = useState(false);
   const [selectedSize, setSelectedSize] = useState("");
   const [addedFeedback, setAddedFeedback] = useState(false);
+  const [showDetail, setShowDetail] = useState(false);
   const scrollRef = useRef<HTMLDivElement>(null);
 
   const detail = getDetail(product);
@@ -94,10 +96,11 @@ export function ProductCard({ product, priceCalc, hasOverride, onEdit }: Props) 
       <div className="card overflow-hidden group">
         {/* Image Carousel */}
         <div
-          className="relative w-full aspect-[3/4] overflow-hidden"
+          className={`relative w-full aspect-[3/4] overflow-hidden ${!isAdmin ? "cursor-pointer" : ""}`}
           style={{
             background: `linear-gradient(135deg, ${color}15, ${color}30)`,
           }}
+          onClick={() => !isAdmin && setShowDetail(true)}
         >
           {allImages.length > 0 && !imgError ? (
             <>
@@ -213,7 +216,10 @@ export function ProductCard({ product, priceCalc, hasOverride, onEdit }: Props) 
           <p className="text-[10px] font-bold text-brand-400 uppercase tracking-widest mb-1">
             {CATEGORY_LABELS[product.category]}
           </p>
-          <h3 className="font-semibold text-sm text-gray-800 leading-snug mb-1.5">
+          <h3
+            className={`font-semibold text-sm text-gray-800 leading-snug mb-1.5 ${!isAdmin ? "cursor-pointer hover:text-brand-500 transition-colors" : ""}`}
+            onClick={() => !isAdmin && setShowDetail(true)}
+          >
             {product.name}
           </h3>
 
@@ -423,6 +429,15 @@ export function ProductCard({ product, priceCalc, hasOverride, onEdit }: Props) 
             )}
           </div>
         </div>
+      )}
+
+      {/* Product Detail Modal */}
+      {showDetail && !isAdmin && (
+        <ProductDetailModal
+          product={product}
+          priceCalc={priceCalc}
+          onClose={() => setShowDetail(false)}
+        />
       )}
     </>
   );
