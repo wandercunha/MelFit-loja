@@ -5,7 +5,7 @@ import { formatBRL, getColorFromName, getInitials, getAtacadoUrl } from "@/lib/p
 import { useCatalog } from "@/context/CatalogContext";
 import { useCatalogData } from "@/context/CatalogDataContext";
 import { useCart } from "@/context/CartContext";
-import { useState, useRef, useMemo, useCallback } from "react";
+import { useState, useRef, useMemo, useCallback, useEffect } from "react";
 
 const SIZE_MEASURES: Record<string, string> = {
   P: "Busto 82-86 | Cintura 64-68 | Quadril 90-94",
@@ -108,6 +108,28 @@ export function ProductCard({ product, priceCalc, hasOverride, onEdit }: Props) 
     const idx = Math.round(scrollLeft / offsetWidth);
     if (idx !== currentImg) setCurrentImg(idx);
   };
+
+  // Mouse wheel/trackpad → 1 foto por gesto no carrossel
+  const wheelLockedUntil = useRef(0);
+  useEffect(() => {
+    const el = scrollRef.current;
+    if (!el || !hasMultiple) return;
+    const handler = (e: WheelEvent) => {
+      e.preventDefault();
+      const now = Date.now();
+      const delta = Math.abs(e.deltaY) + Math.abs(e.deltaX);
+      if (now < wheelLockedUntil.current || delta < 15) return;
+      wheelLockedUntil.current = now + 300;
+      const idx = Math.round(el.scrollLeft / el.offsetWidth);
+      if (e.deltaY > 0 || e.deltaX > 0) {
+        el.scrollTo({ left: Math.min(idx + 1, allImages.length - 1) * el.offsetWidth, behavior: "smooth" });
+      } else {
+        el.scrollTo({ left: Math.max(idx - 1, 0) * el.offsetWidth, behavior: "smooth" });
+      }
+    };
+    el.addEventListener("wheel", handler, { passive: false });
+    return () => el.removeEventListener("wheel", handler);
+  }, [hasMultiple, allImages.length]);
 
   // Distinguir tap/click de swipe/drag (funciona em mobile e desktop)
   const pointerStart = useRef<{ x: number; y: number; t: number } | null>(null);
