@@ -69,18 +69,8 @@ async function main() {
     console.log("  [SYNC] scrape-maps.json nao encontrado (skip)");
   }
 
-  // 3. Product details (sizeChart, stock fallback)
-  const detailsPath = path.join(DATA_DIR, "product-details.json");
-  if (fs.existsSync(detailsPath)) {
-    const detailsData = fs.readFileSync(detailsPath, "utf-8");
-    const size = (Buffer.byteLength(detailsData) / 1024).toFixed(1);
-    await db.execute({
-      sql: `INSERT INTO settings (key, value, updated_at) VALUES (?, ?, datetime('now'))
-            ON CONFLICT(key) DO UPDATE SET value = excluded.value, updated_at = datetime('now')`,
-      args: ["catalog_product_details", detailsData],
-    });
-    console.log(`  [SYNC] product-details.json → Turso (${size}KB)`);
-  }
+  // NOTA: product-details.json (varejo) NAO é sincronizado.
+  // Estoque e imagens vêm EXCLUSIVAMENTE do atacado.
 
   console.log(`  [SYNC] Concluido!\n`);
 }

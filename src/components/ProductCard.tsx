@@ -13,21 +13,11 @@ const SIZE_MEASURES: Record<string, string> = {
   G: "Busto 90-96 | Cintura 72-78 | Quadril 98-104",
   GG: "Busto 96-102 | Cintura 78-84 | Quadril 104-110",
 };
-import productDetailsData from "@/data/product-details.json";
 import { ProductDetailModal } from "./ProductDetailModal";
 
+// Tabela de medidas genérica do atacado (CDN sem marca)
 const SIZE_CHART_URL =
   "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/tabelas/template-duvidas-frequentes-3-697cfa2dd7aa71.png";
-
-const details = (productDetailsData as any).products as Record<
-  string,
-  {
-    images?: string[];
-    sizeChart: string;
-    stock: Record<string, number>;
-    totalStock: number;
-  }
->;
 
 /** Gera slug a partir do nome do produto */
 function toSlug(name: string) {
@@ -62,21 +52,15 @@ export function ProductCard({ product, priceCalc, hasOverride, onEdit }: Props) 
 
   const detail = useMemo(() => {
     const slug = product.slug || toSlug(product.name);
-
     const atacado = atacadoProducts[slug]
       || Object.values(atacadoProducts).find((d: any) => d.atacadoSlug?.replace(/-at$/, "") === slug || d.name === product.name);
 
-    const varejo = details[slug]
-      || Object.values(details).find((_, i) => { const k = Object.keys(details)[i]; return k.includes(slug) || slug.includes(k); })
-      || null;
-
-    if (!atacado && !varejo) return null;
+    if (!atacado) return null;
 
     return {
       images: ((atacado as any)?.images || []) as string[],
-      sizeChart: varejo?.sizeChart || "",
-      stock: ((atacado as any)?.stock || varejo?.stock || {}) as Record<string, number>,
-      totalStock: ((atacado as any)?.totalStock ?? varejo?.totalStock ?? -1) as number,
+      stock: ((atacado as any)?.stock || {}) as Record<string, number>,
+      totalStock: ((atacado as any)?.totalStock ?? -1) as number,
     };
   }, [product, atacadoProducts]);
   const allImages =

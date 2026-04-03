@@ -69,7 +69,7 @@ Reinicie o servidor. Pronto.
 | `npm run scrape:atacado` | Imagens + estoque | floraamaratacado.com.br | Imagens, estoque por tamanho, preco custo |
 | `npm run scrape` | Precos do varejo | floraamar.com.br | **Somente precos** (SEM imagens!) |
 | `npm run scrape:sync` | Envia JSONs para o Turso | arquivos locais | Nenhum (apenas sincroniza) |
-| `npm run scrape:details` | Tabela de medidas (opcional) | floraamar.com.br | Tabela de medidas, estoque fallback |
+| `npm run scrape:details` | **DESATIVADO** | — | — |
 | `npm run scrape:info` | Specs tecnicas (opcional) | floraamaratacado.com.br | Composicao, tecnologia, compressao |
 
 ### Como funciona
@@ -82,10 +82,15 @@ O `scrape:all` roda 3 scripts em sequencia:
 
 3. **scrape:sync** — Envia os JSONs locais para o Turso (redundancia caso os scripts acima nao consigam sincronizar).
 
-### Regras importantes
+### Regras OBRIGATORIAS
 
-- **Imagens**: vem SOMENTE do atacado (CDN sem marca). NUNCA do varejo (tem logo).
-- **Precos**: varejo = referencia para comparacao. Atacado = custo real.
+Do site de **varejo** (floraamar.com.br) capturamos **ESTRITAMENTE SOMENTE PREÇO**.
+E PROIBIDO capturar do varejo: imagens, estoque, nomes, descricoes ou qualquer outro dado.
+
+- **Imagens**: SOMENTE do atacado (CDN sem marca/logo)
+- **Estoque**: SOMENTE do atacado
+- **Precos varejo**: somente para referencia/comparacao (coluna "Varejo" no admin)
+- **Nome Flora Amar**: NUNCA deve aparecer no site publico
 - **Delay**: controlado por `SCRAPE_DELAY` no `.env.local` (padrao: 5000ms). Nao diminua muito.
 - **CloudFront**: pode bloquear requests de servidor. Rode local (IP residencial) se o cron da Vercel falhar.
 
