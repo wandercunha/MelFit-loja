@@ -5,9 +5,6 @@ import { formatBRL } from "@/lib/pricing";
 import { useCart } from "@/context/CartContext";
 import { useCatalogData } from "@/context/CatalogDataContext";
 import { useState, useRef, useEffect, useMemo, useCallback } from "react";
-import productInfoFile from "@/data/product-info.json";
-
-const productInfoData = (productInfoFile as any).products || {};
 
 // Tabela de medidas simplificada por tamanho
 const SIZE_MEASURES: Record<string, string> = {
@@ -30,7 +27,7 @@ interface Props {
 
 export function ProductDetailModal({ product, priceCalc, onClose }: Props) {
   const { addItem } = useCart();
-  const { atacadoProducts } = useCatalogData();
+  const { atacadoProducts, atacadoByName, productInfo } = useCatalogData();
   const [selectedSize, setSelectedSize] = useState("");
   const [addedFeedback, setAddedFeedback] = useState(false);
   const [currentImg, setCurrentImg] = useState(0);
@@ -39,12 +36,10 @@ export function ProductDetailModal({ product, priceCalc, onClose }: Props) {
 
   const { atacado, info } = useMemo(() => {
     const slug = product.slug || toSlug(product.name);
-    const at = atacadoProducts[slug] || Object.values(atacadoProducts).find(
-      (d: any) => d.atacadoSlug?.replace(/-at$/, "") === slug || d.name === product.name
-    );
-    const inf = productInfoData[(at as any)?.atacadoSlug || ""] || productInfoData[slug + "-at"] || null;
+    const at = atacadoProducts[slug] || atacadoByName[product.name];
+    const inf = productInfo[(at as any)?.atacadoSlug || ""] || productInfo[slug + "-at"] || null;
     return { atacado: at as any, info: inf };
-  }, [product, atacadoProducts]);
+  }, [product, atacadoProducts, atacadoByName, productInfo]);
   const allImages: string[] = atacado?.images?.length > 0 ? atacado.images : product.img ? [product.img] : [];
   const stock: Record<string, number> = atacado?.stock || {};
   const totalStock: number = atacado?.totalStock ?? -1;
@@ -73,20 +68,6 @@ export function ProductDetailModal({ product, priceCalc, onClose }: Props) {
     const idx = Math.round(scrollRef.current.scrollLeft / scrollRef.current.offsetWidth);
     if (idx !== currentImg) setCurrentImg(idx);
   };
-
-  // Bloqueia wheel vertical de rolar fotos no modal (scroll horizontal nativo via CSS snap)
-  useEffect(() => {
-    const el = scrollRef.current;
-    if (!el || allImages.length <= 1) return;
-    const handler = (e: WheelEvent) => {
-      if (Math.abs(e.deltaY) > Math.abs(e.deltaX)) {
-        e.preventDefault();
-      }
-    };
-    el.addEventListener("wheel", handler, { passive: false });
-    return () => el.removeEventListener("wheel", handler);
-  }, [allImages.length]);
-
 
   const handleAdd = () => {
     if (!selectedSize) return;

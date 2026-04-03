@@ -20,6 +20,7 @@ export async function GET() {
       updatedAt: data.updatedAt,
       atacado: data.atacado,
       varejoPrecos: data.varejoPrecos,
+      productInfo: data.productInfo,
     }, {
       headers: {
         // Cache por 5 minutos no CDN, stale-while-revalidate por 1 hora
