@@ -69,8 +69,21 @@ async function main() {
     console.log("  [SYNC] scrape-maps.json nao encontrado (skip)");
   }
 
-  // NOTA: product-details.json (varejo) NAO é sincronizado.
-  // Estoque e imagens vêm EXCLUSIVAMENTE do atacado.
+  // 3. Product info (specs técnicas do ATACADO — composição, tecnologia, etc)
+  const infoPath = path.join(DATA_DIR, "product-info.json");
+  if (fs.existsSync(infoPath)) {
+    const infoData = fs.readFileSync(infoPath, "utf-8");
+    const size = (Buffer.byteLength(infoData) / 1024).toFixed(1);
+    await db.execute({
+      sql: `INSERT INTO settings (key, value, updated_at) VALUES (?, ?, datetime('now'))
+            ON CONFLICT(key) DO UPDATE SET value = excluded.value, updated_at = datetime('now')`,
+      args: ["catalog_product_info", infoData],
+    });
+    console.log(`  [SYNC] product-info.json (ATACADO specs) → Turso (${size}KB)`);
+  }
+
+  // NOTA: product-details.json (VAREJO) NÃO é sincronizado.
+  // Do varejo capturamos SOMENTE PREÇO. Estoque e imagens vêm do ATACADO.
 
   console.log(`  [SYNC] Concluido!\n`);
 }

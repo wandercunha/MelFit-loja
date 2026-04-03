@@ -211,8 +211,10 @@ function scrapeProductInfo(html: string, slug: string): ProductInfo | null {
 async function main() {
   const startTime = Date.now();
   console.log(`\n${"=".repeat(60)}`);
-  console.log(`  SCRAPE DETALHES DO ATACADO`);
-  console.log(`  Fonte: ${BASE_URL}`);
+  console.log(`  SCRAPE ATACADO — SPECS TÉCNICAS`);
+  console.log(`  Fonte: ${BASE_URL} (ATACADO)`);
+  console.log(`  Capturando: composicao, tecnologia, compressao, medidas`);
+  console.log(`  Data: ${new Date().toISOString()}`);
   console.log(`  Delay: ${SCRAPE_DELAY}ms`);
   console.log(`${"=".repeat(60)}\n`);
 

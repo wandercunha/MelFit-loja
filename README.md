@@ -66,21 +66,22 @@ Reinicie o servidor. Pronto.
 | Comando | O que faz | Fonte | Dados capturados |
 |---|---|---|---|
 | `npm run scrape:all` | **Roda tudo em sequencia** | atacado + varejo | Tudo abaixo + sync Turso |
-| `npm run scrape:atacado` | Imagens + estoque | floraamaratacado.com.br | Imagens, estoque por tamanho, preco custo |
-| `npm run scrape` | Precos do varejo | floraamar.com.br | **Somente precos** (SEM imagens!) |
+| `npm run scrape:atacado` | Imagens + estoque | floraamaratacado.com.br (ATACADO) | Imagens, estoque por tamanho, preco custo |
+| `npm run scrape` | Precos do varejo | floraamar.com.br (VAREJO) | **SOMENTE PREÇOS** (nada mais!) |
 | `npm run scrape:sync` | Envia JSONs para o Turso | arquivos locais | Nenhum (apenas sincroniza) |
-| `npm run scrape:details` | **DESATIVADO** | — | — |
-| `npm run scrape:info` | Specs tecnicas (opcional) | floraamaratacado.com.br | Composicao, tecnologia, compressao |
+| `npm run scrape:info` | Specs tecnicas | floraamaratacado.com.br (ATACADO) | Composicao, tecnologia, compressao |
 
 ### Como funciona
 
-O `scrape:all` roda 3 scripts em sequencia:
+O `scrape:all` roda 4 scripts em sequencia:
 
-1. **scrape:atacado** — Varre 8 categorias do atacado. Captura imagens do CDN (sem marca/logo), estoque por tamanho (P/M/G) e preco de custo. Apos as listagens, abre cada pagina de produto para galeria completa. Salva em `atacado-details.json` e sincroniza com o Turso.
+1. **scrape:atacado** (ATACADO) — Varre 8 categorias do atacado. Captura imagens do CDN (sem marca/logo), estoque por tamanho (P/M/G) e preco de custo. Apos as listagens, abre cada pagina de produto para galeria completa. Salva em `atacado-details.json` e sincroniza com o Turso.
 
-2. **scrape** (precos varejo) — Varre 6 categorias do varejo. Captura **somente precos** de venda ao consumidor (para referencia na coluna "Varejo" do admin). **NAO captura imagens do varejo** (tem marca). Salva em `scrape-maps.json` e sincroniza com o Turso.
+2. **scrape** (VAREJO) — Varre 6 categorias do varejo. Captura **SOMENTE PRECOS** de venda ao consumidor (para referencia na coluna "Varejo" do admin). **NAO captura imagens, estoque, nem nenhum outro dado**. Salva em `scrape-maps.json` e sincroniza com o Turso.
 
-3. **scrape:sync** — Envia os JSONs locais para o Turso (redundancia caso os scripts acima nao consigam sincronizar).
+3. **scrape:info** (ATACADO) — Busca specs tecnicas (composicao, tecnologia, compressao) das paginas individuais do atacado. Salva em `product-info.json`.
+
+4. **scrape:sync** — Envia todos os JSONs locais para o Turso (redundancia).
 
 ### Regras OBRIGATORIAS
 

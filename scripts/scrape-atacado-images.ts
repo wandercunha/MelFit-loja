@@ -1,6 +1,8 @@
 /**
- * Scrape de imagens do ATACADO (sem marca Flora Amar)
- * As páginas de produto exigem login, mas as de categoria não.
+ * Scrape do ATACADO (floraamaratacado.com.br)
+ * Captura: imagens (CDN sem marca), estoque por tamanho, preço de custo.
+ * Fonte PRIMÁRIA de dados — tudo exceto preço de varejo vem daqui.
+ *
  * Roda via: npx tsx scripts/scrape-atacado-images.ts
  */
 
@@ -286,7 +288,13 @@ async function scrapeProductPage(slug: string, folder: string): Promise<{
 }
 
 async function main() {
-  console.log(`[${new Date().toISOString()}] Scraping atacado images + stock...\n`);
+  console.log(`\n${"=".repeat(60)}`);
+  console.log(`  SCRAPE ATACADO — IMAGENS + ESTOQUE + PREÇO CUSTO`);
+  console.log(`  Fonte: ${BASE_URL} (ATACADO)`);
+  console.log(`  Capturando: imagens, estoque por tamanho, preco custo`);
+  console.log(`  Data: ${new Date().toISOString()}`);
+  console.log(`  Delay: ${SCRAPE_DELAY}ms entre requests`);
+  console.log(`${"=".repeat(60)}\n`);
 
   await initSession();
 
