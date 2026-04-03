@@ -1,10 +1,8 @@
 /**
- * Script para scrape de preços e imagens da Flora Amar (varejo → atacado)
- * Usa o site de varejo (floraamar.com.br) pois o atacado tem proteção CloudFront
- * Os produtos são os mesmos, apenas os preços diferem.
+ * Scrape de PREÇOS do VAREJO (floraamar.com.br)
+ * ⚠ SOMENTE PREÇO! Imagens, estoque e qualquer outro dado vêm do ATACADO.
  *
  * Roda via: npx tsx scripts/scrape-prices.ts
- * Cron: 0 6 * * * cd /root/projetos/MelFit-loja && npx tsx scripts/scrape-prices.ts >> /tmp/melfit-scrape.log 2>&1
  */
 
 import * as cheerio from "cheerio";
@@ -162,8 +160,11 @@ async function main() {
   const logErr = (phase: string, msg: string) => console.error(`  [${phase}][ERRO] ${msg}`);
 
   console.log(`\n${"=".repeat(60)}`);
-  console.log(`  SCRAPE VAREJO — ${new Date().toISOString()}`);
-  console.log(`  Fonte: ${BASE_URL}`);
+  console.log(`  SCRAPE VAREJO — SOMENTE PREÇOS`);
+  console.log(`  Fonte: ${BASE_URL} (VAREJO)`);
+  console.log(`  ⚠ Capturando: PREÇO`);
+  console.log(`  ⚠ NÃO captura: imagens, estoque, descrições`);
+  console.log(`  Data: ${new Date().toISOString()}`);
   console.log(`  Delay: ${SCRAPE_DELAY}ms entre requests`);
   console.log(`${"=".repeat(60)}\n`);
 

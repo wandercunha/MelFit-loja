@@ -33,18 +33,7 @@ export default function Home() {
 
       {/* Footer */}
       <footer className="bg-surface-dark text-gray-500 text-center py-8 text-sm no-print">
-        <p>
-          Catalogo de Revenda &mdash; Produtos originais{" "}
-          <a
-            href="https://www.floraamaratacado.com.br/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-brand-300 hover:underline"
-          >
-            Flora Amar Atacado
-          </a>
-        </p>
-        <p className="mt-1 text-xs text-gray-600">
+        <p className="text-xs text-gray-600">
           Precos sujeitos a alteracao sem aviso previo
         </p>
         {updatedAt && (

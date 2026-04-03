@@ -5,22 +5,22 @@ import { formatBRL, getColorFromName, getInitials, getAtacadoUrl } from "@/lib/p
 import { useCatalog } from "@/context/CatalogContext";
 import { useCatalogData } from "@/context/CatalogDataContext";
 import { useCart } from "@/context/CartContext";
-import { useState, useRef, useMemo } from "react";
-import productDetailsData from "@/data/product-details.json";
-import { ProductDetailModal } from "./ProductDetailModal";
+import { useState, useRef, useMemo, useCallback, useEffect } from "react";
 
+const SIZE_MEASURES: Record<string, string> = {
+  P: "Busto 82-86 | Cintura 64-68 | Quadril 90-94",
+  M: "Busto 86-90 | Cintura 68-72 | Quadril 94-98",
+  G: "Busto 90-96 | Cintura 72-78 | Quadril 98-104",
+  GG: "Busto 96-102 | Cintura 78-84 | Quadril 104-110",
+};
+import { ProductDetailModal } from "./ProductDetailModal";
+import productInfoFile from "@/data/product-info.json";
+
+// Tabela de medidas genérica do atacado (CDN sem marca) — fallback
 const SIZE_CHART_URL =
   "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/tabelas/template-duvidas-frequentes-3-697cfa2dd7aa71.png";
 
-const details = (productDetailsData as any).products as Record<
-  string,
-  {
-    images?: string[];
-    sizeChart: string;
-    stock: Record<string, number>;
-    totalStock: number;
-  }
->;
+const productInfoData = (productInfoFile as any).products || {};
 
 /** Gera slug a partir do nome do produto */
 function toSlug(name: string) {
@@ -55,21 +55,21 @@ export function ProductCard({ product, priceCalc, hasOverride, onEdit }: Props) 
 
   const detail = useMemo(() => {
     const slug = product.slug || toSlug(product.name);
-
     const atacado = atacadoProducts[slug]
       || Object.values(atacadoProducts).find((d: any) => d.atacadoSlug?.replace(/-at$/, "") === slug || d.name === product.name);
 
-    const varejo = details[slug]
-      || Object.values(details).find((_, i) => { const k = Object.keys(details)[i]; return k.includes(slug) || slug.includes(k); })
-      || null;
+    if (!atacado) return null;
 
-    if (!atacado && !varejo) return null;
+    // Tabela de medidas do atacado (product-info) — fallback para genérica
+    const atacadoSlug = (atacado as any)?.atacadoSlug || slug + "-at";
+    const info = productInfoData[atacadoSlug];
+    const sizeChart = info?.sizeChart || SIZE_CHART_URL;
 
     return {
       images: ((atacado as any)?.images || []) as string[],
-      sizeChart: varejo?.sizeChart || "",
-      stock: ((atacado as any)?.stock || varejo?.stock || {}) as Record<string, number>,
-      totalStock: ((atacado as any)?.totalStock ?? varejo?.totalStock ?? -1) as number,
+      stock: ((atacado as any)?.stock || {}) as Record<string, number>,
+      totalStock: ((atacado as any)?.totalStock ?? -1) as number,
+      sizeChart,
     };
   }, [product, atacadoProducts]);
   const allImages =
@@ -102,6 +102,39 @@ export function ProductCard({ product, priceCalc, hasOverride, onEdit }: Props) 
     if (idx !== currentImg) setCurrentImg(idx);
   };
 
+  // Bloqueia wheel vertical de rolar fotos (deixa rolar a página)
+  useEffect(() => {
+    const el = scrollRef.current;
+    if (!el || !hasMultiple) return;
+    const handler = (e: WheelEvent) => {
+      // Scroll vertical sobre o carrossel → não muda foto, rola a página
+      if (Math.abs(e.deltaY) > Math.abs(e.deltaX)) {
+        e.preventDefault();
+        // Propaga manualmente para a página
+        window.scrollBy(0, e.deltaY);
+      }
+    };
+    el.addEventListener("wheel", handler, { passive: false });
+    return () => el.removeEventListener("wheel", handler);
+  }, [hasMultiple]);
+
+  // Distinguir tap/click de swipe/drag (funciona em mobile e desktop)
+  const pointerStart = useRef<{ x: number; y: number; t: number } | null>(null);
+  const handlePointerDown = useCallback((e: React.PointerEvent) => {
+    pointerStart.current = { x: e.clientX, y: e.clientY, t: Date.now() };
+  }, []);
+  const handlePointerUp = useCallback((e: React.PointerEvent) => {
+    if (!pointerStart.current || isAdmin) return;
+    const dx = Math.abs(e.clientX - pointerStart.current.x);
+    const dy = Math.abs(e.clientY - pointerStart.current.y);
+    const dt = Date.now() - pointerStart.current.t;
+    pointerStart.current = null;
+    // Tap/click: pouco movimento (<10px) e rápido (<400ms)
+    if (dx < 10 && dy < 10 && dt < 400) {
+      setShowDetail(true);
+    }
+  }, [isAdmin]);
+
   return (
     <>
       <div className="card overflow-hidden group">
@@ -111,13 +144,14 @@ export function ProductCard({ product, priceCalc, hasOverride, onEdit }: Props) 
           style={{
             background: `linear-gradient(135deg, ${color}15, ${color}30)`,
           }}
-          onClick={() => !isAdmin && setShowDetail(true)}
         >
           {allImages.length > 0 && !imgError ? (
             <>
               <div
                 ref={scrollRef}
                 onScroll={handleScroll}
+                onPointerDown={handlePointerDown}
+                onPointerUp={handlePointerUp}
                 className="flex w-full h-full overflow-x-auto snap-x snap-mandatory scrollbar-hide"
                 style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
               >
@@ -128,7 +162,8 @@ export function ProductCard({ product, priceCalc, hasOverride, onEdit }: Props) 
                     alt={`${product.name} - foto ${i + 1}`}
                     loading="lazy"
                     onError={() => i === 0 && setImgError(true)}
-                    className="w-full h-full object-cover flex-shrink-0 snap-center"
+                    className="w-full h-full object-cover flex-shrink-0 snap-center pointer-events-none select-none"
+                    draggable={false}
                   />
                 ))}
               </div>
@@ -321,6 +356,12 @@ export function ProductCard({ product, priceCalc, hasOverride, onEdit }: Props) 
                       </button>
                     ))}
                   </div>
+                  {/* Medidas do tamanho selecionado */}
+                  {selectedSize && SIZE_MEASURES[selectedSize] && (
+                    <p className="text-[10px] text-gray-400 leading-tight">
+                      {SIZE_MEASURES[selectedSize]}
+                    </p>
+                  )}
                   <button
                     disabled={!selectedSize}
                     onClick={() => {
@@ -419,7 +460,7 @@ export function ProductCard({ product, priceCalc, hasOverride, onEdit }: Props) 
             </div>
             <p className="text-xs text-gray-500 mb-3">{product.name}</p>
             <img
-              src={SIZE_CHART_URL}
+              src={detail?.sizeChart || SIZE_CHART_URL}
               alt="Tabela de medidas"
               className="w-full rounded-lg"
             />

@@ -46,6 +46,7 @@ interface ProductInfo {
   compression: string;
   hasBraPad: string;
   reference: string;
+  sizeChart: string;
   specs: Record<string, string>;
 }
 
@@ -190,6 +191,17 @@ function scrapeProductInfo(html: string, slug: string): ProductInfo | null {
     modelInfo = modelMatch[0].trim();
   }
 
+  // Tabela de medidas: imagem com "template" ou "duvida" ou "medida" no folder do produto
+  let sizeChart = "";
+  const ATACADO_CDN = "97065044c3a1a212e5c7a4f183fed028";
+  $("img").each((_, el) => {
+    const src = $(el).attr("data-src") || $(el).attr("src") || "";
+    if (src.includes(ATACADO_CDN) && src.includes("/produtos/") &&
+        (src.includes("template") || src.includes("medida") || src.includes("tabela") || src.includes("duvida"))) {
+      if (!sizeChart) sizeChart = src.startsWith("http") ? src : `https://${src}`;
+    }
+  });
+
   // Limpar mencoes ao fabricante
   description = removeBrand(description);
   modelInfo = removeBrand(modelInfo);
@@ -204,6 +216,7 @@ function scrapeProductInfo(html: string, slug: string): ProductInfo | null {
     compression,
     hasBraPad,
     reference,
+    sizeChart,
     specs,
   };
 }
@@ -211,8 +224,10 @@ function scrapeProductInfo(html: string, slug: string): ProductInfo | null {
 async function main() {
   const startTime = Date.now();
   console.log(`\n${"=".repeat(60)}`);
-  console.log(`  SCRAPE DETALHES DO ATACADO`);
-  console.log(`  Fonte: ${BASE_URL}`);
+  console.log(`  SCRAPE ATACADO — SPECS TÉCNICAS`);
+  console.log(`  Fonte: ${BASE_URL} (ATACADO)`);
+  console.log(`  Capturando: composicao, tecnologia, compressao, medidas`);
+  console.log(`  Data: ${new Date().toISOString()}`);
   console.log(`  Delay: ${SCRAPE_DELAY}ms`);
   console.log(`${"=".repeat(60)}\n`);
 
@@ -251,6 +266,7 @@ async function main() {
           info.composition ? "comp" : "",
           info.technology ? "tech" : "",
           info.modelInfo ? "modelo" : "",
+          info.sizeChart ? "tabela" : "",
         ].filter(Boolean).join(", ");
         console.log(` OK (${parts})`);
       } else {

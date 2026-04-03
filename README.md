@@ -30,7 +30,9 @@ Opcionais:
 SCRAPE_DELAY=2000              # delay entre requests do scraper (ms, padrao: 5000)
 TURSO_DATABASE_URL=libsql://...  # banco na nuvem (necessario na Vercel)
 TURSO_AUTH_TOKEN=...             # token do Turso
-CRON_SECRET=...                  # gerado pela Vercel automaticamente
+CRON_SECRET=...                  # gerado pela Vercel para cron jobs
+ATACADO_EMAIL=...                # email de login no atacado (opcional)
+ATACADO_PASSWORD=...             # senha do atacado (opcional)
 ```
 
 ## Senha padrao do admin
@@ -57,32 +59,66 @@ Reinicie o servidor. Pronto.
    - Para gerar: abra https://emn178.github.io/online-tools/sha256.html, digite a senha, copie o resultado
 3. **Deployments** > 3 pontinhos > **Redeploy**
 
-## Scripts disponiveis
+## Scripts de scraping
+
+> **Para o dia a dia, use apenas `npm run scrape:all`** — ele faz tudo e sincroniza com o Turso (Vercel atualiza sem deploy).
+
+| Comando | O que faz | Fonte | Dados capturados |
+|---|---|---|---|
+| `npm run scrape:all` | **Roda tudo em sequencia** | atacado + varejo | Tudo abaixo + sync Turso |
+| `npm run scrape:atacado` | Imagens + estoque | floraamaratacado.com.br (ATACADO) | Imagens, estoque por tamanho, preco custo |
+| `npm run scrape` | Precos do varejo | floraamar.com.br (VAREJO) | **SOMENTE PREÇOS** (nada mais!) |
+| `npm run scrape:sync` | Envia JSONs para o Turso | arquivos locais | Nenhum (apenas sincroniza) |
+| `npm run scrape:info` | Specs tecnicas | floraamaratacado.com.br (ATACADO) | Composicao, tecnologia, compressao |
+
+### Como funciona
+
+O `scrape:all` roda 4 scripts em sequencia:
+
+1. **scrape:atacado** (ATACADO) — Varre 8 categorias do atacado. Captura imagens do CDN (sem marca/logo), estoque por tamanho (P/M/G) e preco de custo. Apos as listagens, abre cada pagina de produto para galeria completa. Salva em `atacado-details.json` e sincroniza com o Turso.
+
+2. **scrape** (VAREJO) — Varre 6 categorias do varejo. Captura **SOMENTE PRECOS** de venda ao consumidor (para referencia na coluna "Varejo" do admin). **NAO captura imagens, estoque, nem nenhum outro dado**. Salva em `scrape-maps.json` e sincroniza com o Turso.
+
+3. **scrape:info** (ATACADO) — Busca specs tecnicas (composicao, tecnologia, compressao) das paginas individuais do atacado. Salva em `product-info.json`.
+
+4. **scrape:sync** — Envia todos os JSONs locais para o Turso (redundancia).
+
+### Regras OBRIGATORIAS
+
+Do site de **varejo** (floraamar.com.br) capturamos **ESTRITAMENTE SOMENTE PREÇO**.
+E PROIBIDO capturar do varejo: imagens, estoque, nomes, descricoes ou qualquer outro dado.
+
+- **Imagens**: SOMENTE do atacado (CDN sem marca/logo)
+- **Estoque**: SOMENTE do atacado
+- **Precos varejo**: somente para referencia/comparacao (coluna "Varejo" no admin)
+- **Nome Flora Amar**: NUNCA deve aparecer no site publico
+- **Delay**: controlado por `SCRAPE_DELAY` no `.env.local` (padrao: 5000ms). Nao diminua muito.
+- **CloudFront**: pode bloquear requests de servidor. Rode local (IP residencial) se o cron da Vercel falhar.
+
+### Cron automatico (Vercel)
+
+O endpoint `GET /api/scrape` roda diariamente as 9h (configurado em `vercel.json`).
+Captura estoque do atacado + precos do varejo e salva direto no Turso.
+Se o CloudFront bloquear, os dados ficam com a data antiga e o dashboard admin mostra um alerta.
+
+### Fluxo de dados
+
+```
+Scrape (local ou cron) → Turso (banco) → App le em runtime via /api/catalog-data
+                                          ↓ fallback se Turso vazio
+                                     JSONs estaticos (src/data/)
+```
+
+Nao precisa de redeploy para atualizar estoque, precos ou imagens.
+
+## Outros scripts
 
 | Comando | O que faz |
 |---|---|
 | `npm run dev` | Roda o servidor local |
 | `npm run build` | Gera build de producao |
-| `npm run scrape` | Atualiza precos e imagens do varejo (rode local!) |
-| `npm run scrape:details` | Busca imagens extras, estoque e medidas |
 | `npm run admin:reset` | Reseta a senha admin |
 | `npm run db:migrate` | Migra dados para o SQLite |
-
-### Sobre o scraping
-
-O scraper busca precos do site de varejo (floraamar.com.br) para referencia.
-**Deve ser rodado no seu computador** (IP residencial) porque o CloudFront bloqueia servidores.
-
-O `npm run scrape` roda em 5 fases com logs detalhados:
-
-1. **Categorias** — busca nas paginas de listagem (tops, shorts, etc)
-2. **Imagens** — busca fotos faltantes em paginas individuais
-3. **Pecas avulsas** — busca produtos do catalogo nao encontrados nas listagens
-4. **Pecas de conjuntos** — desmembra conjuntos e busca preco de cada peca
-5. **Overrides manuais** — busca URLs configuradas em `url-overrides.json`
-
-O delay entre requests e controlado pela variavel `SCRAPE_DELAY` no `.env.local` (padrao: 5000ms).
-Nao diminua muito para nao sobrecarregar o site do fornecedor.
 
 ## URL Overrides (mapeamento manual)
 
@@ -99,17 +135,6 @@ edite `src/data/url-overrides.json`:
 }
 ```
 
-Exemplo real:
-```json
-{
-  "products": {
-    "Conjunto Top Basic Duplo e Short Basic Coffee": {
-      "varejoSlug": "conjunto-basic-top-short-coffee"
-    }
-  }
-}
-```
-
 O scraper mostra `[OVERRIDE]` no log quando usa um slug manual.
 
 ## Seguranca
@@ -119,6 +144,7 @@ O scraper mostra `[OVERRIDE]` no log quando usa um slug manual.
 - POST de pedidos tem rate limiting (5 pedidos/min por IP)
 - Input de clientes validado (email, telefone, tamanho de strings)
 - Senha admin armazenada como hash SHA-256 (nunca em texto)
+- **Nenhuma referencia ao fornecedor** no site publico (somente na area admin)
 
 ## Modelo de precos
 
@@ -140,7 +166,7 @@ Formulas:
 3. **Configure as variaveis de ambiente (OBRIGATORIO):**
    - `ADMIN_PASSWORD_HASH` — hash SHA-256 da senha admin
    - `API_SECRET` — secret para proteger as APIs
-4. **Configure o banco Turso (OBRIGATORIO para pedidos):**
+4. **Configure o banco Turso (OBRIGATORIO para pedidos e dados dinamicos):**
    - Crie gratis em https://turso.tech
    - `turso db create melfit`
    - `turso db tokens create melfit`
@@ -151,17 +177,14 @@ Formulas:
    - `SCRAPE_DELAY` — delay do scraper (padrao 5000ms)
 6. Deploy!
 
-> O scraping via cron (2x/dia) pode falhar se o CloudFront bloquear.
-> Nesse caso, rode `npm run scrape` localmente e faca push dos JSONs atualizados.
-
 ## Estrutura de dados
 
 | Arquivo | O que guarda |
 |---|---|
 | `src/data/products.ts` | Catalogo de produtos (custo atacado, categorias, tags) |
-| `src/data/scraped-prices.json` | Precos e imagens do varejo (atualizado pelo scraper) |
-| `src/data/scrape-maps.json` | Mapas rapidos nome→preco e nome→imagem |
-| `src/data/atacado-details.json` | Detalhes do atacado (slugs, estoque, galerias) |
+| `src/data/atacado-details.json` | Imagens, estoque e precos do atacado |
+| `src/data/scrape-maps.json` | Mapa de precos do varejo (somente precos, sem imagens) |
+| `src/data/product-details.json` | Tabela de medidas e estoque fallback do varejo |
+| `src/data/product-info.json` | Specs tecnicas (composicao, tecnologia) |
 | `src/data/url-overrides.json` | Mapeamento manual de URLs varejo/atacado |
 | `src/data/price-history.json` | Historico de mudancas de precos |
-| `data/melfit.db` | Banco SQLite local (gitignored) |
