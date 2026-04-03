@@ -430,6 +430,7 @@ export async function deleteSetting(key: string): Promise<void> {
 const CATALOG_KEYS = {
   atacado: "catalog_atacado_data",
   varejoPrecos: "catalog_varejo_prices",
+  productInfo: "catalog_product_info",
 };
 
 export async function saveCatalogData(atacadoData: any, varejoPrecos?: Record<string, number>): Promise<void> {
@@ -451,16 +452,18 @@ export async function saveCatalogData(atacadoData: any, varejoPrecos?: Record<st
 export async function getCatalogData(): Promise<{
   atacado: any | null;
   varejoPrecos: Record<string, number> | null;
+  productInfo: Record<string, any> | null;
   updatedAt: string | null;
 }> {
   const db = getDb();
   const result = await db.execute({
-    sql: "SELECT key, value, updated_at FROM settings WHERE key IN (?, ?)",
-    args: [CATALOG_KEYS.atacado, CATALOG_KEYS.varejoPrecos],
+    sql: "SELECT key, value, updated_at FROM settings WHERE key IN (?, ?, ?)",
+    args: [CATALOG_KEYS.atacado, CATALOG_KEYS.varejoPrecos, CATALOG_KEYS.productInfo],
   });
 
   let atacado = null;
   let varejoPrecos = null;
+  let productInfo = null;
   let updatedAt = null;
 
   for (const row of result.rows) {
@@ -470,9 +473,11 @@ export async function getCatalogData(): Promise<{
         updatedAt = row.updated_at as string;
       } else if (row.key === CATALOG_KEYS.varejoPrecos) {
         varejoPrecos = JSON.parse(row.value as string);
+      } else if (row.key === CATALOG_KEYS.productInfo) {
+        productInfo = JSON.parse(row.value as string);
       }
     } catch {}
   }
 
-  return { atacado, varejoPrecos, updatedAt };
+  return { atacado, varejoPrecos, productInfo, updatedAt };
 }

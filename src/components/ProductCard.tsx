@@ -5,7 +5,7 @@ import { formatBRL, getColorFromName, getInitials, getAtacadoUrl } from "@/lib/p
 import { useCatalog } from "@/context/CatalogContext";
 import { useCatalogData } from "@/context/CatalogDataContext";
 import { useCart } from "@/context/CartContext";
-import { useState, useRef, useMemo, useCallback, useEffect } from "react";
+import { useState, useRef, useMemo, useCallback } from "react";
 
 const SIZE_MEASURES: Record<string, string> = {
   P: "Busto 82-86 | Cintura 64-68 | Quadril 90-94",
@@ -14,13 +14,10 @@ const SIZE_MEASURES: Record<string, string> = {
   GG: "Busto 96-102 | Cintura 78-84 | Quadril 104-110",
 };
 import { ProductDetailModal } from "./ProductDetailModal";
-import productInfoFile from "@/data/product-info.json";
 
 // Tabela de medidas genérica do atacado (CDN sem marca) — fallback
 const SIZE_CHART_URL =
   "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/tabelas/template-duvidas-frequentes-3-697cfa2dd7aa71.png";
-
-const productInfoData = (productInfoFile as any).products || {};
 
 /** Gera slug a partir do nome do produto */
 function toSlug(name: string) {
@@ -42,7 +39,7 @@ interface Props {
 
 export function ProductCard({ product, priceCalc, hasOverride, onEdit }: Props) {
   const { isAdmin } = useCatalog();
-  const { atacadoProducts } = useCatalogData();
+  const { atacadoProducts, atacadoByName, productInfo } = useCatalogData();
   const { addItem } = useCart();
   const color = getColorFromName(product.name);
   const [imgError, setImgError] = useState(false);
@@ -55,14 +52,13 @@ export function ProductCard({ product, priceCalc, hasOverride, onEdit }: Props) 
 
   const detail = useMemo(() => {
     const slug = product.slug || toSlug(product.name);
-    const atacado = atacadoProducts[slug]
-      || Object.values(atacadoProducts).find((d: any) => d.atacadoSlug?.replace(/-at$/, "") === slug || d.name === product.name);
+    const atacado = atacadoProducts[slug] || atacadoByName[product.name];
 
     if (!atacado) return null;
 
     // Tabela de medidas do atacado (product-info) — fallback para genérica
     const atacadoSlug = (atacado as any)?.atacadoSlug || slug + "-at";
-    const info = productInfoData[atacadoSlug];
+    const info = productInfo[atacadoSlug];
     const sizeChart = info?.sizeChart || SIZE_CHART_URL;
 
     return {
@@ -71,7 +67,7 @@ export function ProductCard({ product, priceCalc, hasOverride, onEdit }: Props) 
       totalStock: ((atacado as any)?.totalStock ?? -1) as number,
       sizeChart,
     };
-  }, [product, atacadoProducts]);
+  }, [product, atacadoProducts, atacadoByName, productInfo]);
   const allImages =
     detail?.images && detail.images.length > 0
       ? detail.images
@@ -101,22 +97,6 @@ export function ProductCard({ product, priceCalc, hasOverride, onEdit }: Props) 
     const idx = Math.round(scrollLeft / offsetWidth);
     if (idx !== currentImg) setCurrentImg(idx);
   };
-
-  // Bloqueia wheel vertical de rolar fotos (deixa rolar a página)
-  useEffect(() => {
-    const el = scrollRef.current;
-    if (!el || !hasMultiple) return;
-    const handler = (e: WheelEvent) => {
-      // Scroll vertical sobre o carrossel → não muda foto, rola a página
-      if (Math.abs(e.deltaY) > Math.abs(e.deltaX)) {
-        e.preventDefault();
-        // Propaga manualmente para a página
-        window.scrollBy(0, e.deltaY);
-      }
-    };
-    el.addEventListener("wheel", handler, { passive: false });
-    return () => el.removeEventListener("wheel", handler);
-  }, [hasMultiple]);
 
   // Distinguir tap/click de swipe/drag (funciona em mobile e desktop)
   const pointerStart = useRef<{ x: number; y: number; t: number } | null>(null);
