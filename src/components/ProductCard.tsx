@@ -14,10 +14,13 @@ const SIZE_MEASURES: Record<string, string> = {
   GG: "Busto 96-102 | Cintura 78-84 | Quadril 104-110",
 };
 import { ProductDetailModal } from "./ProductDetailModal";
+import productInfoFile from "@/data/product-info.json";
 
-// Tabela de medidas genérica do atacado (CDN sem marca)
+// Tabela de medidas genérica do atacado (CDN sem marca) — fallback
 const SIZE_CHART_URL =
   "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/tabelas/template-duvidas-frequentes-3-697cfa2dd7aa71.png";
+
+const productInfoData = (productInfoFile as any).products || {};
 
 /** Gera slug a partir do nome do produto */
 function toSlug(name: string) {
@@ -57,10 +60,16 @@ export function ProductCard({ product, priceCalc, hasOverride, onEdit }: Props) 
 
     if (!atacado) return null;
 
+    // Tabela de medidas do atacado (product-info) — fallback para genérica
+    const atacadoSlug = (atacado as any)?.atacadoSlug || slug + "-at";
+    const info = productInfoData[atacadoSlug];
+    const sizeChart = info?.sizeChart || SIZE_CHART_URL;
+
     return {
       images: ((atacado as any)?.images || []) as string[],
       stock: ((atacado as any)?.stock || {}) as Record<string, number>,
       totalStock: ((atacado as any)?.totalStock ?? -1) as number,
+      sizeChart,
     };
   }, [product, atacadoProducts]);
   const allImages =
@@ -451,7 +460,7 @@ export function ProductCard({ product, priceCalc, hasOverride, onEdit }: Props) 
             </div>
             <p className="text-xs text-gray-500 mb-3">{product.name}</p>
             <img
-              src={SIZE_CHART_URL}
+              src={detail?.sizeChart || SIZE_CHART_URL}
               alt="Tabela de medidas"
               className="w-full rounded-lg"
             />
