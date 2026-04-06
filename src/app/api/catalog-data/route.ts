@@ -22,9 +22,14 @@ export async function GET() {
 
     // Produtos adicionados via admin (não estão no products.ts)
     let customProducts: any[] = [];
+    let urlOverrides: any = {};
     try {
       const raw = await getSetting("catalog_custom_products");
       if (raw) customProducts = JSON.parse(raw);
+    } catch {}
+    try {
+      const raw = await getSetting("catalog_url_overrides");
+      if (raw) urlOverrides = JSON.parse(raw);
     } catch {}
 
     return NextResponse.json({
@@ -34,6 +39,7 @@ export async function GET() {
       varejoPrecos: data.varejoPrecos,
       productInfo: data.productInfo,
       customProducts,
+      urlOverrides,
     }, {
       headers: {
         // Cache por 5 minutos no CDN, stale-while-revalidate por 1 hora
