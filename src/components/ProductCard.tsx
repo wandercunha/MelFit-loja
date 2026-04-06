@@ -79,9 +79,13 @@ export function ProductCard({ product, priceCalc, hasOverride, onEdit }: Props) 
       : [];
   const hasMultiple = allImages.length > 1;
   const stock = detail?.stock || {};
-  const totalStock = detail?.totalStock ?? -1; // -1 = unknown
-  // Atacado stock > 0 sobrescreve soldOut hardcoded do products.ts
-  const isSoldOut = totalStock > 0 ? false : (product.soldOut || totalStock === 0);
+  const totalStock = detail?.totalStock ?? -1;
+  const pieces = detail?.pieces || [];
+  const isConjunto = pieces.length > 0;
+  // Conjunto com peças disponíveis nunca é esgotado
+  const isSoldOut = isConjunto
+    ? false
+    : totalStock > 0 ? false : (product.soldOut || totalStock === 0);
 
   const goTo = (idx: number) => {
     const clamped = Math.max(0, Math.min(idx, allImages.length - 1));
@@ -350,7 +354,7 @@ export function ProductCard({ product, priceCalc, hasOverride, onEdit }: Props) 
                     <div className="space-y-2">
                       {pieces.map((piece) => (
                         <div key={piece.name}>
-                          <p className="text-[9px] font-bold text-gray-500 uppercase">{piece.name}</p>
+                          <p className="text-[9px] font-bold text-gray-500 uppercase">{piece.name} <span className="text-gray-400 normal-case">R${piece.price}</span></p>
                           <div className="flex gap-1 mt-0.5">
                             {Object.keys(piece.sizes).map((size) => (
                               <button

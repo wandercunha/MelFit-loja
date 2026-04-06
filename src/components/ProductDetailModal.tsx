@@ -46,7 +46,8 @@ export function ProductDetailModal({ product, priceCalc, onClose }: Props) {
   const totalStock: number = atacado?.totalStock ?? -1;
   const pieces: Array<{ name: string; sizes: Record<string, number>; price: number }> = atacado?.pieces || [];
   const isConjunto = pieces.length > 0;
-  const isSoldOut = totalStock > 0 ? false : (isConjunto ? false : (product.soldOut || totalStock === 0));
+  // Conjunto com peças disponíveis nunca é esgotado
+  const isSoldOut = isConjunto ? false : (totalStock > 0 ? false : (product.soldOut || totalStock === 0));
   const hasInfo = info && (info.description || info.composition);
 
   useEffect(() => {
@@ -165,7 +166,7 @@ export function ProductDetailModal({ product, priceCalc, onClose }: Props) {
                 <p className="text-xs font-semibold text-gray-600">Selecione o tamanho de cada peça:</p>
                 {pieces.map((piece) => (
                   <div key={piece.name}>
-                    <p className="text-[10px] font-bold text-gray-500 uppercase mb-1">{piece.name}</p>
+                    <p className="text-[10px] font-bold text-gray-500 uppercase mb-1">{piece.name} <span className="text-gray-400 normal-case">R${piece.price}</span></p>
                     <div className="flex gap-1.5">
                       {Object.keys(piece.sizes).map((size) => (
                         <button

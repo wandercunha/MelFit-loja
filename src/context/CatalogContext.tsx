@@ -273,7 +273,11 @@ export function CatalogProvider({ children }: { children: React.ReactNode }) {
       const slug = p.slug || toSlug(p.name);
       const at = atacadoProducts[slug]
         || Object.values(atacadoProducts).find((d: any) => d.name === p.name);
-      if (at) map[p.id] = (at as any).totalStock;
+      if (at) {
+        // Conjuntos com peças = disponível (totalStock pode ser 0 pois usam grade_biquini)
+        const hasPieces = (at as any).pieces && (at as any).pieces.length > 0;
+        map[p.id] = hasPieces ? 1 : (at as any).totalStock;
+      }
     }
     return map;
   }, [atacadoProducts]);
