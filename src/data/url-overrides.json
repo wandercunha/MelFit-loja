@@ -1,15 +1,21 @@
 {
-  "_doc": "Mapeamento manual de URLs do varejo. Use quando o scraper nao encontra automaticamente.",
-  "_exemplo": {
-    "Nome Do Produto No Catalogo": {
-      "varejoSlug": "slug-no-site-varejo",
-      "atacadoSlug": "slug-no-site-atacado"
-    }
-  },
+  "_doc": "Mapeamento manual: nome no catalogo → slug no atacado/varejo.",
   "products": {
     "Short Speed c/ Bolso Azul Petroleo": {
-      "varejoSlug": "short-speed-c-bolso-azul-pacifico",
-      "atacadoSlug": "short-speed-c-bolso-azul-pacifico-at"
+      "varejoSlug": "short-speed-c-bolso-azul-marine",
+      "atacadoSlug": "short-speed-c-bolso-azul-marine-at"
+    },
+    "Top Cross Cappuccino c/ Off": {
+      "atacadoSlug": "top-cross-capuccino-c-off-at"
+    },
+    "Top Air Verde Militar c/ Off": {
+      "atacadoSlug": "top-air-verde-c-off-at"
+    },
+    "Legging Classic Coffee": {
+      "atacadoSlug": "legging-classic-coffe-at"
+    },
+    "Macacão Flare Coffee": {
+      "atacadoSlug": "macacao-flare-coffe-at"
     }
   }
 }

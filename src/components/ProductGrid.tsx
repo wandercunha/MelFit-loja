@@ -2,7 +2,7 @@
 
 import { useMemo, useState } from "react";
 import { useCatalog } from "@/context/CatalogContext";
-import { PRODUCTS } from "@/data/products";
+import { useCatalogData } from "@/context/CatalogDataContext";
 import { calcProduct } from "@/lib/pricing";
 import { CATEGORY_LABELS, CATEGORY_ORDER, Product } from "@/lib/types";
 import { ProductCard } from "./ProductCard";
@@ -10,10 +10,11 @@ import { MarginEditor } from "./MarginEditor";
 
 export function ProductGrid() {
   const { activeCategory, searchQuery, globalSettings, overrides, categoryOverrides, isProductVisible } = useCatalog();
+  const { allProducts } = useCatalogData();
   const [editingProduct, setEditingProduct] = useState<Product | null>(null);
 
   const grouped = useMemo(() => {
-    let filtered = PRODUCTS.filter((p) => isProductVisible(p.id, p.soldOut));
+    let filtered = allProducts.filter((p) => isProductVisible(p.id, p.soldOut));
 
     // Filter by search
     if (searchQuery.trim()) {
@@ -47,7 +48,7 @@ export function ProductGrid() {
     }
 
     return [{ category: activeCategory, products: filtered }];
-  }, [activeCategory, searchQuery]);
+  }, [allProducts, activeCategory, searchQuery]);
 
   const totalProducts = grouped.reduce((sum, g) => sum + g.products.length, 0);
 

@@ -2,7 +2,7 @@
 
 import { useCatalog } from "@/context/CatalogContext";
 import { useCart } from "@/context/CartContext";
-import { PRODUCTS } from "@/data/products";
+import { useCatalogData } from "@/context/CatalogDataContext";
 import { useState } from "react";
 import { LoginModal } from "./LoginModal";
 import { CartDrawer } from "./CartDrawer";
@@ -10,11 +10,12 @@ import { AdminPanel } from "./admin/AdminPanel";
 
 export function Header() {
   const { isAdmin, logout, isProductVisible } = useCatalog();
+  const { allProducts } = useCatalogData();
   const { totalItems } = useCart();
   const [showLogin, setShowLogin] = useState(false);
   const [showCart, setShowCart] = useState(false);
   const [showAdmin, setShowAdmin] = useState(false);
-  const available = PRODUCTS.filter((p) => isProductVisible(p.id, p.soldOut)).length;
+  const available = allProducts.filter((p) => isProductVisible(p.id, p.soldOut)).length;
 
   return (
     <>

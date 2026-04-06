@@ -187,7 +187,7 @@ export function ProductOverridesTab() {
     refreshFromDb,
     apiSecret,
   } = useCatalog();
-  const { atacadoProducts } = useCatalogData();
+  const { atacadoProducts, allProducts } = useCatalogData();
 
   // Helper para buscar estoque do atacado
   const getStock = (product: { name: string; slug?: string }): { stock: Record<string, number>; totalStock: number; pieces?: any[] } | null => {
@@ -242,7 +242,7 @@ export function ProductOverridesTab() {
   const [showDisabled, setShowDisabled] = useState(false);
 
   const products = useMemo(() => {
-    let list = [...PRODUCTS];
+    let list = [...allProducts];
     if (showDisabled) {
       // Mostra apenas os desativados
       list = list.filter((p) => !isProductVisible(p.id, p.soldOut));
@@ -258,7 +258,7 @@ export function ProductOverridesTab() {
     }
     if (showOnlyOverrides) list = list.filter((p) => overrides[p.id]);
     return list;
-  }, [filter, showOnlyOverrides, overrides, showDisabled, productVisibility]);
+  }, [allProducts, filter, showOnlyOverrides, overrides, showDisabled, productVisibility]);
 
   // Group by category
   const groupedProducts = useMemo(() => {
@@ -274,7 +274,7 @@ export function ProductOverridesTab() {
 
   const overrideCount = Object.keys(overrides).length;
   const catOverrideCount = Object.keys(categoryOverrides).length;
-  const disabledCount = PRODUCTS.filter((p) => !isProductVisible(p.id, p.soldOut)).length;
+  const disabledCount = allProducts.filter((p) => !isProductVisible(p.id, p.soldOut)).length;
 
   const toggleCat = (cat: string) => {
     setCollapsedCats((prev) => {
@@ -287,7 +287,7 @@ export function ProductOverridesTab() {
   // ── Product edit ──
   const startEdit = (productId: number, field: "margin" | "shipping") => {
     const ov = overrides[productId];
-    const p = PRODUCTS.find((x) => x.id === productId);
+    const p = allProducts.find((x) => x.id === productId);
     const catOv = p ? categoryOverrides[p.category] : undefined;
     setEditMargin(ov?.margin ?? catOv?.margin ?? globalSettings.margin);
     setEditShipping(ov?.shipping ?? catOv?.shipping ?? globalSettings.shipping);

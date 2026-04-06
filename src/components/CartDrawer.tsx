@@ -2,8 +2,8 @@
 
 import { useCart } from "@/context/CartContext";
 import { useCatalog } from "@/context/CatalogContext";
+import { useCatalogData } from "@/context/CatalogDataContext";
 import { calcProduct, formatBRL } from "@/lib/pricing";
-import { PRODUCTS } from "@/data/products";
 import { PaymentMethod, PAYMENT_LABELS } from "@/lib/types";
 import { useState, useEffect } from "react";
 
@@ -22,6 +22,7 @@ export function CartDrawer({ open, onClose }: Props) {
   const { items, customer, cartId, removeItem, updateQuantity, clearCart, setCustomer } =
     useCart();
   const { globalSettings, overrides, categoryOverrides } = useCatalog();
+  const { allProducts } = useCatalogData();
   const [payment, setPayment] = useState<PaymentMethod>("pix");
   const [selectedInstallments, setSelectedInstallments] = useState(globalSettings.installments);
   const [showCheckout, setShowCheckout] = useState(false);
@@ -32,7 +33,7 @@ export function CartDrawer({ open, onClose }: Props) {
   const maxInstallments = globalSettings.installments;
 
   const getPrice = (productId: number) => {
-    const product = PRODUCTS.find((p) => p.id === productId);
+    const product = allProducts.find((p) => p.id === productId);
     if (!product) return { pricePix: 0, priceCard: 0, priceInstallment: 0, installmentMonthly: 0, installments: 6, cardRate: 0 };
     return calcProduct(product, globalSettings, overrides[productId], categoryOverrides[product.category]);
   };
@@ -340,7 +341,7 @@ export function CartDrawer({ open, onClose }: Props) {
                     setSaving(true);
                     try {
                       const itemsPayload = items.map((item) => {
-                        const product = PRODUCTS.find((p) => p.id === item.productId);
+                        const product = allProducts.find((p) => p.id === item.productId);
                         const calc = product
                           ? calcProduct(product, globalSettings, overrides[item.productId], categoryOverrides[product.category])
                           : { totalCost: 0, priceCard: 0 };

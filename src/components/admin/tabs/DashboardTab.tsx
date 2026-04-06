@@ -1,18 +1,20 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useMemo, useState, useCallback } from "react";
 import { useCatalog } from "@/context/CatalogContext";
 import { useCatalogData } from "@/context/CatalogDataContext";
 import { PRODUCTS } from "@/data/products";
+import { Product, Category } from "@/lib/types";
 import { calcProduct, formatBRL } from "@/lib/pricing";
 import { ExportButton } from "@/components/ExportButton";
 
 export function DashboardTab() {
   const { globalSettings, overrides, categoryOverrides, isProductVisible } = useCatalog();
-  const { updatedAt, dataSource, atacadoProducts } = useCatalogData();
+  const { updatedAt, dataSource, atacadoProducts, atacadoByName, allProducts, addCustomProduct } = useCatalogData();
   const [showCatalogAlerts, setShowCatalogAlerts] = useState(true);
+  const [addingProduct, setAddingProduct] = useState<string | null>(null);
 
-  const available = PRODUCTS.filter((p) => isProductVisible(p.id, p.soldOut));
+  const available = allProducts.filter((p) => isProductVisible(p.id, p.soldOut));
 
   // Alerta se scrape não rodou há mais de 36h
   const hoursAgo = updatedAt ? (Date.now() - new Date(updatedAt).getTime()) / 3600000 : Infinity;
@@ -27,10 +29,19 @@ export function DashboardTab() {
     totalProfit += c.netProfit;
   });
 
-  // Comparar catalogo (products.ts) com atacado (scrape) para detectar novidades/removidos
+  // Comparar catalogo com atacado (scrape) para detectar novidades/removidos
   const toSlug = (name: string) =>
     name.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "")
       .replace(/\s+c\/\s*/g, "-c-").replace(/\s+/g, "-").replace(/[^a-z0-9-]/g, "");
+
+  // Mapa de categorias do atacado para as nossas
+  const ATACADO_CATEGORY_MAP: Record<string, Category> = {
+    tops: "tops", shorts: "shorts", leggings: "leggings",
+    macaquinhos: "macaquinhos", macacoes: "macacoes", conjuntos: "conjuntos",
+    "colecao-exclusiva": "tops", novidade: "tops",
+  };
+
+  interface NewProductInfo { name: string; slug: string; cost: number; category: Category; img: string }
 
   const catalogAlerts = useMemo(() => {
     const atacadoNames = new Set<string>();
@@ -41,27 +52,62 @@ export function DashboardTab() {
     }
 
     // Produtos no fornecedor que NÃO estão no nosso catálogo
-    const newProducts: string[] = [];
+    const newProducts: NewProductInfo[] = [];
     for (const [slug, p] of Object.entries(atacadoProducts)) {
-      const name = (p as any).name as string;
-      if (!name) continue;
-      const inCatalog = PRODUCTS.some((cp) => {
+      const at = p as any;
+      if (!at.name) continue;
+      const inCatalog = allProducts.some((cp) => {
         const cpSlug = cp.slug || toSlug(cp.name);
-        return cpSlug === slug || cp.name === name;
+        return cpSlug === slug || cp.name === at.name || atacadoByName[cp.name]?._slug === slug;
       });
-      if (!inCatalog) newProducts.push(name);
+      if (!inCatalog) {
+        // Inferir categoria do slug do atacado
+        let cat: Category = "tops";
+        const slugLower = (at.atacadoSlug || slug).toLowerCase();
+        if (slugLower.includes("conjunto") || at.pieces?.length > 0) cat = "conjuntos";
+        else if (slugLower.includes("short") || slugLower.includes("run")) cat = "shorts";
+        else if (slugLower.includes("legging") || slugLower.includes("flare")) cat = "leggings";
+        else if (slugLower.includes("macaquinho") || slugLower.includes("move")) cat = "macaquinhos";
+        else if (slugLower.includes("macacao") || slugLower.includes("essential")) cat = "macacoes";
+
+        newProducts.push({
+          name: at.name,
+          slug,
+          cost: at.price || 0,
+          category: cat,
+          img: at.images?.[0] || "",
+        });
+      }
     }
 
-    // Produtos no nosso catálogo que sumiram do fornecedor (possível descontinuado)
+    // Produtos no nosso catálogo que sumiram do fornecedor
     const missing: string[] = [];
-    for (const p of PRODUCTS) {
+    for (const p of allProducts) {
       const slug = p.slug || toSlug(p.name);
-      const found = atacadoSlugs.has(slug) || atacadoNames.has(p.name);
+      const found = atacadoSlugs.has(slug) || atacadoNames.has(p.name) || !!atacadoByName[p.name];
       if (!found) missing.push(p.name);
     }
 
     return { newProducts, missing };
-  }, [atacadoProducts]);
+  }, [atacadoProducts, atacadoByName, allProducts]);
+
+  const handleAddProduct = useCallback(async (np: NewProductInfo) => {
+    setAddingProduct(np.name);
+    // Gerar ID único (maior ID existente + 1)
+    const maxId = allProducts.reduce((max, p) => Math.max(max, p.id), 0);
+    const product: Product = {
+      id: maxId + 1,
+      name: np.name,
+      cost: np.cost,
+      category: np.category,
+      tags: [],
+      sizes: "P, M, G",
+      img: np.img,
+      slug: np.slug,
+    };
+    await addCustomProduct(product);
+    setAddingProduct(null);
+  }, [allProducts, addCustomProduct]);
 
   const customCount = Object.keys(overrides).length;
   const ex = 50 * (1 + globalSettings.margin / 100);
@@ -120,13 +166,26 @@ export function DashboardTab() {
                   </svg>
                   <div>
                     <p className="text-sm font-semibold text-blue-700">{catalogAlerts.newProducts.length} produto(s) novo(s) no fornecedor</p>
-                    <p className="text-[11px] text-blue-500 mt-0.5">Nao estao no seu catalogo ainda. Adicione em products.ts se quiser vender.</p>
-                    <div className="mt-2 flex flex-wrap gap-1">
-                      {catalogAlerts.newProducts.slice(0, 10).map((name) => (
-                        <span key={name} className="text-[10px] bg-blue-100 text-blue-700 px-2 py-0.5 rounded-full">{name}</span>
+                    <p className="text-[11px] text-blue-500 mt-0.5">Clique para adicionar ao seu catalogo.</p>
+                    <div className="mt-2 space-y-1">
+                      {catalogAlerts.newProducts.slice(0, 15).map((np) => (
+                        <div key={np.slug} className="flex items-center gap-2 bg-blue-100/50 rounded-lg px-2 py-1">
+                          {np.img && <img src={np.img} alt="" className="w-8 h-8 rounded object-cover flex-shrink-0" />}
+                          <div className="flex-1 min-w-0">
+                            <p className="text-[10px] font-semibold text-blue-800 truncate">{np.name}</p>
+                            <p className="text-[9px] text-blue-500">{np.category} · R${np.cost}</p>
+                          </div>
+                          <button
+                            onClick={() => handleAddProduct(np)}
+                            disabled={addingProduct === np.name}
+                            className="text-[10px] font-bold px-2 py-1 bg-blue-500 text-white rounded-lg hover:bg-blue-600 disabled:opacity-50 flex-shrink-0"
+                          >
+                            {addingProduct === np.name ? "..." : "Adicionar"}
+                          </button>
+                        </div>
                       ))}
-                      {catalogAlerts.newProducts.length > 10 && (
-                        <span className="text-[10px] text-blue-400">+{catalogAlerts.newProducts.length - 10} mais</span>
+                      {catalogAlerts.newProducts.length > 15 && (
+                        <p className="text-[10px] text-blue-400">+{catalogAlerts.newProducts.length - 15} mais</p>
                       )}
                     </div>
                   </div>
