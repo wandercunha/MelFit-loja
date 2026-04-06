@@ -13,6 +13,8 @@ export function DashboardTab() {
   const { updatedAt, dataSource, atacadoProducts, atacadoByName, allProducts, addCustomProduct } = useCatalogData();
   const [showCatalogAlerts, setShowCatalogAlerts] = useState(true);
   const [addingProduct, setAddingProduct] = useState<string | null>(null);
+  const [linkingUrl, setLinkingUrl] = useState<Record<string, string>>({});
+  const [linkingStatus, setLinkingStatus] = useState<Record<string, string>>({});
 
   const available = allProducts.filter((p) => isProductVisible(p.id, p.soldOut));
 
@@ -109,6 +111,46 @@ export function DashboardTab() {
     setAddingProduct(null);
   }, [allProducts, addCustomProduct]);
 
+  // Vincular URL do atacado para produto não encontrado
+  const handleLinkUrl = useCallback(async (productName: string) => {
+    const url = linkingUrl[productName]?.trim();
+    if (!url) return;
+
+    // Extrair slug da URL: https://www.floraamaratacado.com.br/short-run-preto-at/ → short-run-preto-at
+    const match = url.match(/floraamaratacado\.com\.br\/([a-z0-9-]+)\/?/);
+    if (!match) {
+      setLinkingStatus((s) => ({ ...s, [productName]: "URL invalida" }));
+      return;
+    }
+
+    const atacadoSlug = match[1];
+    setLinkingStatus((s) => ({ ...s, [productName]: "Salvando..." }));
+
+    try {
+      // Salvar override no Turso via settings
+      const session = typeof window !== "undefined" ? JSON.parse(localStorage.getItem("melfit_session") || "{}") : {};
+
+      // Ler overrides atuais do banco
+      const res = await fetch("/api/settings", { headers: { Authorization: `Bearer ${session.apiSecret}` } });
+      const settings = await res.json();
+      const currentOverrides = JSON.parse(settings.catalog_url_overrides || "{}");
+
+      // Adicionar novo override
+      currentOverrides[productName] = { atacadoSlug };
+
+      // Salvar de volta
+      await fetch("/api/settings", {
+        method: "PUT",
+        headers: { "Content-Type": "application/json", Authorization: `Bearer ${session.apiSecret}` },
+        body: JSON.stringify({ catalog_url_overrides: JSON.stringify(currentOverrides) }),
+      });
+
+      setLinkingStatus((s) => ({ ...s, [productName]: "Vinculado! Rode o scrape para atualizar." }));
+    } catch {
+      setLinkingStatus((s) => ({ ...s, [productName]: "Erro ao salvar" }));
+    }
+  }, [linkingUrl]);
+
   const customCount = Object.keys(overrides).length;
   const ex = 50 * (1 + globalSettings.margin / 100);
   const exParc = ex * (1 + globalSettings.cardRate / 100);
@@ -204,14 +246,33 @@ export function DashboardTab() {
                   </svg>
                   <div>
                     <p className="text-sm font-semibold text-amber-700">{catalogAlerts.missing.length} produto(s) nao encontrado(s) no fornecedor</p>
-                    <p className="text-[11px] text-amber-500 mt-0.5">Podem estar esgotados, descontinuados ou com nome diferente.</p>
-                    <div className="mt-2 flex flex-wrap gap-1">
+                    <p className="text-[11px] text-amber-500 mt-0.5">Cole a URL do atacado para vincular.</p>
+                    <div className="mt-2 space-y-2">
                       {catalogAlerts.missing.slice(0, 10).map((name) => (
-                        <span key={name} className="text-[10px] bg-amber-100 text-amber-700 px-2 py-0.5 rounded-full">{name}</span>
+                        <div key={name} className="bg-amber-100/50 rounded-lg px-2.5 py-2">
+                          <p className="text-[11px] font-semibold text-amber-800">{name}</p>
+                          {linkingStatus[name] ? (
+                            <p className="text-[10px] text-amber-600 mt-1">{linkingStatus[name]}</p>
+                          ) : (
+                            <div className="flex gap-1 mt-1">
+                              <input
+                                type="text"
+                                placeholder="https://www.floraamaratacado.com.br/slug-at/"
+                                value={linkingUrl[name] || ""}
+                                onChange={(e) => setLinkingUrl((s) => ({ ...s, [name]: e.target.value }))}
+                                className="flex-1 text-[11px] px-2 py-1 border border-amber-300 rounded-lg bg-white min-w-0"
+                              />
+                              <button
+                                onClick={() => handleLinkUrl(name)}
+                                disabled={!linkingUrl[name]?.trim()}
+                                className="text-[10px] font-bold px-2 py-1 bg-amber-500 text-white rounded-lg hover:bg-amber-600 disabled:opacity-40 flex-shrink-0"
+                              >
+                                Vincular
+                              </button>
+                            </div>
+                          )}
+                        </div>
                       ))}
-                      {catalogAlerts.missing.length > 10 && (
-                        <span className="text-[10px] text-amber-400">+{catalogAlerts.missing.length - 10} mais</span>
-                      )}
                     </div>
                   </div>
                 </div>

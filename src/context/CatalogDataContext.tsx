@@ -52,6 +52,7 @@ export function CatalogDataProvider({ children }: { children: React.ReactNode })
   const [customProducts, setCustomProducts] = useState<Product[]>([]);
   const [dataSource, setDataSource] = useState<"static" | "turso">("static");
   const [updatedAt, setUpdatedAt] = useState<string | null>((staticAtacado as any).timestamp || null);
+  const [dbUrlOverrides, setDbUrlOverrides] = useState<Record<string, { atacadoSlug: string }>>({});
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -65,11 +66,13 @@ export function CatalogDataProvider({ children }: { children: React.ReactNode })
         const varejo = json.varejoPrecos;
         const pInfo = json.productInfo?.products || json.productInfo;
         const custom = json.customProducts || [];
+        const dbOverrides = json.urlOverrides || {};
         if (atacado && Object.keys(atacado).length > 0) {
           setAtacadoProducts(atacado);
           if (varejo) setVarejoPrecos(varejo);
           if (pInfo && Object.keys(pInfo).length > 0) setProductInfo(pInfo);
           setCustomProducts(custom);
+          setDbUrlOverrides(dbOverrides);
           setDataSource("turso");
           setUpdatedAt(json.updatedAt);
         }
@@ -112,10 +115,10 @@ export function CatalogDataProvider({ children }: { children: React.ReactNode })
     for (const [slug, p] of Object.entries(atacadoProducts)) {
       if ((p as any).name) map[(p as any).name] = { ...(p as any), _slug: slug };
     }
-    // Overrides: mapeia nome do catálogo → produto do atacado pelo atacadoSlug
-    const overrideProducts = (urlOverrides as any).products || {};
-    for (const [catalogName, override] of Object.entries(overrideProducts)) {
-      if (map[catalogName]) continue; // já encontrado pelo nome direto
+    // Overrides: JSON estático + DB (admin vinculou URL)
+    const allOverrides = { ...(urlOverrides as any).products, ...dbUrlOverrides };
+    for (const [catalogName, override] of Object.entries(allOverrides)) {
+      if (map[catalogName]) continue;
       const atacadoSlug = (override as any).atacadoSlug;
       if (!atacadoSlug) continue;
       const baseSlug = atacadoSlug.replace(/-at$/, "");
@@ -123,7 +126,7 @@ export function CatalogDataProvider({ children }: { children: React.ReactNode })
       if (matched) map[catalogName] = { ...(matched as any), _slug: baseSlug };
     }
     return map;
-  }, [atacadoProducts]);
+  }, [atacadoProducts, dbUrlOverrides]);
 
   // PRODUCTS estáticos + customProducts do banco, mesclados
   const allProducts = useMemo(() => {
