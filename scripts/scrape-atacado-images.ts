@@ -393,6 +393,78 @@ async function main() {
 
   console.log(`\n  Enhanced ${enhanced} products with full galleries`);
 
+  // Phase 3: Buscar produtos de url-overrides que não foram encontrados nas listagens
+  console.log(`\n  Checking url-overrides for missing products...`);
+  const overridesPath = path.join(__dirname, "..", "src", "data", "url-overrides.json");
+  try {
+    const overridesData = JSON.parse(fs.readFileSync(overridesPath, "utf-8"));
+    const overrideProducts = overridesData.products || {};
+    let overrideAdded = 0;
+
+    for (const [catalogName, override] of Object.entries(overrideProducts) as [string, any][]) {
+      const atacadoSlug = override.atacadoSlug;
+      if (!atacadoSlug) continue;
+      const baseSlug = atacadoSlug.replace(/-at$/, "");
+      if (allProducts.has(baseSlug)) continue; // já temos
+
+      process.stdout.write(`  [OVERRIDE] ${atacadoSlug}...`);
+      try {
+        const html = await fetchHTML(`${BASE_URL}/${atacadoSlug}/`);
+        if (html.length < 5000) { console.log(" pagina de login"); continue; }
+
+        const $ = cheerio.load(html);
+        const name = $("h1").first().text().trim() || catalogName;
+
+        // Imagens
+        const images: string[] = [];
+        let folder = "";
+        $("img").each((_, el) => {
+          const src = $(el).attr("data-src") || $(el).attr("src") || "";
+          if (src.includes(ATACADO_CDN) && src.includes("/produtos/") && !src.includes("_mini") && !src.includes("template")) {
+            const folderMatch = src.match(/\/produtos\/([^/]+)\//);
+            if (folderMatch && !folder) folder = folderMatch[1];
+            if (!images.includes(src)) images.push(src);
+          }
+        });
+
+        // Stock
+        const stock: Record<string, number> = {};
+        let totalStock = 0;
+        let price = 0;
+        const b64 = $("[data-comprarapida]").first().attr("data-comprarapida") || "";
+        if (b64) {
+          try {
+            const data = JSON.parse(Buffer.from(b64, "base64").toString("utf-8"));
+            for (const v of data.variacoes || []) {
+              const sizeName = v.atributos?.tamanho?.nome || "U";
+              const qty = parseInt(v.estoque || "0");
+              stock[sizeName] = qty;
+              totalStock += qty;
+              if (!price) price = parseFloat(v.preco?.valor_venda || "0");
+            }
+          } catch {}
+        }
+
+        allProducts.set(baseSlug, {
+          name,
+          slug: baseSlug,
+          atacadoSlug,
+          images,
+          stock,
+          totalStock,
+          price,
+          folder,
+        });
+        overrideAdded++;
+        console.log(` ${images.length} imgs, stock: ${totalStock}`);
+      } catch (err: any) {
+        console.log(` ERRO: ${err.message}`);
+      }
+      await delay(SCRAPE_DELAY);
+    }
+    if (overrideAdded > 0) console.log(`  Added ${overrideAdded} products from overrides`);
+  } catch {}
+
   // Save atacado data
   const dataDir = path.join(__dirname, "..", "src", "data");
   const outputPath = path.join(dataDir, "atacado-details.json");

@@ -1,8 +1,8 @@
 {
-  "timestamp": "2026-04-06T10:51:56.896Z",
+  "timestamp": "2026-04-06T21:14:11.329Z",
   "source": "floraamaratacado.com.br",
   "cdn": "97065044c3a1a212e5c7a4f183fed028",
-  "count": 105,
+  "count": 106,
   "products": {
     "top-curve-cinza": {
       "name": "Top Curve Cinza",
@@ -20,9 +20,9 @@
         "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/69b4650495de8/20260312_79511-69b4b9bec5d9b.jpg"
       ],
       "stock": {
-        "P": 6
+        "G": 19
       },
-      "totalStock": 6,
+      "totalStock": 19,
       "price": 39,
       "folder": "69b4650495de8"
     },
@@ -40,10 +40,11 @@
         "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/69b464fd75a11/20260312_79783-69b4c4f99c9bb.jpg"
       ],
       "stock": {
-        "P": 23,
-        "G": 21
+        "P": 26,
+        "M": 36,
+        "G": 14
       },
-      "totalStock": 44,
+      "totalStock": 76,
       "price": 39,
       "folder": "69b464fd75a11"
     },
@@ -62,10 +63,11 @@
         "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/69b464fa7abb3/87dcdc90-5520-470d-ad68-a9e8bc26ad95-69b4c2f96a476.jpg"
       ],
       "stock": {
-        "P": 1,
-        "M": 17
+        "P": 62,
+        "M": 74,
+        "G": 8
       },
-      "totalStock": 18,
+      "totalStock": 144,
       "price": 39,
       "folder": "69b464fa7abb3"
     },
@@ -80,9 +82,10 @@
         "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/69b464f68674b/20260312_79936-69b4c599ea1ab.jpg"
       ],
       "stock": {
-        "P": 7
+        "P": 36,
+        "M": 16
       },
-      "totalStock": 7,
+      "totalStock": 52,
       "price": 48,
       "folder": "69b464f68674b"
     },
@@ -98,9 +101,11 @@
         "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/69b464f504b2a/707c53ea-9d56-4ccf-acd8-ee9228005363-69b4c8c9591f3.jpg"
       ],
       "stock": {
-        "P": 6
+        "P": 26,
+        "M": 37,
+        "G": 18
       },
-      "totalStock": 6,
+      "totalStock": 81,
       "price": 48,
       "folder": "69b464f504b2a"
     },
@@ -118,10 +123,11 @@
         "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/69b464f258705/20260312_79451-69b4ca0ed8ff2.jpg"
       ],
       "stock": {
-        "P": 24,
-        "G": 4
+        "P": 63,
+        "M": 35,
+        "G": 11
       },
-      "totalStock": 28,
+      "totalStock": 109,
       "price": 48,
       "folder": "69b464f258705"
     },
@@ -134,10 +140,11 @@
         "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/699f44166c9e0/6d8363e3-57a9-4a75-b411-9369771cfee2-699f53d4dfef3.jpg"
       ],
       "stock": {
-        "P": 19,
+        "P": 28,
+        "M": 23,
         "G": 8
       },
-      "totalStock": 27,
+      "totalStock": 59,
       "price": 48,
       "folder": "699f44166c9e0"
     },
@@ -150,9 +157,11 @@
         "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/699f4414c5b99/01a7b452-cc01-40f5-8324-9f26c196e2d7-699f4e3106ee4.jpg"
       ],
       "stock": {
-        "G": 37
+        "P": 78,
+        "M": 71,
+        "G": 48
       },
-      "totalStock": 37,
+      "totalStock": 197,
       "price": 48,
       "folder": "699f4414c5b99"
     },
@@ -180,11 +189,9 @@
         "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/69237e621e60c/wbuy-mobile-1763981694312-6924398001c51.jpg"
       ],
       "stock": {
-        "P": 49,
-        "M": 27,
-        "G": 11
+        "P": 6
       },
-      "totalStock": 87,
+      "totalStock": 6,
       "price": 48,
       "folder": "69237e621e60c"
     },
@@ -216,11 +223,9 @@
         "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/69237e5d87360/wbuy-mobile-1763982457610-69243c7b5fe83.jpg"
       ],
       "stock": {
-        "P": 34,
-        "M": 31,
-        "G": 27
+        "P": 6
       },
-      "totalStock": 92,
+      "totalStock": 6,
       "price": 48,
       "folder": "69237e5d87360"
     },
@@ -236,11 +241,9 @@
         "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68ac81d890d22/img_5876-68ae0a50d355d.jpg"
       ],
       "stock": {
-        "P": 43,
-        "M": 29,
-        "G": 25
+        "P": 13
       },
-      "totalStock": 97,
+      "totalStock": 13,
       "price": 49,
       "folder": "68ac81d890d22"
     },
@@ -257,11 +260,11 @@
         "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68ac81d525e5c/126c1516-9c61-43e4-9932-cc4c71a16eaf-68ae0970c536c.jpg"
       ],
       "stock": {
-        "P": 26,
-        "M": 15,
-        "G": 24
+        "P": 24,
+        "M": 36,
+        "G": 18
       },
-      "totalStock": 65,
+      "totalStock": 78,
       "price": 49,
       "folder": "68ac81d525e5c"
     },
@@ -274,9 +277,9 @@
         "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68ac81d1dd227/f703dda1-a72b-464c-bf87-a7c3f95006d8-68af1dcb5a40a.jpg"
       ],
       "stock": {
-        "P": 7
+        "G": 26
       },
-      "totalStock": 7,
+      "totalStock": 26,
       "price": 49,
       "folder": "68ac81d1dd227"
     },
@@ -289,9 +292,11 @@
         "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68ac81ce761d2/img_2399-68acb2586ec06.jpg"
       ],
       "stock": {
-        "G": 19
+        "P": 52,
+        "M": 42,
+        "G": 17
       },
-      "totalStock": 19,
+      "totalStock": 111,
       "price": 49,
       "folder": "68ac81ce761d2"
     },
@@ -306,10 +311,11 @@
         "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68ac81cbd1da3/conjunto-preto-com-off2-68acaa405e552.jpeg"
       ],
       "stock": {
-        "P": 17,
-        "G": 4
+        "P": 20,
+        "M": 20,
+        "G": 1
       },
-      "totalStock": 21,
+      "totalStock": 41,
       "price": 49,
       "folder": "68ac81cbd1da3"
     },
@@ -322,11 +328,11 @@
         "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68ac81c964935/b45c8948-2580-4701-acc0-0b67752fdd46-68af1e0e25d37.jpg"
       ],
       "stock": {
-        "P": 32,
-        "M": 27,
-        "G": 19
+        "P": 60,
+        "M": 31,
+        "G": 8
       },
-      "totalStock": 78,
+      "totalStock": 99,
       "price": 49,
       "folder": "68ac81c964935"
     },
@@ -341,11 +347,11 @@
         "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68ac8162b295c/6a741851-ddb3-4e6a-88e0-8bf22e6a25e8-68af21411385b.jpg"
       ],
       "stock": {
-        "P": 24,
-        "M": 36,
-        "G": 18
+        "P": 13,
+        "M": 18,
+        "G": 2
       },
-      "totalStock": 78,
+      "totalStock": 33,
       "price": 49,
       "folder": "68ac8162b295c"
     },
@@ -358,10 +364,11 @@
         "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68ac8157890fd/img_2623-68acbd67d83c9.jpg"
       ],
       "stock": {
-        "P": 3,
-        "M": 3
+        "P": 26,
+        "M": 36,
+        "G": 14
       },
-      "totalStock": 6,
+      "totalStock": 76,
       "price": 49,
       "folder": "68ac8157890fd"
     },
@@ -376,11 +383,10 @@
         "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/688cde3211c97/img_3641-6893aca3798f7.jpg"
       ],
       "stock": {
-        "P": 26,
-        "M": 23,
-        "G": 7
+        "P": 39,
+        "G": 3
       },
-      "totalStock": 56,
+      "totalStock": 42,
       "price": 54,
       "folder": "688cde3211c97"
     },
@@ -394,11 +400,9 @@
         "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/688cde2ea509c/img_2388-688d0d90d96a1.jpg"
       ],
       "stock": {
-        "P": 37,
-        "M": 14,
-        "G": 26
+        "P": 28
       },
-      "totalStock": 77,
+      "totalStock": 28,
       "price": 54,
       "folder": "688cde2ea509c"
     },
@@ -411,11 +415,10 @@
         "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68752d5f25780/img_2022-687554aae208f.jpg"
       ],
       "stock": {
-        "P": 52,
-        "M": 42,
-        "G": 17
+        "P": 5,
+        "G": 7
       },
-      "totalStock": 111,
+      "totalStock": 12,
       "price": 48,
       "folder": "68752d5f25780"
     },
@@ -428,10 +431,11 @@
         "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68752d5bd5a74/img_2172-68755412990e0.jpg"
       ],
       "stock": {
-        "P": 8,
-        "G": 1
+        "P": 42,
+        "M": 34,
+        "G": 17
       },
-      "totalStock": 9,
+      "totalStock": 93,
       "price": 48,
       "folder": "68752d5bd5a74"
     },
@@ -448,11 +452,11 @@
         "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/69b465027b3fc/36b4974e-2ee7-47ef-a176-a65082d66509-69b4bc36d81a9.jpg"
       ],
       "stock": {
-        "P": 28,
-        "M": 24,
-        "G": 9
+        "P": 43,
+        "M": 29,
+        "G": 25
       },
-      "totalStock": 61,
+      "totalStock": 97,
       "price": 69,
       "folder": "69b465027b3fc"
     },
@@ -467,11 +471,11 @@
         "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/69b465007aabd/5fa40013-ba4f-420e-9948-1c3783b699e8-69b4befc56391.jpg"
       ],
       "stock": {
-        "P": 62,
-        "M": 74,
-        "G": 8
+        "P": 24,
+        "M": 16,
+        "G": 16
       },
-      "totalStock": 144,
+      "totalStock": 56,
       "price": 69,
       "folder": "69b465007aabd"
     },
@@ -490,11 +494,11 @@
         "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/69b464f88e8bd/cc1251f9-1f62-4447-9db1-025fa3d12681-69b4c16bc47d7.jpg"
       ],
       "stock": {
-        "P": 24,
-        "M": 18,
-        "G": 17
+        "P": 18,
+        "M": 17,
+        "G": 21
       },
-      "totalStock": 59,
+      "totalStock": 56,
       "price": 69,
       "folder": "69b464f88e8bd"
     },
@@ -508,11 +512,9 @@
         "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/69237e68c5df0/wbuy-mobile-1763982368755-69243c2276c4c.jpg"
       ],
       "stock": {
-        "P": 49,
-        "M": 27,
-        "G": 11
+        "P": 6
       },
-      "totalStock": 87,
+      "totalStock": 6,
       "price": 69,
       "folder": "69237e68c5df0"
     },
@@ -525,11 +527,9 @@
         "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/69237e6694a24/wbuy-mobile-1763982287238-69243bd140df9.jpg"
       ],
       "stock": {
-        "P": 49,
-        "M": 27,
-        "G": 11
+        "P": 6
       },
-      "totalStock": 87,
+      "totalStock": 6,
       "price": 69,
       "folder": "69237e6694a24"
     },
@@ -559,11 +559,9 @@
         "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68ac816e6898a/6114f49d-c38f-48c3-9f9e-2017b2733313-68af1e9d19e83.jpg"
       ],
       "stock": {
-        "P": 37,
-        "M": 14,
-        "G": 26
+        "P": 27
       },
-      "totalStock": 77,
+      "totalStock": 27,
       "price": 59,
       "folder": "68ac816e6898a"
     },
@@ -576,11 +574,9 @@
         "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68ac816c0d39a/0949311b-8b82-43f9-b21b-b6d9288dddb4-68af1f60c2871.jpg"
       ],
       "stock": {
-        "P": 37,
-        "M": 38,
-        "G": 19
+        "P": 9
       },
-      "totalStock": 94,
+      "totalStock": 9,
       "price": 59,
       "folder": "68ac816c0d39a"
     },
@@ -594,9 +590,10 @@
         "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68ac8169a4d01/f703dda1-a72b-464c-bf87-a7c3f95006d8-68af2230cfa6d.jpg"
       ],
       "stock": {
-        "P": 9
+        "P": 24,
+        "G": 4
       },
-      "totalStock": 9,
+      "totalStock": 28,
       "price": 59,
       "folder": "68ac8169a4d01"
     },
@@ -610,10 +607,11 @@
         "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68ac815a11083/img_2623-68acca91a91ca.jpg"
       ],
       "stock": {
-        "P": 1,
-        "G": 9
+        "P": 26,
+        "M": 36,
+        "G": 14
       },
-      "totalStock": 10,
+      "totalStock": 76,
       "price": 59,
       "folder": "68ac815a11083"
     },
@@ -626,11 +624,10 @@
         "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68752bb98a84d/img_2080-2-687548867221d.jpg"
       ],
       "stock": {
-        "P": 24,
-        "M": 18,
-        "G": 17
+        "P": 13,
+        "G": 5
       },
-      "totalStock": 59,
+      "totalStock": 18,
       "price": 69,
       "folder": "68752bb98a84d"
     },
@@ -644,10 +641,10 @@
         "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68752ba776320/img_1962-687547967db05.jpg"
       ],
       "stock": {
-        "P": 3,
-        "M": 3
+        "P": 19,
+        "G": 8
       },
-      "totalStock": 6,
+      "totalStock": 27,
       "price": 69,
       "folder": "68752ba776320"
     },
@@ -660,11 +657,11 @@
         "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/685d868a6535e/shorts-preto-685da4b6d9c24.jpg"
       ],
       "stock": {
-        "P": 24,
+        "P": 26,
         "M": 36,
-        "G": 18
+        "G": 14
       },
-      "totalStock": 78,
+      "totalStock": 76,
       "price": 79,
       "folder": "685d868a6535e"
     },
@@ -677,11 +674,11 @@
         "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/685d8686b7d02/shorts-adapt-marrom-685da3b7263e7.jpg"
       ],
       "stock": {
-        "P": 37,
-        "M": 14,
-        "G": 26
+        "P": 60,
+        "M": 31,
+        "G": 8
       },
-      "totalStock": 77,
+      "totalStock": 99,
       "price": 79,
       "folder": "685d8686b7d02"
     },
@@ -694,11 +691,9 @@
         "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68430ade944e6/short-basic-azul-marine-lateral-68431722a7a36.jpeg"
       ],
       "stock": {
-        "P": 26,
-        "M": 37,
-        "G": 18
+        "G": 37
       },
-      "totalStock": 81,
+      "totalStock": 37,
       "price": 59,
       "folder": "68430ade944e6"
     },
@@ -711,11 +706,11 @@
         "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68430ad4c98e6/short-speed-azul-marine-6846c82bdbe6a.jpeg"
       ],
       "stock": {
-        "P": 37,
-        "M": 38,
-        "G": 19
+        "P": 18,
+        "M": 12,
+        "G": 10
       },
-      "totalStock": 94,
+      "totalStock": 40,
       "price": 59,
       "folder": "68430ad4c98e6"
     },
@@ -728,11 +723,10 @@
         "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68430ac5f1446/short-basic-terracota-68431ce603895.jpeg"
       ],
       "stock": {
-        "P": 39,
-        "M": 40,
-        "G": 19
+        "P": 1,
+        "M": 17
       },
-      "totalStock": 98,
+      "totalStock": 18,
       "price": 59,
       "folder": "68430ac5f1446"
     },
@@ -744,11 +738,11 @@
         "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68430ac277274/img_6155-68430fbf58c01.jpg"
       ],
       "stock": {
-        "P": 42,
-        "M": 34,
-        "G": 17
+        "P": 22,
+        "M": 21,
+        "G": 11
       },
-      "totalStock": 93,
+      "totalStock": 54,
       "price": 65,
       "folder": "68430ac277274"
     },
@@ -761,9 +755,11 @@
         "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68430abac3688/short-basic-lilas-lateral-68431e5cb2cf3.jpeg"
       ],
       "stock": {
-        "P": 7
+        "P": 13,
+        "M": 18,
+        "G": 2
       },
-      "totalStock": 7,
+      "totalStock": 33,
       "price": 59,
       "folder": "68430abac3688"
     },
@@ -777,11 +773,10 @@
         "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68430ab77e4d3/short-speed-lilas-684331d0944f2.jpeg"
       ],
       "stock": {
-        "P": 23,
-        "M": 13,
-        "G": 11
+        "P": 1,
+        "G": 9
       },
-      "totalStock": 47,
+      "totalStock": 10,
       "price": 59,
       "folder": "68430ab77e4d3"
     },
@@ -810,10 +805,11 @@
         "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/6824bfcf863ad/speed-verde-herb-5-6824e03086bbf.jpg"
       ],
       "stock": {
-        "M": 12,
-        "G": 11
+        "P": 43,
+        "M": 29,
+        "G": 25
       },
-      "totalStock": 23,
+      "totalStock": 97,
       "price": 59,
       "folder": "6824bfcf863ad"
     },
@@ -828,9 +824,9 @@
         "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68102cc837d7f/shorts-run-branco-2-sem-logo-6810b24a58e63.jpeg"
       ],
       "stock": {
-        "P": 28
+        "P": 2
       },
-      "totalStock": 28,
+      "totalStock": 2,
       "price": 69,
       "folder": "68102cc837d7f"
     },
@@ -843,11 +839,11 @@
         "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/680fbc0b0e925/shorts-speed-preto-2-sem-logo-680fd369eec63.jpeg"
       ],
       "stock": {
-        "P": 125,
-        "M": 101,
-        "G": 43
+        "P": 28,
+        "M": 23,
+        "G": 8
       },
-      "totalStock": 269,
+      "totalStock": 59,
       "price": 59,
       "folder": "680fbc0b0e925"
     },
@@ -863,11 +859,10 @@
         "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68ac815f46f90/img_2670-68acc8a801032.jpg"
       ],
       "stock": {
-        "P": 28,
-        "M": 24,
+        "P": 1,
         "G": 9
       },
-      "totalStock": 61,
+      "totalStock": 10,
       "price": 85,
       "folder": "68ac815f46f90"
     },
@@ -886,11 +881,10 @@
         "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68ac815de76cc/img_5878-68ae0a0f8c316.jpg"
       ],
       "stock": {
-        "P": 13,
-        "M": 18,
-        "G": 2
+        "P": 19,
+        "G": 8
       },
-      "totalStock": 33,
+      "totalStock": 27,
       "price": 85,
       "folder": "68ac815de76cc"
     },
@@ -909,11 +903,10 @@
         "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68ac815ca959b/img_5491-68ae09c94e999.jpg"
       ],
       "stock": {
-        "P": 125,
-        "M": 101,
-        "G": 43
+        "P": 19,
+        "G": 8
       },
-      "totalStock": 269,
+      "totalStock": 27,
       "price": 85,
       "folder": "68ac815ca959b"
     },
@@ -929,11 +922,9 @@
         "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68ac815b6ec79/7f08805f-2017-4267-9ec9-5a36c7665a6e-68acc9e5ca9a8.jpg"
       ],
       "stock": {
-        "P": 125,
-        "M": 101,
-        "G": 43
+        "P": 13
       },
-      "totalStock": 269,
+      "totalStock": 13,
       "price": 85,
       "folder": "68ac815b6ec79"
     },
@@ -946,11 +937,10 @@
         "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/689f536b75cbb/calca-line-preta-sem-logo-2-689f63fb71062.jpeg"
       ],
       "stock": {
-        "P": 62,
-        "M": 74,
-        "G": 8
+        "M": 12,
+        "G": 11
       },
-      "totalStock": 144,
+      "totalStock": 23,
       "price": 98,
       "folder": "689f536b75cbb"
     },
@@ -967,11 +957,9 @@
         "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/688cde3d8234c/img_3639-6893abc240b66.jpg"
       ],
       "stock": {
-        "P": 13,
-        "M": 18,
-        "G": 2
+        "P": 6
       },
-      "totalStock": 33,
+      "totalStock": 6,
       "price": 98,
       "folder": "688cde3d8234c"
     },
@@ -986,11 +974,11 @@
         "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/688cde3adbd98/img_2694-688d0a7ea4a63.jpg"
       ],
       "stock": {
-        "P": 12,
-        "M": 8,
-        "G": 3
+        "P": 51,
+        "M": 58,
+        "G": 4
       },
-      "totalStock": 23,
+      "totalStock": 113,
       "price": 98,
       "folder": "688cde3adbd98"
     },
@@ -1005,11 +993,10 @@
         "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/688cde37e5657/img_2388-688d0829cbbc2.jpg"
       ],
       "stock": {
-        "P": 19,
-        "M": 34,
-        "G": 20
+        "P": 16,
+        "M": 5
       },
-      "totalStock": 73,
+      "totalStock": 21,
       "price": 98,
       "folder": "688cde37e5657"
     },
@@ -1022,11 +1009,11 @@
         "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68752bbd0cb73/img_2135-1-68754b5eb01de.jpg"
       ],
       "stock": {
-        "P": 18,
-        "M": 12,
-        "G": 10
+        "P": 24,
+        "M": 16,
+        "G": 16
       },
-      "totalStock": 40,
+      "totalStock": 56,
       "price": 98,
       "folder": "68752bbd0cb73"
     },
@@ -1039,11 +1026,10 @@
         "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68752ba8619e6/img_2015-1-687549ff8d410.jpg"
       ],
       "stock": {
-        "P": 39,
-        "M": 40,
-        "G": 19
+        "P": 19,
+        "G": 8
       },
-      "totalStock": 98,
+      "totalStock": 27,
       "price": 98,
       "folder": "68752ba8619e6"
     },
@@ -1057,11 +1043,11 @@
         "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68430acaa19a6/conjunto-legging-classic-terracota-6843430e30f6f.jpeg"
       ],
       "stock": {
-        "P": 26,
-        "M": 36,
-        "G": 14
+        "P": 39,
+        "M": 40,
+        "G": 19
       },
-      "totalStock": 76,
+      "totalStock": 98,
       "price": 80,
       "folder": "68430acaa19a6"
     },
@@ -1079,9 +1065,10 @@
         "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/66c4824c4f835/top-dallas-coffe-com-logo-frente-66f21cffdedd3.jpeg"
       ],
       "stock": {
-        "G": 19
+        "P": 24,
+        "G": 4
       },
-      "totalStock": 19,
+      "totalStock": 28,
       "price": 80,
       "folder": "66c4824c4f835"
     },
@@ -1095,11 +1082,11 @@
         "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/662a76306c499/legging-preto-cintura-alta-sem-logo-6701fbeb8271b.jpeg"
       ],
       "stock": {
-        "P": 38,
-        "M": 26,
-        "G": 17
+        "P": 51,
+        "M": 58,
+        "G": 4
       },
-      "totalStock": 81,
+      "totalStock": 113,
       "price": 72,
       "folder": "662a76306c499"
     },
@@ -1111,10 +1098,9 @@
         "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68e68aaf00025/img_8216-68e68b9571ed3.png"
       ],
       "stock": {
-        "P": 1,
-        "G": 9
+        "P": 6
       },
-      "totalStock": 10,
+      "totalStock": 6,
       "price": 0,
       "folder": "68e68aaf00025"
     },
@@ -1129,9 +1115,9 @@
         "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/685d868d07244/dsc05228-685da0868b4f5.jpg"
       ],
       "stock": {
-        "G": 19
+        "P": 1
       },
-      "totalStock": 19,
+      "totalStock": 1,
       "price": 0,
       "folder": "685d868d07244"
     },
@@ -1144,11 +1130,9 @@
         "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/699f441273dc6/26683082-29b2-4d48-b8bc-b0bc06f3a2b9-699f59dc81a0a.jpg"
       ],
       "stock": {
-        "P": 18,
-        "M": 12,
-        "G": 10
+        "P": 28
       },
-      "totalStock": 40,
+      "totalStock": 28,
       "price": 79,
       "folder": "699f441273dc6"
     },
@@ -1161,11 +1145,11 @@
         "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/699f440eb3ab7/a825b398-a014-404b-80be-1854318fa293-699f5ab2e56be.jpg"
       ],
       "stock": {
-        "P": 13,
-        "M": 18,
-        "G": 2
+        "P": 39,
+        "M": 40,
+        "G": 19
       },
-      "totalStock": 33,
+      "totalStock": 98,
       "price": 79,
       "folder": "699f440eb3ab7"
     },
@@ -1178,11 +1162,9 @@
         "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/69237e5bb0d44/wbuy-mobile-1763939375632-692394312070f.jpg"
       ],
       "stock": {
-        "P": 49,
-        "M": 27,
-        "G": 11
+        "P": 6
       },
-      "totalStock": 87,
+      "totalStock": 6,
       "price": 79,
       "folder": "69237e5bb0d44"
     },
@@ -1195,9 +1177,9 @@
         "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/69237e5890a1f/wbuy-mobile-1763936378725-6923887c44e12.jpg"
       ],
       "stock": {
-        "P": 6
+        "G": 11
       },
-      "totalStock": 6,
+      "totalStock": 11,
       "price": 79,
       "folder": "69237e5890a1f"
     },
@@ -1230,11 +1212,10 @@
         "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68ac81c614234/img_6384-68ae0aedc9798.jpg"
       ],
       "stock": {
-        "P": 78,
-        "M": 71,
-        "G": 48
+        "P": 31,
+        "M": 6
       },
-      "totalStock": 197,
+      "totalStock": 37,
       "price": 89,
       "folder": "68ac81c614234"
     },
@@ -1247,11 +1228,11 @@
         "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68ac81c29d81f/2787eaa1-1d42-4a4b-a03e-47727de626a6-68acbef2e3c95.jpg"
       ],
       "stock": {
-        "P": 32,
-        "M": 27,
-        "G": 19
+        "P": 24,
+        "M": 16,
+        "G": 16
       },
-      "totalStock": 78,
+      "totalStock": 56,
       "price": 89,
       "folder": "68ac81c29d81f"
     },
@@ -1264,11 +1245,11 @@
         "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68ac81660f846/f90fe08c-eb81-4633-b523-2d4de18f4f38-68acc04c1642d.jpg"
       ],
       "stock": {
-        "P": 19,
-        "M": 34,
-        "G": 20
+        "P": 49,
+        "M": 17,
+        "G": 17
       },
-      "totalStock": 73,
+      "totalStock": 83,
       "price": 89,
       "folder": "68ac81660f846"
     },
@@ -1284,11 +1265,9 @@
         "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68ac81541bb17/47f7b437-8631-4a5b-b099-bb31d32004c8-68ae0bac5dead.jpg"
       ],
       "stock": {
-        "P": 44,
-        "M": 34,
-        "G": 19
+        "P": 28
       },
-      "totalStock": 97,
+      "totalStock": 28,
       "price": 89,
       "folder": "68ac81541bb17"
     },
@@ -1324,11 +1303,11 @@
         "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/688cde288bdb1/dsc09163-689e03a4afff0.jpg"
       ],
       "stock": {
-        "P": 38,
-        "M": 26,
-        "G": 17
+        "P": 60,
+        "M": 31,
+        "G": 8
       },
-      "totalStock": 81,
+      "totalStock": 99,
       "price": 105,
       "folder": "688cde288bdb1"
     },
@@ -1345,11 +1324,11 @@
         "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/688cde261a987/dsc09027-689e03397b173.jpg"
       ],
       "stock": {
-        "P": 28,
-        "M": 24,
-        "G": 9
+        "P": 60,
+        "M": 31,
+        "G": 8
       },
-      "totalStock": 61,
+      "totalStock": 99,
       "price": 105,
       "folder": "688cde261a987"
     },
@@ -1365,11 +1344,10 @@
         "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68752d541846c/img_2112-1-68754cab5f744.jpg"
       ],
       "stock": {
-        "P": 38,
-        "M": 26,
-        "G": 17
+        "P": 31,
+        "M": 6
       },
-      "totalStock": 81,
+      "totalStock": 37,
       "price": 99,
       "folder": "68752d541846c"
     },
@@ -1382,10 +1360,11 @@
         "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68752bb4de4ce/img_2199-68754edcbbeb6.jpg"
       ],
       "stock": {
-        "P": 14,
-        "G": 1
+        "P": 52,
+        "M": 42,
+        "G": 17
       },
-      "totalStock": 15,
+      "totalStock": 111,
       "price": 98,
       "folder": "68752bb4de4ce"
     },
@@ -1401,11 +1380,11 @@
         "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68752bb26dd5f/img_1922-1-68754dedf3ec8.jpg"
       ],
       "stock": {
-        "P": 20,
-        "M": 20,
-        "G": 1
+        "P": 23,
+        "M": 13,
+        "G": 11
       },
-      "totalStock": 41,
+      "totalStock": 47,
       "price": 99,
       "folder": "68752bb26dd5f"
     },
@@ -1418,11 +1397,11 @@
         "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/68752bb00ab57/img_1977-68754fb5c49f4.jpg"
       ],
       "stock": {
-        "P": 39,
-        "M": 40,
-        "G": 19
+        "P": 19,
+        "M": 34,
+        "G": 20
       },
-      "totalStock": 98,
+      "totalStock": 73,
       "price": 98,
       "folder": "68752bb00ab57"
     },
@@ -1435,11 +1414,11 @@
         "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/6824bfc7a0584/macaquinho-blush-2-sem-logooo-6824e82b355ea.jpeg"
       ],
       "stock": {
-        "P": 42,
-        "M": 34,
-        "G": 17
+        "P": 21,
+        "M": 20,
+        "G": 4
       },
-      "totalStock": 93,
+      "totalStock": 45,
       "price": 79,
       "folder": "6824bfc7a0584"
     },
@@ -1469,10 +1448,11 @@
         "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/67e43f4fd19f9/macaquinho-azul-sem-logo3-67e4446736695.jpeg"
       ],
       "stock": {
-        "P": 3,
-        "M": 3
+        "P": 44,
+        "M": 34,
+        "G": 19
       },
-      "totalStock": 6,
+      "totalStock": 97,
       "price": 79,
       "folder": "67e43f4fd19f9"
     },
@@ -1485,11 +1465,11 @@
         "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/67e43f4d8433f/macaquinho-move-verde-militar-sem-logo-67e4439def6c8.jpeg"
       ],
       "stock": {
-        "P": 12,
-        "M": 8,
-        "G": 3
+        "P": 39,
+        "M": 40,
+        "G": 19
       },
-      "totalStock": 23,
+      "totalStock": 98,
       "price": 79,
       "folder": "67e43f4d8433f"
     },
@@ -1502,11 +1482,9 @@
         "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/67e43f4ac06ab/macaquinho-verde-militar-sem-logo-67e442fc1f0c5.jpeg"
       ],
       "stock": {
-        "P": 20,
-        "M": 20,
-        "G": 1
+        "P": 7
       },
-      "totalStock": 41,
+      "totalStock": 7,
       "price": 79,
       "folder": "67e43f4ac06ab"
     },
@@ -1520,9 +1498,11 @@
         "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/6797bc991504c/thai9959-6797c16372b85.jpg"
       ],
       "stock": {
-        "G": 7
+        "P": 26,
+        "M": 37,
+        "G": 18
       },
-      "totalStock": 7,
+      "totalStock": 81,
       "price": 79,
       "folder": "6797bc991504c"
     },
@@ -1537,11 +1517,11 @@
         "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/6797bc905894a/macaquinho-preto-frente-unica-3-6797bf11cf884.jpg"
       ],
       "stock": {
-        "P": 20,
-        "M": 20,
-        "G": 1
+        "P": 18,
+        "M": 12,
+        "G": 10
       },
-      "totalStock": 41,
+      "totalStock": 40,
       "price": 79,
       "folder": "6797bc905894a"
     },
@@ -1554,9 +1534,11 @@
         "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/6740a41751fe7/thai5949-66f292faee744-6740a5c9eabc1.jpg"
       ],
       "stock": {
-        "G": 4
+        "P": 44,
+        "M": 34,
+        "G": 19
       },
-      "totalStock": 4,
+      "totalStock": 97,
       "price": 45,
       "folder": "6740a41751fe7"
     },
@@ -1571,11 +1553,11 @@
         "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/699f44131ef76/img_8976-699f578b055d3.jpg"
       ],
       "stock": {
-        "P": 39,
-        "M": 40,
+        "P": 37,
+        "M": 38,
         "G": 19
       },
-      "totalStock": 98,
+      "totalStock": 94,
       "price": 105,
       "folder": "699f44131ef76"
     },
@@ -1588,9 +1570,11 @@
         "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/675ac96e2624d/macaquinho-essential-collection2-675b47604d381.jpeg"
       ],
       "stock": {
-        "P": 7
+        "P": 18,
+        "M": 12,
+        "G": 10
       },
-      "totalStock": 7,
+      "totalStock": 40,
       "price": 98,
       "folder": "675ac96e2624d"
     },
@@ -1603,9 +1587,11 @@
         "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/675ac973631c7/macaquinho-essential-collection-marrom-675b4ae3caa9b.jpeg"
       ],
       "stock": {
-        "G": 37
+        "P": 14,
+        "M": 5,
+        "G": 16
       },
-      "totalStock": 37,
+      "totalStock": 35,
       "price": 0,
       "folder": "675ac973631c7"
     },
@@ -1622,9 +1608,9 @@
         "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/6984b0be5e939/wbuy-mobile-1763982412718-69243c4e5531f-6984b35246c77.jpg"
       ],
       "stock": {
-        "G": 11
+        "P": 6
       },
-      "totalStock": 11,
+      "totalStock": 6,
       "price": 117,
       "folder": "6984b0be5e939",
       "pieces": [
@@ -1699,11 +1685,11 @@
         "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/6984a03244f97/atacado-run-sky-6984a1574611a.jpg"
       ],
       "stock": {
-        "P": 65,
-        "M": 34,
-        "G": 23
+        "P": 49,
+        "M": 27,
+        "G": 11
       },
-      "totalStock": 122,
+      "totalStock": 87,
       "price": 117,
       "folder": "6984a03244f97",
       "pieces": [
@@ -2088,6 +2074,23 @@
           "price": 85
         }
       ]
+    },
+    "short-run-preto": {
+      "name": "Short Run Preto",
+      "atacadoSlug": "short-run-preto-at",
+      "images": [
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/680fbc0611e30/shorts-run-preto-1-sem-logo-680fc80e86e23.jpeg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/680fbc0611e30/conjunto-run-preto-5-680fc8119cd66.jpg",
+        "https://cdn.sistemawbuy.com.br/arquivos/97065044c3a1a212e5c7a4f183fed028/produtos/680fbc0611e30/shorts-run-preto-2-sem-logo-680fc81510f3d.jpeg"
+      ],
+      "stock": {
+        "P": 13,
+        "M": 18,
+        "G": 2
+      },
+      "totalStock": 33,
+      "price": 44,
+      "folder": "680fbc0611e30"
     }
   }
 }
