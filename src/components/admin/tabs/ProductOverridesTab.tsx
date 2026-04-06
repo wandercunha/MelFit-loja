@@ -190,20 +190,22 @@ export function ProductOverridesTab() {
   const { atacadoProducts } = useCatalogData();
 
   // Helper para buscar estoque do atacado
-  const getStock = (product: { name: string; slug?: string }): { stock: Record<string, number>; totalStock: number } | null => {
+  const getStock = (product: { name: string; slug?: string }): { stock: Record<string, number>; totalStock: number; pieces?: any[] } | null => {
     const slug = product.slug || toSlug(product.name);
     const d = atacadoProducts[slug] as any;
-    if (d) return { stock: d.stock, totalStock: d.totalStock };
-    const byName = Object.values(atacadoProducts).find((x: any) => x.name === product.name) as any;
-    if (byName) return { stock: byName.stock, totalStock: byName.totalStock };
-    return null;
+    if (!d) {
+      const byName = Object.values(atacadoProducts).find((x: any) => x.name === product.name) as any;
+      if (!byName) return null;
+      return { stock: byName.stock, totalStock: byName.totalStock, pieces: byName.pieces };
+    }
+    return { stock: d.stock, totalStock: d.totalStock, pieces: d.pieces };
   };
 
   const [refreshing, setRefreshing] = useState(false);
 
   const [filter, setFilter] = useState("");
   const [editingId, setEditingId] = useState<number | null>(null);
-  const [editingField, setEditingField] = useState<"margin" | "shipping">("margin");
+  const [editingField, setEditingField] = useState<"margin" | "shipping" | "promo">("margin");
   const [editMargin, setEditMargin] = useState(0);
   const [editShipping, setEditShipping] = useState(0);
   const [editFakeDiscount, setEditFakeDiscount] = useState(0);
@@ -671,6 +673,7 @@ export function ProductOverridesTab() {
                         <th className="text-right px-3 py-1.5">Cartao</th>
                         <th className="text-right px-3 py-1.5">PIX</th>
                         <th className="text-right px-3 py-1.5">Lucro</th>
+                        <th className="text-center px-3 py-1.5 text-red-400">Promo</th>
                         <th className="text-center px-3 py-1.5">Estoque</th>
                         <th className="text-center px-2 py-1.5 w-10"></th>
                       </tr>
@@ -793,10 +796,35 @@ export function ProductOverridesTab() {
                                 {formatBRL(calc.netProfit)}
                               </span>
                             </td>
+                            <td className="px-2 py-2 text-center">
+                              <div className="relative inline-block">
+                                <button
+                                  onClick={() => { startEdit(p.id, "margin"); setEditingField("promo" as any); }}
+                                  className={`text-[10px] font-bold px-1.5 py-0.5 rounded cursor-pointer ${ov?.fakeDiscount ? "bg-red-100 text-red-600" : "text-gray-300 hover:text-gray-500"}`}
+                                >
+                                  {ov?.fakeDiscount ? `-${ov.fakeDiscount}%` : "—"}
+                                </button>
+                                {isEditing && editingField === ("promo" as any) &&
+                                  renderPopover(
+                                    editFakeDiscount, "Promo %",
+                                    setEditFakeDiscount,
+                                    () => { setOverride(p.id, { ...ov, fakeDiscount: editFakeDiscount || undefined }); setEditingId(null); },
+                                    ov?.fakeDiscount ? () => { setOverride(p.id, { ...ov, fakeDiscount: undefined }); setEditingId(null); } : null,
+                                    !!ov?.fakeDiscount,
+                                  )
+                                }
+                              </div>
+                            </td>
                             <td className="px-3 py-2 text-center">
                               {stockInfo ? (
-                                <div className="flex items-center justify-center gap-1">
-                                  {Object.keys(stockInfo.stock).length > 0 ? (
+                                <div className="flex items-center justify-center gap-1 flex-wrap">
+                                  {stockInfo.pieces && stockInfo.pieces.length > 0 ? (
+                                    stockInfo.pieces.map((pc: any) => (
+                                      <span key={pc.name} className="text-[10px] font-bold px-1 py-0.5 rounded bg-blue-50 text-blue-600" title={pc.name}>
+                                        {Object.keys(pc.sizes).join(",")}
+                                      </span>
+                                    ))
+                                  ) : Object.keys(stockInfo.stock).length > 0 ? (
                                     Object.entries(stockInfo.stock).map(([size, qty]) => (
                                       <span key={size} className={`text-[10px] font-bold px-1 py-0.5 rounded ${qty > 0 ? (qty <= 5 ? "bg-amber-50 text-amber-600" : "bg-emerald-50 text-emerald-600") : "bg-red-50 text-red-400 line-through"}`}>
                                         {size}:{qty}
@@ -981,9 +1009,15 @@ export function ProductOverridesTab() {
 
                               {/* Linha 4: Estoque por tamanho */}
                               {stockData && (
-                                <div className="flex items-center gap-1.5 mt-1.5">
+                                <div className="flex items-center gap-1.5 mt-1.5 flex-wrap">
                                   <span className="text-[10px] text-gray-400">Estoque:</span>
-                                  {Object.keys(stockData.stock).length > 0 ? (
+                                  {stockData.pieces && stockData.pieces.length > 0 ? (
+                                    stockData.pieces.map((pc: any) => (
+                                      <span key={pc.name} className="text-[10px] font-bold px-1.5 py-0.5 rounded bg-blue-50 text-blue-600" title={pc.name}>
+                                        {pc.name.split(" ").pop()}: {Object.keys(pc.sizes).join(",")}
+                                      </span>
+                                    ))
+                                  ) : Object.keys(stockData.stock).length > 0 ? (
                                     Object.entries(stockData.stock).map(([size, qty]) => (
                                       <span key={size} className={`text-[10px] font-bold px-1.5 py-0.5 rounded ${qty > 0 ? (qty <= 5 ? "bg-amber-50 text-amber-600" : "bg-emerald-50 text-emerald-600") : "bg-red-50 text-red-400 line-through"}`}>
                                         {size}:{qty}
@@ -992,9 +1026,11 @@ export function ProductOverridesTab() {
                                   ) : (
                                     <span className="text-[10px] font-bold text-red-400">Esgotado</span>
                                   )}
-                                  <span className={`text-[10px] font-bold ml-auto ${stockData.totalStock === 0 ? "text-red-400" : stockData.totalStock <= 10 ? "text-amber-500" : "text-emerald-500"}`}>
-                                    Total: {stockData.totalStock}
-                                  </span>
+                                  {!stockData.pieces && (
+                                    <span className={`text-[10px] font-bold ml-auto ${stockData.totalStock === 0 ? "text-red-400" : stockData.totalStock <= 10 ? "text-amber-500" : "text-emerald-500"}`}>
+                                      Total: {stockData.totalStock}
+                                    </span>
+                                  )}
                                 </div>
                               )}
                             </>
