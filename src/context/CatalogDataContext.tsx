@@ -37,6 +37,7 @@ interface CatalogData {
   customProducts: Product[];
   allProducts: Product[];  // PRODUCTS + customProducts mesclados
   addCustomProduct: (product: Product) => Promise<void>;
+  updateCustomProduct: (product: Product) => Promise<void>;
   removeCustomProduct: (productId: number) => Promise<void>;
   dataSource: "static" | "turso";
   updatedAt: string | null;
@@ -81,31 +82,33 @@ export function CatalogDataProvider({ children }: { children: React.ReactNode })
       .catch(() => setLoading(false));
   }, []);
 
-  const addCustomProduct = async (product: Product) => {
-    const next = [...customProducts, product];
-    setCustomProducts(next);
-    // Persistir no Turso via settings API
+  const persistCustomProducts = async (products: Product[]) => {
     try {
       const session = typeof window !== "undefined" ? JSON.parse(localStorage.getItem("melfit_session") || "{}") : {};
       await fetch("/api/settings", {
         method: "PUT",
         headers: { "Content-Type": "application/json", Authorization: `Bearer ${session.apiSecret || ""}` },
-        body: JSON.stringify({ catalog_custom_products: JSON.stringify(next) }),
+        body: JSON.stringify({ catalog_custom_products: JSON.stringify(products) }),
       });
     } catch {}
+  };
+
+  const addCustomProduct = async (product: Product) => {
+    const next = [...customProducts, { ...product, isCustom: true }];
+    setCustomProducts(next);
+    await persistCustomProducts(next);
+  };
+
+  const updateCustomProduct = async (product: Product) => {
+    const next = customProducts.map((p) => p.id === product.id ? { ...product, isCustom: true } : p);
+    setCustomProducts(next);
+    await persistCustomProducts(next);
   };
 
   const removeCustomProduct = async (productId: number) => {
     const next = customProducts.filter((p) => p.id !== productId);
     setCustomProducts(next);
-    try {
-      const session = typeof window !== "undefined" ? JSON.parse(localStorage.getItem("melfit_session") || "{}") : {};
-      await fetch("/api/settings", {
-        method: "PUT",
-        headers: { "Content-Type": "application/json", Authorization: `Bearer ${session.apiSecret || ""}` },
-        body: JSON.stringify({ catalog_custom_products: JSON.stringify(next) }),
-      });
-    } catch {}
+    await persistCustomProducts(next);
   };
 
   // Indice por nome para lookup O(1) no ProductCard
@@ -138,7 +141,7 @@ export function CatalogDataProvider({ children }: { children: React.ReactNode })
   const value = useMemo<CatalogData>(
     () => ({
       atacadoProducts, atacadoByName, varejoPrecos, productInfo,
-      customProducts, allProducts, addCustomProduct, removeCustomProduct,
+      customProducts, allProducts, addCustomProduct, updateCustomProduct, removeCustomProduct,
       dataSource, updatedAt, loading,
     }),
     [atacadoProducts, atacadoByName, varejoPrecos, productInfo, customProducts, allProducts, dataSource, updatedAt, loading],

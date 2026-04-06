@@ -50,7 +50,7 @@ export function ProductDetailModal({ product, priceCalc, onClose }: Props) {
   const isConjunto = pieces.length > 0;
   // Conjunto com peças disponíveis nunca é esgotado
   const isSoldOut = isConjunto ? false : (totalStock > 0 ? false : (product.soldOut || totalStock === 0));
-  const hasInfo = info && (info.description || info.composition);
+  const hasInfo = product.description || (info && (info.description || info.composition));
 
   useEffect(() => {
     document.body.style.overflow = "hidden";
@@ -271,15 +271,20 @@ export function ProductDetailModal({ product, priceCalc, onClose }: Props) {
           </button>
         )}
 
-        {showDetails && info && (
+        {showDetails && (
           <div className="space-y-3 pb-2">
-            {info.description && (
+            {/* Descrição HTML customizada (cadastro manual) */}
+            {product.description && (
+              <div className="text-sm text-gray-600 leading-relaxed prose prose-sm max-w-none" dangerouslySetInnerHTML={{ __html: product.description }} />
+            )}
+            {/* Descrição do scrape (product-info) */}
+            {!product.description && info?.description && (
               <p className="text-sm text-gray-600 leading-relaxed">{info.description}</p>
             )}
-            {info.modelInfo && (
+            {info?.modelInfo && (
               <p className="text-xs text-gray-400 leading-relaxed whitespace-pre-line">{info.modelInfo}</p>
             )}
-            <div className="grid grid-cols-2 gap-2">
+            {info && <div className="grid grid-cols-2 gap-2">
               {info.composition && (
                 <div className="bg-gray-50 rounded-lg p-2.5">
                   <p className="text-[10px] font-bold text-gray-400 uppercase">Composicao</p>
@@ -304,7 +309,7 @@ export function ProductDetailModal({ product, priceCalc, onClose }: Props) {
                   <p className="text-xs text-gray-700 font-medium mt-0.5">{info.hasBraPad}</p>
                 </div>
               )}
-            </div>
+            </div>}
           </div>
         )}
       </div>
