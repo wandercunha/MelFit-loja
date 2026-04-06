@@ -2,12 +2,14 @@ export interface Product {
   id: number;
   name: string;
   cost: number;
-  category: Category;
+  category: string;
   tags: Tag[];
   sizes: string;
   img: string;
   slug?: string;
   soldOut?: boolean;
+  description?: string;  // HTML — descricao do produto
+  isCustom?: boolean;    // true = adicionado via admin (salvo no Turso)
 }
 
 export type Category =
@@ -90,7 +92,7 @@ export interface CartItem {
   size: string;              // avulsa: "M", conjunto: "Top P + Short G"
   quantity: number;
   img: string;
-  category: Category;
+  category: string;
   pieceSizes?: { name: string; size: string }[];  // conjuntos: tamanho por peça
 }
 

@@ -3,7 +3,9 @@
 import { useState, useMemo, useRef } from "react";
 import { useCatalog } from "@/context/CatalogContext";
 import { PRODUCTS } from "@/data/products";
+import { Product } from "@/lib/types";
 import { calcProduct, formatBRL, getAtacadoUrl } from "@/lib/pricing";
+import { ProductFormModal } from "@/components/admin/ProductFormModal";
 
 // Abre produto no catalogo em nova aba (mesma origem)
 function goToProduct(name: string) {
@@ -187,7 +189,7 @@ export function ProductOverridesTab() {
     refreshFromDb,
     apiSecret,
   } = useCatalog();
-  const { atacadoProducts, allProducts } = useCatalogData();
+  const { atacadoProducts, allProducts, addCustomProduct, updateCustomProduct, removeCustomProduct } = useCatalogData();
 
   // Helper para buscar estoque do atacado
   const getStock = (product: { name: string; slug?: string }): { stock: Record<string, number>; totalStock: number; pieces?: any[] } | null => {
@@ -202,6 +204,28 @@ export function ProductOverridesTab() {
   };
 
   const [refreshing, setRefreshing] = useState(false);
+  const [showProductForm, setShowProductForm] = useState(false);
+  const [editingCustomProduct, setEditingCustomProduct] = useState<Product | null>(null);
+
+  // IDs dos produtos estáticos (products.ts) — customizados têm isCustom ou ID não presente aqui
+  const staticIds = useMemo(() => new Set(PRODUCTS.map((p) => p.id)), []);
+  const isCustomProduct = (id: number) => !staticIds.has(id);
+
+  const handleSaveProduct = async (product: Product) => {
+    if (editingCustomProduct) {
+      await updateCustomProduct(product);
+    } else {
+      await addCustomProduct(product);
+    }
+    setShowProductForm(false);
+    setEditingCustomProduct(null);
+  };
+
+  const handleDeleteProduct = async (id: number) => {
+    if (confirm("Remover este produto do catalogo?")) {
+      await removeCustomProduct(id);
+    }
+  };
 
   const [filter, setFilter] = useState("");
   const [editingId, setEditingId] = useState<number | null>(null);
@@ -516,6 +540,15 @@ export function ProductOverridesTab() {
             className="input-field text-sm py-2 flex-1"
           />
           <div className="flex gap-2 flex-wrap">
+            <button
+              onClick={() => { setEditingCustomProduct(null); setShowProductForm(true); }}
+              className="text-xs font-semibold px-3 py-2 rounded-lg bg-brand-400 text-white hover:bg-brand-500 whitespace-nowrap flex items-center gap-1.5"
+            >
+              <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+              </svg>
+              Novo Produto
+            </button>
             <button
               onClick={async () => { setRefreshing(true); await refreshFromDb(); setRefreshing(false); }}
               disabled={refreshing}
@@ -957,7 +990,19 @@ export function ProductOverridesTab() {
                                 <button onClick={() => setEditingId(null)} className="text-[11px] px-2 py-1 bg-gray-200 text-gray-600 rounded-lg">X</button>
                               </div>
                             ) : (
-                              <button onClick={() => startEdit(p.id, "margin")} className="flex-shrink-0 text-[11px] px-2.5 py-1 bg-gray-100 text-gray-500 rounded-lg font-medium">Editar</button>
+                              <div className="flex gap-1 flex-shrink-0">
+                                <button onClick={() => startEdit(p.id, "margin")} className="text-[11px] px-2.5 py-1 bg-gray-100 text-gray-500 rounded-lg font-medium">Margem</button>
+                                {isCustomProduct(p.id) && (
+                                  <>
+                                    <button onClick={() => { setEditingCustomProduct(p); setShowProductForm(true); }} className="text-[11px] px-2 py-1 bg-blue-50 text-blue-500 rounded-lg font-medium">
+                                      <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" /></svg>
+                                    </button>
+                                    <button onClick={() => handleDeleteProduct(p.id)} className="text-[11px] px-2 py-1 bg-red-50 text-red-400 rounded-lg font-medium">
+                                      <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" /></svg>
+                                    </button>
+                                  </>
+                                )}
+                              </div>
                             )}
                           </div>
 
@@ -1045,6 +1090,14 @@ export function ProductOverridesTab() {
           })}
         </div>
       </div>
+      {/* Modal de novo/editar produto */}
+      {showProductForm && (
+        <ProductFormModal
+          product={editingCustomProduct}
+          onSave={handleSaveProduct}
+          onClose={() => { setShowProductForm(false); setEditingCustomProduct(null); }}
+        />
+      )}
     </>
   );
 }
