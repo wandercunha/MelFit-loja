@@ -38,7 +38,7 @@ interface Props {
 }
 
 export function ProductCard({ product, priceCalc, hasOverride, onEdit }: Props) {
-  const { isAdmin } = useCatalog();
+  const { isAdmin, overrides } = useCatalog();
   const { atacadoProducts, atacadoByName, productInfo } = useCatalogData();
   const { addItem } = useCart();
   const color = getColorFromName(product.name);
@@ -229,11 +229,15 @@ export function ProductCard({ product, priceCalc, hasOverride, onEdit }: Props) 
             </span>
           ) : null}
 
-          {product.tags.includes("novidade") && !isSoldOut && !isAdmin && (
+          {!isAdmin && overrides[product.id]?.fakeDiscount ? (
+            <span className="absolute top-3 right-3 bg-red-500 text-white text-[10px] font-bold px-2.5 py-1 rounded-full uppercase">
+              -{overrides[product.id].fakeDiscount}% OFF
+            </span>
+          ) : product.tags.includes("novidade") && !isSoldOut && !isAdmin ? (
             <span className="absolute top-3 right-3 bg-emerald-600 text-white text-[10px] font-bold px-2.5 py-1 rounded-full uppercase">
               Novo
             </span>
-          )}
+          ) : null}
 
           {isAdmin && (
             <button
@@ -293,8 +297,17 @@ export function ProductCard({ product, priceCalc, hasOverride, onEdit }: Props) 
           </div>
 
           {/* === CLIENT VIEW === */}
-          {!isAdmin && (
+          {!isAdmin && (() => {
+            const fakeDiscount = overrides[product.id]?.fakeDiscount || 0;
+            const fakeOriginal = fakeDiscount > 0 ? Math.round(priceCalc.priceInstallment * (1 + fakeDiscount / 100)) : 0;
+            return (
             <div className="space-y-1.5">
+              {/* Preço "de" riscado (fake promo) */}
+              {fakeDiscount > 0 && (
+                <p className="text-xs text-gray-400 line-through leading-none">
+                  {formatBRL(fakeOriginal)}
+                </p>
+              )}
               {/* Preço em destaque */}
               <p className="text-2xl sm:text-3xl font-black text-gray-800 leading-none">
                 {formatBRL(Math.round(priceCalc.priceInstallment))}
@@ -429,7 +442,8 @@ export function ProductCard({ product, priceCalc, hasOverride, onEdit }: Props) 
                 );
               })()}
             </div>
-          )}
+            );
+          })()}
 
           {/* === ADMIN VIEW === */}
           {isAdmin && (

@@ -206,6 +206,7 @@ export function ProductOverridesTab() {
   const [editingField, setEditingField] = useState<"margin" | "shipping">("margin");
   const [editMargin, setEditMargin] = useState(0);
   const [editShipping, setEditShipping] = useState(0);
+  const [editFakeDiscount, setEditFakeDiscount] = useState(0);
   const [showOnlyOverrides, setShowOnlyOverrides] = useState(false);
   const [collapsedCats, setCollapsedCats] = useState<Set<string>>(new Set());
 
@@ -288,6 +289,7 @@ export function ProductOverridesTab() {
     const catOv = p ? categoryOverrides[p.category] : undefined;
     setEditMargin(ov?.margin ?? catOv?.margin ?? globalSettings.margin);
     setEditShipping(ov?.shipping ?? catOv?.shipping ?? globalSettings.shipping);
+    setEditFakeDiscount(ov?.fakeDiscount ?? 0);
     setEditingId(productId);
     setEditingField(field);
     setEditingCat(null);
@@ -295,13 +297,13 @@ export function ProductOverridesTab() {
 
   const saveMargin = (productId: number) => {
     const ov = overrides[productId];
-    setOverride(productId, { margin: editMargin, shipping: ov?.shipping });
+    setOverride(productId, { margin: editMargin, shipping: ov?.shipping, fakeDiscount: ov?.fakeDiscount });
     setEditingId(null);
   };
 
   const saveShipping = (productId: number) => {
     const ov = overrides[productId];
-    setOverride(productId, { margin: ov?.margin, shipping: editShipping });
+    setOverride(productId, { margin: ov?.margin, shipping: editShipping, fakeDiscount: ov?.fakeDiscount });
     setEditingId(null);
   };
 
@@ -923,7 +925,7 @@ export function ProductOverridesTab() {
                             </div>
                             {isEditing ? (
                               <div className="flex gap-1 flex-shrink-0">
-                                <button onClick={() => { setOverride(p.id, { margin: editMargin, shipping: editShipping }); setEditingId(null); }} className="text-[11px] px-2 py-1 bg-emerald-500 text-white rounded-lg font-semibold">Salvar</button>
+                                <button onClick={() => { setOverride(p.id, { margin: editMargin, shipping: editShipping, fakeDiscount: editFakeDiscount || undefined }); setEditingId(null); }} className="text-[11px] px-2 py-1 bg-emerald-500 text-white rounded-lg font-semibold">Salvar</button>
                                 <button onClick={() => setEditingId(null)} className="text-[11px] px-2 py-1 bg-gray-200 text-gray-600 rounded-lg">X</button>
                               </div>
                             ) : (
@@ -932,7 +934,7 @@ export function ProductOverridesTab() {
                           </div>
 
                           {isEditing ? (
-                            <div className="grid grid-cols-2 gap-2 mt-2">
+                            <div className="grid grid-cols-3 gap-2 mt-2">
                               <div>
                                 <label className="text-[10px] font-semibold text-gray-500">Margem %</label>
                                 <input type="text" inputMode="decimal" value={editMargin || ""} onChange={(e) => { const v = parseFloat(e.target.value); setEditMargin(isNaN(v) ? 0 : v); }} onFocus={(e) => e.target.select()} className="w-full px-2 py-1.5 border rounded-lg text-base text-right" />
@@ -940,6 +942,10 @@ export function ProductOverridesTab() {
                               <div>
                                 <label className="text-[10px] font-semibold text-gray-500">Frete R$</label>
                                 <input type="text" inputMode="decimal" value={editShipping || ""} onChange={(e) => { const v = parseFloat(e.target.value); setEditShipping(isNaN(v) ? 0 : v); }} onFocus={(e) => e.target.select()} className="w-full px-2 py-1.5 border rounded-lg text-base text-right" />
+                              </div>
+                              <div>
+                                <label className="text-[10px] font-semibold text-red-400">Promo %</label>
+                                <input type="text" inputMode="decimal" value={editFakeDiscount || ""} onChange={(e) => { const v = parseFloat(e.target.value); setEditFakeDiscount(isNaN(v) ? 0 : v); }} onFocus={(e) => e.target.select()} placeholder="0" className="w-full px-2 py-1.5 border border-red-200 rounded-lg text-base text-right" />
                               </div>
                             </div>
                           ) : (

@@ -23,6 +23,7 @@ export type Tag = "novidade" | "colecao-exclusiva";
 export interface ProductOverride {
   margin?: number;
   shipping?: number;
+  fakeDiscount?: number;  // % "desconto" visual (preço real não muda)
 }
 
 export interface CategoryOverride {
