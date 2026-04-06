@@ -219,7 +219,7 @@ export function ProductCard({ product, priceCalc, hasOverride, onEdit }: Props) 
             <span className="absolute top-3 left-3 bg-red-600 text-white text-[10px] font-bold px-2.5 py-1 rounded-full uppercase tracking-wider">
               Esgotado
             </span>
-          ) : totalStock > 0 && totalStock <= 10 ? (
+          ) : !isConjunto && totalStock > 0 && totalStock <= 10 ? (
             <span className="absolute top-3 left-3 bg-amber-500 text-white text-[10px] font-bold px-2.5 py-1 rounded-full uppercase tracking-wider">
               Ultimas {totalStock}
             </span>
