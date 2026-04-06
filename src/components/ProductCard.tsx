@@ -223,6 +223,10 @@ export function ProductCard({ product, priceCalc, hasOverride, onEdit }: Props) 
             <span className="absolute top-3 left-3 bg-amber-500 text-white text-[10px] font-bold px-2.5 py-1 rounded-full uppercase tracking-wider">
               Ultimas {totalStock}
             </span>
+          ) : isConjunto ? (
+            <span className="absolute top-3 left-3 bg-amber-500 text-white text-[10px] font-bold px-2.5 py-1 rounded-full uppercase tracking-wider">
+              Ultimas unidades
+            </span>
           ) : null}
 
           {product.tags.includes("novidade") && !isSoldOut && !isAdmin && (
