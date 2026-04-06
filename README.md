@@ -35,12 +35,14 @@ ATACADO_EMAIL=...                # email de login no atacado (opcional)
 ATACADO_PASSWORD=...             # senha do atacado (opcional)
 ```
 
-## Senha padrao do admin
+## Configurar senha do admin
+
+```bash
+npm run admin:reset -- sua-senha-aqui
+```
 
 - **Usuario:** admin
-- **Senha:** flora2024
-
-> Troque a senha antes de publicar! Rode `npm run admin:reset -- nova-senha`
+- **Senha:** a que voce definir no comando acima
 
 ## Perdeu a senha do admin?
 
