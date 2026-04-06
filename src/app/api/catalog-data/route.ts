@@ -15,9 +15,14 @@ export async function GET() {
       return NextResponse.json({ source: "none" }, { status: 404 });
     }
 
+    // SQLite datetime('now') retorna sem timezone — normalizar para UTC ISO
+    const updatedAt = data.updatedAt && !data.updatedAt.endsWith("Z")
+      ? data.updatedAt.replace(" ", "T") + "Z"
+      : data.updatedAt;
+
     return NextResponse.json({
       source: "turso",
-      updatedAt: data.updatedAt,
+      updatedAt,
       atacado: data.atacado,
       varejoPrecos: data.varejoPrecos,
       productInfo: data.productInfo,
