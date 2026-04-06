@@ -106,6 +106,7 @@ export function DashboardTab() {
       sizes: "P, M, G",
       img: np.img,
       slug: np.slug,
+      isCustom: true,
     };
     await addCustomProduct(product);
     setAddingProduct(null);
@@ -145,7 +146,26 @@ export function DashboardTab() {
         body: JSON.stringify({ catalog_url_overrides: JSON.stringify(currentOverrides) }),
       });
 
-      setLinkingStatus((s) => ({ ...s, [productName]: "Vinculado! Rode o scrape para atualizar." }));
+      // Scrape imediato do produto
+      setLinkingStatus((s) => ({ ...s, [productName]: "Buscando dados..." }));
+      try {
+        const scrapeRes = await fetch("/api/scrape-product", {
+          method: "POST",
+          headers: { "Content-Type": "application/json", Authorization: `Bearer ${session.apiSecret}` },
+          body: JSON.stringify({ atacadoSlug }),
+        });
+        const scrapeData = await scrapeRes.json();
+        if (scrapeRes.ok && scrapeData.success) {
+          setLinkingStatus((s) => ({
+            ...s,
+            [productName]: `Vinculado! ${scrapeData.product.images?.length || 0} fotos, estoque: ${scrapeData.product.totalStock}. Recarregue a pagina.`,
+          }));
+        } else {
+          setLinkingStatus((s) => ({ ...s, [productName]: `Vinculado! Scrape falhou (CloudFront?). Rode npm run scrape:all.` }));
+        }
+      } catch {
+        setLinkingStatus((s) => ({ ...s, [productName]: "Vinculado! Scrape falhou. Rode npm run scrape:all." }));
+      }
     } catch {
       setLinkingStatus((s) => ({ ...s, [productName]: "Erro ao salvar" }));
     }
