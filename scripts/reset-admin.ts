@@ -2,17 +2,20 @@
  * Reset da senha admin.
  *
  * Uso:
- *   npm run admin:reset                  → reseta para "flora2024"
  *   npm run admin:reset -- minha-senha   → define senha customizada
  *
- * Gera o hash SHA-256 e mostra como configurar.
+ * Gera o hash SHA-256 e atualiza .env.local.
  */
 
 import { createHash } from "crypto";
 import * as fs from "fs";
 import * as path from "path";
 
-const newPassword = process.argv[2] || "flora2024";
+const newPassword = process.argv[2];
+if (!newPassword) {
+  console.error("\n  Uso: npm run admin:reset -- sua-nova-senha\n");
+  process.exit(1);
+}
 const hash = createHash("sha256").update(newPassword).digest("hex");
 
 console.log(`\n  Reset de senha admin`);
