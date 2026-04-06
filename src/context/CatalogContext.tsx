@@ -268,11 +268,16 @@ export function CatalogProvider({ children }: { children: React.ReactNode }) {
       name.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "")
         .replace(/\s+c\/\s*/g, "-c-").replace(/\s+/g, "-").replace(/[^a-z0-9-]/g, "");
 
+    // Índice por nome para fallback
+    const byName: Record<string, any> = {};
+    for (const [, p] of Object.entries(atacadoProducts)) {
+      if ((p as any).name) byName[(p as any).name] = p;
+    }
+
     const map: Record<number, number> = {};
     for (const p of PRODUCTS) {
       const slug = p.slug || toSlug(p.name);
-      const at = atacadoProducts[slug]
-        || Object.values(atacadoProducts).find((d: any) => d.name === p.name);
+      const at = atacadoProducts[slug] || byName[p.name];
       if (at) {
         // Conjuntos com peças = disponível (totalStock pode ser 0 pois usam grade_biquini)
         const hasPieces = (at as any).pieces && (at as any).pieces.length > 0;
