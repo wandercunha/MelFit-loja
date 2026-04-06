@@ -10,7 +10,7 @@ import { ExportButton } from "@/components/ExportButton";
 
 export function DashboardTab() {
   const { globalSettings, overrides, categoryOverrides, isProductVisible } = useCatalog();
-  const { updatedAt, dataSource, atacadoProducts, allProducts, addCustomProduct } = useCatalogData();
+  const { updatedAt, dataSource, atacadoProducts, atacadoByName, allProducts, addCustomProduct } = useCatalogData();
   const [showCatalogAlerts, setShowCatalogAlerts] = useState(true);
   const [addingProduct, setAddingProduct] = useState<string | null>(null);
 
@@ -58,7 +58,7 @@ export function DashboardTab() {
       if (!at.name) continue;
       const inCatalog = allProducts.some((cp) => {
         const cpSlug = cp.slug || toSlug(cp.name);
-        return cpSlug === slug || cp.name === at.name;
+        return cpSlug === slug || cp.name === at.name || atacadoByName[cp.name]?._slug === slug;
       });
       if (!inCatalog) {
         // Inferir categoria do slug do atacado
@@ -84,12 +84,12 @@ export function DashboardTab() {
     const missing: string[] = [];
     for (const p of allProducts) {
       const slug = p.slug || toSlug(p.name);
-      const found = atacadoSlugs.has(slug) || atacadoNames.has(p.name);
+      const found = atacadoSlugs.has(slug) || atacadoNames.has(p.name) || !!atacadoByName[p.name];
       if (!found) missing.push(p.name);
     }
 
     return { newProducts, missing };
-  }, [atacadoProducts, allProducts]);
+  }, [atacadoProducts, atacadoByName, allProducts]);
 
   const handleAddProduct = useCallback(async (np: NewProductInfo) => {
     setAddingProduct(np.name);

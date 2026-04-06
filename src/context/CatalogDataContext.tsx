@@ -5,6 +5,8 @@ import React, { createContext, useContext, useState, useEffect, useMemo } from "
 import { Product, Category } from "@/lib/types";
 import { PRODUCTS } from "@/data/products";
 
+import urlOverrides from "@/data/url-overrides.json";
+
 // Fallback: dados estáticos (usados até o banco responder)
 import staticAtacado from "@/data/atacado-details.json";
 import staticScrapeMaps from "@/data/scrape-maps.json";
@@ -104,10 +106,21 @@ export function CatalogDataProvider({ children }: { children: React.ReactNode })
   };
 
   // Indice por nome para lookup O(1) no ProductCard
+  // Inclui overrides de url-overrides.json (nome do catálogo → slug do atacado)
   const atacadoByName = useMemo(() => {
     const map: Record<string, any> = {};
     for (const [slug, p] of Object.entries(atacadoProducts)) {
       if ((p as any).name) map[(p as any).name] = { ...(p as any), _slug: slug };
+    }
+    // Overrides: mapeia nome do catálogo → produto do atacado pelo atacadoSlug
+    const overrideProducts = (urlOverrides as any).products || {};
+    for (const [catalogName, override] of Object.entries(overrideProducts)) {
+      if (map[catalogName]) continue; // já encontrado pelo nome direto
+      const atacadoSlug = (override as any).atacadoSlug;
+      if (!atacadoSlug) continue;
+      const baseSlug = atacadoSlug.replace(/-at$/, "");
+      const matched = atacadoProducts[baseSlug];
+      if (matched) map[catalogName] = { ...(matched as any), _slug: baseSlug };
     }
     return map;
   }, [atacadoProducts]);
