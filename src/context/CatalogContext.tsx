@@ -2,7 +2,6 @@
 
 import React, { createContext, useContext, useState, useEffect, useCallback, useRef, useMemo } from "react";
 import { GlobalSettings, ProductOverride, CategoryOverride } from "@/lib/types";
-import { PRODUCTS } from "@/data/products";
 import { useCatalogData } from "@/context/CatalogDataContext";
 
 interface CatalogState {
@@ -88,7 +87,7 @@ const DEFAULT_SETTINGS: GlobalSettings = {
 };
 
 export function CatalogProvider({ children }: { children: React.ReactNode }) {
-  const { atacadoProducts } = useCatalogData();
+  const { atacadoProducts, allProducts } = useCatalogData();
   const [isAdmin, setIsAdmin] = useState(false);
   const [apiSecret, setApiSecret] = useState("");
   const [globalSettings, setGlobalSettingsState] = useState<GlobalSettings>(DEFAULT_SETTINGS);
@@ -275,7 +274,7 @@ export function CatalogProvider({ children }: { children: React.ReactNode }) {
     }
 
     const map: Record<number, number> = {};
-    for (const p of PRODUCTS) {
+    for (const p of allProducts) {
       const slug = p.slug || toSlug(p.name);
       const at = atacadoProducts[slug] || byName[p.name];
       if (at) {
@@ -285,7 +284,7 @@ export function CatalogProvider({ children }: { children: React.ReactNode }) {
       }
     }
     return map;
-  }, [atacadoProducts]);
+  }, [atacadoProducts, allProducts]);
 
   const isProductVisible = useCallback((productId: number, soldOut?: boolean) => {
     if (productId in productVisibility) return productVisibility[productId];

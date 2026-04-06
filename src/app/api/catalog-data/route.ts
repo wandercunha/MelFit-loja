@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { initSchema, getCatalogData } from "@/lib/db";
+import { initSchema, getCatalogData, getSetting } from "@/lib/db";
 
 /**
  * GET /api/catalog-data
@@ -20,12 +20,20 @@ export async function GET() {
       ? data.updatedAt.replace(" ", "T") + "Z"
       : data.updatedAt;
 
+    // Produtos adicionados via admin (não estão no products.ts)
+    let customProducts: any[] = [];
+    try {
+      const raw = await getSetting("catalog_custom_products");
+      if (raw) customProducts = JSON.parse(raw);
+    } catch {}
+
     return NextResponse.json({
       source: "turso",
       updatedAt,
       atacado: data.atacado,
       varejoPrecos: data.varejoPrecos,
       productInfo: data.productInfo,
+      customProducts,
     }, {
       headers: {
         // Cache por 5 minutos no CDN, stale-while-revalidate por 1 hora

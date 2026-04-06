@@ -1,7 +1,8 @@
 "use client";
 
 import { useCatalog } from "@/context/CatalogContext";
-import { PRODUCTS } from "@/data/products";
+import { useCatalogData } from "@/context/CatalogDataContext";
+import { Product } from "@/lib/types";
 
 const CATEGORIES = [
   { key: "todos", label: "Todos" },
@@ -15,22 +16,23 @@ const CATEGORIES = [
   { key: "macacoes", label: "Macacões" },
 ];
 
-function getCategoryCount(key: string): number {
-  if (key === "todos") return PRODUCTS.length;
-  if (key === "novidade") return PRODUCTS.filter((p) => p.tags.includes("novidade")).length;
-  if (key === "colecao-exclusiva") return PRODUCTS.filter((p) => p.tags.includes("colecao-exclusiva")).length;
-  return PRODUCTS.filter((p) => p.category === key).length;
+function getCategoryCount(key: string, products: Product[]): number {
+  if (key === "todos") return products.length;
+  if (key === "novidade") return products.filter((p) => p.tags.includes("novidade")).length;
+  if (key === "colecao-exclusiva") return products.filter((p) => p.tags.includes("colecao-exclusiva")).length;
+  return products.filter((p) => p.category === key).length;
 }
 
 export function CategoryNav() {
   const { activeCategory, setActiveCategory } = useCatalog();
+  const { allProducts } = useCatalogData();
 
   return (
     <nav className="bg-white/80 backdrop-blur-md border-b border-gray-100 no-print sticky top-[64px] sm:top-[68px] z-40">
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
         <ul className="flex gap-1 overflow-x-auto py-2 scrollbar-hide -mx-4 px-4 sm:mx-0 sm:px-0">
           {CATEGORIES.map((cat) => {
-            const count = getCategoryCount(cat.key);
+            const count = getCategoryCount(cat.key, allProducts);
             return (
               <li key={cat.key} className="flex-shrink-0">
                 <button

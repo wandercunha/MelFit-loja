@@ -1,15 +1,16 @@
 "use client";
 
 import { useCatalog } from "@/context/CatalogContext";
-import { PRODUCTS } from "@/data/products";
+import { useCatalogData } from "@/context/CatalogDataContext";
 import { calcProduct, formatBRL, getColorFromName, getInitials } from "@/lib/pricing";
 import { CATEGORY_LABELS, CATEGORY_ORDER } from "@/lib/types";
 
 export function ExportButton() {
   const { globalSettings, overrides, categoryOverrides, isProductVisible } = useCatalog();
+  const { allProducts } = useCatalogData();
 
   const handleExport = () => {
-    const products = PRODUCTS.filter((p) => isProductVisible(p.id, p.soldOut));
+    const products = allProducts.filter((p) => isProductVisible(p.id, p.soldOut));
 
     const groups: Record<string, typeof products> = {};
     CATEGORY_ORDER.forEach((cat) => {
