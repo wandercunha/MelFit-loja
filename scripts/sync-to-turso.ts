@@ -82,6 +82,22 @@ async function main() {
     console.log(`  [SYNC] product-info.json (ATACADO specs) → Turso (${size}KB)`);
   }
 
+  // 4. URL overrides (mescla local + banco)
+  const overridesPath = path.join(DATA_DIR, "url-overrides.json");
+  if (fs.existsSync(overridesPath)) {
+    const localOverrides = JSON.parse(fs.readFileSync(overridesPath, "utf-8")).products || {};
+    // Ler overrides existentes do banco para mesclar
+    const existingRaw = await db.execute({ sql: "SELECT value FROM settings WHERE key = ?", args: ["catalog_url_overrides"] });
+    const dbOverrides = existingRaw.rows.length > 0 ? JSON.parse(existingRaw.rows[0].value as string) : {};
+    const merged = { ...localOverrides, ...dbOverrides };
+    await db.execute({
+      sql: `INSERT INTO settings (key, value, updated_at) VALUES (?, ?, datetime('now'))
+            ON CONFLICT(key) DO UPDATE SET value = excluded.value, updated_at = datetime('now')`,
+      args: ["catalog_url_overrides", JSON.stringify(merged)],
+    });
+    console.log(`  [SYNC] url-overrides → Turso (${Object.keys(merged).length} overrides)`);
+  }
+
   // NOTA: product-details.json (VAREJO) NÃO é sincronizado.
   // Do varejo capturamos SOMENTE PREÇO. Estoque e imagens vêm do ATACADO.
 
