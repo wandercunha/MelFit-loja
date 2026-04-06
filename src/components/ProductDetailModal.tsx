@@ -3,6 +3,7 @@
 import { Product, PriceCalc, CATEGORY_LABELS } from "@/lib/types";
 import { formatBRL } from "@/lib/pricing";
 import { useCart } from "@/context/CartContext";
+import { useCatalog } from "@/context/CatalogContext";
 import { useCatalogData } from "@/context/CatalogDataContext";
 import { useState, useRef, useEffect, useMemo, useCallback } from "react";
 
@@ -27,6 +28,7 @@ interface Props {
 
 export function ProductDetailModal({ product, priceCalc, onClose }: Props) {
   const { addItem } = useCart();
+  const { overrides } = useCatalog();
   const { atacadoProducts, atacadoByName, productInfo } = useCatalogData();
   const [selectedSize, setSelectedSize] = useState("");
   const [pieceSizes, setPieceSizes] = useState<Record<string, string>>({});
@@ -145,7 +147,17 @@ export function ProductDetailModal({ product, priceCalc, onClose }: Props) {
 
       <div className="flex-1 overflow-y-auto px-4 lg:px-5 py-4 space-y-4">
         {/* Pricing */}
+        {(() => {
+          const fakeDiscount = overrides[product.id]?.fakeDiscount || 0;
+          const fakeOriginal = fakeDiscount > 0 ? Math.round(priceCalc.priceInstallment * (1 + fakeDiscount / 100)) : 0;
+          return (
         <div className="space-y-1">
+          {fakeDiscount > 0 && (
+            <div className="flex items-center gap-2">
+              <span className="text-sm text-gray-400 line-through">{formatBRL(fakeOriginal)}</span>
+              <span className="text-[10px] font-bold text-red-500 bg-red-50 px-1.5 py-0.5 rounded">-{fakeDiscount}% OFF</span>
+            </div>
+          )}
           <p className="text-3xl font-black text-gray-800 leading-none">{formatBRL(Math.round(priceCalc.priceInstallment))}</p>
           <p className="text-xs text-gray-500">
             {priceCalc.installments}x de <span className="font-bold text-gray-700">{formatBRL(Math.round(priceCalc.installmentMonthly))}</span> sem juros
@@ -156,6 +168,8 @@ export function ProductDetailModal({ product, priceCalc, onClose }: Props) {
             <span className="text-[10px] text-emerald-500">({priceCalc.pixDiscount}% off)</span>
           </div>
         </div>
+          );
+        })()}
 
         {/* Size selector */}
         {!isSoldOut && (
