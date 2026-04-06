@@ -30,6 +30,12 @@ const CATEGORIES = [
   { url: "/novidade/", label: "novidade" },
 ];
 
+interface ConjuntoPiece {
+  name: string;
+  sizes: Record<string, number>;  // tamanho → preço
+  price: number;                   // preço da peça
+}
+
 interface AtacadoProduct {
   name: string;
   slug: string;
@@ -38,6 +44,7 @@ interface AtacadoProduct {
   stock: Record<string, number>;
   totalStock: number;
   price: number;
+  pieces?: ConjuntoPiece[];  // peças do conjunto (se aplicável)
   folder: string;         // CDN folder ID
 }
 
@@ -226,6 +233,7 @@ async function scrapeProductPage(slug: string, folder: string): Promise<{
   price: number;
   stock: Record<string, number>;
   totalStock: number;
+  pieces: ConjuntoPiece[];
 }> {
   // Product pages need login on atacado
   // If not logged in or fails, we use listing data only
@@ -268,22 +276,40 @@ async function scrapeProductPage(slug: string, folder: string): Promise<{
       } catch {}
     }
 
-    // Conjuntos (grade_biquini): sum per-piece prices
+    // Conjuntos (grade_biquini): capturar peças individuais
     let price = 0;
+    const pieces: ConjuntoPiece[] = [];
     if ($(".grade_biquini").length > 0) {
       $(".grade_biquini .opcao").each((_, opcao) => {
-        const item = $(opcao).find(".item[data-valorvenda]").first();
-        const val = parseFloat(item.attr("data-valorvenda") || "0");
-        if (val > 0) price += val;
+        const opcaoHtml = $(opcao).html() || "";
+        const titleMatch = opcaoHtml.match(/<(?:h[1-6]|p|span|div|label|strong)[^>]*>([^<]{3,})/);
+        const pieceName = titleMatch ? titleMatch[1].trim() : "";
+        const sizes: Record<string, number> = {};
+        let piecePrice = 0;
+
+        $(opcao).find(".item[data-variacaovalor]").each((_, item) => {
+          const size = $(item).attr("data-variacaovalor") || "";
+          const val = parseFloat($(item).attr("data-valorvenda") || "0");
+          if (size) {
+            sizes[size] = val;
+            if (!piecePrice) piecePrice = val;
+          }
+        });
+
+        if (pieceName && Object.keys(sizes).length > 0) {
+          pieces.push({ name: pieceName, sizes, price: piecePrice });
+          price += piecePrice;
+        }
       });
-      if (price > 0) {
-        console.log(` [CONJUNTO R$ ${price}]`);
+
+      if (pieces.length > 0) {
+        console.log(` [CONJUNTO R$${price} = ${pieces.map(p => p.name + " (" + Object.keys(p.sizes).join(",") + ")").join(" + ")}]`);
       }
     }
 
-    return { images, price, stock, totalStock };
+    return { images, price, stock, totalStock, pieces };
   } catch {
-    return { images: [], price: 0, stock: {}, totalStock: 0 };
+    return { images: [], price: 0, stock: {}, totalStock: 0, pieces: [] };
   }
 }
 
@@ -350,12 +376,17 @@ async function main() {
       product.totalStock = pageData.totalStock;
     }
 
+    // Peças do conjunto
+    if (pageData.pieces && pageData.pieces.length > 0) {
+      product.pieces = pageData.pieces;
+    }
+
     if (pageData.images.length > product.images.length) {
       product.images = pageData.images;
       enhanced++;
-      console.log(` ${pageData.images.length} imgs, stock: ${pageData.totalStock}`);
+      console.log(` ${pageData.images.length} imgs, stock: ${pageData.totalStock}${product.pieces ? " [" + product.pieces.length + " peças]" : ""}`);
     } else {
-      console.log(` listing only (${product.images.length} imgs, stock: ${product.totalStock})`);
+      console.log(` listing only (${product.images.length} imgs, stock: ${product.totalStock}${product.pieces ? " [" + product.pieces.length + " peças]" : ""})`);
     }
     await delay(SCRAPE_DELAY);
   }
@@ -376,6 +407,7 @@ async function main() {
       totalStock: p.totalStock,
       price: p.price,
       folder: p.folder,
+      ...(p.pieces && p.pieces.length > 0 ? { pieces: p.pieces } : {}),
     };
   }
 

@@ -66,9 +66,14 @@ export function CartDrawer({ open, onClose }: Props) {
 
     items.forEach((item, i) => {
       const price = getUnitPrice(item.productId);
-      lines.push(
-        `${i + 1}. ${item.name} - Tam: ${item.size} - Qtd: ${item.quantity} - ${formatBRL(price * item.quantity)}`
-      );
+      if (item.pieceSizes) {
+        const sizes = item.pieceSizes.map((ps) => `${ps.name}: ${ps.size}`).join(" | ");
+        lines.push(`${i + 1}. ${item.name}`);
+        lines.push(`   ${sizes}`);
+        lines.push(`   Qtd: ${item.quantity} - ${formatBRL(price * item.quantity)}`);
+      } else {
+        lines.push(`${i + 1}. ${item.name} - Tam: ${item.size} - Qtd: ${item.quantity} - ${formatBRL(price * item.quantity)}`);
+      }
     });
 
     lines.push(``);
@@ -149,9 +154,17 @@ export function CartDrawer({ open, onClose }: Props) {
                       <p className="text-sm font-semibold text-gray-800 truncate">
                         {item.name}
                       </p>
-                      <p className="text-xs text-gray-400">
-                        Tam: {item.size}
-                      </p>
+                      {item.pieceSizes ? (
+                        <div className="text-[10px] text-gray-400 space-y-0.5">
+                          {item.pieceSizes.map((ps) => (
+                            <p key={ps.name}>{ps.name}: <span className="font-bold text-gray-500">{ps.size}</span></p>
+                          ))}
+                        </div>
+                      ) : (
+                        <p className="text-xs text-gray-400">
+                          Tam: {item.size}
+                        </p>
+                      )}
                       <p className="text-sm font-bold text-brand-500 mt-1">
                         {formatBRL(unitPrice * item.quantity)}
                       </p>

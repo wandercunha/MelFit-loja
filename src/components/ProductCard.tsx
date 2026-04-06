@@ -46,6 +46,8 @@ export function ProductCard({ product, priceCalc, hasOverride, onEdit }: Props) 
   const [currentImg, setCurrentImg] = useState(0);
   const [showSizeChart, setShowSizeChart] = useState(false);
   const [selectedSize, setSelectedSize] = useState("");
+  // Conjuntos: tamanho por peça { "Top Basic": "P", "Short Basic": "M" }
+  const [pieceSizes, setPieceSizes] = useState<Record<string, string>>({});
   const [addedFeedback, setAddedFeedback] = useState(false);
   const [showDetail, setShowDetail] = useState(false);
   const scrollRef = useRef<HTMLDivElement>(null);
@@ -66,6 +68,7 @@ export function ProductCard({ product, priceCalc, hasOverride, onEdit }: Props) 
       stock: ((atacado as any)?.stock || {}) as Record<string, number>,
       totalStock: ((atacado as any)?.totalStock ?? -1) as number,
       sizeChart,
+      pieces: ((atacado as any)?.pieces || []) as Array<{ name: string; sizes: Record<string, number>; price: number }>,
     };
   }, [product, atacadoProducts, atacadoByName, productInfo]);
   const allImages =
@@ -312,67 +315,111 @@ export function ProductCard({ product, priceCalc, hasOverride, onEdit }: Props) 
               </div>
 
               {/* Add to cart */}
-              {!isSoldOut && (
+              {!isSoldOut && (() => {
+                const pieces = detail?.pieces || [];
+                const isConjunto = pieces.length > 0;
+                const allPiecesSelected = isConjunto
+                  ? pieces.every((p) => pieceSizes[p.name])
+                  : !!selectedSize;
+                const sizeLabel = isConjunto
+                  ? pieces.map((p) => `${p.name.split(" ").pop()} ${pieceSizes[p.name] || "?"}`).join(" + ")
+                  : selectedSize;
+
+                const handleAdd = () => {
+                  if (!allPiecesSelected) return;
+                  const pieceSizeArray = isConjunto
+                    ? pieces.map((p) => ({ name: p.name, size: pieceSizes[p.name] }))
+                    : undefined;
+                  addItem({
+                    productId: product.id,
+                    name: product.name,
+                    size: isConjunto ? sizeLabel : selectedSize,
+                    quantity: 1,
+                    img: allImages[0] || product.img,
+                    category: product.category,
+                    pieceSizes: pieceSizeArray,
+                  });
+                  setAddedFeedback(true);
+                  setTimeout(() => setAddedFeedback(false), 1500);
+                };
+
+                return (
                 <div className="pt-2 space-y-1.5">
-                  {/* Size selector */}
-                  <div className="flex gap-1">
-                    {(Object.keys(stock).length > 0
-                      ? Object.entries(stock)
-                      : product.sizes.split(",").map((s) => [s.trim(), 1] as [string, number])
-                    ).map(([size, qty]) => (
-                      <button
-                        key={size}
-                        disabled={qty === 0}
-                        onClick={() => setSelectedSize(size as string)}
-                        className={`flex-1 py-1 text-[10px] sm:text-xs font-bold rounded transition-colors ${
-                          qty === 0
-                            ? "bg-gray-100 text-gray-300 cursor-not-allowed line-through"
-                            : selectedSize === size
-                            ? "bg-brand-400 text-white"
-                            : "bg-gray-100 text-gray-600 hover:bg-gray-200"
-                        }`}
-                      >
-                        {size}
-                      </button>
-                    ))}
-                  </div>
-                  {/* Medidas do tamanho selecionado */}
-                  {selectedSize && SIZE_MEASURES[selectedSize] && (
-                    <p className="text-[10px] text-gray-400 leading-tight">
-                      {SIZE_MEASURES[selectedSize]}
-                    </p>
+                  {isConjunto ? (
+                    /* === Conjunto: seletor por peça === */
+                    <div className="space-y-2">
+                      {pieces.map((piece) => (
+                        <div key={piece.name}>
+                          <p className="text-[9px] font-bold text-gray-500 uppercase">{piece.name}</p>
+                          <div className="flex gap-1 mt-0.5">
+                            {Object.keys(piece.sizes).map((size) => (
+                              <button
+                                key={size}
+                                onClick={() => setPieceSizes((prev) => ({ ...prev, [piece.name]: size }))}
+                                className={`flex-1 py-1 text-[10px] sm:text-xs font-bold rounded transition-colors ${
+                                  pieceSizes[piece.name] === size
+                                    ? "bg-brand-400 text-white"
+                                    : "bg-gray-100 text-gray-600 hover:bg-gray-200"
+                                }`}
+                              >
+                                {size}
+                              </button>
+                            ))}
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  ) : (
+                    /* === Peça avulsa: seletor único === */
+                    <>
+                      <div className="flex gap-1">
+                        {(Object.keys(stock).length > 0
+                          ? Object.entries(stock)
+                          : product.sizes.split(",").map((s) => [s.trim(), 1] as [string, number])
+                        ).map(([size, qty]) => (
+                          <button
+                            key={size}
+                            disabled={qty === 0}
+                            onClick={() => setSelectedSize(size as string)}
+                            className={`flex-1 py-1 text-[10px] sm:text-xs font-bold rounded transition-colors ${
+                              qty === 0
+                                ? "bg-gray-100 text-gray-300 cursor-not-allowed line-through"
+                                : selectedSize === size
+                                ? "bg-brand-400 text-white"
+                                : "bg-gray-100 text-gray-600 hover:bg-gray-200"
+                            }`}
+                          >
+                            {size}
+                          </button>
+                        ))}
+                      </div>
+                      {selectedSize && SIZE_MEASURES[selectedSize] && (
+                        <p className="text-[10px] text-gray-400 leading-tight">
+                          {SIZE_MEASURES[selectedSize]}
+                        </p>
+                      )}
+                    </>
                   )}
                   <button
-                    disabled={!selectedSize}
-                    onClick={() => {
-                      if (!selectedSize) return;
-                      addItem({
-                        productId: product.id,
-                        name: product.name,
-                        size: selectedSize,
-                        quantity: 1,
-                        img: allImages[0] || product.img,
-                        category: product.category,
-                      });
-                      setAddedFeedback(true);
-                      setTimeout(() => setAddedFeedback(false), 1500);
-                    }}
+                    disabled={!allPiecesSelected}
+                    onClick={handleAdd}
                     className={`w-full py-2 text-xs font-bold rounded-lg transition-all ${
                       addedFeedback
                         ? "bg-emerald-500 text-white"
-                        : selectedSize
+                        : allPiecesSelected
                         ? "bg-brand-400 hover:bg-brand-500 text-white"
                         : "bg-gray-200 text-gray-400 cursor-not-allowed"
                     }`}
                   >
                     {addedFeedback
                       ? "Adicionado!"
-                      : selectedSize
-                      ? `Adicionar ${selectedSize} ao Carrinho`
-                      : "Selecione o tamanho"}
+                      : allPiecesSelected
+                      ? isConjunto ? `Adicionar ao Carrinho` : `Adicionar ${selectedSize} ao Carrinho`
+                      : isConjunto ? "Selecione os tamanhos" : "Selecione o tamanho"}
                   </button>
                 </div>
-              )}
+                );
+              })()}
             </div>
           )}
 

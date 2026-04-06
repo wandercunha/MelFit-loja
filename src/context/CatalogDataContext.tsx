@@ -7,6 +7,12 @@ import staticAtacado from "@/data/atacado-details.json";
 import staticScrapeMaps from "@/data/scrape-maps.json";
 import staticProductInfo from "@/data/product-info.json";
 
+interface ConjuntoPiece {
+  name: string;
+  sizes: Record<string, number>;
+  price: number;
+}
+
 interface AtacadoProduct {
   name: string;
   atacadoSlug: string;
@@ -15,6 +21,7 @@ interface AtacadoProduct {
   totalStock: number;
   price: number;
   folder: string;
+  pieces?: ConjuntoPiece[];
 }
 
 interface CatalogData {

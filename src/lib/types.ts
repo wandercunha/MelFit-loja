@@ -86,10 +86,11 @@ export const CATEGORY_LABELS: Record<string, string> = {
 export interface CartItem {
   productId: number;
   name: string;
-  size: string;
+  size: string;              // avulsa: "M", conjunto: "Top P + Short G"
   quantity: number;
   img: string;
   category: Category;
+  pieceSizes?: { name: string; size: string }[];  // conjuntos: tamanho por peça
 }
 
 export interface CartCustomer {
