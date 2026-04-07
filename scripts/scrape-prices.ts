@@ -109,7 +109,7 @@ function parseProductsFromHTML(html: string): ScrapedProduct[] {
   return products;
 }
 
-async function scrapeProductPage(slug: string): Promise<{ price: number }> {
+async function scrapeProductPage(slug: string, expectedName?: string): Promise<{ price: number }> {
   try {
     const html = await fetchHTML(`${BASE_URL}/${slug}/`);
     const $ = cheerio.load(html);
@@ -121,6 +121,17 @@ async function scrapeProductPage(slug: string): Promise<{ price: number }> {
     if (compraRapida) {
       try {
         const decoded = JSON.parse(Buffer.from(compraRapida, "base64").toString("utf-8"));
+
+        // Validar: nome do data-comprarapida deve bater com o produto esperado
+        // Site do varejo tem bug onde paginas individuais retornam dados de outro produto
+        if (expectedName && decoded.nome) {
+          const normalize = (s: string) => s.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^a-z0-9]/g, "");
+          if (normalize(decoded.nome) !== normalize(expectedName)) {
+            console.log(`    [WARN] data-comprarapida retornou "${decoded.nome}" em vez de "${expectedName}" — IGNORADO`);
+            return { price: 0 };
+          }
+        }
+
         if (decoded.variacoes && decoded.variacoes.length > 0) {
           price = parseFloat(decoded.variacoes[0].preco.valor_venda || "0");
         }
@@ -241,7 +252,7 @@ async function main() {
       try {
         const pageUrl = `${BASE_URL}/${p.slug}/`;
         log("FASE2", `[${i + 1}/${needPrice.length}] → ${pageUrl}`);
-        const detail = await scrapeProductPage(p.slug);
+        const detail = await scrapeProductPage(p.slug, p.name);
         totalRequests++;
         if (detail.price > 0) { p.price = detail.price; stats.fase2++; }
         log("FASE2", `  ${p.slug} → ${detail.price > 0 ? `R$${detail.price}` : "sem preco"}`);
@@ -282,7 +293,7 @@ async function main() {
       const pageUrl = `${BASE_URL}/${slug}/`;
       try {
         log("FASE3", `[${i + 1}/${missingFromCatalog.length}] → ${pageUrl}${isOverride}`);
-        const detail = await scrapeProductPage(slug);
+        const detail = await scrapeProductPage(slug, name);
         totalRequests++;
         if (detail.price > 0) {
           seenSlugs.add(slug);
@@ -372,7 +383,7 @@ async function main() {
       const tag = source === "override" ? " [OVERRIDE]" : "";
       try {
         log("FASE4", `[${i + 1}/${pieceSlugs.length}] → ${BASE_URL}/${slug}/${tag}`);
-        const detail = await scrapeProductPage(slug);
+        const detail = await scrapeProductPage(slug, name);
         totalRequests++;
         if (detail.price > 0) {
           seenSlugs.add(slug);
@@ -402,7 +413,7 @@ async function main() {
       const slug = o.varejoSlug!;
       try {
         log("FASE5", `→ ${BASE_URL}/${slug}/ [OVERRIDE manual]`);
-        const detail = await scrapeProductPage(slug);
+        const detail = await scrapeProductPage(slug, name);
         totalRequests++;
         if (detail.price > 0) {
           seenSlugs.add(slug);
