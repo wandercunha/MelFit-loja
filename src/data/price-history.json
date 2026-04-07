@@ -1,5 +1,5 @@
 {
-  "lastUpdate": "2026-04-07T21:53:35.934Z",
+  "lastUpdate": "2026-04-07T22:02:21.568Z",
   "changes": [
     {
       "date": "2026-03-31T19:31:12.316Z",
@@ -2714,6 +2714,13 @@
       "date": "2026-04-07T21:53:35.934Z",
       "productCount": 39,
       "avgPrice": 93.15,
+      "minPrice": 39,
+      "maxPrice": 180
+    },
+    {
+      "date": "2026-04-07T22:02:21.568Z",
+      "productCount": 51,
+      "avgPrice": 91.04,
       "minPrice": 39,
       "maxPrice": 180
     }

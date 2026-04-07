@@ -1,7 +1,7 @@
 {
-  "timestamp": "2026-04-07T21:53:35.933Z",
+  "timestamp": "2026-04-07T22:02:21.567Z",
   "source": "https://www.floraamar.com.br",
-  "productCount": 40,
+  "productCount": 52,
   "products": [
     {
       "name": "Top Curve Cinza",
@@ -202,6 +202,66 @@
       "name": "Conjunto Top e Short Preto",
       "price": 0,
       "slug": "conjunto-top-e-short-preto-1645831"
+    },
+    {
+      "name": "Top Cross Verde Militar c/ Off",
+      "price": 62,
+      "slug": "top-cross-verde-c-off"
+    },
+    {
+      "name": "Top Cross Capuccino c/ Off",
+      "price": 62,
+      "slug": "top-cross-capuccino-c-off"
+    },
+    {
+      "name": "Top Air Verde Militar c/Off",
+      "price": 55,
+      "slug": "top-air-verde-c-off"
+    },
+    {
+      "name": "Top Cross Azul Marinho c/ Azul",
+      "price": 62,
+      "slug": "top-cross-azul-marinho-c-azul"
+    },
+    {
+      "name": "Top Cross Preto c/ Off",
+      "price": 62,
+      "slug": "top-cross-preto-c-off"
+    },
+    {
+      "name": "Top Air Azul Marinho c/ azul",
+      "price": 55,
+      "slug": "top-air-azul-marinho-c-azul"
+    },
+    {
+      "name": "Macaquinho Ease Azul Marinho c/ azul",
+      "price": 139,
+      "slug": "macaquinho-ease-azul-marinho-c-azul"
+    },
+    {
+      "name": "Macaquinho Ease Verde Militar c/ Off",
+      "price": 139,
+      "slug": "macaquinho-ease-verde-militar-c-off"
+    },
+    {
+      "name": "Short Edge Azul Marinho c/ Azul",
+      "price": 90,
+      "slug": "short-edge-azul-marinho-c-azul"
+    },
+    {
+      "name": "Short Edge Cappuccino c/ off",
+      "price": 90,
+      "slug": "short-edge-cappuccino-c-off"
+    },
+    {
+      "name": "Macaquinho Ease Cappuccino c/ Off",
+      "price": 139,
+      "slug": "macaquinho-ease-cappuccino-c-off"
+    },
+    {
+      "name": "Top Air Cappuccino c/ Off",
+      "price": 55,
+      "slug": "top-air-cappuccino-c-off"
     }
   ]
 }
