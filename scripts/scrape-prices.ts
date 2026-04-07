@@ -18,16 +18,10 @@ const SCRAPE_DELAY = parseInt(process.env.SCRAPE_DELAY || "5000", 10);
 // Categorias/paginas do varejo para buscar precos
 // NOTA: fornecedor reestruturou site em abril/2026 — categorias antigas
 // (/tops/, /shorts/, etc.) nao tem mais produtos. Tudo em /colecoes/.
+// Paginas de listagem do varejo (com paginação automática: /url/, /url/2/, /url/3/...)
 const CATEGORY_PAGES = [
-  { url: "/colecoes/", label: "Colecoes" },
   { url: "/fitness/", label: "Fitness" },
-  // Fallback: categorias antigas (caso voltem a funcionar)
-  { url: "/tops/", label: "Tops" },
-  { url: "/shorts/", label: "Shorts" },
-  { url: "/leggings/", label: "Leggings" },
-  { url: "/macaquinhos/", label: "Macaquinhos" },
-  { url: "/macacao/", label: "Macacoes" },
-  { url: "/conjuntos/", label: "Conjuntos" },
+  { url: "/colecoes/", label: "Colecoes" },
 ];
 
 interface ScrapedProduct {
@@ -216,29 +210,37 @@ async function main() {
   // ══════════════════════════════════════════════════════════════
   // FASE 1: Categorias do varejo
   // ══════════════════════════════════════════════════════════════
-  console.log(`\n── FASE 1: Listagens de categoria (${CATEGORY_PAGES.length} paginas) ──`);
+  console.log(`\n── FASE 1: Listagens de categoria ──`);
   for (const cat of CATEGORY_PAGES) {
-    const catUrl = `${BASE_URL}${cat.url}`;
-    log("FASE1", `→ ${catUrl}`);
-    try {
-      const html = await fetchHTML(catUrl);
-      totalRequests++;
-      const products = parseProductsFromHTML(html);
-      let added = 0;
-      for (const p of products) {
-        if (!seenSlugs.has(p.slug)) {
-          seenSlugs.add(p.slug);
-          allScraped.push(p);
-          added++;
+    // Paginar: /fitness/ → /fitness/2/ → /fitness/3/ ...
+    for (let page = 1; page <= 20; page++) {
+      const catUrl = page === 1 ? `${BASE_URL}${cat.url}` : `${BASE_URL}${cat.url}${page}/`;
+      log("FASE1", `→ ${catUrl}`);
+      try {
+        const html = await fetchHTML(catUrl);
+        totalRequests++;
+        const products = parseProductsFromHTML(html);
+        if (products.length === 0) {
+          if (page === 1) log("FASE1", `${cat.label}: 0 encontrados`);
+          break; // fim da paginação
         }
+        let added = 0;
+        for (const p of products) {
+          if (!seenSlugs.has(p.slug)) {
+            seenSlugs.add(p.slug);
+            allScraped.push(p);
+            added++;
+          }
+        }
+        stats.fase1 += added;
+        log("FASE1", `${cat.label}${page > 1 ? " p." + page : ""}: ${products.length} encontrados, ${added} novos`);
+      } catch (err: any) {
+        stats.erros++;
+        logErr("FASE1", `${cat.label}: ${err.message || err}`);
+        break; // erro = para de paginar esta categoria
       }
-      stats.fase1 += added;
-      log("FASE1", `${cat.label}: ${products.length} encontrados, ${added} novos`);
-    } catch (err: any) {
-      stats.erros++;
-      logErr("FASE1", `${cat.label}: ${err.message || err}`);
+      await delay(SCRAPE_DELAY);
     }
-    await delay(SCRAPE_DELAY);
   }
   log("FASE1", `Total unico: ${allScraped.length} produtos`);
 
