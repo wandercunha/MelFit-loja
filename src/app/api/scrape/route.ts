@@ -19,14 +19,8 @@ const ATACADO_URL = "https://www.floraamaratacado.com.br";
 const ATACADO_CDN = "97065044c3a1a212e5c7a4f183fed028";
 
 const VAREJO_CATEGORIES = [
-  { url: "/colecoes/", label: "Colecoes" },
   { url: "/fitness/", label: "Fitness" },
-  { url: "/tops/", label: "Tops" },
-  { url: "/shorts/", label: "Shorts" },
-  { url: "/leggings/", label: "Leggings" },
-  { url: "/macaquinhos/", label: "Macaquinhos" },
-  { url: "/macacao/", label: "Macacoes" },
-  { url: "/conjuntos/", label: "Conjuntos" },
+  { url: "/colecoes/", label: "Colecoes" },
 ];
 
 const ATACADO_CATEGORIES = [
@@ -192,21 +186,26 @@ export async function GET(request: Request) {
     let varejoErrors = 0;
 
     for (const cat of VAREJO_CATEGORIES) {
-      try {
-        const html = await fetchPage(`${VAREJO_URL}${cat.url}`, VAREJO_URL);
-        const products = parseListingProducts(html);
-        let added = 0;
-        for (const p of products) {
-          if (!seenSlugs.has(p.slug)) {
-            seenSlugs.add(p.slug);
-            allVarejo.push({ name: p.name, price: p.price, slug: p.slug });
-            added++;
+      for (let page = 1; page <= 20; page++) {
+        try {
+          const pageUrl = page === 1 ? `${VAREJO_URL}${cat.url}` : `${VAREJO_URL}${cat.url}${page}/`;
+          const html = await fetchPage(pageUrl, VAREJO_URL);
+          const products = parseListingProducts(html);
+          if (products.length === 0) break;
+          let added = 0;
+          for (const p of products) {
+            if (!seenSlugs.has(p.slug)) {
+              seenSlugs.add(p.slug);
+              allVarejo.push({ name: p.name, price: p.price, slug: p.slug });
+              added++;
+            }
           }
+          addLog(`  ${cat.label}${page > 1 ? " p." + page : ""}: ${products.length} produtos, ${added} novos`);
+        } catch (err: any) {
+          varejoErrors++;
+          addLog(`  ${cat.label}: ERRO - ${err.message || err}`);
+          break;
         }
-        addLog(`  ${cat.label}: ${products.length} produtos, ${added} novos`);
-      } catch (err: any) {
-        varejoErrors++;
-        addLog(`  ${cat.label}: ERRO - ${err.message || err}`);
       }
     }
 
