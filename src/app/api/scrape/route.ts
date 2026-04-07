@@ -19,6 +19,7 @@ const ATACADO_URL = "https://www.floraamaratacado.com.br";
 const ATACADO_CDN = "97065044c3a1a212e5c7a4f183fed028";
 
 const VAREJO_CATEGORIES = [
+  { url: "/colecoes/", label: "Colecoes" },
   { url: "/tops/", label: "Tops" },
   { url: "/shorts/", label: "Shorts" },
   { url: "/leggings/", label: "Leggings" },

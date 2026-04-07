@@ -15,8 +15,12 @@ dotenv.config({ path: path.join(__dirname, "..", ".env.local") });
 const BASE_URL = "https://www.floraamar.com.br";
 const SCRAPE_DELAY = parseInt(process.env.SCRAPE_DELAY || "5000", 10);
 
-// Categorias do varejo (só as que revendemos)
+// Categorias/paginas do varejo para buscar precos
+// NOTA: fornecedor reestruturou site em abril/2026 — categorias antigas
+// (/tops/, /shorts/, etc.) nao tem mais produtos. Tudo em /colecoes/.
 const CATEGORY_PAGES = [
+  { url: "/colecoes/", label: "Colecoes (todas)" },
+  // Fallback: categorias antigas (caso voltem a funcionar)
   { url: "/tops/", label: "Tops" },
   { url: "/shorts/", label: "Shorts" },
   { url: "/leggings/", label: "Leggings" },
