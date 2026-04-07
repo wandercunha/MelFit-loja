@@ -434,7 +434,14 @@ async function main() {
   console.log(`  Total final:             ${allScraped.length} produtos`);
   console.log(`${"─".repeat(60)}\n`);
 
-  // Save scraped data
+  // Save scraped data — NUNCA sobrescrever com dados vazios
+  if (allScraped.length === 0) {
+    console.log(`\n  ⚠ NENHUM preco encontrado — CloudFront bloqueou?`);
+    console.log(`  ⚠ Arquivos NAO foram alterados (protecao contra dados vazios)`);
+    console.log(`\n[${new Date().toISOString()}] Abortado (0 precos).`);
+    return;
+  }
+
   const outputPath = path.join(dataDir, "scraped-prices.json");
   const output = {
     timestamp: new Date().toISOString(),
