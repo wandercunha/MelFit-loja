@@ -206,8 +206,10 @@ async function main() {
   // ══════════════════════════════════════════════════════════════
   console.log(`\n── FASE 1: Listagens de categoria (${CATEGORY_PAGES.length} paginas) ──`);
   for (const cat of CATEGORY_PAGES) {
+    const catUrl = `${BASE_URL}${cat.url}`;
+    log("FASE1", `→ ${catUrl}`);
     try {
-      const html = await fetchHTML(`${BASE_URL}${cat.url}`);
+      const html = await fetchHTML(catUrl);
       totalRequests++;
       const products = parseProductsFromHTML(html);
       let added = 0;
@@ -237,10 +239,12 @@ async function main() {
     for (let i = 0; i < needPrice.length; i++) {
       const p = needPrice[i];
       try {
+        const pageUrl = `${BASE_URL}/${p.slug}/`;
+        log("FASE2", `[${i + 1}/${needPrice.length}] → ${pageUrl}`);
         const detail = await scrapeProductPage(p.slug);
         totalRequests++;
         if (detail.price > 0) { p.price = detail.price; stats.fase2++; }
-        log("FASE2", `[${i + 1}/${needPrice.length}] ${p.slug} → ${detail.price > 0 ? `R$${detail.price}` : "sem preco"}`);
+        log("FASE2", `  ${p.slug} → ${detail.price > 0 ? `R$${detail.price}` : "sem preco"}`);
       } catch (err: any) {
         stats.erros++;
         logErr("FASE2", `${p.slug}: ${err.message || err}`);
@@ -275,16 +279,18 @@ async function main() {
     for (let i = 0; i < missingFromCatalog.length; i++) {
       const { name, slug } = missingFromCatalog[i];
       const isOverride = urlOverrides[name]?.varejoSlug ? " [OVERRIDE]" : "";
+      const pageUrl = `${BASE_URL}/${slug}/`;
       try {
+        log("FASE3", `[${i + 1}/${missingFromCatalog.length}] → ${pageUrl}${isOverride}`);
         const detail = await scrapeProductPage(slug);
         totalRequests++;
         if (detail.price > 0) {
           seenSlugs.add(slug);
           allScraped.push({ name, slug, price: detail.price });
           stats.fase3++;
-          log("FASE3", `[${i + 1}/${missingFromCatalog.length}] ${slug}${isOverride} → R$${detail.price}`);
+          log("FASE3", `  ${slug} → R$${detail.price}`);
         } else {
-          log("FASE3", `[${i + 1}/${missingFromCatalog.length}] ${slug}${isOverride} → nao encontrado`);
+          log("FASE3", `  ${slug} → nao encontrado`);
         }
       } catch (err: any) {
         stats.erros++;
@@ -365,15 +371,16 @@ async function main() {
       }
       const tag = source === "override" ? " [OVERRIDE]" : "";
       try {
+        log("FASE4", `[${i + 1}/${pieceSlugs.length}] → ${BASE_URL}/${slug}/${tag}`);
         const detail = await scrapeProductPage(slug);
         totalRequests++;
         if (detail.price > 0) {
           seenSlugs.add(slug);
           allScraped.push({ name, slug, price: detail.price });
           stats.fase4++;
-          log("FASE4", `[${i + 1}/${pieceSlugs.length}] ${slug}${tag} → R$${detail.price} (${conjuntoName})`);
+          log("FASE4", `  ${slug} → R$${detail.price} (${conjuntoName})`);
         } else {
-          log("FASE4", `[${i + 1}/${pieceSlugs.length}] ${slug}${tag} → nao encontrado`);
+          log("FASE4", `  ${slug} → nao encontrado`);
         }
       } catch (err: any) {
         stats.erros++;
@@ -394,13 +401,14 @@ async function main() {
     for (const [name, o] of manualPending) {
       const slug = o.varejoSlug!;
       try {
+        log("FASE5", `→ ${BASE_URL}/${slug}/ [OVERRIDE manual]`);
         const detail = await scrapeProductPage(slug);
         totalRequests++;
         if (detail.price > 0) {
           seenSlugs.add(slug);
           allScraped.push({ name, slug, price: detail.price });
           stats.fase5++;
-          log("FASE5", `${slug} → R$${detail.price} [OVERRIDE manual]`);
+          log("FASE5", `  ${slug} → R$${detail.price}`);
         } else {
           log("FASE5", `${slug} → nao encontrado [OVERRIDE manual]`);
         }

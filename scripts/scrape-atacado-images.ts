@@ -334,9 +334,10 @@ async function main() {
 
   // Phase 1: Scrape all category listings
   for (const cat of CATEGORIES) {
-    console.log(`  ${cat.label} (${cat.url})...`);
+    const catUrl = `${BASE_URL}${cat.url}`;
+    console.log(`  ${cat.label} → ${catUrl}`);
     try {
-      const html = await fetchHTML(`${BASE_URL}${cat.url}`);
+      const html = await fetchHTML(catUrl);
       const products = parseListingPage(html);
       let added = 0;
       for (const p of products) {
