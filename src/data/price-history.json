@@ -1,5 +1,5 @@
 {
-  "lastUpdate": "2026-04-07T18:35:47.387Z",
+  "lastUpdate": "2026-04-07T18:45:28.427Z",
   "changes": [
     {
       "date": "2026-03-31T19:31:12.316Z",
@@ -1904,6 +1904,390 @@
       "field": "price",
       "oldValue": 95,
       "newValue": 130
+    },
+    {
+      "date": "2026-04-07T18:40:24.098Z",
+      "product": "Legging Cross Preto c/ Off",
+      "slug": "legging-cross-preto-c-off",
+      "field": "price",
+      "oldValue": 188,
+      "newValue": 75
+    },
+    {
+      "date": "2026-04-07T18:40:24.098Z",
+      "product": "Legging Line c/ Bolso Cereja",
+      "slug": "legging-line-c-bolso-cereja",
+      "field": "price",
+      "oldValue": 59,
+      "newValue": 98
+    },
+    {
+      "date": "2026-04-07T18:40:24.098Z",
+      "product": "Macaquinho Move Azul Marinho",
+      "slug": "macaquinho-move-azul-marinho",
+      "field": "price",
+      "oldValue": 39,
+      "newValue": 55
+    },
+    {
+      "date": "2026-04-07T18:40:24.098Z",
+      "product": "Macaquinho Adapt Blush",
+      "slug": "macaquinho-adapt-blush",
+      "field": "price",
+      "oldValue": 188,
+      "newValue": 74
+    },
+    {
+      "date": "2026-04-07T18:45:28.427Z",
+      "product": "Top Speed Azul Marinho",
+      "slug": "top-speed-azul-marinho",
+      "field": "price",
+      "oldValue": 188,
+      "newValue": 62
+    },
+    {
+      "date": "2026-04-07T18:45:28.427Z",
+      "product": "Top Speed Marrom",
+      "slug": "top-speed-marrom",
+      "field": "price",
+      "oldValue": 89,
+      "newValue": 62
+    },
+    {
+      "date": "2026-04-07T18:45:28.427Z",
+      "product": "Macaquinho Move Azul Marinho",
+      "slug": "macaquinho-move-azul-marinho",
+      "field": "price",
+      "oldValue": 55,
+      "newValue": 98
+    },
+    {
+      "date": "2026-04-07T18:45:28.427Z",
+      "product": "Regata Basic Branca",
+      "slug": "regata-basic-branca",
+      "field": "price",
+      "oldValue": 75,
+      "newValue": 72
+    },
+    {
+      "date": "2026-04-07T18:45:28.427Z",
+      "product": "Macaquinho One Vermelho",
+      "slug": "macaquinho-one-vermelho",
+      "field": "price",
+      "oldValue": 99,
+      "newValue": 135
+    },
+    {
+      "date": "2026-04-07T18:45:28.427Z",
+      "product": "Macaquinho One Marrom",
+      "slug": "macaquinho-one-marrom",
+      "field": "price",
+      "oldValue": 75,
+      "newValue": 135
+    },
+    {
+      "date": "2026-04-07T18:45:28.427Z",
+      "product": "Macaquinho One Preto",
+      "slug": "macaquinho-one-preto",
+      "field": "price",
+      "oldValue": 95,
+      "newValue": 135
+    },
+    {
+      "date": "2026-04-07T18:45:28.427Z",
+      "product": "Legging Flare Canelada Off White",
+      "slug": "legging-flare-canelada-off-white",
+      "field": "price",
+      "oldValue": 75,
+      "newValue": 145
+    },
+    {
+      "date": "2026-04-07T18:45:28.427Z",
+      "product": "Top Cross Azul Marinho c/ Azul",
+      "slug": "top-cross-azul-marinho-c-azul",
+      "field": "price",
+      "oldValue": 39,
+      "newValue": 188
+    },
+    {
+      "date": "2026-04-07T18:45:28.427Z",
+      "product": "Top Cross Preto c/ Off",
+      "slug": "top-cross-preto-c-off",
+      "field": "price",
+      "oldValue": 39,
+      "newValue": 75
+    },
+    {
+      "date": "2026-04-07T18:45:28.427Z",
+      "product": "Top Air Azul Marinho c/ Azul",
+      "slug": "top-air-azul-marinho-c-azul",
+      "field": "price",
+      "oldValue": 139,
+      "newValue": 55
+    },
+    {
+      "date": "2026-04-07T18:45:28.427Z",
+      "product": "Top Air Cappuccino c/ Off",
+      "slug": "top-air-cappuccino-c-off",
+      "field": "price",
+      "oldValue": 89,
+      "newValue": 75
+    },
+    {
+      "date": "2026-04-07T18:45:28.427Z",
+      "product": "Top Air Preto c/ Off",
+      "slug": "top-air-preto-c-off",
+      "field": "price",
+      "oldValue": 55,
+      "newValue": 75
+    },
+    {
+      "date": "2026-04-07T18:45:28.427Z",
+      "product": "Cropped Manga Longa Off White",
+      "slug": "cropped-manga-longa-off-white",
+      "field": "price",
+      "oldValue": 45,
+      "newValue": 52
+    },
+    {
+      "date": "2026-04-07T18:45:28.427Z",
+      "product": "Cropped Manga Longa Cereja",
+      "slug": "cropped-manga-longa-cereja",
+      "field": "price",
+      "oldValue": 98,
+      "newValue": 45
+    },
+    {
+      "date": "2026-04-07T18:45:28.427Z",
+      "product": "Short Edge Azul Marinho c/ Azul",
+      "slug": "short-edge-azul-marinho-c-azul",
+      "field": "price",
+      "oldValue": 95,
+      "newValue": 75
+    },
+    {
+      "date": "2026-04-07T18:45:28.427Z",
+      "product": "Short Edge Cappuccino c/ Off",
+      "slug": "short-edge-cappuccino-c-off",
+      "field": "price",
+      "oldValue": 98,
+      "newValue": 75
+    },
+    {
+      "date": "2026-04-07T18:45:28.427Z",
+      "product": "Short Run Cereja",
+      "slug": "short-run-cereja",
+      "field": "price",
+      "oldValue": 39,
+      "newValue": 58
+    },
+    {
+      "date": "2026-04-07T18:45:28.427Z",
+      "product": "Short Basic Azul Marine",
+      "slug": "short-basic-azul-marine",
+      "field": "price",
+      "oldValue": 75,
+      "newValue": 139
+    },
+    {
+      "date": "2026-04-07T18:45:28.427Z",
+      "product": "Short Speed c/ Bolso Azul Marine",
+      "slug": "short-speed-c-bolso-azul-marine",
+      "field": "price",
+      "oldValue": 74,
+      "newValue": 59
+    },
+    {
+      "date": "2026-04-07T18:45:28.427Z",
+      "product": "Short Speed c/ Bolso Lilas",
+      "slug": "short-speed-c-bolso-lilas",
+      "field": "price",
+      "oldValue": 45,
+      "newValue": 52
+    },
+    {
+      "date": "2026-04-07T18:45:28.427Z",
+      "product": "Short Adapt Lilas",
+      "slug": "short-adapt-lilas",
+      "field": "price",
+      "oldValue": 45,
+      "newValue": 52
+    },
+    {
+      "date": "2026-04-07T18:45:28.427Z",
+      "product": "Short Speed c/ Bolso Preto",
+      "slug": "short-speed-c-bolso-preto",
+      "field": "price",
+      "oldValue": 95,
+      "newValue": 75
+    },
+    {
+      "date": "2026-04-07T18:45:28.427Z",
+      "product": "Short Speed c/ Bolso Azul Petroleo",
+      "slug": "short-speed-c-bolso-azul-marine",
+      "field": "price",
+      "oldValue": 74,
+      "newValue": 59
+    },
+    {
+      "date": "2026-04-07T18:45:28.427Z",
+      "product": "Legging Cross Verde Militar c/ Off",
+      "slug": "legging-cross-verde-militar-c-off",
+      "field": "price",
+      "oldValue": 65,
+      "newValue": 178
+    },
+    {
+      "date": "2026-04-07T18:45:28.427Z",
+      "product": "Legging Cross Cappuccino c/ Off",
+      "slug": "legging-cross-cappuccino-c-off",
+      "field": "price",
+      "oldValue": 89,
+      "newValue": 75
+    },
+    {
+      "date": "2026-04-07T18:45:28.427Z",
+      "product": "Legging Cross Azul Marinho c/ Azul",
+      "slug": "legging-cross-azul-marinho-c-azul",
+      "field": "price",
+      "oldValue": 74,
+      "newValue": 58
+    },
+    {
+      "date": "2026-04-07T18:45:28.427Z",
+      "product": "Legging Flare Azul Marinho",
+      "slug": "legging-flare-azul-marinho",
+      "field": "price",
+      "oldValue": 89,
+      "newValue": 98
+    },
+    {
+      "date": "2026-04-07T18:45:28.427Z",
+      "product": "Macaquinho Ease Azul Marinho c/ Azul",
+      "slug": "macaquinho-ease-azul-marinho-c-azul",
+      "field": "price",
+      "oldValue": 75,
+      "newValue": 95
+    },
+    {
+      "date": "2026-04-07T18:45:28.427Z",
+      "product": "Macaquinho Ease Verde Militar c/ Off",
+      "slug": "macaquinho-ease-verde-militar-c-off",
+      "field": "price",
+      "oldValue": 95,
+      "newValue": 55
+    },
+    {
+      "date": "2026-04-07T18:45:28.427Z",
+      "product": "Macaquinho Ease Cappuccino c/ Off",
+      "slug": "macaquinho-ease-cappuccino-c-off",
+      "field": "price",
+      "oldValue": 75,
+      "newValue": 39
+    },
+    {
+      "date": "2026-04-07T18:45:28.427Z",
+      "product": "Macaquinho Ease Preto c/ Off",
+      "slug": "macaquinho-ease-preto-c-off",
+      "field": "price",
+      "oldValue": 95,
+      "newValue": 58
+    },
+    {
+      "date": "2026-04-07T18:45:28.427Z",
+      "product": "Macaquinho com Manga Cereja",
+      "slug": "macaquinho-com-manga-cereja",
+      "field": "price",
+      "oldValue": 95,
+      "newValue": 58
+    },
+    {
+      "date": "2026-04-07T18:45:28.427Z",
+      "product": "Macaquinho Move Frente Unica Azul Marinho",
+      "slug": "macaquinho-move-frente-unica-azul-marinho",
+      "field": "price",
+      "oldValue": 178,
+      "newValue": 89
+    },
+    {
+      "date": "2026-04-07T18:45:28.427Z",
+      "product": "Macaquinho Move Frente Unica Verde Militar",
+      "slug": "macaquinho-move-frente-unica-verde-militar",
+      "field": "price",
+      "oldValue": 95,
+      "newValue": 178
+    },
+    {
+      "date": "2026-04-07T18:45:28.427Z",
+      "product": "Macaquinho Move Frente Unica Cereja",
+      "slug": "macaquinho-move-frente-unica-cereja",
+      "field": "price",
+      "oldValue": 95,
+      "newValue": 75
+    },
+    {
+      "date": "2026-04-07T18:45:28.427Z",
+      "product": "Macaquinho Move Frente Unica Preto",
+      "slug": "macaquinho-move-frente-unica-preto",
+      "field": "price",
+      "oldValue": 55,
+      "newValue": 95
+    },
+    {
+      "date": "2026-04-07T18:45:28.427Z",
+      "product": "Macacão Essential Preto",
+      "slug": "macacao-essential-preto",
+      "field": "price",
+      "oldValue": 98,
+      "newValue": 75
+    },
+    {
+      "date": "2026-04-07T18:45:28.427Z",
+      "product": "Macacão Essential Marrom",
+      "slug": "macacao-essential-marrom",
+      "field": "price",
+      "oldValue": 98,
+      "newValue": 58
+    },
+    {
+      "date": "2026-04-07T18:45:28.427Z",
+      "product": "Top Basic Duplo Coffee",
+      "slug": "top-basic-duplo-coffee",
+      "field": "price",
+      "oldValue": 95,
+      "newValue": 89
+    },
+    {
+      "date": "2026-04-07T18:45:28.427Z",
+      "product": "Top Basic Duplo Preto",
+      "slug": "top-basic-duplo-preto",
+      "field": "price",
+      "oldValue": 62,
+      "newValue": 98
+    },
+    {
+      "date": "2026-04-07T18:45:28.427Z",
+      "product": "Short Basic Preto",
+      "slug": "short-basic-preto",
+      "field": "price",
+      "oldValue": 65,
+      "newValue": 109
+    },
+    {
+      "date": "2026-04-07T18:45:28.427Z",
+      "product": "Top Basic Duplo Azul Marinho",
+      "slug": "top-basic-duplo-azul-marinho",
+      "field": "price",
+      "oldValue": 58,
+      "newValue": 75
+    },
+    {
+      "date": "2026-04-07T18:45:28.427Z",
+      "product": "Short Basic Cereja",
+      "slug": "short-basic-cereja",
+      "field": "price",
+      "oldValue": 130,
+      "newValue": 55
     }
   ],
   "snapshots": [
@@ -1967,6 +2351,20 @@
       "date": "2026-04-07T18:35:47.387Z",
       "productCount": 55,
       "avgPrice": 86.51,
+      "minPrice": 39,
+      "maxPrice": 188
+    },
+    {
+      "date": "2026-04-07T18:40:24.098Z",
+      "productCount": 55,
+      "avgPrice": 83.38,
+      "minPrice": 39,
+      "maxPrice": 188
+    },
+    {
+      "date": "2026-04-07T18:45:28.427Z",
+      "productCount": 86,
+      "avgPrice": 86.5,
       "minPrice": 39,
       "maxPrice": 188
     }

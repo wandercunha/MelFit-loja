@@ -1,67 +1,252 @@
 {
-  "timestamp": "2026-04-07T18:35:47.386Z",
+  "timestamp": "2026-04-07T18:45:28.426Z",
   "source": "https://www.floraamar.com.br",
-  "productCount": 55,
+  "productCount": 86,
   "products": [
     {
+      "name": "Top Curve Cinza",
+      "price": 45,
+      "slug": "top-curve-cinza"
+    },
+    {
+      "name": "Short Fast Cinza c/ Branco",
+      "price": 79,
+      "slug": "short-fast-cinza-c-branco"
+    },
+    {
+      "name": "Short Fast Preto c/ Branco",
+      "price": 79,
+      "slug": "short-fast-preto-c-branco"
+    },
+    {
+      "name": "Top Curve Preto",
+      "price": 45,
+      "slug": "top-curve-preto"
+    },
+    {
+      "name": "Top Curve Azul Elegance",
+      "price": 45,
+      "slug": "top-curve-azul-elegance"
+    },
+    {
+      "name": "Short Fast Azul Elegance c/ Branco",
+      "price": 79,
+      "slug": "short-fast-azul-elegance-c-branco"
+    },
+    {
+      "name": "Regata One Preto",
+      "price": 52,
+      "slug": "regata-one-preto"
+    },
+    {
+      "name": "Regata One Cinza",
+      "price": 52,
+      "slug": "regata-one-cinza"
+    },
+    {
+      "name": "Regata One Azul Elegance",
+      "price": 52,
+      "slug": "regata-one-azul-elegance"
+    },
+    {
       "name": "Top Speed Azul Marinho",
-      "slug": "top-speed-azul-marinho",
-      "price": 188
+      "price": 62,
+      "slug": "top-speed-azul-marinho"
     },
     {
       "name": "Top Speed Marrom",
-      "slug": "top-speed-marrom",
-      "price": 89
+      "price": 62,
+      "slug": "top-speed-marrom"
+    },
+    {
+      "name": "Macac�o Flare Coffee",
+      "price": 180,
+      "slug": "macacao-flare-coffe"
+    },
+    {
+      "name": "Macaquinho Move Azul Marinho",
+      "price": 98,
+      "slug": "macaquinho-move-azul-marinho"
+    },
+    {
+      "name": "Macaquinho Move Verde Militar",
+      "price": 98,
+      "slug": "macaquinho-move-verde-militar"
     },
     {
       "name": "Regata Basic Branca",
-      "slug": "regata-basic-branca",
-      "price": 75
+      "price": 72,
+      "slug": "regata-basic-branca"
+    },
+    {
+      "name": "Conjunto Top Cortininha e Calcinha Marquinha Vermelho Flame",
+      "price": 120,
+      "slug": "conjunto-top-cortininha-e-calcinha-marquinha-vermelho-flame"
+    },
+    {
+      "name": "Conjunto Top Cortininha e Calcinha Marquinha Amarelo Sun",
+      "price": 120,
+      "slug": "conjunto-top-cortininha-e-calcinha-marquinha"
+    },
+    {
+      "name": "Conjunto Top Cortininha e Calcinha Marquinha Preto Power",
+      "price": 120,
+      "slug": "conjunto-top-cortininha-e-calcinha-marquinha-preto-power"
+    },
+    {
+      "name": "Conjunto Top Tomara Que Caia e Calcinha Asa Delta Preto Power",
+      "price": 120,
+      "slug": "conjunto-top-tomara-que-caia-e-calcinha-asa-delta-preto-power"
+    },
+    {
+      "name": "Conjunto Top Tomara Que Caia e Calcinha Asa Delta Amarelo Sun",
+      "price": 120,
+      "slug": "conjunto-top-tomara-que-caia-e-calcinha-asa-delta-amarelo-sun"
+    },
+    {
+      "name": "Conjunto Top Tomara Que Caia e Calcinha Asa Delta Verde Roots",
+      "price": 120,
+      "slug": "conjunto-top-tomara-que-caia-e-calcinha-asa-delta-verde-roots-693869c6b25c1"
+    },
+    {
+      "name": "Conjunto Top Tomara Que Caia e Calcinha Asa Delta Vermelho Flame",
+      "price": 120,
+      "slug": "conjunto-top-tomara-que-caia-e-calcinha-asa-delta-verde-roots"
+    },
+    {
+      "name": "Conjunto Top Tomara Que Caia e Calcinha Asa Delta Azul Ocean",
+      "price": 120,
+      "slug": "conjunto-top-tomara-que-caia-e-calcinha-asa-delta-azul-ocean"
+    },
+    {
+      "name": "Macaquinho One Vermelho",
+      "price": 135,
+      "slug": "macaquinho-one-vermelho"
+    },
+    {
+      "name": "Short Run Amarelo Energy",
+      "price": 99,
+      "slug": "short-run-amarelo-energy"
+    },
+    {
+      "name": "Short Run Rosa Soft",
+      "price": 99,
+      "slug": "short-run-rosa-soft"
+    },
+    {
+      "name": "Short Run Azul Sky",
+      "price": 99,
+      "slug": "short-run-azul-sky"
+    },
+    {
+      "name": "Top Speed Azul Sky",
+      "price": 62,
+      "slug": "top-speed-azul-sky"
+    },
+    {
+      "name": "Top Speed Amarelo Energy",
+      "price": 62,
+      "slug": "top-speed-amarelo-energy"
+    },
+    {
+      "name": "Top Speed Rosa Soft",
+      "price": 62,
+      "slug": "top-speed-rosa-soft"
+    },
+    {
+      "name": "Top Bia Preto",
+      "price": 58,
+      "slug": "top-bia-preto"
+    },
+    {
+      "name": "Top Bia Marrom Escuro",
+      "price": 58,
+      "slug": "top-bia-marrom-escuro"
+    },
+    {
+      "name": "Short Speed c/ Bolso Marrom",
+      "price": 95,
+      "slug": "short-speed-c-bolso-marrom"
+    },
+    {
+      "name": "Macaquinho One Marrom",
+      "price": 135,
+      "slug": "macaquinho-one-marrom"
+    },
+    {
+      "name": "Macaquinho One Preto",
+      "price": 135,
+      "slug": "macaquinho-one-preto"
+    },
+    {
+      "name": "Squeeze Flora Amar Branca  800ml",
+      "price": 39,
+      "slug": "garrafa-branca"
+    },
+    {
+      "name": "Legging Flare Canelada Off White",
+      "price": 145,
+      "slug": "legging-flare-canelada-off-white"
+    },
+    {
+      "name": "Conjunto Top Air e Short Edge Preto c/ Off",
+      "price": 145,
+      "slug": "conjunto-top-air-e-short-edge-preto-c-off"
+    },
+    {
+      "name": "Conjunto Top Air e Short Edge Cappuccino c/ Off",
+      "price": 145,
+      "slug": "conjunto-top-air-e-short-edge-cappuccino-c-off"
+    },
+    {
+      "name": "Conjunto Top e Short Preto",
+      "price": 75,
+      "slug": "conjunto-top-e-short-preto-1645831"
     },
     {
       "name": "Top Cross Azul Marinho c/ Azul",
       "slug": "top-cross-azul-marinho-c-azul",
-      "price": 39
+      "price": 188
     },
     {
       "name": "Top Cross Preto c/ Off",
       "slug": "top-cross-preto-c-off",
-      "price": 39
+      "price": 75
     },
     {
       "name": "Top Air Azul Marinho c/ Azul",
       "slug": "top-air-azul-marinho-c-azul",
-      "price": 139
+      "price": 55
     },
     {
       "name": "Top Air Cappuccino c/ Off",
       "slug": "top-air-cappuccino-c-off",
-      "price": 89
+      "price": 75
     },
     {
       "name": "Top Air Preto c/ Off",
       "slug": "top-air-preto-c-off",
-      "price": 55
+      "price": 75
     },
     {
       "name": "Cropped Manga Longa Off White",
       "slug": "cropped-manga-longa-off-white",
-      "price": 45
+      "price": 52
     },
     {
       "name": "Cropped Manga Longa Cereja",
       "slug": "cropped-manga-longa-cereja",
-      "price": 98
+      "price": 45
     },
     {
       "name": "Short Edge Azul Marinho c/ Azul",
       "slug": "short-edge-azul-marinho-c-azul",
-      "price": 95
+      "price": 75
     },
     {
       "name": "Short Edge Cappuccino c/ Off",
       "slug": "short-edge-cappuccino-c-off",
-      "price": 98
+      "price": 75
     },
     {
       "name": "Short Edge Verde Militar c/ Off",
@@ -76,57 +261,57 @@
     {
       "name": "Short Run Cereja",
       "slug": "short-run-cereja",
-      "price": 39
+      "price": 58
     },
     {
       "name": "Short Basic Azul Marine",
       "slug": "short-basic-azul-marine",
-      "price": 75
+      "price": 139
     },
     {
       "name": "Short Speed c/ Bolso Azul Marine",
       "slug": "short-speed-c-bolso-azul-marine",
-      "price": 74
+      "price": 59
     },
     {
       "name": "Short Speed c/ Bolso Lilas",
       "slug": "short-speed-c-bolso-lilas",
-      "price": 45
+      "price": 52
     },
     {
       "name": "Short Adapt Lilas",
       "slug": "short-adapt-lilas",
-      "price": 45
+      "price": 52
     },
     {
       "name": "Short Speed c/ Bolso Preto",
       "slug": "short-speed-c-bolso-preto",
-      "price": 95
+      "price": 75
     },
     {
       "name": "Short Speed c/ Bolso Azul Petroleo",
       "slug": "short-speed-c-bolso-azul-marine",
-      "price": 74
+      "price": 59
     },
     {
       "name": "Legging Cross Preto c/ Off",
       "slug": "legging-cross-preto-c-off",
-      "price": 188
+      "price": 75
     },
     {
       "name": "Legging Cross Verde Militar c/ Off",
       "slug": "legging-cross-verde-militar-c-off",
-      "price": 65
+      "price": 178
     },
     {
       "name": "Legging Cross Cappuccino c/ Off",
       "slug": "legging-cross-cappuccino-c-off",
-      "price": 89
+      "price": 75
     },
     {
       "name": "Legging Cross Azul Marinho c/ Azul",
       "slug": "legging-cross-azul-marinho-c-azul",
-      "price": 74
+      "price": 58
     },
     {
       "name": "Legging Line c/ Bolso Preto",
@@ -136,12 +321,12 @@
     {
       "name": "Legging Flare Azul Marinho",
       "slug": "legging-flare-azul-marinho",
-      "price": 89
+      "price": 98
     },
     {
       "name": "Legging Line c/ Bolso Cereja",
       "slug": "legging-line-c-bolso-cereja",
-      "price": 59
+      "price": 98
     },
     {
       "name": "Legging Line c/ Bolso Forrado Off White",
@@ -149,64 +334,34 @@
       "price": 75
     },
     {
-      "name": "Legging Flare Canelada Off White",
-      "slug": "legging-flare-canelada-off-white",
-      "price": 75
-    },
-    {
-      "name": "Macaquinho Move Azul Marinho",
-      "slug": "macaquinho-move-azul-marinho",
-      "price": 39
-    },
-    {
-      "name": "Macaquinho Move Verde Militar",
-      "slug": "macaquinho-move-verde-militar",
-      "price": 98
-    },
-    {
-      "name": "Macaquinho One Marrom",
-      "slug": "macaquinho-one-marrom",
-      "price": 75
-    },
-    {
-      "name": "Macaquinho One Preto",
-      "slug": "macaquinho-one-preto",
-      "price": 95
-    },
-    {
-      "name": "Macaquinho One Vermelho",
-      "slug": "macaquinho-one-vermelho",
-      "price": 99
-    },
-    {
       "name": "Macaquinho Ease Azul Marinho c/ Azul",
       "slug": "macaquinho-ease-azul-marinho-c-azul",
-      "price": 75
+      "price": 95
     },
     {
       "name": "Macaquinho Ease Verde Militar c/ Off",
       "slug": "macaquinho-ease-verde-militar-c-off",
-      "price": 95
+      "price": 55
     },
     {
       "name": "Macaquinho Ease Cappuccino c/ Off",
       "slug": "macaquinho-ease-cappuccino-c-off",
-      "price": 75
+      "price": 39
     },
     {
       "name": "Macaquinho Ease Preto c/ Off",
       "slug": "macaquinho-ease-preto-c-off",
-      "price": 95
+      "price": 58
     },
     {
       "name": "Macaquinho com Manga Cereja",
       "slug": "macaquinho-com-manga-cereja",
-      "price": 95
+      "price": 58
     },
     {
       "name": "Macaquinho Adapt Blush",
       "slug": "macaquinho-adapt-blush",
-      "price": 188
+      "price": 74
     },
     {
       "name": "Macaquinho Adapt Preto",
@@ -216,7 +371,7 @@
     {
       "name": "Macaquinho Move Frente Unica Azul Marinho",
       "slug": "macaquinho-move-frente-unica-azul-marinho",
-      "price": 178
+      "price": 89
     },
     {
       "name": "Macaquinho Move Frente Unica Cafe",
@@ -226,47 +381,47 @@
     {
       "name": "Macaquinho Move Frente Unica Verde Militar",
       "slug": "macaquinho-move-frente-unica-verde-militar",
-      "price": 95
+      "price": 178
     },
     {
       "name": "Macaquinho Move Frente Unica Cereja",
       "slug": "macaquinho-move-frente-unica-cereja",
-      "price": 95
+      "price": 75
     },
     {
       "name": "Macaquinho Move Frente Unica Preto",
       "slug": "macaquinho-move-frente-unica-preto",
-      "price": 55
+      "price": 95
     },
     {
       "name": "Macacão Essential Preto",
       "slug": "macacao-essential-preto",
-      "price": 98
+      "price": 75
     },
     {
       "name": "Macacão Essential Marrom",
       "slug": "macacao-essential-marrom",
-      "price": 98
+      "price": 58
     },
     {
       "name": "Top Basic Duplo Coffee",
       "slug": "top-basic-duplo-coffee",
-      "price": 95
+      "price": 89
     },
     {
       "name": "Top Basic Duplo Preto",
       "slug": "top-basic-duplo-preto",
-      "price": 62
+      "price": 98
     },
     {
       "name": "Short Basic Preto",
       "slug": "short-basic-preto",
-      "price": 65
+      "price": 109
     },
     {
       "name": "Top Basic Duplo Azul Marinho",
       "slug": "top-basic-duplo-azul-marinho",
-      "price": 58
+      "price": 75
     },
     {
       "name": "Top Basic Duplo Cereja",
@@ -276,7 +431,7 @@
     {
       "name": "Short Basic Cereja",
       "slug": "short-basic-cereja",
-      "price": 130
+      "price": 55
     }
   ]
 }
