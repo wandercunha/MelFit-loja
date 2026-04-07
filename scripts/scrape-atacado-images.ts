@@ -466,9 +466,16 @@ async function main() {
     if (overrideAdded > 0) console.log(`  Added ${overrideAdded} products from overrides`);
   } catch {}
 
-  // Save atacado data
+  // Save atacado data — NUNCA sobrescrever com dados vazios
   const dataDir = path.join(__dirname, "..", "src", "data");
   const outputPath = path.join(dataDir, "atacado-details.json");
+
+  if (allProducts.size === 0) {
+    console.log(`\n  ⚠ NENHUM produto encontrado — CloudFront bloqueou?`);
+    console.log(`  ⚠ Arquivo atacado-details.json NAO foi alterado (protecao contra dados vazios)`);
+    console.log(`\n[${new Date().toISOString()}] Abortado (0 produtos).`);
+    return;
+  }
 
   const output: Record<string, any> = {};
   for (const [slug, p] of allProducts) {
