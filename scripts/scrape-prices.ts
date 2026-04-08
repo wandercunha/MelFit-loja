@@ -77,6 +77,24 @@ function delay(ms: number) {
   return new Promise((r) => setTimeout(r, ms));
 }
 
+/**
+ * Detecta subcategorias dentro de /fitness/ a partir dos links no HTML.
+ * Retorna array de paths tipo ["/fitness/tops/", "/fitness/calcas/", ...]
+ */
+function detectFitnessSubcategories(html: string): string[] {
+  const subs = new Set<string>();
+  const regex = /href="(\/fitness\/[a-z0-9-]+\/)"/g;
+  let m;
+  while ((m = regex.exec(html)) !== null) {
+    const path = m[1];
+    // Ignorar /fitness/ sozinho e links de produto (sem barra final ou com slug longo)
+    if (path !== "/fitness/" && !path.includes("?")) {
+      subs.add(path);
+    }
+  }
+  return Array.from(subs).sort();
+}
+
 function parseProductsFromHTML(html: string): ScrapedProduct[] {
   const $ = cheerio.load(html);
   const products: ScrapedProduct[] = [];
@@ -217,6 +235,8 @@ async function main() {
   // FASE 1: Categorias do varejo
   // ══════════════════════════════════════════════════════════════
   console.log(`\n── FASE 1: Listagens de categoria ──`);
+  let detectedSubcategories: string[] = [];
+
   for (const cat of CATEGORY_PAGES) {
     // Paginar: /fitness/ → /fitness/?page=2 → /fitness/?page=3 ...
     for (let page = 1; page <= 20; page++) {
@@ -225,6 +245,18 @@ async function main() {
       try {
         const html = await fetchHTML(catUrl);
         totalRequests++;
+
+        // Detectar subcategorias na primeira página de /fitness/
+        if (cat.url === "/fitness/" && page === 1) {
+          detectedSubcategories = detectFitnessSubcategories(html);
+          const knownSubs = CATEGORY_PAGES.filter(c => c.url.startsWith("/fitness/") && c.url !== "/fitness/").map(c => c.url);
+          const newSubs = detectedSubcategories.filter(s => !knownSubs.includes(s));
+          if (newSubs.length > 0) {
+            log("FASE1", `⚠ ${newSubs.length} SUBCATEGORIA(S) NOVA(S) detectada(s): ${newSubs.join(", ")}`);
+          }
+          log("FASE1", `Subcategorias detectadas: ${detectedSubcategories.join(", ") || "nenhuma"}`);
+        }
+
         const products = parseProductsFromHTML(html);
         if (products.length === 0) {
           if (page === 1) log("FASE1", `${cat.label}: 0 encontrados`);
@@ -701,13 +733,13 @@ async function main() {
   console.log(`    Products scraped: ${allScraped.length}`);
   console.log(`    With prices: ${withPrices}`);
 
-  // ── Sync precos para Turso ──
-  await syncPricesToTurso(priceMap);
+  // ── Sync precos e subcategorias para Turso ──
+  await syncPricesToTurso(priceMap, detectedSubcategories);
 
   console.log(`\n[${new Date().toISOString()}] Scrape complete!`);
 }
 
-async function syncPricesToTurso(priceMap: Record<string, number>) {
+async function syncPricesToTurso(priceMap: Record<string, number>, detectedSubcategories: string[]) {
   const url = process.env.TURSO_DATABASE_URL;
   const authToken = process.env.TURSO_AUTH_TOKEN;
   if (!url || !authToken) {
@@ -735,6 +767,16 @@ async function syncPricesToTurso(priceMap: Record<string, number>) {
       args: ["catalog_varejo_prices", priceJson],
     });
     console.log(`\n  [SYNC] varejo prices → Turso (${size}KB) ✓`);
+
+    // Salvar subcategorias detectadas
+    if (detectedSubcategories.length > 0) {
+      await db.execute({
+        sql: `INSERT INTO settings (key, value, updated_at) VALUES (?, ?, datetime('now'))
+              ON CONFLICT(key) DO UPDATE SET value = excluded.value, updated_at = datetime('now')`,
+        args: ["catalog_detected_subcategories", JSON.stringify(detectedSubcategories)],
+      });
+      console.log(`  [SYNC] subcategorias detectadas → Turso (${detectedSubcategories.length}) ✓`);
+    }
   } catch (err) {
     console.error(`\n  [SYNC] Falha ao sincronizar com Turso: ${err}`);
   }

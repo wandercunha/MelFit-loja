@@ -54,6 +54,20 @@ async function fetchPage(url: string, referer: string): Promise<string> {
   return res.text();
 }
 
+// ─── Detecta subcategorias de /fitness/ nos links do HTML ───
+function detectFitnessSubcategories(html: string): string[] {
+  const subs = new Set<string>();
+  const regex = /href="(\/fitness\/[a-z0-9-]+\/)"/g;
+  let m;
+  while ((m = regex.exec(html)) !== null) {
+    const path = m[1];
+    if (path !== "/fitness/" && !path.includes("?")) {
+      subs.add(path);
+    }
+  }
+  return Array.from(subs).sort();
+}
+
 // ─── Parser genérico (funciona para varejo e atacado) ───
 function parseListingProducts(html: string, cdn?: string) {
   const products: Array<{
@@ -189,12 +203,24 @@ export async function GET(request: Request) {
     const allVarejo: Array<{ name: string; price: number; slug: string }> = [];
     const seenSlugs = new Set<string>();
     let varejoErrors = 0;
+    let detectedSubcategories: string[] = [];
 
     for (const cat of VAREJO_CATEGORIES) {
       for (let page = 1; page <= 20; page++) {
         try {
           const pageUrl = page === 1 ? `${VAREJO_URL}${cat.url}` : `${VAREJO_URL}${cat.url}?page=${page}`;
           const html = await fetchPage(pageUrl, VAREJO_URL);
+
+          // Detectar subcategorias na primeira página de /fitness/
+          if (cat.url === "/fitness/" && page === 1) {
+            detectedSubcategories = detectFitnessSubcategories(html);
+            const knownSubs = VAREJO_CATEGORIES.filter(c => c.url.startsWith("/fitness/") && c.url !== "/fitness/").map(c => c.url);
+            const newSubs = detectedSubcategories.filter(s => !knownSubs.includes(s));
+            if (newSubs.length > 0) {
+              addLog(`  ⚠ ${newSubs.length} SUBCATEGORIA(S) NOVA(S): ${newSubs.join(", ")}`);
+            }
+          }
+
           const products = parseListingProducts(html);
           if (products.length === 0) break;
           let added = 0;
@@ -240,6 +266,12 @@ export async function GET(request: Request) {
       addLog(`  Precos salvos no Turso (${Object.keys(priceMap).length})`);
     }
 
+    // Salvar subcategorias detectadas no Turso
+    if (detectedSubcategories.length > 0) {
+      await setSetting("catalog_detected_subcategories", JSON.stringify(detectedSubcategories));
+      addLog(`  Subcategorias detectadas: ${detectedSubcategories.join(", ")}`);
+    }
+
     // Snapshot de preços
     const prices = allVarejo.filter((p) => p.price > 0).map((p) => p.price);
     if (prices.length > 0) {
@@ -270,6 +302,7 @@ export async function GET(request: Request) {
         pricesTracked: prices.length,
         changesDetected,
         changes,
+        detectedSubcategories,
       },
       log,
       ...(blocked ? {

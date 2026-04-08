@@ -3,7 +3,8 @@
 import { Product } from "@/lib/types";
 import { useCatalog } from "@/context/CatalogContext";
 import { useState, useEffect } from "react";
-import { formatBRL, getAtacadoUrl } from "@/lib/pricing";
+import { formatBRL, buildAtacadoUrl, buildVarejoUrl, toSlug } from "@/lib/pricing";
+import { useCatalogData } from "@/context/CatalogDataContext";
 
 interface Props {
   product: Product;
@@ -12,6 +13,7 @@ interface Props {
 
 export function MarginEditor({ product, onClose }: Props) {
   const { globalSettings, overrides, setOverride, removeOverride } = useCatalog();
+  const { atacadoProducts, atacadoByName, varejoPrecos } = useCatalogData();
   const existing = overrides[product.id];
 
   const [margin, setMargin] = useState(existing?.margin ?? globalSettings.margin);
@@ -54,17 +56,42 @@ export function MarginEditor({ product, onClose }: Props) {
         className="bg-white rounded-t-2xl sm:rounded-2xl p-5 sm:p-6 w-full sm:max-w-lg shadow-2xl max-h-[90vh] overflow-y-auto"
       >
         <h3 className="text-lg font-bold text-brand-500 mb-1">{product.name}</h3>
-        <a
-          href={getAtacadoUrl(product)}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="inline-flex items-center gap-1 text-sm text-blue-500 hover:text-blue-700 hover:underline mb-5"
-        >
-          Ver no site do fabricante
-          <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-          </svg>
-        </a>
+        {(() => {
+          const slug = product.slug || toSlug(product.name);
+          const atacado = (atacadoProducts[slug] || atacadoByName[product.name]) as any;
+          const atPrice = atacado?.price || 0;
+          const pcs = atacado?.pieces || [];
+          const isConj = pcs.length > 0;
+          const linkIcon = <svg className="w-3.5 h-3.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" /></svg>;
+          return (
+            <div className="space-y-1 mb-5">
+              <a href={buildAtacadoUrl(product, atacadoByName)} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 text-sm text-brand-400 hover:text-brand-500 hover:underline">
+                {linkIcon} Atacado{atPrice ? ` — ${formatBRL(atPrice)}` : ""}
+              </a>
+              {isConj ? (
+                <>
+                  {varejoPrecos[product.name] != null && (
+                    <a href={buildVarejoUrl(product)} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 text-sm text-blue-400 hover:text-blue-500 hover:underline">
+                      {linkIcon} Varejo (conj.) — {formatBRL(varejoPrecos[product.name])}
+                    </a>
+                  )}
+                  {pcs.map((piece: any) => {
+                    const vPrice = varejoPrecos[piece.name];
+                    return vPrice != null ? (
+                      <a key={piece.name} href={buildVarejoUrl({ name: piece.name })} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 text-sm text-blue-400/70 hover:text-blue-500 hover:underline pl-5">
+                        {piece.name.split(" ").slice(0, 2).join(" ")} — {formatBRL(vPrice)}
+                      </a>
+                    ) : null;
+                  })}
+                </>
+              ) : (
+                <a href={buildVarejoUrl(product)} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 text-sm text-blue-400 hover:text-blue-500 hover:underline">
+                  {linkIcon} Varejo{varejoPrecos[product.name] ? ` — ${formatBRL(varejoPrecos[product.name])}` : ""}
+                </a>
+              )}
+            </div>
+          );
+        })()}
 
         <div className="grid grid-cols-2 gap-4 mb-5">
           <div>

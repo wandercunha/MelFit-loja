@@ -1,5 +1,5 @@
 {
-  "lastUpdate": "2026-04-08T12:07:07.946Z",
+  "lastUpdate": "2026-04-08T20:20:32.700Z",
   "changes": [
     {
       "date": "2026-03-31T19:31:12.316Z",
@@ -2616,6 +2616,190 @@
       "field": "price",
       "oldValue": 55,
       "newValue": 75
+    },
+    {
+      "date": "2026-04-08T20:20:32.700Z",
+      "product": "Top Cross Verde Militar c/ Off",
+      "slug": "top-cross-verde-c-off",
+      "field": "price",
+      "oldValue": 62,
+      "newValue": 52
+    },
+    {
+      "date": "2026-04-08T20:20:32.700Z",
+      "product": "Top Cross Capuccino c/ Off",
+      "slug": "top-cross-capuccino-c-off",
+      "field": "price",
+      "oldValue": 62,
+      "newValue": 52
+    },
+    {
+      "date": "2026-04-08T20:20:32.700Z",
+      "product": "Top Cross Azul Marinho c/ Azul",
+      "slug": "top-cross-azul-marinho-c-azul",
+      "field": "price",
+      "oldValue": 62,
+      "newValue": 52
+    },
+    {
+      "date": "2026-04-08T20:20:32.700Z",
+      "product": "Top Cross Preto c/ Off",
+      "slug": "top-cross-preto-c-off",
+      "field": "price",
+      "oldValue": 62,
+      "newValue": 52
+    },
+    {
+      "date": "2026-04-08T20:20:32.700Z",
+      "product": "Legging Cross Preto c/ Off",
+      "slug": "legging-cross-preto-c-off",
+      "field": "price",
+      "oldValue": 108,
+      "newValue": 98
+    },
+    {
+      "date": "2026-04-08T20:20:32.700Z",
+      "product": "Legging Cross Verde Militar c/ Off",
+      "slug": "legging-cross-verde-militar-c-off",
+      "field": "price",
+      "oldValue": 108,
+      "newValue": 98
+    },
+    {
+      "date": "2026-04-08T20:20:32.700Z",
+      "product": "Legging Cross Cappuccino c/ Off",
+      "slug": "legging-cross-cappuccino-c-off",
+      "field": "price",
+      "oldValue": 108,
+      "newValue": 98
+    },
+    {
+      "date": "2026-04-08T20:20:32.700Z",
+      "product": "Legging Cross Azul Marinho c/ Azul",
+      "slug": "legging-cross-azul-marinho-c-azul",
+      "field": "price",
+      "oldValue": 108,
+      "newValue": 98
+    },
+    {
+      "date": "2026-04-08T20:20:32.700Z",
+      "product": "Macac�o Muse Cereja",
+      "slug": "macacao-muse-cereja",
+      "field": "price",
+      "oldValue": 188,
+      "newValue": 150
+    },
+    {
+      "date": "2026-04-08T20:20:32.700Z",
+      "product": "Macac�o Muse Preto",
+      "slug": "macacao-muse-preto",
+      "field": "price",
+      "oldValue": 188,
+      "newValue": 150
+    },
+    {
+      "date": "2026-04-08T20:20:32.700Z",
+      "product": "Conjunto Basic Top + Short Coffee",
+      "slug": "conjunto-basic-top-short-coffee",
+      "field": "price",
+      "oldValue": 170,
+      "newValue": 136
+    },
+    {
+      "date": "2026-04-08T20:20:32.700Z",
+      "product": "Short Basic Coffee",
+      "slug": "short-basic-coffee",
+      "field": "price",
+      "oldValue": 95,
+      "newValue": 76
+    },
+    {
+      "date": "2026-04-08T20:20:32.700Z",
+      "product": "Top Basic Duplo Coffee",
+      "slug": "top-basic-duplo-coffee",
+      "field": "price",
+      "oldValue": 75,
+      "newValue": 60
+    },
+    {
+      "date": "2026-04-08T20:20:32.700Z",
+      "product": "Conjunto Basic Top + Short Azul Marinho",
+      "slug": "conjunto-basic-top-short-azul-marinho",
+      "field": "price",
+      "oldValue": 170,
+      "newValue": 136
+    },
+    {
+      "date": "2026-04-08T20:20:32.700Z",
+      "product": "Short Basic Azul Marinho",
+      "slug": "short-basic-azul-marinho",
+      "field": "price",
+      "oldValue": 95,
+      "newValue": 76
+    },
+    {
+      "date": "2026-04-08T20:20:32.700Z",
+      "product": "Top Basic Duplo Azul Marinho",
+      "slug": "top-basic-duplo-azul-marinho",
+      "field": "price",
+      "oldValue": 75,
+      "newValue": 60
+    },
+    {
+      "date": "2026-04-08T20:20:32.700Z",
+      "product": "Short Basic Preto",
+      "slug": "short-basic-preto",
+      "field": "price",
+      "oldValue": 95,
+      "newValue": 76
+    },
+    {
+      "date": "2026-04-08T20:20:32.700Z",
+      "product": "Top Basic Duplo Preto",
+      "slug": "top-basic-duplo-preto",
+      "field": "price",
+      "oldValue": 75,
+      "newValue": 60
+    },
+    {
+      "date": "2026-04-08T20:20:32.700Z",
+      "product": "Conjunto Top e Legging Cross Preto c/ Off",
+      "slug": "conjunto-top-e-legging-cross-preto-c-off",
+      "field": "price",
+      "oldValue": 170,
+      "newValue": 150
+    },
+    {
+      "date": "2026-04-08T20:20:32.700Z",
+      "product": "Conjunto Top e Legging Cross Azul Marinho c/ Azul",
+      "slug": "conjunto-top-e-legging-cross-azul-c-azul",
+      "field": "price",
+      "oldValue": 170,
+      "newValue": 150
+    },
+    {
+      "date": "2026-04-08T20:20:32.700Z",
+      "product": "Conjunto Top e Legging Cross Cappuccino c/ Off",
+      "slug": "conjunto-top-e-legging-cross-cappuccino-c-off",
+      "field": "price",
+      "oldValue": 170,
+      "newValue": 150
+    },
+    {
+      "date": "2026-04-08T20:20:32.700Z",
+      "product": "Conjunto Top e Legging Cross Verde Militar",
+      "slug": "conjunto-top-cross-e-legging-cross-verde-militar",
+      "field": "price",
+      "oldValue": 170,
+      "newValue": 150
+    },
+    {
+      "date": "2026-04-08T20:20:32.700Z",
+      "product": "Conjunto Top e Short Move Azul Beb�",
+      "slug": "conjunto-top-e-short-move-azul-bebe",
+      "field": "price",
+      "oldValue": 100,
+      "newValue": 45
     }
   ],
   "snapshots": [
@@ -2749,6 +2933,13 @@
       "date": "2026-04-08T12:07:07.946Z",
       "productCount": 213,
       "avgPrice": 94.12,
+      "minPrice": 25,
+      "maxPrice": 205
+    },
+    {
+      "date": "2026-04-08T20:20:32.700Z",
+      "productCount": 209,
+      "avgPrice": 92.03,
       "minPrice": 25,
       "maxPrice": 205
     }

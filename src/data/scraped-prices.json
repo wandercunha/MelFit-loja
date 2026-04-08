@@ -1,7 +1,7 @@
 {
-  "timestamp": "2026-04-08T12:07:07.943Z",
+  "timestamp": "2026-04-08T20:20:32.698Z",
   "source": "https://www.floraamar.com.br",
-  "productCount": 247,
+  "productCount": 242,
   "products": [
     {
       "name": "Top Curve Cinza",
@@ -74,11 +74,6 @@
       "slug": "macaquinho-one-vermelho"
     },
     {
-      "name": "Short Run Amarelo Energy",
-      "price": 99,
-      "slug": "short-run-amarelo-energy"
-    },
-    {
       "name": "Short Run Rosa Soft",
       "price": 99,
       "slug": "short-run-rosa-soft"
@@ -140,12 +135,12 @@
     },
     {
       "name": "Top Cross Verde Militar c/ Off",
-      "price": 62,
+      "price": 52,
       "slug": "top-cross-verde-c-off"
     },
     {
       "name": "Top Cross Capuccino c/ Off",
-      "price": 62,
+      "price": 52,
       "slug": "top-cross-capuccino-c-off"
     },
     {
@@ -155,12 +150,12 @@
     },
     {
       "name": "Top Cross Azul Marinho c/ Azul",
-      "price": 62,
+      "price": 52,
       "slug": "top-cross-azul-marinho-c-azul"
     },
     {
       "name": "Top Cross Preto c/ Off",
-      "price": 62,
+      "price": 52,
       "slug": "top-cross-preto-c-off"
     },
     {
@@ -199,28 +194,28 @@
       "slug": "top-air-cappuccino-c-off"
     },
     {
+      "name": "Legging Cross Preto c/ Off",
+      "price": 98,
+      "slug": "legging-cross-preto-c-off"
+    },
+    {
       "name": "Conjunto Top e Short Preto",
       "price": 0,
       "slug": "conjunto-top-e-short-preto-1645831"
     },
     {
-      "name": "Legging Cross Preto c/ Off",
-      "price": 108,
-      "slug": "legging-cross-preto-c-off"
-    },
-    {
       "name": "Legging Cross Verde Militar c/ Off",
-      "price": 108,
+      "price": 98,
       "slug": "legging-cross-verde-militar-c-off"
     },
     {
       "name": "Legging Cross Cappuccino c/ Off",
-      "price": 108,
+      "price": 98,
       "slug": "legging-cross-cappuccino-c-off"
     },
     {
       "name": "Legging Cross Azul Marinho c/ Azul",
-      "price": 108,
+      "price": 98,
       "slug": "legging-cross-azul-marinho-c-azul"
     },
     {
@@ -305,7 +300,7 @@
     },
     {
       "name": "Macac�o Muse Cereja",
-      "price": 188,
+      "price": 150,
       "slug": "macacao-muse-cereja"
     },
     {
@@ -314,13 +309,8 @@
       "slug": "legging-line-c-bolso-cereja"
     },
     {
-      "name": "Short Run Cereja",
-      "price": 99,
-      "slug": "short-run-cereja"
-    },
-    {
       "name": "Macac�o Muse Preto",
-      "price": 188,
+      "price": 150,
       "slug": "macacao-muse-preto"
     },
     {
@@ -417,11 +407,6 @@
       "name": "Macaquinho Adapt Blush",
       "price": 139,
       "slug": "macaquinho-adapt-blush"
-    },
-    {
-      "name": "Short Run Preto",
-      "price": 99,
-      "slug": "short-run-preto"
     },
     {
       "name": "Short Speed c/ bolso Branco Forrado",
@@ -644,11 +629,6 @@
       "slug": "top-move-azul-azul-bebe"
     },
     {
-      "name": "Short Classic Move Azul Beb�",
-      "price": 55,
-      "slug": "short-classic-move-azul-bebe"
-    },
-    {
       "name": "Conjunto Top Dallas e Legging Classic Azul Marinho",
       "price": 205,
       "slug": "conjunto-top-dallas-e-legging-classic-azul-marinho"
@@ -805,22 +785,22 @@
     },
     {
       "name": "Conjunto Basic Top + Short Coffee",
-      "price": 170,
+      "price": 136,
       "slug": "conjunto-basic-top-short-coffee"
     },
     {
       "name": "Short Basic Coffee",
-      "price": 95,
+      "price": 76,
       "slug": "short-basic-coffee"
     },
     {
       "name": "Top Basic Duplo Coffee",
-      "price": 75,
+      "price": 60,
       "slug": "top-basic-duplo-coffee"
     },
     {
       "name": "Conjunto Basic Top + Short Azul Marinho",
-      "price": 170,
+      "price": 136,
       "slug": "conjunto-basic-top-short-azul-marinho"
     },
     {
@@ -830,7 +810,7 @@
     },
     {
       "name": "Short Basic Azul Marinho",
-      "price": 95,
+      "price": 76,
       "slug": "short-basic-azul-marinho"
     },
     {
@@ -840,17 +820,17 @@
     },
     {
       "name": "Top Basic Duplo Azul Marinho",
-      "price": 75,
+      "price": 60,
       "slug": "top-basic-duplo-azul-marinho"
     },
     {
       "name": "Short Basic Preto",
-      "price": 95,
+      "price": 76,
       "slug": "short-basic-preto"
     },
     {
       "name": "Top Basic Duplo Preto",
-      "price": 75,
+      "price": 60,
       "slug": "top-basic-duplo-preto"
     },
     {
@@ -862,6 +842,11 @@
       "name": "Short Run Marrom",
       "price": 0,
       "slug": "short-run-azul-marrom"
+    },
+    {
+      "name": "Short Run Amarelo Energy",
+      "price": 0,
+      "slug": "short-run-amarelo-energy"
     },
     {
       "name": "Short Edge Verde Militar c/ off",
@@ -899,6 +884,11 @@
       "slug": "cropped-manga-longa-preto"
     },
     {
+      "name": "Short Run Cereja",
+      "price": 0,
+      "slug": "short-run-cereja"
+    },
+    {
       "name": "Top Speed Cereja",
       "price": 0,
       "slug": "top-speed-cereja"
@@ -919,14 +909,9 @@
       "slug": "short-speed-c-bolso-terra-cota"
     },
     {
-      "name": "Short Adapt Terracota",
+      "name": "Short Run Preto",
       "price": 0,
-      "slug": "short-adapt-terra-cota"
-    },
-    {
-      "name": "Top Run Verde Herb",
-      "price": 0,
-      "slug": "top-run-verde-herb"
+      "slug": "short-run-preto"
     },
     {
       "name": "Regata Run Preto",
@@ -949,24 +934,9 @@
       "slug": "top-move-2-0-verde-militar"
     },
     {
-      "name": "Macaquinho Move Frente �nica Pink",
-      "price": 0,
-      "slug": "macaquinho-move-frente-unica-pink"
-    },
-    {
-      "name": "Top Cruzado Marrom",
-      "price": 0,
-      "slug": "top-cruzado-marrom"
-    },
-    {
       "name": "Short Saia com Fenda Rosa Beb� /Branco",
       "price": 0,
       "slug": "short-saia-com-fenda-rosa-bebe-branco"
-    },
-    {
-      "name": "Macaquinho Classic Rosa Pink",
-      "price": 0,
-      "slug": "macaquinho-classic-rosa-pink"
     },
     {
       "name": "Legging Classic Reto Preto e Branco",
@@ -982,6 +952,11 @@
       "name": "Legging B�sica Move Azul Marinho",
       "price": 0,
       "slug": "legging-basica-move-azul-marinho"
+    },
+    {
+      "name": "Short Classic Move Azul Beb�",
+      "price": 0,
+      "slug": "short-classic-move-azul-bebe"
     },
     {
       "name": "Macaquinho Move Vermelho",
@@ -1085,22 +1060,22 @@
     },
     {
       "name": "Conjunto Top e Legging Cross Preto c/ Off",
-      "price": 170,
+      "price": 150,
       "slug": "conjunto-top-e-legging-cross-preto-c-off"
     },
     {
       "name": "Conjunto Top e Legging Cross Azul Marinho c/ Azul",
-      "price": 170,
+      "price": 150,
       "slug": "conjunto-top-e-legging-cross-azul-c-azul"
     },
     {
       "name": "Conjunto Top e Legging Cross Cappuccino c/ Off",
-      "price": 170,
+      "price": 150,
       "slug": "conjunto-top-e-legging-cross-cappuccino-c-off"
     },
     {
       "name": "Conjunto Top e Legging Cross Verde Militar",
-      "price": 170,
+      "price": 150,
       "slug": "conjunto-top-cross-e-legging-cross-verde-militar"
     },
     {
@@ -1180,7 +1155,7 @@
     },
     {
       "name": "Conjunto Top e Short Move Azul Beb�",
-      "price": 100,
+      "price": 45,
       "slug": "conjunto-top-e-short-move-azul-bebe"
     },
     {

@@ -102,13 +102,7 @@ export function AdminPanel({ open, onClose }: Props) {
     }
   }, [open]);
 
-  // Close on ESC
-  useEffect(() => {
-    if (!open) return;
-    const handler = (e: KeyboardEvent) => { if (e.key === "Escape") onClose(); };
-    document.addEventListener("keydown", handler);
-    return () => document.removeEventListener("keydown", handler);
-  }, [open, onClose]);
+  // ESC removido — atrapalhava quando batia sem querer
 
   if (!open) return null;
 

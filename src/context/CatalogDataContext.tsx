@@ -39,6 +39,8 @@ interface CatalogData {
   addCustomProduct: (product: Product) => Promise<void>;
   updateCustomProduct: (product: Product) => Promise<void>;
   removeCustomProduct: (productId: number) => Promise<void>;
+  updateVarejoPrice: (productName: string, price: number) => void;
+  detectedSubcategories: string[];
   dataSource: "static" | "turso";
   updatedAt: string | null;
   loading: boolean;
@@ -54,6 +56,7 @@ export function CatalogDataProvider({ children }: { children: React.ReactNode })
   const [dataSource, setDataSource] = useState<"static" | "turso">("static");
   const [updatedAt, setUpdatedAt] = useState<string | null>((staticAtacado as any).timestamp || null);
   const [dbUrlOverrides, setDbUrlOverrides] = useState<Record<string, { atacadoSlug: string }>>({});
+  const [detectedSubcategories, setDetectedSubcategories] = useState<string[]>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -74,6 +77,7 @@ export function CatalogDataProvider({ children }: { children: React.ReactNode })
           if (pInfo && Object.keys(pInfo).length > 0) setProductInfo(pInfo);
           setCustomProducts(custom);
           setDbUrlOverrides(dbOverrides);
+          if (json.detectedSubcategories) setDetectedSubcategories(json.detectedSubcategories);
           setDataSource("turso");
           setUpdatedAt(json.updatedAt);
         }
@@ -111,6 +115,10 @@ export function CatalogDataProvider({ children }: { children: React.ReactNode })
     await persistCustomProducts(next);
   };
 
+  const updateVarejoPrice = (productName: string, price: number) => {
+    setVarejoPrecos((prev) => ({ ...prev, [productName]: price }));
+  };
+
   // Indice por nome para lookup O(1) no ProductCard
   // Inclui overrides de url-overrides.json (nome do catálogo → slug do atacado)
   const atacadoByName = useMemo(() => {
@@ -142,9 +150,9 @@ export function CatalogDataProvider({ children }: { children: React.ReactNode })
     () => ({
       atacadoProducts, atacadoByName, varejoPrecos, productInfo,
       customProducts, allProducts, addCustomProduct, updateCustomProduct, removeCustomProduct,
-      dataSource, updatedAt, loading,
+      updateVarejoPrice, detectedSubcategories, dataSource, updatedAt, loading,
     }),
-    [atacadoProducts, atacadoByName, varejoPrecos, productInfo, customProducts, allProducts, dataSource, updatedAt, loading],
+    [atacadoProducts, atacadoByName, varejoPrecos, productInfo, customProducts, allProducts, detectedSubcategories, dataSource, updatedAt, loading],
   );
 
   return (

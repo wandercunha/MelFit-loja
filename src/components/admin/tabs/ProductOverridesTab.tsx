@@ -4,7 +4,7 @@ import { useState, useMemo, useRef } from "react";
 import { useCatalog } from "@/context/CatalogContext";
 import { PRODUCTS } from "@/data/products";
 import { Product } from "@/lib/types";
-import { calcProduct, formatBRL, getAtacadoUrl } from "@/lib/pricing";
+import { calcProduct, formatBRL, buildAtacadoUrl, buildVarejoUrl } from "@/lib/pricing";
 import { ProductFormModal } from "@/components/admin/ProductFormModal";
 
 // Abre produto no catalogo em nova aba (mesma origem)
@@ -189,7 +189,7 @@ export function ProductOverridesTab() {
     refreshFromDb,
     apiSecret,
   } = useCatalog();
-  const { atacadoProducts, allProducts, addCustomProduct, updateCustomProduct, removeCustomProduct } = useCatalogData();
+  const { atacadoProducts, atacadoByName, varejoPrecos, allProducts, addCustomProduct, updateCustomProduct, removeCustomProduct, updateVarejoPrice } = useCatalogData();
 
   // Helper para buscar estoque do atacado
   const getStock = (product: { name: string; slug?: string }): { stock: Record<string, number>; totalStock: number; pieces?: any[] } | null => {
@@ -201,6 +201,13 @@ export function ProductOverridesTab() {
       return { stock: byName.stock, totalStock: byName.totalStock, pieces: byName.pieces };
     }
     return { stock: d.stock, totalStock: d.totalStock, pieces: d.pieces };
+  };
+
+  // Helper para preço do atacado
+  const getAtacadoPrice = (product: { name: string; slug?: string }): number => {
+    const slug = product.slug || toSlug(product.name);
+    const d = (atacadoProducts[slug] || atacadoByName[product.name]) as any;
+    return d?.price || 0;
   };
 
   const [refreshing, setRefreshing] = useState(false);
@@ -258,6 +265,38 @@ export function ProductOverridesTab() {
   };
   const hideTooltip = () => {
     hideTimer.current = setTimeout(() => setTooltipId(null), 200);
+  };
+
+  // Scrape preço individual do varejo
+  const [scrapingPrice, setScrapingPrice] = useState<string | null>(null);
+  const [toast, setToast] = useState<{ message: string; type: "success" | "error" } | null>(null);
+  const toastTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const showToast = (message: string, type: "success" | "error") => {
+    setToast({ message, type });
+    if (toastTimer.current) clearTimeout(toastTimer.current);
+    toastTimer.current = setTimeout(() => setToast(null), 4000);
+  };
+
+  const handleScrapePrice = async (productName: string, slug?: string) => {
+    setScrapingPrice(productName);
+    try {
+      const session = typeof window !== "undefined" ? JSON.parse(localStorage.getItem("melfit_session") || "{}") : {};
+      const res = await fetch("/api/scrape-price", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Authorization: `Bearer ${session.apiSecret}` },
+        body: JSON.stringify({ productName, slug: slug || toSlug(productName) }),
+      });
+      const data = await res.json();
+      if (data.success && data.price > 0) {
+        updateVarejoPrice(productName, data.price);
+        showToast(`${productName}: ${formatBRL(data.price)}`, "success");
+      } else {
+        showToast(data.error || "Preco nao encontrado no varejo", "error");
+      }
+    } catch {
+      showToast("Erro ao buscar preco", "error");
+    }
+    setScrapingPrice(null);
   };
 
   // Dialog state
@@ -522,6 +561,21 @@ export function ProductOverridesTab() {
     <>
       {dialog && <ConfirmDialog config={dialog} onCancel={() => setDialog(null)} />}
 
+      {/* Toast notification */}
+      {toast && (
+        <div className={`fixed bottom-6 left-1/2 z-[300] px-4 py-2.5 rounded-xl shadow-xl text-sm font-semibold flex items-center gap-2 animate-fade-in-up ${
+          toast.type === "success" ? "bg-emerald-600 text-white" : "bg-red-600 text-white"
+        }`}>
+          {toast.type === "success" ? (
+            <svg className="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" /></svg>
+          ) : (
+            <svg className="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" /></svg>
+          )}
+          {toast.message}
+          <button onClick={() => setToast(null)} className="ml-1 opacity-60 hover:opacity-100">&times;</button>
+        </div>
+      )}
+
       {/* Image zoom overlay */}
       {zoomImg && (
         <div className="fixed inset-0 z-[150] bg-black/50 flex items-center justify-center p-8" onClick={() => setZoomImg(null)}>
@@ -627,7 +681,7 @@ export function ProductOverridesTab() {
             const catShipping = catOv?.shipping ?? globalSettings.shipping;
 
             return (
-              <div key={category} className="rounded-xl border border-gray-200 overflow-hidden">
+              <div key={category} className="rounded-xl border border-gray-200">
                 {/* Category header */}
                 <div
                   className={`flex items-center gap-3 px-4 py-2.5 cursor-pointer select-none ${
@@ -742,7 +796,7 @@ export function ProductOverridesTab() {
                                 </span>
                                 {tooltipId === p.id && (
                                   <div
-                                    className="absolute left-full top-1/2 -translate-y-1/2 ml-2 z-50 flex flex-col gap-1 bg-gray-900 text-white text-[11px] rounded-lg px-3 py-2 shadow-xl whitespace-nowrap min-w-[200px]"
+                                    className="absolute left-full top-1/2 -translate-y-1/2 ml-2 z-50 flex flex-col gap-1 bg-gray-900 text-white text-[11px] rounded-lg px-3 py-2.5 shadow-xl whitespace-nowrap min-w-[220px]"
                                     onMouseEnter={() => showTooltip(p.id)}
                                     onMouseLeave={hideTooltip}
                                   >
@@ -750,10 +804,54 @@ export function ProductOverridesTab() {
                                       <svg className="w-3 h-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg>
                                       Ver no catalogo
                                     </button>
-                                    <a href={getAtacadoUrl(p)} className="flex items-center gap-1.5 hover:text-brand-300" target="_blank" rel="noopener noreferrer">
-                                      <svg className="w-3 h-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" /></svg>
-                                      Fornecedor (atacado)
-                                    </a>
+                                    {(() => {
+                                      const atPrice = getAtacadoPrice(p);
+                                      const stockData = getStock(p);
+                                      const pcs = stockData?.pieces || [];
+                                      const isConj = pcs.length > 0;
+                                      return (
+                                        <>
+                                          <a href={buildAtacadoUrl(p, atacadoByName)} className="flex items-center gap-1.5 hover:text-brand-300" target="_blank" rel="noopener noreferrer">
+                                            <svg className="w-3 h-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" /></svg>
+                                            Atacado{atPrice ? ` — ${formatBRL(atPrice)}` : ""}
+                                          </a>
+                                          {isConj ? (
+                                            <>
+                                              {varejoPrecos[p.name] != null && (
+                                                <a href={buildVarejoUrl(p)} className="flex items-center gap-1.5 hover:text-blue-300 text-blue-400" target="_blank" rel="noopener noreferrer">
+                                                  <svg className="w-3 h-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" /></svg>
+                                                  Varejo (conj.) — {formatBRL(varejoPrecos[p.name])}
+                                                </a>
+                                              )}
+                                              {pcs.map((piece: any) => {
+                                                const vPrice = varejoPrecos[piece.name];
+                                                return vPrice != null ? (
+                                                  <a key={piece.name} href={buildVarejoUrl({ name: piece.name })} className="flex items-center gap-1.5 hover:text-blue-300 text-blue-300/70 pl-3" target="_blank" rel="noopener noreferrer">
+                                                    {piece.name.split(" ").slice(0, 2).join(" ")} — {formatBRL(vPrice)}
+                                                  </a>
+                                                ) : null;
+                                              })}
+                                              {varejoPrecos[p.name] == null && !pcs.some((pc: any) => varejoPrecos[pc.name] != null) && (
+                                                <span className="text-gray-500 text-[11px]">Varejo: sem preco</span>
+                                              )}
+                                            </>
+                                          ) : (
+                                            <a href={buildVarejoUrl(p)} className="flex items-center gap-1.5 hover:text-blue-300 text-blue-400" target="_blank" rel="noopener noreferrer">
+                                              <svg className="w-3 h-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" /></svg>
+                                              Varejo{varejoPrecos[p.name] ? ` — ${formatBRL(varejoPrecos[p.name])}` : ""}
+                                            </a>
+                                          )}
+                                          <button
+                                            onClick={() => handleScrapePrice(p.name, p.slug)}
+                                            disabled={scrapingPrice === p.name}
+                                            className="flex items-center gap-1.5 hover:text-emerald-300 text-emerald-400 mt-1 pt-1 border-t border-white/10"
+                                          >
+                                            <svg className={`w-3 h-3 flex-shrink-0 ${scrapingPrice === p.name ? "animate-spin" : ""}`} fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" /></svg>
+                                            {scrapingPrice === p.name ? "Buscando..." : "Atualizar preco"}
+                                          </button>
+                                        </>
+                                      );
+                                    })()}
                                   </div>
                                 )}
                               </div>
@@ -980,16 +1078,57 @@ export function ProductOverridesTab() {
                                 {hasOverride && <span className="inline-block w-1.5 h-1.5 rounded-full bg-brand-400 mr-1 align-middle" />}
                                 {p.name}
                               </p>
-                              <div className="flex gap-3 mt-0.5">
+                              <div className="flex flex-wrap gap-x-3 gap-y-0.5 mt-0.5">
                                 <button onClick={() => goToProduct(p.name)} className="text-[10px] text-brand-400 font-semibold flex items-center gap-1">
                                   <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg>
                                   Catalogo
                                 </button>
-                                <a href={getAtacadoUrl(p)} target="_blank" rel="noopener noreferrer" className="text-[10px] text-gray-400 font-semibold flex items-center gap-1">
-                                  <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" /></svg>
-                                  Fornecedor
-                                </a>
                               </div>
+                              {(() => {
+                                const atPrice = getAtacadoPrice(p);
+                                const stockData = getStock(p);
+                                const pcs = stockData?.pieces || [];
+                                const isConj = pcs.length > 0;
+                                return (
+                                  <div className="mt-0.5 space-y-0.5">
+                                    <a href={buildAtacadoUrl(p, atacadoByName)} target="_blank" rel="noopener noreferrer" className="text-[10px] text-brand-400 font-semibold flex items-center gap-1">
+                                      <svg className="w-3 h-3 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" /></svg>
+                                      Atacado{atPrice ? ` — ${formatBRL(atPrice)}` : ""}
+                                    </a>
+                                    {isConj ? (
+                                      <>
+                                        {varejoPrecos[p.name] != null && (
+                                          <a href={buildVarejoUrl(p)} target="_blank" rel="noopener noreferrer" className="text-[10px] text-blue-400 font-semibold flex items-center gap-1">
+                                            <svg className="w-3 h-3 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" /></svg>
+                                            Varejo (conj.) — {formatBRL(varejoPrecos[p.name])}
+                                          </a>
+                                        )}
+                                        {pcs.map((piece: any) => {
+                                          const vPrice = varejoPrecos[piece.name];
+                                          return vPrice != null ? (
+                                            <a key={piece.name} href={buildVarejoUrl({ name: piece.name })} target="_blank" rel="noopener noreferrer" className="text-[10px] text-blue-400/70 font-semibold flex items-center gap-1 pl-4">
+                                              {piece.name.split(" ").slice(0, 2).join(" ")} — {formatBRL(vPrice)}
+                                            </a>
+                                          ) : null;
+                                        })}
+                                      </>
+                                    ) : (
+                                      <a href={buildVarejoUrl(p)} target="_blank" rel="noopener noreferrer" className="text-[10px] text-blue-400 font-semibold flex items-center gap-1">
+                                        <svg className="w-3 h-3 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" /></svg>
+                                        Varejo{varejoPrecos[p.name] ? ` — ${formatBRL(varejoPrecos[p.name])}` : ""}
+                                      </a>
+                                    )}
+                                    <button
+                                      onClick={() => handleScrapePrice(p.name, p.slug)}
+                                      disabled={scrapingPrice === p.name}
+                                      className="text-[10px] text-emerald-500 font-semibold flex items-center gap-1 mt-0.5"
+                                    >
+                                      <svg className={`w-3 h-3 shrink-0 ${scrapingPrice === p.name ? "animate-spin" : ""}`} fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" /></svg>
+                                      {scrapingPrice === p.name ? "Buscando..." : "Atualizar preco"}
+                                    </button>
+                                  </div>
+                                );
+                              })()}
                             </div>
                             {isEditing ? (
                               <div className="flex gap-1 flex-shrink-0">
