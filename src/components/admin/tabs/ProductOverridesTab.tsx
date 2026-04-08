@@ -191,7 +191,8 @@ export function ProductOverridesTab() {
       const data = await res.json();
       if (data.success && data.price > 0) {
         updateVarejoPrice(productName, data.price);
-        showToast(`${productName}: ${formatBRL(data.price)}`, "success");
+        const via = data.method?.startsWith("busca") ? ` (via ${data.method})` : "";
+        showToast(`${productName}: ${formatBRL(data.price)}${via}`, "success");
       } else {
         showToast(data.error || "Preco nao encontrado no varejo", "error");
       }
