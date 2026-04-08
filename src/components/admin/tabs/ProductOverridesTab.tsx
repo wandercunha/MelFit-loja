@@ -15,107 +15,9 @@ function goToProduct(name: string) {
 }
 import { CATEGORY_LABELS, CATEGORY_ORDER } from "@/lib/types";
 import { useCatalogData } from "@/context/CatalogDataContext";
-import scrapeMaps from "@/data/scrape-maps.json";
-
 function toSlug(name: string) {
   return name.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "")
     .replace(/\s+c\/\s*/g, "-c-").replace(/\s+/g, "-").replace(/[^a-z0-9-]/g, "");
-}
-
-function normalizeName(s: string) {
-  return s
-    .toLowerCase()
-    .normalize("NFD")
-    .replace(/[\u0300-\u036f]/g, "")
-    .replace(/c\/\s*/g, "c/ ")   // normaliza "c/Off" → "c/ off"
-    .replace(/\s+/g, " ")
-    .trim();
-}
-
-const retailPriceMap: Record<string, number> = {};
-const priceMap = (scrapeMaps as { priceMap?: Record<string, number> }).priceMap || {};
-const normalizedEntries = Object.entries(priceMap).map(([k, v]) => [normalizeName(k), v] as const);
-
-// Palavras ignoradas no matching (artigos, preposicoes, etc)
-const STOP_WORDS = new Set(["e", "de", "do", "da", "c/", "c", "com", "no", "na", "em"]);
-
-// Extrai palavras significativas de um nome normalizado
-function getKeywords(norm: string): string[] {
-  return norm.split(" ").filter((w) => w.length > 1 && !STOP_WORDS.has(w));
-}
-
-// Score de similaridade entre dois conjuntos de palavras (0..1)
-function wordScore(a: string[], b: string[]): number {
-  if (a.length === 0 || b.length === 0) return 0;
-  const setB = new Set(b);
-  const hits = a.filter((w) => setB.has(w)).length;
-  return hits / Math.max(a.length, b.length);
-}
-
-// Busca preco varejo por nome — exato, parcial, ou fuzzy
-function findRetailPrice(norm: string): number {
-  // 1. Match exato
-  const exact = normalizedEntries.find(([k]) => k === norm);
-  if (exact) return exact[1];
-  // 2. Match contem
-  const partial = normalizedEntries.find(([k]) => k.includes(norm) || norm.includes(k));
-  if (partial) return partial[1];
-  // 3. Fuzzy por palavras-chave (min 60% overlap)
-  const kw = getKeywords(norm);
-  let best: { score: number; price: number } = { score: 0, price: 0 };
-  for (const [k, v] of normalizedEntries) {
-    if (v <= 0) continue;
-    const score = wordScore(kw, getKeywords(k));
-    if (score > best.score && score >= 0.6) {
-      best = { score, price: v };
-    }
-  }
-  return best.price;
-}
-
-for (const p of PRODUCTS) {
-  const norm = normalizeName(p.name);
-
-  // Conjuntos: tenta soma das pecas avulsas do varejo
-  if (p.category === "conjuntos" && p.cost > 0) {
-    const avulsos = PRODUCTS.filter((x) => x.category !== "conjuntos");
-    const conjWords = new Set(getKeywords(norm));
-
-    const pieceFits = (name: string) => {
-      const words = getKeywords(normalizeName(name));
-      if (!conjWords.has(words[0])) return false;
-      const hits = words.filter((w) => conjWords.has(w)).length;
-      return hits >= 2;
-    };
-
-    let found = false;
-    for (const a of avulsos) {
-      if (!pieceFits(a.name)) continue;
-      const remainder = p.cost - a.cost;
-      if (remainder <= 0) continue;
-      const b = avulsos.find((x) => x.id !== a.id && x.cost === remainder && pieceFits(x.name));
-      if (b) {
-        const r1 = findRetailPrice(normalizeName(a.name));
-        const r2 = findRetailPrice(normalizeName(b.name));
-        if (r1 > 0 && r2 > 0) {
-          retailPriceMap[p.name] = r1 + r2;
-          found = true;
-          break;
-        }
-      }
-    }
-    if (found) continue;
-
-    // Fallback: busca conjunto direto no varejo (nome diferente, fuzzy match)
-    const directPrice = findRetailPrice(norm);
-    if (directPrice > 0) { retailPriceMap[p.name] = directPrice; continue; }
-
-    // Nao achou nada — fica sem varejo
-    continue;
-  }
-
-  const price = findRetailPrice(norm);
-  if (price > 0) retailPriceMap[p.name] = price;
 }
 
 
@@ -904,7 +806,12 @@ export function ProductOverridesTab() {
                             {/* Varejo */}
                             <td className="px-3 py-2 text-right">
                               {(() => {
-                                const retail = retailPriceMap[p.name];
+                                // Preço varejo: direto, ou soma das peças para conjuntos
+                                const stockData = getStock(p);
+                                const pcs = stockData?.pieces || [];
+                                const directPrice = varejoPrecos[p.name];
+                                const pieceSum = pcs.length > 0 ? pcs.reduce((s: number, pc: any) => s + (varejoPrecos[pc.name] || 0), 0) : 0;
+                                const retail = directPrice || (pieceSum > 0 ? pieceSum : 0);
                                 if (!retail) return <span className="text-gray-300">—</span>;
                                 const myPrice = Math.round(calc.priceInstallment);
                                 const diff = myPrice - retail;
@@ -1054,10 +961,13 @@ export function ProductOverridesTab() {
                       const hasOverride = !!ov;
                       const isEditing = editingId === p.id;
                       const visible = isProductVisible(p.id, p.soldOut);
-                      const retail = retailPriceMap[p.name];
+                      const stockData = getStock(p);
+                      const pcs = stockData?.pieces || [];
+                      const directPrice = varejoPrecos[p.name];
+                      const pieceSum = pcs.length > 0 ? pcs.reduce((s: number, pc: any) => s + (varejoPrecos[pc.name] || 0), 0) : 0;
+                      const retail = directPrice || (pieceSum > 0 ? pieceSum : 0);
                       const myPrice = Math.round(calc.priceInstallment);
                       const retailDiff = retail ? ((myPrice - retail) / retail * 100).toFixed(0) : null;
-                      const stockData = getStock(p);
 
                       return (
                         <div
