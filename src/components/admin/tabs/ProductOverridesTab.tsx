@@ -806,12 +806,9 @@ export function ProductOverridesTab() {
                             {/* Varejo */}
                             <td className="px-3 py-2 text-right">
                               {(() => {
-                                // Preço varejo: direto, ou soma das peças para conjuntos
-                                const stockData = getStock(p);
-                                const pcs = stockData?.pieces || [];
-                                const directPrice = varejoPrecos[p.name];
-                                const pieceSum = pcs.length > 0 ? pcs.reduce((s: number, pc: any) => s + (varejoPrecos[pc.name] || 0), 0) : 0;
-                                const retail = directPrice || (pieceSum > 0 ? pieceSum : 0);
+                                // Coluna varejo: só preço direto do produto (nome exato)
+                                // Para conjuntos: só mostra se o conjunto inteiro existe no varejo
+                                const retail = varejoPrecos[p.name];
                                 if (!retail) return <span className="text-gray-300">—</span>;
                                 const myPrice = Math.round(calc.priceInstallment);
                                 const diff = myPrice - retail;
@@ -961,13 +958,10 @@ export function ProductOverridesTab() {
                       const hasOverride = !!ov;
                       const isEditing = editingId === p.id;
                       const visible = isProductVisible(p.id, p.soldOut);
-                      const stockData = getStock(p);
-                      const pcs = stockData?.pieces || [];
-                      const directPrice = varejoPrecos[p.name];
-                      const pieceSum = pcs.length > 0 ? pcs.reduce((s: number, pc: any) => s + (varejoPrecos[pc.name] || 0), 0) : 0;
-                      const retail = directPrice || (pieceSum > 0 ? pieceSum : 0);
+                      const retail = varejoPrecos[p.name] || 0;
                       const myPrice = Math.round(calc.priceInstallment);
                       const retailDiff = retail ? ((myPrice - retail) / retail * 100).toFixed(0) : null;
+                      const stockData = getStock(p);
 
                       return (
                         <div
