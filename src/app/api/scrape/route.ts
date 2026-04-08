@@ -188,7 +188,7 @@ export async function GET(request: Request) {
     for (const cat of VAREJO_CATEGORIES) {
       for (let page = 1; page <= 20; page++) {
         try {
-          const pageUrl = page === 1 ? `${VAREJO_URL}${cat.url}` : `${VAREJO_URL}${cat.url}${page}/`;
+          const pageUrl = page === 1 ? `${VAREJO_URL}${cat.url}` : `${VAREJO_URL}${cat.url}?page=${page}`;
           const html = await fetchPage(pageUrl, VAREJO_URL);
           const products = parseListingProducts(html);
           if (products.length === 0) break;

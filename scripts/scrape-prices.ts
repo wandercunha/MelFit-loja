@@ -212,9 +212,9 @@ async function main() {
   // ══════════════════════════════════════════════════════════════
   console.log(`\n── FASE 1: Listagens de categoria ──`);
   for (const cat of CATEGORY_PAGES) {
-    // Paginar: /fitness/ → /fitness/2/ → /fitness/3/ ...
+    // Paginar: /fitness/ → /fitness/?page=2 → /fitness/?page=3 ...
     for (let page = 1; page <= 20; page++) {
-      const catUrl = page === 1 ? `${BASE_URL}${cat.url}` : `${BASE_URL}${cat.url}${page}/`;
+      const catUrl = page === 1 ? `${BASE_URL}${cat.url}` : `${BASE_URL}${cat.url}?page=${page}`;
       log("FASE1", `→ ${catUrl}`);
       try {
         const html = await fetchHTML(catUrl);

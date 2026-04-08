@@ -1,5 +1,5 @@
 {
-  "lastUpdate": "2026-04-07T22:02:21.568Z",
+  "lastUpdate": "2026-04-08T12:07:07.946Z",
   "changes": [
     {
       "date": "2026-03-31T19:31:12.316Z",
@@ -2723,6 +2723,34 @@
       "avgPrice": 91.04,
       "minPrice": 39,
       "maxPrice": 180
+    },
+    {
+      "date": "2026-04-07T22:07:31.433Z",
+      "productCount": 51,
+      "avgPrice": 91.04,
+      "minPrice": 39,
+      "maxPrice": 180
+    },
+    {
+      "date": "2026-04-07T23:02:11.763Z",
+      "productCount": 51,
+      "avgPrice": 91.04,
+      "minPrice": 39,
+      "maxPrice": 180
+    },
+    {
+      "date": "2026-04-08T12:04:03.326Z",
+      "productCount": 51,
+      "avgPrice": 91.04,
+      "minPrice": 39,
+      "maxPrice": 180
+    },
+    {
+      "date": "2026-04-08T12:07:07.946Z",
+      "productCount": 213,
+      "avgPrice": 94.12,
+      "minPrice": 25,
+      "maxPrice": 205
     }
   ]
 }
