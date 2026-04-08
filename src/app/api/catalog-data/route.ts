@@ -24,6 +24,7 @@ export async function GET() {
     let customProducts: any[] = [];
     let urlOverrides: any = {};
     let detectedSubcategories: string[] = [];
+    let varejoSlugPrices: Record<string, number> = {};
     try {
       const raw = await getSetting("catalog_custom_products");
       if (raw) customProducts = JSON.parse(raw);
@@ -36,6 +37,10 @@ export async function GET() {
       const raw = await getSetting("catalog_detected_subcategories");
       if (raw) detectedSubcategories = JSON.parse(raw);
     } catch {}
+    try {
+      const raw = await getSetting("catalog_varejo_slug_prices");
+      if (raw) varejoSlugPrices = JSON.parse(raw);
+    } catch {}
 
     return NextResponse.json({
       source: "turso",
@@ -46,6 +51,7 @@ export async function GET() {
       customProducts,
       urlOverrides,
       detectedSubcategories,
+      varejoSlugPrices,
     }, {
       headers: {
         // Cache por 5 minutos no CDN, stale-while-revalidate por 1 hora

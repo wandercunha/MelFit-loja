@@ -612,15 +612,19 @@ async function main() {
 
   // Generate maps for quick lookup (somente precos — imagens vem do atacado)
   const priceMap: Record<string, number> = {};
+  const slugPriceMap: Record<string, number> = {};
 
   allScraped.forEach((p) => {
-    if (p.price > 0) priceMap[p.name] = p.price;
+    if (p.price > 0) {
+      priceMap[p.name] = p.price;
+      if (p.slug) slugPriceMap[p.slug] = p.price;
+    }
   });
 
   const mapsPath = path.join(dataDir, "scrape-maps.json");
   fs.writeFileSync(
     mapsPath,
-    JSON.stringify({ timestamp: new Date().toISOString(), priceMap }, null, 2)
+    JSON.stringify({ timestamp: new Date().toISOString(), priceMap, slugPriceMap }, null, 2)
   );
   console.log(`  Saved maps (${Object.keys(priceMap).length} prices)`);
 
@@ -734,12 +738,12 @@ async function main() {
   console.log(`    With prices: ${withPrices}`);
 
   // ── Sync precos e subcategorias para Turso ──
-  await syncPricesToTurso(priceMap, detectedSubcategories);
+  await syncPricesToTurso(priceMap, slugPriceMap, detectedSubcategories);
 
   console.log(`\n[${new Date().toISOString()}] Scrape complete!`);
 }
 
-async function syncPricesToTurso(priceMap: Record<string, number>, detectedSubcategories: string[]) {
+async function syncPricesToTurso(priceMap: Record<string, number>, slugPriceMap: Record<string, number>, detectedSubcategories: string[]) {
   const url = process.env.TURSO_DATABASE_URL;
   const authToken = process.env.TURSO_AUTH_TOKEN;
   if (!url || !authToken) {
@@ -767,6 +771,15 @@ async function syncPricesToTurso(priceMap: Record<string, number>, detectedSubca
       args: ["catalog_varejo_prices", priceJson],
     });
     console.log(`\n  [SYNC] varejo prices → Turso (${size}KB) ✓`);
+
+    // Slug → preço (para match quando nomes diferem)
+    const slugJson = JSON.stringify(slugPriceMap);
+    await db.execute({
+      sql: `INSERT INTO settings (key, value, updated_at) VALUES (?, ?, datetime('now'))
+            ON CONFLICT(key) DO UPDATE SET value = excluded.value, updated_at = datetime('now')`,
+      args: ["catalog_varejo_slug_prices", slugJson],
+    });
+    console.log(`  [SYNC] varejo slug prices → Turso (${Object.keys(slugPriceMap).length}) ✓`);
 
     // Salvar subcategorias detectadas
     if (detectedSubcategories.length > 0) {

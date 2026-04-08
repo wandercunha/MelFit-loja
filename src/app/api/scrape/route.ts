@@ -260,9 +260,16 @@ export async function GET(request: Request) {
       }
     }
 
+    // Mapa slug → preço (para match quando nomes diferem entre varejo e atacado)
+    const slugPriceMap: Record<string, number> = {};
+    for (const p of allVarejo) {
+      if (p.price > 0 && p.slug) slugPriceMap[p.slug] = p.price;
+    }
+
     // Salvar mapa de preços no Turso
     if (Object.keys(priceMap).length > 0) {
       await setSetting("catalog_varejo_prices", JSON.stringify(priceMap));
+      await setSetting("catalog_varejo_slug_prices", JSON.stringify(slugPriceMap));
       addLog(`  Precos salvos no Turso (${Object.keys(priceMap).length})`);
     }
 

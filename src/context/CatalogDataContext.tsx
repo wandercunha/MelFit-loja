@@ -56,6 +56,7 @@ export function CatalogDataProvider({ children }: { children: React.ReactNode })
   const [dataSource, setDataSource] = useState<"static" | "turso">("static");
   const [updatedAt, setUpdatedAt] = useState<string | null>((staticAtacado as any).timestamp || null);
   const [dbUrlOverrides, setDbUrlOverrides] = useState<Record<string, { atacadoSlug: string }>>({});
+  const [varejoSlugPrices, setVarejoSlugPrices] = useState<Record<string, number>>({});
   const [detectedSubcategories, setDetectedSubcategories] = useState<string[]>([]);
   const [loading, setLoading] = useState(true);
 
@@ -77,6 +78,7 @@ export function CatalogDataProvider({ children }: { children: React.ReactNode })
           if (pInfo && Object.keys(pInfo).length > 0) setProductInfo(pInfo);
           setCustomProducts(custom);
           setDbUrlOverrides(dbOverrides);
+          if (json.varejoSlugPrices) setVarejoSlugPrices(json.varejoSlugPrices);
           if (json.detectedSubcategories) setDetectedSubcategories(json.detectedSubcategories);
           setDataSource("turso");
           setUpdatedAt(json.updatedAt);
@@ -119,6 +121,22 @@ export function CatalogDataProvider({ children }: { children: React.ReactNode })
     setVarejoPrecos((prev) => ({ ...prev, [productName]: price }));
   };
 
+  // Enriquecer varejoPrecos: para produtos do atacado cujo nome difere do varejo,
+  // busca pelo slug da URL (scraper salva slug → preço separadamente)
+  const enrichedVarejoPrecos = useMemo(() => {
+    if (Object.keys(varejoSlugPrices).length === 0) return varejoPrecos;
+    const enriched = { ...varejoPrecos };
+    for (const [slug, p] of Object.entries(atacadoProducts)) {
+      const name = (p as any).name;
+      if (!name || enriched[name]) continue;
+      // Tentar slug do atacado sem -at como slug do varejo
+      if (varejoSlugPrices[slug]) {
+        enriched[name] = varejoSlugPrices[slug];
+      }
+    }
+    return enriched;
+  }, [varejoPrecos, varejoSlugPrices, atacadoProducts]);
+
   // Indice por nome para lookup O(1) no ProductCard
   // Inclui overrides de url-overrides.json (nome do catálogo → slug do atacado)
   const atacadoByName = useMemo(() => {
@@ -148,11 +166,11 @@ export function CatalogDataProvider({ children }: { children: React.ReactNode })
 
   const value = useMemo<CatalogData>(
     () => ({
-      atacadoProducts, atacadoByName, varejoPrecos, productInfo,
+      atacadoProducts, atacadoByName, varejoPrecos: enrichedVarejoPrecos, productInfo,
       customProducts, allProducts, addCustomProduct, updateCustomProduct, removeCustomProduct,
       updateVarejoPrice, detectedSubcategories, dataSource, updatedAt, loading,
     }),
-    [atacadoProducts, atacadoByName, varejoPrecos, productInfo, customProducts, allProducts, detectedSubcategories, dataSource, updatedAt, loading],
+    [atacadoProducts, atacadoByName, enrichedVarejoPrecos, productInfo, customProducts, allProducts, detectedSubcategories, dataSource, updatedAt, loading],
   );
 
   return (
