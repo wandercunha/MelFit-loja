@@ -20,6 +20,11 @@ const ATACADO_CDN = "97065044c3a1a212e5c7a4f183fed028";
 
 const VAREJO_CATEGORIES = [
   { url: "/fitness/", label: "Fitness" },
+  { url: "/fitness/tops/", label: "Fitness/Tops" },
+  { url: "/fitness/calcas/", label: "Fitness/Calcas" },
+  { url: "/fitness/macaquinho/", label: "Fitness/Macaquinhos" },
+  { url: "/fitness/macacao/", label: "Fitness/Macacoes" },
+  { url: "/fitness/conjuntos/", label: "Fitness/Conjuntos" },
   { url: "/colecoes/", label: "Colecoes" },
 ];
 

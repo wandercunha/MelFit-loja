@@ -18,9 +18,15 @@ const SCRAPE_DELAY = parseInt(process.env.SCRAPE_DELAY || "5000", 10);
 // Categorias/paginas do varejo para buscar precos
 // NOTA: fornecedor reestruturou site em abril/2026 — categorias antigas
 // (/tops/, /shorts/, etc.) nao tem mais produtos. Tudo em /colecoes/.
-// Paginas de listagem do varejo (com paginação automática: /url/, /url/2/, /url/3/...)
+// Paginas de listagem do varejo (com paginação automática via ?page=2)
+// Redundância: /fitness/ tem tudo, subcategorias + /colecoes/ pegam o que faltar
 const CATEGORY_PAGES = [
-  { url: "/fitness/", label: "Fitness" },
+  { url: "/fitness/", label: "Fitness (tudo)" },
+  { url: "/fitness/tops/", label: "Fitness/Tops" },
+  { url: "/fitness/calcas/", label: "Fitness/Calcas" },
+  { url: "/fitness/macaquinho/", label: "Fitness/Macaquinhos" },
+  { url: "/fitness/macacao/", label: "Fitness/Macacoes" },
+  { url: "/fitness/conjuntos/", label: "Fitness/Conjuntos" },
   { url: "/colecoes/", label: "Colecoes" },
 ];
 
