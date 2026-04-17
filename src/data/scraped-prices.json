@@ -1,8 +1,83 @@
 {
-  "timestamp": "2026-04-08T20:20:32.698Z",
+  "timestamp": "2026-04-16T12:03:49.148Z",
   "source": "https://www.floraamar.com.br",
-  "productCount": 242,
+  "productCount": 258,
   "products": [
+    {
+      "name": "Top Sculpt Azul Marinho",
+      "price": 80,
+      "slug": "top-sculpt-azul-marinho"
+    },
+    {
+      "name": "Top Sculpt Preto",
+      "price": 80,
+      "slug": "top-sculpt-preto"
+    },
+    {
+      "name": "Top Line Azul Marinho",
+      "price": 69,
+      "slug": "top-line-azul-marinho"
+    },
+    {
+      "name": "Top Line Preto",
+      "price": 69,
+      "slug": "top-line-preto"
+    },
+    {
+      "name": "Legging Core Azul Marinho",
+      "price": 135,
+      "slug": "legging-core-azul-marinho"
+    },
+    {
+      "name": "Legging Core Preto",
+      "price": 135,
+      "slug": "legging-core-preta"
+    },
+    {
+      "name": "Short Core Coffee",
+      "price": 98,
+      "slug": "short-core-coffe"
+    },
+    {
+      "name": "Short Core Azul Marinho",
+      "price": 98,
+      "slug": "short-core-azul-marinho"
+    },
+    {
+      "name": "Short Core Preto",
+      "price": 98,
+      "slug": "short-core-preto"
+    },
+    {
+      "name": "Top Base Coffee",
+      "price": 80,
+      "slug": "top-base-coffe"
+    },
+    {
+      "name": "Top Base Azul Marinho",
+      "price": 80,
+      "slug": "top-base-azul-marinho"
+    },
+    {
+      "name": "Top Base Preto",
+      "price": 80,
+      "slug": "top-base-preto"
+    },
+    {
+      "name": "Macaquinho Power Suit Azul Marinho",
+      "price": 130,
+      "slug": "macaquinho-power-suit-azul-marinho"
+    },
+    {
+      "name": "Macaquinho Power Suit Preto",
+      "price": 130,
+      "slug": "macaquinho-power-suit-preto"
+    },
+    {
+      "name": "Macaquinho Power Suit Coffee",
+      "price": 130,
+      "slug": "macaquinho-power-suit-coffe"
+    },
     {
       "name": "Top Curve Cinza",
       "price": 45,
@@ -10,12 +85,12 @@
     },
     {
       "name": "Short Fast Cinza c/ Branco",
-      "price": 79,
+      "price": 99,
       "slug": "short-fast-cinza-c-branco"
     },
     {
       "name": "Short Fast Preto c/ Branco",
-      "price": 79,
+      "price": 99,
       "slug": "short-fast-preto-c-branco"
     },
     {
@@ -30,12 +105,12 @@
     },
     {
       "name": "Short Fast Azul Elegance c/ Branco",
-      "price": 79,
+      "price": 99,
       "slug": "short-fast-azul-elegance-c-branco"
     },
     {
       "name": "Regata One Preto",
-      "price": 52,
+      "price": 72,
       "slug": "regata-one-preto"
     },
     {
@@ -72,6 +147,11 @@
       "name": "Macaquinho One Vermelho",
       "price": 135,
       "slug": "macaquinho-one-vermelho"
+    },
+    {
+      "name": "Short Run Amarelo Energy",
+      "price": 99,
+      "slug": "short-run-amarelo-energy"
     },
     {
       "name": "Short Run Rosa Soft",
@@ -117,6 +197,11 @@
       "name": "Macaquinho One Marrom",
       "price": 135,
       "slug": "macaquinho-one-marrom"
+    },
+    {
+      "name": "Conjunto Top e Short Preto",
+      "price": 0,
+      "slug": "conjunto-top-e-short-preto-1645831"
     },
     {
       "name": "Macaquinho One Preto",
@@ -199,11 +284,6 @@
       "slug": "legging-cross-preto-c-off"
     },
     {
-      "name": "Conjunto Top e Short Preto",
-      "price": 0,
-      "slug": "conjunto-top-e-short-preto-1645831"
-    },
-    {
       "name": "Legging Cross Verde Militar c/ Off",
       "price": 98,
       "slug": "legging-cross-verde-militar-c-off"
@@ -237,11 +317,6 @@
       "name": "Legging Flare Amora",
       "price": 140,
       "slug": "legging-flare-amora"
-    },
-    {
-      "name": "Legging Flare Preta",
-      "price": 140,
-      "slug": "legging-flare-preta"
     },
     {
       "name": "Top One Preto",
@@ -284,11 +359,6 @@
       "slug": "bolsa-corebag"
     },
     {
-      "name": "Short Run Off White",
-      "price": 99,
-      "slug": "short-run-off-white"
-    },
-    {
       "name": "Legging Line C/ Bolso Forrado Off White",
       "price": 140,
       "slug": "legging-line-c-bolso-forrado-off-white"
@@ -307,6 +377,11 @@
       "name": "Legging Line C/ Bolso Cereja",
       "price": 140,
       "slug": "legging-line-c-bolso-cereja"
+    },
+    {
+      "name": "Top Speed Cereja",
+      "price": 62,
+      "slug": "top-speed-cereja"
     },
     {
       "name": "Macac�o Muse Preto",
@@ -369,11 +444,6 @@
       "slug": "short-basic-terra-cota"
     },
     {
-      "name": "Top Frente �nica Terracota",
-      "price": 49,
-      "slug": "top-frente-unica-terra-cota"
-    },
-    {
       "name": "Legging Classic Lil�s",
       "price": 85,
       "slug": "legging-classic-lilas"
@@ -399,14 +469,14 @@
       "slug": "top-speed-verde-herb"
     },
     {
-      "name": "Short Run Blush",
-      "price": 99,
-      "slug": "short-run-blush"
-    },
-    {
       "name": "Macaquinho Adapt Blush",
       "price": 139,
       "slug": "macaquinho-adapt-blush"
+    },
+    {
+      "name": "Short Run Preto",
+      "price": 99,
+      "slug": "short-run-preto"
     },
     {
       "name": "Short Speed c/ bolso Branco Forrado",
@@ -454,6 +524,11 @@
       "slug": "regata-run-azul-petroleo"
     },
     {
+      "name": "Regata Run Branco",
+      "price": 58,
+      "slug": "regata-run-branco"
+    },
+    {
       "name": "Macaquinho Move Frente �nica Azul Marinho",
       "price": 98,
       "slug": "macaquinho-move-frente-unica-azul-marinho"
@@ -482,6 +557,11 @@
       "name": "Top Move 2.0 Roxo",
       "price": 45,
       "slug": "top-move-2-0-roxo"
+    },
+    {
+      "name": "Baby Look Branco",
+      "price": 65,
+      "slug": "baby-look-branco"
     },
     {
       "name": "Baby Look Preto",
@@ -750,7 +830,7 @@
     },
     {
       "name": "Conjunto Top Frente �nica + Short Classic Cereja",
-      "price": 75,
+      "price": 0,
       "slug": "conjunto-top-frente-unica-short-classic-cereja"
     },
     {
@@ -844,11 +924,6 @@
       "slug": "short-run-azul-marrom"
     },
     {
-      "name": "Short Run Amarelo Energy",
-      "price": 0,
-      "slug": "short-run-amarelo-energy"
-    },
-    {
       "name": "Short Edge Verde Militar c/ off",
       "price": 0,
       "slug": "short-edge-verde-militar-c-off"
@@ -857,6 +932,11 @@
       "name": "Macaquinho Ease Preto c/ Off",
       "price": 0,
       "slug": "macaquinho-ease-preto-c-off"
+    },
+    {
+      "name": "Legging Flare Preta",
+      "price": 0,
+      "slug": "legging-flare-preta"
     },
     {
       "name": "Legging Flare Azul Marinho",
@@ -874,6 +954,11 @@
       "slug": "top-orb-cereja"
     },
     {
+      "name": "Short Run Off White",
+      "price": 0,
+      "slug": "short-run-off-white"
+    },
+    {
       "name": "Cropped Manga Longa Cereja",
       "price": 0,
       "slug": "cropped-manga-longa-cereja"
@@ -887,11 +972,6 @@
       "name": "Short Run Cereja",
       "price": 0,
       "slug": "short-run-cereja"
-    },
-    {
-      "name": "Top Speed Cereja",
-      "price": 0,
-      "slug": "top-speed-cereja"
     },
     {
       "name": "Jaqueta Ellegance Preto",
@@ -909,24 +989,19 @@
       "slug": "short-speed-c-bolso-terra-cota"
     },
     {
-      "name": "Short Run Preto",
+      "name": "Top Frente �nica Terracota",
       "price": 0,
-      "slug": "short-run-preto"
+      "slug": "top-frente-unica-terra-cota"
+    },
+    {
+      "name": "Short Run Blush",
+      "price": 0,
+      "slug": "short-run-blush"
     },
     {
       "name": "Regata Run Preto",
       "price": 0,
       "slug": "regata-run-preto"
-    },
-    {
-      "name": "Regata Run Branco",
-      "price": 0,
-      "slug": "regata-run-branco"
-    },
-    {
-      "name": "Baby Look Branco",
-      "price": 0,
-      "slug": "baby-look-branco"
     },
     {
       "name": "Top Move 2.0 Verde Militar",
@@ -989,13 +1064,18 @@
       "slug": "short-basic-cereja"
     },
     {
+      "name": "Par Strap Preto",
+      "price": 59,
+      "slug": "par-strap-preto"
+    },
+    {
       "name": "Regata One Cinza",
-      "price": 52,
+      "price": 72,
       "slug": "regata-one-cinza"
     },
     {
       "name": "Regata One Azul Elegance",
-      "price": 52,
+      "price": 72,
       "slug": "regata-one-azul-elegance"
     },
     {
