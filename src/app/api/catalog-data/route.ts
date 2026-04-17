@@ -23,6 +23,8 @@ export async function GET() {
     // Produtos adicionados via admin (não estão no products.ts)
     let customProducts: any[] = [];
     let urlOverrides: any = {};
+    let detectedSubcategories: string[] = [];
+    let varejoSlugPrices: Record<string, number> = {};
     try {
       const raw = await getSetting("catalog_custom_products");
       if (raw) customProducts = JSON.parse(raw);
@@ -30,6 +32,14 @@ export async function GET() {
     try {
       const raw = await getSetting("catalog_url_overrides");
       if (raw) urlOverrides = JSON.parse(raw);
+    } catch {}
+    try {
+      const raw = await getSetting("catalog_detected_subcategories");
+      if (raw) detectedSubcategories = JSON.parse(raw);
+    } catch {}
+    try {
+      const raw = await getSetting("catalog_varejo_slug_prices");
+      if (raw) varejoSlugPrices = JSON.parse(raw);
     } catch {}
 
     return NextResponse.json({
@@ -40,6 +50,8 @@ export async function GET() {
       productInfo: data.productInfo,
       customProducts,
       urlOverrides,
+      detectedSubcategories,
+      varejoSlugPrices,
     }, {
       headers: {
         // Cache por 5 minutos no CDN, stale-while-revalidate por 1 hora

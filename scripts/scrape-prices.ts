@@ -18,9 +18,15 @@ const SCRAPE_DELAY = parseInt(process.env.SCRAPE_DELAY || "5000", 10);
 // Categorias/paginas do varejo para buscar precos
 // NOTA: fornecedor reestruturou site em abril/2026 — categorias antigas
 // (/tops/, /shorts/, etc.) nao tem mais produtos. Tudo em /colecoes/.
-// Paginas de listagem do varejo (com paginação automática: /url/, /url/2/, /url/3/...)
+// Paginas de listagem do varejo (com paginação automática via ?page=2)
+// Redundância: /fitness/ tem tudo, subcategorias + /colecoes/ pegam o que faltar
 const CATEGORY_PAGES = [
-  { url: "/fitness/", label: "Fitness" },
+  { url: "/fitness/", label: "Fitness (tudo)" },
+  { url: "/fitness/tops/", label: "Fitness/Tops" },
+  { url: "/fitness/calcas/", label: "Fitness/Calcas" },
+  { url: "/fitness/macaquinho/", label: "Fitness/Macaquinhos" },
+  { url: "/fitness/macacao/", label: "Fitness/Macacoes" },
+  { url: "/fitness/conjuntos/", label: "Fitness/Conjuntos" },
   { url: "/colecoes/", label: "Colecoes" },
 ];
 
@@ -69,6 +75,24 @@ function fetchHTML(url: string): Promise<string> {
 
 function delay(ms: number) {
   return new Promise((r) => setTimeout(r, ms));
+}
+
+/**
+ * Detecta subcategorias dentro de /fitness/ a partir dos links no HTML.
+ * Retorna array de paths tipo ["/fitness/tops/", "/fitness/calcas/", ...]
+ */
+function detectFitnessSubcategories(html: string): string[] {
+  const subs = new Set<string>();
+  const regex = /href="(\/fitness\/[a-z0-9-]+\/)"/g;
+  let m;
+  while ((m = regex.exec(html)) !== null) {
+    const path = m[1];
+    // Ignorar /fitness/ sozinho e links de produto (sem barra final ou com slug longo)
+    if (path !== "/fitness/" && !path.includes("?")) {
+      subs.add(path);
+    }
+  }
+  return Array.from(subs).sort();
 }
 
 function parseProductsFromHTML(html: string): ScrapedProduct[] {
@@ -211,14 +235,28 @@ async function main() {
   // FASE 1: Categorias do varejo
   // ══════════════════════════════════════════════════════════════
   console.log(`\n── FASE 1: Listagens de categoria ──`);
+  let detectedSubcategories: string[] = [];
+
   for (const cat of CATEGORY_PAGES) {
-    // Paginar: /fitness/ → /fitness/2/ → /fitness/3/ ...
+    // Paginar: /fitness/ → /fitness/?page=2 → /fitness/?page=3 ...
     for (let page = 1; page <= 20; page++) {
-      const catUrl = page === 1 ? `${BASE_URL}${cat.url}` : `${BASE_URL}${cat.url}${page}/`;
+      const catUrl = page === 1 ? `${BASE_URL}${cat.url}` : `${BASE_URL}${cat.url}?page=${page}`;
       log("FASE1", `→ ${catUrl}`);
       try {
         const html = await fetchHTML(catUrl);
         totalRequests++;
+
+        // Detectar subcategorias na primeira página de /fitness/
+        if (cat.url === "/fitness/" && page === 1) {
+          detectedSubcategories = detectFitnessSubcategories(html);
+          const knownSubs = CATEGORY_PAGES.filter(c => c.url.startsWith("/fitness/") && c.url !== "/fitness/").map(c => c.url);
+          const newSubs = detectedSubcategories.filter(s => !knownSubs.includes(s));
+          if (newSubs.length > 0) {
+            log("FASE1", `⚠ ${newSubs.length} SUBCATEGORIA(S) NOVA(S) detectada(s): ${newSubs.join(", ")}`);
+          }
+          log("FASE1", `Subcategorias detectadas: ${detectedSubcategories.join(", ") || "nenhuma"}`);
+        }
+
         const products = parseProductsFromHTML(html);
         if (products.length === 0) {
           if (page === 1) log("FASE1", `${cat.label}: 0 encontrados`);
@@ -574,15 +612,19 @@ async function main() {
 
   // Generate maps for quick lookup (somente precos — imagens vem do atacado)
   const priceMap: Record<string, number> = {};
+  const slugPriceMap: Record<string, number> = {};
 
   allScraped.forEach((p) => {
-    if (p.price > 0) priceMap[p.name] = p.price;
+    if (p.price > 0) {
+      priceMap[p.name] = p.price;
+      if (p.slug) slugPriceMap[p.slug] = p.price;
+    }
   });
 
   const mapsPath = path.join(dataDir, "scrape-maps.json");
   fs.writeFileSync(
     mapsPath,
-    JSON.stringify({ timestamp: new Date().toISOString(), priceMap }, null, 2)
+    JSON.stringify({ timestamp: new Date().toISOString(), priceMap, slugPriceMap }, null, 2)
   );
   console.log(`  Saved maps (${Object.keys(priceMap).length} prices)`);
 
@@ -695,13 +737,13 @@ async function main() {
   console.log(`    Products scraped: ${allScraped.length}`);
   console.log(`    With prices: ${withPrices}`);
 
-  // ── Sync precos para Turso ──
-  await syncPricesToTurso(priceMap);
+  // ── Sync precos e subcategorias para Turso ──
+  await syncPricesToTurso(priceMap, slugPriceMap, detectedSubcategories);
 
   console.log(`\n[${new Date().toISOString()}] Scrape complete!`);
 }
 
-async function syncPricesToTurso(priceMap: Record<string, number>) {
+async function syncPricesToTurso(priceMap: Record<string, number>, slugPriceMap: Record<string, number>, detectedSubcategories: string[]) {
   const url = process.env.TURSO_DATABASE_URL;
   const authToken = process.env.TURSO_AUTH_TOKEN;
   if (!url || !authToken) {
@@ -729,6 +771,25 @@ async function syncPricesToTurso(priceMap: Record<string, number>) {
       args: ["catalog_varejo_prices", priceJson],
     });
     console.log(`\n  [SYNC] varejo prices → Turso (${size}KB) ✓`);
+
+    // Slug → preço (para match quando nomes diferem)
+    const slugJson = JSON.stringify(slugPriceMap);
+    await db.execute({
+      sql: `INSERT INTO settings (key, value, updated_at) VALUES (?, ?, datetime('now'))
+            ON CONFLICT(key) DO UPDATE SET value = excluded.value, updated_at = datetime('now')`,
+      args: ["catalog_varejo_slug_prices", slugJson],
+    });
+    console.log(`  [SYNC] varejo slug prices → Turso (${Object.keys(slugPriceMap).length}) ✓`);
+
+    // Salvar subcategorias detectadas
+    if (detectedSubcategories.length > 0) {
+      await db.execute({
+        sql: `INSERT INTO settings (key, value, updated_at) VALUES (?, ?, datetime('now'))
+              ON CONFLICT(key) DO UPDATE SET value = excluded.value, updated_at = datetime('now')`,
+        args: ["catalog_detected_subcategories", JSON.stringify(detectedSubcategories)],
+      });
+      console.log(`  [SYNC] subcategorias detectadas → Turso (${detectedSubcategories.length}) ✓`);
+    }
   } catch (err) {
     console.error(`\n  [SYNC] Falha ao sincronizar com Turso: ${err}`);
   }

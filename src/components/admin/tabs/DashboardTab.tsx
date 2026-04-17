@@ -10,7 +10,7 @@ import { ExportButton } from "@/components/ExportButton";
 
 export function DashboardTab() {
   const { globalSettings, overrides, categoryOverrides, isProductVisible } = useCatalog();
-  const { updatedAt, dataSource, atacadoProducts, atacadoByName, allProducts, addCustomProduct } = useCatalogData();
+  const { updatedAt, dataSource, atacadoProducts, atacadoByName, allProducts, addCustomProduct, detectedSubcategories } = useCatalogData();
   const [showCatalogAlerts, setShowCatalogAlerts] = useState(true);
   const [addingProduct, setAddingProduct] = useState<string | null>(null);
   const [linkingUrl, setLinkingUrl] = useState<Record<string, string>>({});
@@ -215,6 +215,33 @@ export function DashboardTab() {
           </p>
         </div>
       )}
+
+      {/* Subcategory alert: novas subcategorias detectadas */}
+      {(() => {
+        const KNOWN_SUBS = ["/fitness/tops/", "/fitness/calcas/", "/fitness/macaquinho/", "/fitness/macacao/", "/fitness/conjuntos/"];
+        const newSubs = detectedSubcategories.filter(s => !KNOWN_SUBS.includes(s));
+        if (newSubs.length === 0) return null;
+        return (
+          <div className="bg-purple-50 border border-purple-200 rounded-xl p-4">
+            <div className="flex items-start gap-2">
+              <svg className="w-5 h-5 text-purple-500 mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A2 2 0 013 12V7a4 4 0 014-4z" />
+              </svg>
+              <div>
+                <p className="text-sm font-semibold text-purple-700">{newSubs.length} subcategoria(s) nova(s) em /fitness/</p>
+                <p className="text-[11px] text-purple-500 mt-0.5">O fornecedor adicionou categorias. Avise o dev para incluir no scrape.</p>
+                <div className="mt-2 space-y-1">
+                  {newSubs.map((sub) => (
+                    <div key={sub} className="bg-purple-100/50 rounded-lg px-2 py-1">
+                      <code className="text-[11px] font-mono text-purple-800">{sub}</code>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        );
+      })()}
 
       {/* Catalog alerts: novos produtos / removidos */}
       {showCatalogAlerts && (catalogAlerts.newProducts.length > 0 || catalogAlerts.missing.length > 0) && (

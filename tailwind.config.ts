@@ -28,6 +28,15 @@ const config: Config = {
       fontFamily: {
         sans: ['"Inter"', "system-ui", "-apple-system", "sans-serif"],
       },
+      keyframes: {
+        fadeInUp: {
+          "0%": { opacity: "0", transform: "translate(-50%, 10px)" },
+          "100%": { opacity: "1", transform: "translate(-50%, 0)" },
+        },
+      },
+      animation: {
+        "fade-in-up": "fadeInUp 0.2s ease-out",
+      },
     },
   },
   plugins: [],

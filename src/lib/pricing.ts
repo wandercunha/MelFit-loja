@@ -55,30 +55,23 @@ export function formatBRL(value: number): string {
   return value.toLocaleString("pt-BR", { style: "currency", currency: "BRL" });
 }
 
-// ── Atacado URL ──
-import atacadoDetails from "@/data/atacado-details.json";
-
-const SUPPLIER_BASE = "https://www.floraamaratacado.com.br";
-
-const atacadoSlugMap: Record<string, string> = {};
-const atacadoProducts = (atacadoDetails as { products?: Record<string, { name?: string; atacadoSlug?: string }> }).products || {};
-for (const [, detail] of Object.entries(atacadoProducts)) {
-  if (detail.name && detail.atacadoSlug) {
-    atacadoSlugMap[detail.name] = detail.atacadoSlug;
-  }
-}
-
-function toSlugInternal(name: string) {
+// ── URLs do fornecedor (geradas a partir de dados dinâmicos do Turso) ──
+export function toSlug(name: string) {
   return name.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "")
     .replace(/\s+c\/\s*/g, "-c-").replace(/\s+/g, "-").replace(/[^a-z0-9-]/g, "");
 }
 
-export function getAtacadoUrl(product: { name: string; slug?: string; category: string }): string {
-  const slug = atacadoSlugMap[product.name];
-  if (slug) return `${SUPPLIER_BASE}/${slug}/`;
-  const fallback = product.slug || toSlugInternal(product.name);
+export function buildAtacadoUrl(product: { name: string; slug?: string; category: string }, atacadoByName?: Record<string, any>): string {
+  const atacado = atacadoByName?.[product.name];
+  if (atacado?.atacadoSlug) return `https://www.floraamaratacado.com.br/${atacado.atacadoSlug}/`;
+  const fallback = product.slug || toSlug(product.name);
   const suffix = product.category === "conjuntos" ? "" : "-at";
-  return `${SUPPLIER_BASE}/${fallback}${suffix}/`;
+  return `https://www.floraamaratacado.com.br/${fallback}${suffix}/`;
+}
+
+export function buildVarejoUrl(product: { name: string; slug?: string }): string {
+  const slug = product.slug || toSlug(product.name);
+  return `https://www.floraamar.com.br/${slug}/`;
 }
 
 const COLOR_MAP: Record<string, string> = {

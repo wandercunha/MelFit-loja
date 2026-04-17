@@ -1,7 +1,7 @@
 "use client";
 
 import { Product, PriceCalc, CATEGORY_LABELS } from "@/lib/types";
-import { formatBRL, getColorFromName, getInitials, getAtacadoUrl } from "@/lib/pricing";
+import { formatBRL, getColorFromName, getInitials, buildAtacadoUrl, buildVarejoUrl } from "@/lib/pricing";
 import { useCatalog } from "@/context/CatalogContext";
 import { useCatalogData } from "@/context/CatalogDataContext";
 import { useCart } from "@/context/CartContext";
@@ -39,7 +39,7 @@ interface Props {
 
 export function ProductCard({ product, priceCalc, hasOverride, onEdit }: Props) {
   const { isAdmin, overrides } = useCatalog();
-  const { atacadoProducts, atacadoByName, productInfo } = useCatalogData();
+  const { atacadoProducts, atacadoByName, productInfo, varejoPrecos } = useCatalogData();
   const { addItem } = useCart();
   const color = getColorFromName(product.name);
   const [imgError, setImgError] = useState(false);
@@ -67,6 +67,7 @@ export function ProductCard({ product, priceCalc, hasOverride, onEdit }: Props) 
       images: ((atacado as any)?.images || []) as string[],
       stock: ((atacado as any)?.stock || {}) as Record<string, number>,
       totalStock: ((atacado as any)?.totalStock ?? -1) as number,
+      price: ((atacado as any)?.price || 0) as number,
       sizeChart,
       pieces: ((atacado as any)?.pieces || []) as Array<{ name: string; sizes: Record<string, number>; price: number }>,
     };
@@ -461,17 +462,65 @@ export function ProductCard({ product, priceCalc, hasOverride, onEdit }: Props) 
                   Lucro: {formatBRL(priceCalc.netProfit)} | Margem: {priceCalc.netMargin.toFixed(1)}%
                 </p>
               </div>
-              <a
-                href={getAtacadoUrl(product)}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-1 text-[10px] text-brand-400 hover:text-brand-500 hover:underline mt-0.5"
-              >
-                <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-                </svg>
-                Ver no fornecedor
-              </a>
+              {/* Links com preços: atacado + varejo */}
+              <div className="mt-1 space-y-0.5">
+                <a
+                  href={buildAtacadoUrl(product, atacadoByName)}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-1 text-[10px] text-brand-400 hover:text-brand-500 hover:underline"
+                >
+                  <svg className="w-3 h-3 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                  </svg>
+                  <span>Atacado{detail?.price ? ` — ${formatBRL(detail.price)}` : ""}</span>
+                </a>
+                {isConjunto ? (
+                  <>
+                    {/* Conjunto inteiro no varejo */}
+                    {varejoPrecos[product.name] != null && (
+                      <a
+                        href={buildVarejoUrl(product)}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center gap-1 text-[10px] text-blue-400 hover:text-blue-500 hover:underline"
+                      >
+                        <svg className="w-3 h-3 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                        </svg>
+                        <span>Varejo (conj.) — {formatBRL(varejoPrecos[product.name])}</span>
+                      </a>
+                    )}
+                    {/* Peças individuais no varejo */}
+                    {pieces.map((piece) => {
+                      const vPrice = varejoPrecos[piece.name];
+                      return vPrice != null ? (
+                        <a
+                          key={piece.name}
+                          href={buildVarejoUrl({ name: piece.name })}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="flex items-center gap-1 text-[10px] text-blue-400/70 hover:text-blue-500 hover:underline pl-4"
+                        >
+                          <span>{piece.name.split(" ").slice(0, 2).join(" ")} — {formatBRL(vPrice)}</span>
+                        </a>
+                      ) : null;
+                    })}
+                  </>
+                ) : (
+                  <a
+                    href={buildVarejoUrl(product)}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-1 text-[10px] text-blue-400 hover:text-blue-500 hover:underline"
+                  >
+                    <svg className="w-3 h-3 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                    </svg>
+                    <span>Varejo{varejoPrecos[product.name] ? ` — ${formatBRL(varejoPrecos[product.name])}` : ""}</span>
+                  </a>
+                )}
+              </div>
               {totalStock >= 0 && (
                 <p className={`text-[10px] font-semibold ${totalStock === 0 ? "text-red-500" : totalStock <= 10 ? "text-amber-500" : "text-emerald-500"}`}>
                   Estoque fabricante: {totalStock} un

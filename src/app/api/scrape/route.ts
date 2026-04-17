@@ -20,6 +20,11 @@ const ATACADO_CDN = "97065044c3a1a212e5c7a4f183fed028";
 
 const VAREJO_CATEGORIES = [
   { url: "/fitness/", label: "Fitness" },
+  { url: "/fitness/tops/", label: "Fitness/Tops" },
+  { url: "/fitness/calcas/", label: "Fitness/Calcas" },
+  { url: "/fitness/macaquinho/", label: "Fitness/Macaquinhos" },
+  { url: "/fitness/macacao/", label: "Fitness/Macacoes" },
+  { url: "/fitness/conjuntos/", label: "Fitness/Conjuntos" },
   { url: "/colecoes/", label: "Colecoes" },
 ];
 
@@ -47,6 +52,20 @@ async function fetchPage(url: string, referer: string): Promise<string> {
   });
   if (!res.ok) throw new Error(`HTTP ${res.status}`);
   return res.text();
+}
+
+// ─── Detecta subcategorias de /fitness/ nos links do HTML ───
+function detectFitnessSubcategories(html: string): string[] {
+  const subs = new Set<string>();
+  const regex = /href="(\/fitness\/[a-z0-9-]+\/)"/g;
+  let m;
+  while ((m = regex.exec(html)) !== null) {
+    const path = m[1];
+    if (path !== "/fitness/" && !path.includes("?")) {
+      subs.add(path);
+    }
+  }
+  return Array.from(subs).sort();
 }
 
 // ─── Parser genérico (funciona para varejo e atacado) ───
@@ -184,12 +203,24 @@ export async function GET(request: Request) {
     const allVarejo: Array<{ name: string; price: number; slug: string }> = [];
     const seenSlugs = new Set<string>();
     let varejoErrors = 0;
+    let detectedSubcategories: string[] = [];
 
     for (const cat of VAREJO_CATEGORIES) {
       for (let page = 1; page <= 20; page++) {
         try {
-          const pageUrl = page === 1 ? `${VAREJO_URL}${cat.url}` : `${VAREJO_URL}${cat.url}${page}/`;
+          const pageUrl = page === 1 ? `${VAREJO_URL}${cat.url}` : `${VAREJO_URL}${cat.url}?page=${page}`;
           const html = await fetchPage(pageUrl, VAREJO_URL);
+
+          // Detectar subcategorias na primeira página de /fitness/
+          if (cat.url === "/fitness/" && page === 1) {
+            detectedSubcategories = detectFitnessSubcategories(html);
+            const knownSubs = VAREJO_CATEGORIES.filter(c => c.url.startsWith("/fitness/") && c.url !== "/fitness/").map(c => c.url);
+            const newSubs = detectedSubcategories.filter(s => !knownSubs.includes(s));
+            if (newSubs.length > 0) {
+              addLog(`  ⚠ ${newSubs.length} SUBCATEGORIA(S) NOVA(S): ${newSubs.join(", ")}`);
+            }
+          }
+
           const products = parseListingProducts(html);
           if (products.length === 0) break;
           let added = 0;
@@ -229,10 +260,23 @@ export async function GET(request: Request) {
       }
     }
 
+    // Mapa slug → preço (para match quando nomes diferem entre varejo e atacado)
+    const slugPriceMap: Record<string, number> = {};
+    for (const p of allVarejo) {
+      if (p.price > 0 && p.slug) slugPriceMap[p.slug] = p.price;
+    }
+
     // Salvar mapa de preços no Turso
     if (Object.keys(priceMap).length > 0) {
       await setSetting("catalog_varejo_prices", JSON.stringify(priceMap));
+      await setSetting("catalog_varejo_slug_prices", JSON.stringify(slugPriceMap));
       addLog(`  Precos salvos no Turso (${Object.keys(priceMap).length})`);
+    }
+
+    // Salvar subcategorias detectadas no Turso
+    if (detectedSubcategories.length > 0) {
+      await setSetting("catalog_detected_subcategories", JSON.stringify(detectedSubcategories));
+      addLog(`  Subcategorias detectadas: ${detectedSubcategories.join(", ")}`);
     }
 
     // Snapshot de preços
@@ -265,6 +309,7 @@ export async function GET(request: Request) {
         pricesTracked: prices.length,
         changesDetected,
         changes,
+        detectedSubcategories,
       },
       log,
       ...(blocked ? {
