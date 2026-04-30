@@ -1,5 +1,5 @@
 {
-  "lastUpdate": "2026-04-16T12:03:49.155Z",
+  "lastUpdate": "2026-04-30T18:38:12.792Z",
   "changes": [
     {
       "date": "2026-03-31T19:31:12.316Z",
@@ -2864,6 +2864,142 @@
       "field": "price",
       "oldValue": 89,
       "newValue": 148
+    },
+    {
+      "date": "2026-04-20T12:03:39.759Z",
+      "product": "Short Fast Cinza c/ Branco",
+      "slug": "short-fast-cinza-c-branco",
+      "field": "price",
+      "oldValue": 99,
+      "newValue": 79
+    },
+    {
+      "date": "2026-04-20T12:03:39.759Z",
+      "product": "Short Fast Preto c/ Branco",
+      "slug": "short-fast-preto-c-branco",
+      "field": "price",
+      "oldValue": 99,
+      "newValue": 79
+    },
+    {
+      "date": "2026-04-20T12:03:39.759Z",
+      "product": "Short Fast Azul Elegance c/ Branco",
+      "slug": "short-fast-azul-elegance-c-branco",
+      "field": "price",
+      "oldValue": 99,
+      "newValue": 79
+    },
+    {
+      "date": "2026-04-20T12:03:39.759Z",
+      "product": "Regata One Preto",
+      "slug": "regata-one-preto",
+      "field": "price",
+      "oldValue": 72,
+      "newValue": 52
+    },
+    {
+      "date": "2026-04-20T12:03:39.759Z",
+      "product": "Macaquinho One Vermelho",
+      "slug": "macaquinho-one-vermelho",
+      "field": "price",
+      "oldValue": 135,
+      "newValue": 88
+    },
+    {
+      "date": "2026-04-20T12:03:39.759Z",
+      "product": "Top Bia Preto",
+      "slug": "top-bia-preto",
+      "field": "price",
+      "oldValue": 58,
+      "newValue": 50
+    },
+    {
+      "date": "2026-04-20T12:03:39.759Z",
+      "product": "Top Bia Marrom Escuro",
+      "slug": "top-bia-marrom-escuro",
+      "field": "price",
+      "oldValue": 58,
+      "newValue": 50
+    },
+    {
+      "date": "2026-04-20T12:03:39.759Z",
+      "product": "Short Speed c/ Bolso Marrom",
+      "slug": "short-speed-c-bolso-marrom",
+      "field": "price",
+      "oldValue": 95,
+      "newValue": 85
+    },
+    {
+      "date": "2026-04-20T12:03:39.759Z",
+      "product": "Macaquinho One Marrom",
+      "slug": "macaquinho-one-marrom",
+      "field": "price",
+      "oldValue": 135,
+      "newValue": 88
+    },
+    {
+      "date": "2026-04-20T12:03:39.759Z",
+      "product": "Macaquinho One Preto",
+      "slug": "macaquinho-one-preto",
+      "field": "price",
+      "oldValue": 135,
+      "newValue": 88
+    },
+    {
+      "date": "2026-04-20T12:03:39.759Z",
+      "product": "Conjunto Top Bia e Short Saia Preto e Branco",
+      "slug": "top-bia-e-short-saia-preto-e-branco",
+      "field": "price",
+      "oldValue": 143,
+      "newValue": 58
+    },
+    {
+      "date": "2026-04-20T12:03:39.759Z",
+      "product": "Regata One Cinza",
+      "slug": "regata-one-cinza",
+      "field": "price",
+      "oldValue": 72,
+      "newValue": 52
+    },
+    {
+      "date": "2026-04-20T12:03:39.759Z",
+      "product": "Regata One Azul Elegance",
+      "slug": "regata-one-azul-elegance",
+      "field": "price",
+      "oldValue": 72,
+      "newValue": 52
+    },
+    {
+      "date": "2026-04-20T12:03:39.759Z",
+      "product": "Conjunto Top Air e Short Edge Verde Militar",
+      "slug": "conjunto-top-air-e-short-edge-verde-militar",
+      "field": "price",
+      "oldValue": 55,
+      "newValue": 145
+    },
+    {
+      "date": "2026-04-20T12:03:39.759Z",
+      "product": "Short Speed c/ bolso Preto",
+      "slug": "short-speed-c-bolso-preto",
+      "field": "price",
+      "oldValue": 95,
+      "newValue": 85
+    },
+    {
+      "date": "2026-04-24T12:03:48.326Z",
+      "product": "Short Basic Terracota",
+      "slug": "short-basic-terra-cota",
+      "field": "price",
+      "oldValue": 65,
+      "newValue": 95
+    },
+    {
+      "date": "2026-04-28T12:03:31.618Z",
+      "product": "Conjunto Top e Legging Cross Preto c/ Off",
+      "slug": "conjunto-top-e-legging-cross-preto-c-off",
+      "field": "price",
+      "oldValue": 150,
+      "newValue": 52
     }
   ],
   "snapshots": [
@@ -3025,6 +3161,55 @@
       "date": "2026-04-16T12:03:49.155Z",
       "productCount": 225,
       "avgPrice": 92.56,
+      "minPrice": 25,
+      "maxPrice": 205
+    },
+    {
+      "date": "2026-04-20T12:03:39.759Z",
+      "productCount": 229,
+      "avgPrice": 91.53,
+      "minPrice": 25,
+      "maxPrice": 205
+    },
+    {
+      "date": "2026-04-22T12:04:15.339Z",
+      "productCount": 224,
+      "avgPrice": 91.54,
+      "minPrice": 25,
+      "maxPrice": 205
+    },
+    {
+      "date": "2026-04-24T12:03:48.326Z",
+      "productCount": 223,
+      "avgPrice": 91.84,
+      "minPrice": 25,
+      "maxPrice": 205
+    },
+    {
+      "date": "2026-04-27T12:03:46.900Z",
+      "productCount": 222,
+      "avgPrice": 91.99,
+      "minPrice": 25,
+      "maxPrice": 205
+    },
+    {
+      "date": "2026-04-28T12:03:31.618Z",
+      "productCount": 227,
+      "avgPrice": 91.62,
+      "minPrice": 25,
+      "maxPrice": 205
+    },
+    {
+      "date": "2026-04-29T12:03:22.531Z",
+      "productCount": 228,
+      "avgPrice": 91.7,
+      "minPrice": 25,
+      "maxPrice": 205
+    },
+    {
+      "date": "2026-04-30T18:38:12.792Z",
+      "productCount": 229,
+      "avgPrice": 91.68,
       "minPrice": 25,
       "maxPrice": 205
     }

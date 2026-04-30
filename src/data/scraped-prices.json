@@ -1,7 +1,7 @@
 {
-  "timestamp": "2026-04-16T12:03:49.148Z",
+  "timestamp": "2026-04-30T18:38:12.791Z",
   "source": "https://www.floraamar.com.br",
-  "productCount": 258,
+  "productCount": 256,
   "products": [
     {
       "name": "Top Sculpt Azul Marinho",
@@ -85,12 +85,12 @@
     },
     {
       "name": "Short Fast Cinza c/ Branco",
-      "price": 99,
+      "price": 79,
       "slug": "short-fast-cinza-c-branco"
     },
     {
       "name": "Short Fast Preto c/ Branco",
-      "price": 99,
+      "price": 79,
       "slug": "short-fast-preto-c-branco"
     },
     {
@@ -105,13 +105,23 @@
     },
     {
       "name": "Short Fast Azul Elegance c/ Branco",
-      "price": 99,
+      "price": 79,
       "slug": "short-fast-azul-elegance-c-branco"
     },
     {
       "name": "Regata One Preto",
-      "price": 72,
+      "price": 52,
       "slug": "regata-one-preto"
+    },
+    {
+      "name": "Short Run Azul Marinho",
+      "price": 99,
+      "slug": "short-run-azul-marinho"
+    },
+    {
+      "name": "Short Run Marrom",
+      "price": 99,
+      "slug": "short-run-azul-marrom"
     },
     {
       "name": "Top Speed Azul Marinho",
@@ -145,7 +155,7 @@
     },
     {
       "name": "Macaquinho One Vermelho",
-      "price": 135,
+      "price": 88,
       "slug": "macaquinho-one-vermelho"
     },
     {
@@ -180,23 +190,13 @@
     },
     {
       "name": "Top Bia Preto",
-      "price": 58,
+      "price": 50,
       "slug": "top-bia-preto"
     },
     {
       "name": "Top Bia Marrom Escuro",
-      "price": 58,
+      "price": 50,
       "slug": "top-bia-marrom-escuro"
-    },
-    {
-      "name": "Short Speed c/ Bolso Marrom",
-      "price": 95,
-      "slug": "short-speed-c-bolso-marrom"
-    },
-    {
-      "name": "Macaquinho One Marrom",
-      "price": 135,
-      "slug": "macaquinho-one-marrom"
     },
     {
       "name": "Conjunto Top e Short Preto",
@@ -204,14 +204,19 @@
       "slug": "conjunto-top-e-short-preto-1645831"
     },
     {
-      "name": "Macaquinho One Preto",
-      "price": 135,
-      "slug": "macaquinho-one-preto"
+      "name": "Short Speed c/ Bolso Marrom",
+      "price": 85,
+      "slug": "short-speed-c-bolso-marrom"
     },
     {
-      "name": "Squeeze Flora Amar Branca  800ml",
-      "price": 39,
-      "slug": "garrafa-branca"
+      "name": "Macaquinho One Marrom",
+      "price": 88,
+      "slug": "macaquinho-one-marrom"
+    },
+    {
+      "name": "Macaquinho One Preto",
+      "price": 88,
+      "slug": "macaquinho-one-preto"
     },
     {
       "name": "Legging Flare Canelada Off White",
@@ -269,6 +274,11 @@
       "slug": "short-edge-cappuccino-c-off"
     },
     {
+      "name": "Short Edge Verde Militar c/ off",
+      "price": 90,
+      "slug": "short-edge-verde-militar-c-off"
+    },
+    {
       "name": "Macaquinho Ease Cappuccino c/ Off",
       "price": 139,
       "slug": "macaquinho-ease-cappuccino-c-off"
@@ -277,11 +287,6 @@
       "name": "Top Air Cappuccino c/ Off",
       "price": 55,
       "slug": "top-air-cappuccino-c-off"
-    },
-    {
-      "name": "Legging Cross Preto c/ Off",
-      "price": 98,
-      "slug": "legging-cross-preto-c-off"
     },
     {
       "name": "Legging Cross Verde Militar c/ Off",
@@ -309,6 +314,11 @@
       "slug": "top-air-preto-c-off"
     },
     {
+      "name": "Macaquinho Ease Preto c/ Off",
+      "price": 139,
+      "slug": "macaquinho-ease-preto-c-off"
+    },
+    {
       "name": "Legging Line C/ Bolso Preto",
       "price": 140,
       "slug": "legging-line-c-bolso-preto"
@@ -317,6 +327,11 @@
       "name": "Legging Flare Amora",
       "price": 140,
       "slug": "legging-flare-amora"
+    },
+    {
+      "name": "Legging Flare Azul Marinho",
+      "price": 140,
+      "slug": "legging-flare-azul-marinho"
     },
     {
       "name": "Top One Preto",
@@ -359,6 +374,11 @@
       "slug": "bolsa-corebag"
     },
     {
+      "name": "Short Run Off White",
+      "price": 99,
+      "slug": "short-run-off-white"
+    },
+    {
       "name": "Legging Line C/ Bolso Forrado Off White",
       "price": 140,
       "slug": "legging-line-c-bolso-forrado-off-white"
@@ -367,6 +387,16 @@
       "name": "Top Speed Off White",
       "price": 62,
       "slug": "top-speed-off-white"
+    },
+    {
+      "name": "Cropped Manga Longa Off White",
+      "price": 88,
+      "slug": "cropped-manga-longa-off-white"
+    },
+    {
+      "name": "Cropped Manga Longa Preto",
+      "price": 88,
+      "slug": "cropped-manga-longa-preto"
     },
     {
       "name": "Macac�o Muse Cereja",
@@ -404,11 +434,6 @@
       "slug": "top-halo-canelado-preto"
     },
     {
-      "name": "Jaqueta Ellegance Off White",
-      "price": 158,
-      "slug": "jaqueta-canelada-off-white"
-    },
-    {
       "name": "Jaqueta Ellegance  Coffee",
       "price": 158,
       "slug": "jaqueta-canelada-coffe"
@@ -440,7 +465,7 @@
     },
     {
       "name": "Short Basic Terracota",
-      "price": 65,
+      "price": 95,
       "slug": "short-basic-terra-cota"
     },
     {
@@ -454,11 +479,6 @@
       "slug": "regata-basic-lilas"
     },
     {
-      "name": "Regata Basic Terracota",
-      "price": 49,
-      "slug": "regata-basic-terra-cota"
-    },
-    {
       "name": "Regata Basic Preto",
       "price": 72,
       "slug": "regata-basic-preto"
@@ -467,6 +487,11 @@
       "name": "Top Speed Verde Herb",
       "price": 45,
       "slug": "top-speed-verde-herb"
+    },
+    {
+      "name": "Short Run Blush",
+      "price": 99,
+      "slug": "short-run-blush"
     },
     {
       "name": "Macaquinho Adapt Blush",
@@ -517,11 +542,6 @@
       "name": "Top Run Branco",
       "price": 80,
       "slug": "top-run-branco"
-    },
-    {
-      "name": "Regata Run Azul Petr�leo",
-      "price": 58,
-      "slug": "regata-run-azul-petroleo"
     },
     {
       "name": "Regata Run Branco",
@@ -675,13 +695,8 @@
     },
     {
       "name": "Conjunto Top Bia e Short Saia Preto e Branco",
-      "price": 143,
+      "price": 58,
       "slug": "top-bia-e-short-saia-preto-e-branco"
-    },
-    {
-      "name": "Short Saia com Fenda Preto e Branco",
-      "price": 85,
-      "slug": "short-saia-com-fenda-preto-branco"
     },
     {
       "name": "Top Bia Preto e Branco",
@@ -830,7 +845,7 @@
     },
     {
       "name": "Conjunto Top Frente �nica + Short Classic Cereja",
-      "price": 0,
+      "price": 75,
       "slug": "conjunto-top-frente-unica-short-classic-cereja"
     },
     {
@@ -914,34 +929,14 @@
       "slug": "top-basic-duplo-preto"
     },
     {
-      "name": "Short Run Azul Marinho",
+      "name": "Legging Cross Preto c/ Off",
       "price": 0,
-      "slug": "short-run-azul-marinho"
-    },
-    {
-      "name": "Short Run Marrom",
-      "price": 0,
-      "slug": "short-run-azul-marrom"
-    },
-    {
-      "name": "Short Edge Verde Militar c/ off",
-      "price": 0,
-      "slug": "short-edge-verde-militar-c-off"
-    },
-    {
-      "name": "Macaquinho Ease Preto c/ Off",
-      "price": 0,
-      "slug": "macaquinho-ease-preto-c-off"
+      "slug": "legging-cross-preto-c-off"
     },
     {
       "name": "Legging Flare Preta",
       "price": 0,
       "slug": "legging-flare-preta"
-    },
-    {
-      "name": "Legging Flare Azul Marinho",
-      "price": 0,
-      "slug": "legging-flare-azul-marinho"
     },
     {
       "name": "Top Orb Preto",
@@ -954,19 +949,9 @@
       "slug": "top-orb-cereja"
     },
     {
-      "name": "Short Run Off White",
-      "price": 0,
-      "slug": "short-run-off-white"
-    },
-    {
       "name": "Cropped Manga Longa Cereja",
       "price": 0,
       "slug": "cropped-manga-longa-cereja"
-    },
-    {
-      "name": "Cropped Manga Longa Preto",
-      "price": 0,
-      "slug": "cropped-manga-longa-preto"
     },
     {
       "name": "Short Run Cereja",
@@ -979,14 +964,9 @@
       "slug": "jaqueta-canelada-preto"
     },
     {
-      "name": "Short Speed c/ bolso Azul Marine",
+      "name": "Jaqueta Ellegance Off White",
       "price": 0,
-      "slug": "short-speed-c-bolso-azul-marine"
-    },
-    {
-      "name": "Short Speed c/ Bolso Terracota",
-      "price": 0,
-      "slug": "short-speed-c-bolso-terra-cota"
+      "slug": "jaqueta-canelada-off-white"
     },
     {
       "name": "Top Frente �nica Terracota",
@@ -994,9 +974,14 @@
       "slug": "top-frente-unica-terra-cota"
     },
     {
-      "name": "Short Run Blush",
+      "name": "Regata Basic Terracota",
       "price": 0,
-      "slug": "short-run-blush"
+      "slug": "regata-basic-terra-cota"
+    },
+    {
+      "name": "Regata Run Azul Petr�leo",
+      "price": 0,
+      "slug": "regata-run-azul-petroleo"
     },
     {
       "name": "Regata Run Preto",
@@ -1017,6 +1002,11 @@
       "name": "Legging Classic Reto Preto e Branco",
       "price": 0,
       "slug": "legging-classic-reto-preto-e-branco"
+    },
+    {
+      "name": "Short Saia com Fenda Preto e Branco",
+      "price": 0,
+      "slug": "short-saia-com-fenda-preto-branco"
     },
     {
       "name": "Macaquinho Classic Preto e Branco",
@@ -1070,12 +1060,12 @@
     },
     {
       "name": "Regata One Cinza",
-      "price": 72,
+      "price": 52,
       "slug": "regata-one-cinza"
     },
     {
       "name": "Regata One Azul Elegance",
-      "price": 72,
+      "price": 52,
       "slug": "regata-one-azul-elegance"
     },
     {
@@ -1135,12 +1125,12 @@
     },
     {
       "name": "Conjunto Top Air e Short Edge Verde Militar",
-      "price": 55,
+      "price": 145,
       "slug": "conjunto-top-air-e-short-edge-verde-militar"
     },
     {
       "name": "Conjunto Top e Legging Cross Preto c/ Off",
-      "price": 150,
+      "price": 52,
       "slug": "conjunto-top-e-legging-cross-preto-c-off"
     },
     {
@@ -1190,7 +1180,7 @@
     },
     {
       "name": "Short Speed c/ bolso Preto",
-      "price": 95,
+      "price": 85,
       "slug": "short-speed-c-bolso-preto"
     },
     {

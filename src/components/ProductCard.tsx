@@ -255,189 +255,70 @@ export function ProductCard({ product, priceCalc, hasOverride, onEdit }: Props) 
             {CATEGORY_LABELS[product.category]}
           </p>
           <h3
-            className={`font-semibold text-sm text-gray-800 leading-snug mb-1.5 ${!isAdmin ? "cursor-pointer hover:text-brand-500 transition-colors" : ""}`}
+            className={`text-sm text-gray-700 leading-snug mb-1.5 ${!isAdmin ? "cursor-pointer hover:text-brand-500 transition-colors" : ""}`}
             onClick={() => !isAdmin && setShowDetail(true)}
           >
             {product.name}
           </h3>
 
-          {/* Sizes with stock */}
-          <div className="flex items-center gap-1 mb-3 flex-wrap">
-            {Object.keys(stock).length > 0
-              ? Object.entries(stock).map(([size, qty]) => (
-                  <span
-                    key={size}
-                    className={`text-[10px] font-bold px-1.5 py-0.5 rounded ${
-                      qty > 0
-                        ? "bg-gray-100 text-gray-600"
-                        : "bg-red-50 text-red-400 line-through"
-                    }`}
-                    title={`${size}: ${qty} em estoque`}
-                  >
-                    {size}
-                  </span>
-                ))
-              : <p className="text-xs text-gray-400">Tam: {product.sizes}</p>
-            }
-            {/* Size chart button */}
-            {(detail?.stock && Object.keys(detail.stock).length > 0) && (
-              <button
-                onClick={() => setShowSizeChart(true)}
-                className="text-[10px] font-bold text-blue-500 hover:text-blue-700 ml-auto"
-                title="Ver tabela de medidas"
-              >
-                <svg className="w-4 h-4 inline" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 17V7m0 10a2 2 0 01-2 2H5a2 2 0 01-2-2V7a2 2 0 012-2h2a2 2 0 012 2m0 10a2 2 0 002 2h2a2 2 0 002-2M9 7a2 2 0 012-2h2a2 2 0 012 2m0 10V7" />
-                </svg>
-              </button>
-            )}
-          </div>
+          {/* Sizes with stock — só admin */}
+          {isAdmin && (
+            <div className="flex items-center gap-1 mb-3 flex-wrap">
+              {Object.keys(stock).length > 0
+                ? Object.entries(stock).map(([size, qty]) => (
+                    <span
+                      key={size}
+                      className={`text-[10px] font-bold px-1.5 py-0.5 rounded ${
+                        qty > 0
+                          ? "bg-gray-100 text-gray-600"
+                          : "bg-red-50 text-red-400 line-through"
+                      }`}
+                      title={`${size}: ${qty} em estoque`}
+                    >
+                      {size}
+                    </span>
+                  ))
+                : <p className="text-xs text-gray-400">Tam: {product.sizes}</p>
+              }
+              {/* Size chart button */}
+              {(detail?.stock && Object.keys(detail.stock).length > 0) && (
+                <button
+                  onClick={() => setShowSizeChart(true)}
+                  className="text-[10px] font-bold text-blue-500 hover:text-blue-700 ml-auto"
+                  title="Ver tabela de medidas"
+                >
+                  <svg className="w-4 h-4 inline" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 17V7m0 10a2 2 0 01-2 2H5a2 2 0 01-2-2V7a2 2 0 012-2h2a2 2 0 012 2m0 10a2 2 0 002 2h2a2 2 0 002-2M9 7a2 2 0 012-2h2a2 2 0 012 2m0 10V7" />
+                  </svg>
+                </button>
+              )}
+            </div>
+          )}
 
           {/* === CLIENT VIEW === */}
           {!isAdmin && (() => {
             const fakeDiscount = overrides[product.id]?.fakeDiscount || 0;
             const fakeOriginal = fakeDiscount > 0 ? Math.round(priceCalc.priceInstallment * (1 + fakeDiscount / 100)) : 0;
             return (
-            <div className="space-y-1.5">
+            <div className="space-y-0.5">
               {/* Preço "de" riscado (fake promo) */}
               {fakeDiscount > 0 && (
-                <p className="text-xs text-gray-400 line-through leading-none">
+                <p className="text-[11px] text-gray-400 line-through leading-none">
                   {formatBRL(fakeOriginal)}
                 </p>
               )}
-              {/* Preço em destaque */}
-              <p className="text-2xl sm:text-3xl font-black text-gray-800 leading-none">
+              {/* Preço — discreto */}
+              <p className="text-base font-semibold text-gray-700">
                 {formatBRL(Math.round(priceCalc.priceInstallment))}
-              </p>
-
-              {/* Parcelamento */}
-              <p className="text-[11px] sm:text-xs text-gray-500">
-                {priceCalc.installments}x de{" "}
-                <span className="font-bold text-gray-700">
-                  {formatBRL(Math.round(priceCalc.installmentMonthly))}
-                </span>{" "}
-                sem juros
+                <span className="text-[11px] font-normal text-gray-400 ml-1.5">
+                  ou {priceCalc.installments}x de {formatBRL(Math.round(priceCalc.installmentMonthly))}
+                </span>
               </p>
 
               {/* PIX */}
-              <div className="flex items-center gap-1.5">
-                <span className="text-[9px] sm:text-[10px] font-bold text-emerald-700 bg-emerald-100 px-1.5 py-0.5 rounded">
-                  PIX
-                </span>
-                <span className="text-sm sm:text-base font-extrabold text-emerald-600">
-                  {formatBRL(Math.round(priceCalc.pricePix))}
-                </span>
-                <span className="text-[9px] sm:text-[10px] text-emerald-500">
-                  ({priceCalc.pixDiscount}% off)
-                </span>
-              </div>
-
-              {/* Add to cart */}
-              {!isSoldOut && (() => {
-                const pieces = detail?.pieces || [];
-                const isConjunto = pieces.length > 0;
-                const allPiecesSelected = isConjunto
-                  ? pieces.every((p) => pieceSizes[p.name])
-                  : !!selectedSize;
-                const sizeLabel = isConjunto
-                  ? pieces.map((p) => `${p.name.split(" ").pop()} ${pieceSizes[p.name] || "?"}`).join(" + ")
-                  : selectedSize;
-
-                const handleAdd = () => {
-                  if (!allPiecesSelected) return;
-                  const pieceSizeArray = isConjunto
-                    ? pieces.map((p) => ({ name: p.name, size: pieceSizes[p.name] }))
-                    : undefined;
-                  addItem({
-                    productId: product.id,
-                    name: product.name,
-                    size: isConjunto ? sizeLabel : selectedSize,
-                    quantity: 1,
-                    img: allImages[0] || product.img,
-                    category: product.category,
-                    pieceSizes: pieceSizeArray,
-                  });
-                  setAddedFeedback(true);
-                  setTimeout(() => setAddedFeedback(false), 1500);
-                };
-
-                return (
-                <div className="pt-2 space-y-1.5">
-                  {isConjunto ? (
-                    /* === Conjunto: seletor por peça === */
-                    <div className="space-y-2">
-                      {pieces.map((piece) => (
-                        <div key={piece.name}>
-                          <p className="text-[9px] font-bold text-gray-500 uppercase">{piece.name} <span className="text-gray-400 normal-case">R${piece.price}</span></p>
-                          <div className="flex gap-1 mt-0.5">
-                            {Object.keys(piece.sizes).map((size) => (
-                              <button
-                                key={size}
-                                onClick={() => setPieceSizes((prev) => ({ ...prev, [piece.name]: size }))}
-                                className={`flex-1 py-1 text-[10px] sm:text-xs font-bold rounded transition-colors ${
-                                  pieceSizes[piece.name] === size
-                                    ? "bg-brand-400 text-white"
-                                    : "bg-gray-100 text-gray-600 hover:bg-gray-200"
-                                }`}
-                              >
-                                {size}
-                              </button>
-                            ))}
-                          </div>
-                        </div>
-                      ))}
-                    </div>
-                  ) : (
-                    /* === Peça avulsa: seletor único === */
-                    <>
-                      <div className="flex gap-1">
-                        {(Object.keys(stock).length > 0
-                          ? Object.entries(stock)
-                          : product.sizes.split(",").map((s) => [s.trim(), 1] as [string, number])
-                        ).map(([size, qty]) => (
-                          <button
-                            key={size}
-                            disabled={qty === 0}
-                            onClick={() => setSelectedSize(size as string)}
-                            className={`flex-1 py-1 text-[10px] sm:text-xs font-bold rounded transition-colors ${
-                              qty === 0
-                                ? "bg-gray-100 text-gray-300 cursor-not-allowed line-through"
-                                : selectedSize === size
-                                ? "bg-brand-400 text-white"
-                                : "bg-gray-100 text-gray-600 hover:bg-gray-200"
-                            }`}
-                          >
-                            {size}
-                          </button>
-                        ))}
-                      </div>
-                      {selectedSize && SIZE_MEASURES[selectedSize] && (
-                        <p className="text-[10px] text-gray-400 leading-tight">
-                          {SIZE_MEASURES[selectedSize]}
-                        </p>
-                      )}
-                    </>
-                  )}
-                  <button
-                    disabled={!allPiecesSelected}
-                    onClick={handleAdd}
-                    className={`w-full py-2 text-xs font-bold rounded-lg transition-all ${
-                      addedFeedback
-                        ? "bg-emerald-500 text-white"
-                        : allPiecesSelected
-                        ? "bg-brand-400 hover:bg-brand-500 text-white"
-                        : "bg-gray-200 text-gray-400 cursor-not-allowed"
-                    }`}
-                  >
-                    {addedFeedback
-                      ? "Adicionado!"
-                      : allPiecesSelected
-                      ? isConjunto ? `Adicionar ao Carrinho` : `Adicionar ${selectedSize} ao Carrinho`
-                      : isConjunto ? "Selecione os tamanhos" : "Selecione o tamanho"}
-                  </button>
-                </div>
-                );
-              })()}
+              <p className="text-[11px] text-emerald-600">
+                <span className="font-semibold">{formatBRL(Math.round(priceCalc.pricePix))}</span> no PIX
+              </p>
             </div>
             );
           })()}
