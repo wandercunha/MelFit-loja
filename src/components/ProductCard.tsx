@@ -255,7 +255,7 @@ export function ProductCard({ product, priceCalc, hasOverride, onEdit }: Props) 
             {CATEGORY_LABELS[product.category]}
           </p>
           <h3
-            className={`font-semibold text-sm text-gray-800 leading-snug mb-1.5 ${!isAdmin ? "cursor-pointer hover:text-brand-500 transition-colors" : ""}`}
+            className={`text-sm text-gray-700 leading-snug mb-1.5 ${!isAdmin ? "cursor-pointer hover:text-brand-500 transition-colors" : ""}`}
             onClick={() => !isAdmin && setShowDetail(true)}
           >
             {product.name}
