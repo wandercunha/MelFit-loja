@@ -83,6 +83,35 @@ function ConfirmDialog({ config, onCancel }: { config: DialogConfig; onCancel: (
 
 // ─────────────────────────────────────────────────────────────────────────────
 
+type SortField = "name" | "cost" | "margin" | "shipping" | "varejo" | "card" | "pix" | "profit" | "promo" | "stock";
+
+function SortHeader({
+  field, sortField, sortDir, toggle, children, align = "right", className = "",
+}: {
+  field: SortField;
+  sortField: SortField;
+  sortDir: "asc" | "desc";
+  toggle: (f: SortField) => void;
+  children: React.ReactNode;
+  align?: "left" | "right" | "center";
+  className?: string;
+}) {
+  const active = sortField === field;
+  const alignClass = align === "left" ? "text-left" : align === "center" ? "text-center" : "text-right";
+  const flexJustify = align === "left" ? "justify-start" : align === "center" ? "justify-center" : "justify-end";
+  return (
+    <th className={`${alignClass} px-3 py-1.5 ${className}`}>
+      <button
+        onClick={() => toggle(field)}
+        className={`inline-flex items-center gap-0.5 cursor-pointer hover:text-gray-600 select-none ${flexJustify} ${active ? "text-brand-400 font-bold" : ""}`}
+      >
+        {children}
+        {active && <span>{sortDir === "asc" ? "▲" : "▼"}</span>}
+      </button>
+    </th>
+  );
+}
+
 export function ProductOverridesTab() {
   const {
     globalSettings, overrides, setOverride, removeOverride,
@@ -144,6 +173,14 @@ export function ProductOverridesTab() {
   const [editFakeDiscount, setEditFakeDiscount] = useState(0);
   const [showOnlyOverrides, setShowOnlyOverrides] = useState(false);
   const [collapsedCats, setCollapsedCats] = useState<Set<string>>(new Set());
+
+  // Sort state — default alfabético por nome
+  const [sortField, setSortField] = useState<SortField>("name");
+  const [sortDir, setSortDir] = useState<"asc" | "desc">("asc");
+  const toggleSort = (field: SortField) => {
+    if (sortField === field) setSortDir((d) => (d === "asc" ? "desc" : "asc"));
+    else { setSortField(field); setSortDir(field === "name" ? "asc" : "desc"); }
+  };
 
   // Category edit state
   const [editingCat, setEditingCat] = useState<string | null>(null);
@@ -226,17 +263,48 @@ export function ProductOverridesTab() {
     return list;
   }, [allProducts, filter, showOnlyOverrides, overrides, showDisabled, productVisibility]);
 
-  // Group by category
+  // Group by category + ordenação configurável
   const groupedProducts = useMemo(() => {
     const groups: Record<string, typeof products> = {};
     for (const p of products) {
       if (!groups[p.category]) groups[p.category] = [];
       groups[p.category].push(p);
     }
+
+    const dir = sortDir === "asc" ? 1 : -1;
+    const sortKey = (p: Product): number | string => {
+      const ov = overrides[p.id];
+      const catOv = categoryOverrides[p.category];
+      const calc = calcProduct(p, globalSettings, ov, catOv);
+      switch (sortField) {
+        case "name": return p.name.toLowerCase();
+        case "cost": return p.cost;
+        case "margin": return calc.appliedMargin;
+        case "shipping": return calc.shipping;
+        case "varejo": return varejoPrecos[p.name] || 0;
+        case "card": return calc.priceInstallment;
+        case "pix": return calc.pricePix;
+        case "profit": return calc.netProfit;
+        case "promo": return ov?.fakeDiscount || 0;
+        case "stock": {
+          const s = atacadoProducts[p.slug || toSlug(p.name)] as any;
+          return s?.totalStock ?? -1;
+        }
+        default: return p.name.toLowerCase();
+      }
+    };
+
     return CATEGORY_ORDER
       .filter((cat) => groups[cat] && groups[cat].length > 0)
-      .map((cat) => ({ category: cat, products: groups[cat] }));
-  }, [products]);
+      .map((cat) => {
+        const sorted = [...groups[cat]].sort((a, b) => {
+          const ka = sortKey(a); const kb = sortKey(b);
+          if (typeof ka === "string" && typeof kb === "string") return ka.localeCompare(kb) * dir;
+          return ((ka as number) - (kb as number)) * dir;
+        });
+        return { category: cat, products: sorted };
+      });
+  }, [products, sortField, sortDir, overrides, categoryOverrides, globalSettings, varejoPrecos, atacadoProducts]);
 
   const overrideCount = Object.keys(overrides).length;
   const catOverrideCount = Object.keys(categoryOverrides).length;
@@ -645,26 +713,29 @@ export function ProductOverridesTab() {
                     <thead className="bg-gray-50/50 text-[10px] text-gray-400 uppercase">
                       <tr>
                         <th className="w-10 px-2 py-1.5"></th>
-                        <th className="text-left px-3 py-1.5">Produto</th>
-                        <th className="text-right px-3 py-1.5">Custo</th>
-                        <th className="text-right px-3 py-1.5">Margem</th>
-                        <th className="text-right px-3 py-1.5">Frete</th>
+                        <SortHeader field="name" align="left" sortField={sortField} sortDir={sortDir} toggle={toggleSort}>Produto</SortHeader>
+                        <SortHeader field="cost" sortField={sortField} sortDir={sortDir} toggle={toggleSort}>Custo</SortHeader>
+                        <SortHeader field="margin" sortField={sortField} sortDir={sortDir} toggle={toggleSort}>Margem</SortHeader>
+                        <SortHeader field="shipping" sortField={sortField} sortDir={sortDir} toggle={toggleSort}>Frete</SortHeader>
                         <th className="text-right px-3 py-1.5">
-                          <span className="group/varejo relative cursor-help">
+                          <span onClick={() => toggleSort("varejo")} className="cursor-pointer hover:text-gray-600 select-none inline-flex items-center gap-0.5">
                             Varejo
-                            <span className="inline-flex items-center justify-center w-3 h-3 ml-0.5 rounded-full bg-gray-200 text-gray-400 text-[8px] font-bold align-middle">?</span>
-                            <span className="absolute top-full right-0 mt-1 hidden group-hover/varejo:block z-50 w-52 bg-gray-900 text-white text-[11px] font-normal normal-case tracking-normal rounded-lg px-3 py-2 shadow-xl leading-relaxed">
-                              Preco no site de varejo (floraamar.com.br).
-                              <span className="block mt-1 text-emerald-400">-X% = seu preco esta abaixo</span>
-                              <span className="block text-red-400">+X% = seu preco esta acima</span>
+                            {sortField === "varejo" && <span className="text-brand-400">{sortDir === "asc" ? "▲" : "▼"}</span>}
+                            <span className="group/varejo relative">
+                              <span className="inline-flex items-center justify-center w-3 h-3 ml-0.5 rounded-full bg-gray-200 text-gray-400 text-[8px] font-bold align-middle">?</span>
+                              <span className="absolute top-full right-0 mt-1 hidden group-hover/varejo:block z-50 w-52 bg-gray-900 text-white text-[11px] font-normal normal-case tracking-normal rounded-lg px-3 py-2 shadow-xl leading-relaxed">
+                                Preco no site de varejo (floraamar.com.br).
+                                <span className="block mt-1 text-emerald-400">-X% = seu preco esta abaixo</span>
+                                <span className="block text-red-400">+X% = seu preco esta acima</span>
+                              </span>
                             </span>
                           </span>
                         </th>
-                        <th className="text-right px-3 py-1.5">Cartao</th>
-                        <th className="text-right px-3 py-1.5">PIX</th>
-                        <th className="text-right px-3 py-1.5">Lucro</th>
-                        <th className="text-center px-3 py-1.5 text-red-400">Promo</th>
-                        <th className="text-center px-3 py-1.5">Estoque</th>
+                        <SortHeader field="card" sortField={sortField} sortDir={sortDir} toggle={toggleSort}>Cartao</SortHeader>
+                        <SortHeader field="pix" sortField={sortField} sortDir={sortDir} toggle={toggleSort}>PIX</SortHeader>
+                        <SortHeader field="profit" sortField={sortField} sortDir={sortDir} toggle={toggleSort}>Lucro</SortHeader>
+                        <SortHeader field="promo" align="center" sortField={sortField} sortDir={sortDir} toggle={toggleSort} className="text-red-400">Promo</SortHeader>
+                        <SortHeader field="stock" align="center" sortField={sortField} sortDir={sortDir} toggle={toggleSort}>Estoque</SortHeader>
                         <th className="text-center px-2 py-1.5 w-10"></th>
                       </tr>
                     </thead>
